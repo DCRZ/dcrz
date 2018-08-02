@@ -2924,6 +2924,8 @@ bool is_useless_item(const item_def &item, bool temp)
         {
         case SCR_RANDOM_USELESSNESS:
             return true;
+        case SCR_IDENTIFY:
+            return (runes_in_pack() >= 1);
         case SCR_TELEPORTATION:
             return you.species == SP_FORMICID
                    || crawl_state.game_is_sprint()
