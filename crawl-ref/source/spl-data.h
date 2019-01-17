@@ -2404,7 +2404,7 @@ static const struct spell_desc spelldata[] =
     spschool::charms,
     spflag::utility,
     1,
-    25,
+    100,
     -1, -1,
     1, 0,
     TILEG_INFUSION,
