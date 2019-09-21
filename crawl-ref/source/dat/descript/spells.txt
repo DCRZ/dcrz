@@ -1169,12 +1169,10 @@ Calls a surge of power from the earth, striking an enemy within the caster's
 sight. The spell cascades through nearby constructs, growing in strength with
 each one standing near the target.
 %%%%
-Ring of Flames spell
+Ring of Steam spell
 
-Surrounds the caster with a mobile ring of searing flame, and keeps other fire
-clouds away from the caster. This spell attunes the caster to the forces of
-fire, increasing the power of their fire magic and giving protection from fire.
-However, it also makes them much more susceptible to cold.
+Causes the caster's body to emit steam, providing some resistance to fire,
+but inhibiting their spell power and makes them more susceptible to cold.
 %%%%
 Ring of Thunder spell
 

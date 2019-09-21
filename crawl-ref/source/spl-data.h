@@ -295,14 +295,14 @@ static const struct spell_desc spelldata[] =
 },
 
 {
-    SPELL_RING_OF_FLAMES, "Ring of Flames",
-    spschool::charms | spschool::fire,
+    SPELL_RING_OF_STEAM, "Ring of Steam",
+    spschool::charms | spschool::fire | spschool::air,
     spflag::area,
-    7,
+    6,
     200,
     -1, -1,
     6, 0,
-    TILEG_RING_OF_FLAMES,
+    TILEG_RING_OF_STEAM,
 },
 
 {

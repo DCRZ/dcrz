@@ -16,7 +16,7 @@ void big_cloud(cloud_type cl_type, const actor *agent, const coord_def& where,
 spret cast_big_c(int pow, spell_type spl, const actor *caster, bolt &beam,
                       bool fail);
 
-spret cast_ring_of_flames(int power, bool fail);
+spret cast_ring_of_steam(int power, bool fail);
 void manage_fire_shield();
 
 spret cast_corpse_rot(bool fail);

@@ -517,6 +517,9 @@ static int _spell_enhancement(spell_type spell)
     if (you.form == transformation::shadow)
         enhanced -= 2;
 
+    if (you.duration[DUR_FIRE_SHIELD])
+        enhanced -= 1;
+
     enhanced += you.archmagi();
     enhanced += player_equip_unrand(UNRAND_MAJIN);
     enhanced += you.duration[DUR_BRILLIANCE] > 0;
@@ -1851,8 +1854,8 @@ static spret _do_cast(spell_type spell, int powc, const dist& spd,
     case SPELL_DEATHS_DOOR:
         return cast_deaths_door(powc, fail);
 
-    case SPELL_RING_OF_FLAMES:
-        return cast_ring_of_flames(powc, fail);
+    case SPELL_RING_OF_STEAM:
+        return cast_ring_of_steam(powc, fail);
 
     // Escape spells.
     case SPELL_BLINK:

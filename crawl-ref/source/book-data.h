@@ -49,7 +49,7 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_IGNITE_POISON,
     SPELL_FIREBALL,
     SPELL_STARBURST,
-    SPELL_RING_OF_FLAMES,
+    SPELL_RING_OF_STEAM,
     SPELL_IGNITION,
 },
 
@@ -150,7 +150,7 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_MEPHITIC_CLOUD,
     SPELL_CONJURE_FLAME,
     SPELL_FREEZING_CLOUD,
-    SPELL_RING_OF_FLAMES,
+    SPELL_RING_OF_STEAM,
 },
 
 {   // Book of Necromancy
