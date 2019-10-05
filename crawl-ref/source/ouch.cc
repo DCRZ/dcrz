@@ -741,7 +741,8 @@ void reset_damage_counters()
 
 bool can_shave_damage()
 {
-    return you.species == SP_DEEP_DWARF;
+    return (you.species == SP_DEEP_DWARF
+                || you.species == SP_VAMPIRE);
 }
 
 int do_shave_damage(int dam)

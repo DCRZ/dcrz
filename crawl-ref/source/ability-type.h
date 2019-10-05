@@ -44,6 +44,7 @@ enum ability_type
     ABIL_TRAN_BAT,
     ABIL_EXSANGUINATE,
     ABIL_REVIVIFY,
+    ABIL_DRAW_OUT_BLOOD,
 #if TAG_MAJOR_VERSION == 34
     ABIL_BOTTLE_BLOOD,
 #endif

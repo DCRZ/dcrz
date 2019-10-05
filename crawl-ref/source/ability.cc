@@ -321,6 +321,8 @@ static const ability_def Ability_List[] =
       0, 0, 0, 0, {}, abflag::delay},
     { ABIL_REVIVIFY, "Revivify",
       0, 0, 0, 0, {}, abflag::delay},
+    { ABIL_DRAW_OUT_BLOOD, "Draw Out Blood",
+      0, 0, 0, 0, {fail_basis::xl, 45, 2}, abflag::starve_ok },
 
     { ABIL_FLY, "Fly", 3, 0, 100, 0, {fail_basis::xl, 42, 3}, abflag::none },
     { ABIL_STOP_FLYING, "Stop Flying", 0, 0, 0, 0, {}, abflag::starve_ok },
@@ -347,6 +349,7 @@ static const ability_def Ability_List[] =
       1, 0, 50, 0, {fail_basis::evo, 40, 2}, abflag::none },
     { ABIL_HEAL_WOUNDS, "Heal Wounds",
       0, 0, 0, 0, {fail_basis::xl, 45, 2}, abflag::none },
+
     { ABIL_EVOKE_BERSERK, "Evoke Berserk Rage",
       0, 0, 600, 0, {fail_basis::evo, 50, 2}, abflag::none },
 
@@ -762,7 +765,9 @@ static string _nemelex_card_text(ability_type ability)
         return make_stringf("(%d in deck)", cards);
 }
 
-static const int VAMPIRE_BAT_FORM_STAT_DRAIN = 2;
+static const int VAMPIRE_BAT_FORM_STAT_DRAIN = 1;
+
+static const int VAMPIRE_DRAW_OUT_BLOOD_STAT_DRAIN = 1;
 
 const string make_cost_description(ability_type ability)
 {
@@ -781,6 +786,12 @@ const string make_cost_description(ability_type ability)
     {
         ret += make_stringf(", Stat Drain (%d each)",
                             VAMPIRE_BAT_FORM_STAT_DRAIN);
+    }
+    
+    if (ability == ABIL_DRAW_OUT_BLOOD)
+    {
+        ret += make_stringf(", Stat Drain (%d each)",
+                            VAMPIRE_DRAW_OUT_BLOOD_STAT_DRAIN);
     }
 
     if (ability == ABIL_REVIVIFY)
@@ -1626,6 +1637,15 @@ static bool _check_ability_possible(const ability_def& abil, bool quiet = false)
             return false;
         }
         return true;
+        
+    case ABIL_DRAW_OUT_BLOOD:
+        if (you.hp == you.hp_max)
+        {
+            if (!quiet)
+                canned_msg(MSG_FULL_HEALTH);
+            return false;
+        }
+        return true;
 
     case ABIL_SHAFT_SELF:
         return you.can_do_shaft_ability(quiet);
@@ -1866,7 +1886,7 @@ static bool _cleansing_flame_affects(const actor *act)
     return act->res_holy_energy() < 3;
 }
 
-static string _vampire_str_int_info_blurb(string stats_affected)
+static string _vampire_stat_info_blurb(string stats_affected)
 {
     return make_stringf("This will reduce your %s to zero. ",
                         stats_affected.c_str());
@@ -1889,11 +1909,11 @@ static string _vampire_bat_transform_prompt(bool str_affected, bool dex_affected
     string prompt = "";
 
     if (str_affected && intel_affected)
-        prompt += _vampire_str_int_info_blurb("strength and intelligence");
+        prompt += _vampire_stat_info_blurb("strength and intelligence");
     else if (str_affected)
-        prompt += _vampire_str_int_info_blurb("strength");
+        prompt += _vampire_stat_info_blurb("strength");
     else if (intel_affected)
-        prompt += _vampire_str_int_info_blurb("intelligence");
+        prompt += _vampire_stat_info_blurb("intelligence");
 
     // Bat form's dexterity boost will keep a vampire's dexterity above zero until
     // they untransform.
@@ -1905,11 +1925,55 @@ static string _vampire_bat_transform_prompt(bool str_affected, bool dex_affected
     return prompt;
 }
 
+/*
+ * Create a string which informs the player of the consequences of draw out blood.
+ *
+ * @param str_affected Whether the player will cause strength stat zero by
+ * draw out blood's stat drain ability cost.
+ * @param dex_affected Whether the player will cause dexterity stat zero by
+ * draw out blood's stat drain ability cost.
+ * @param int_affected Whether the player will cause intelligence stat zero by
+ * draw out blood's stat drain ability cost.
+ * @returns The string prompt to give the player.
+ */
+static string _vampire_draw_out_blood_prompt(bool str_affected, bool dex_affected,
+                                            bool intel_affected)
+{
+    string prompt = "";
+
+    if (str_affected && intel_affected && dex_affected)
+    	prompt += _vampire_stat_info_blurb("strength, intelligence and dexterity");
+    else if (str_affected && intel_affected)
+        prompt += _vampire_stat_info_blurb("strength and intelligence");
+    else if (str_affected && dex_affected)
+        prompt += _vampire_stat_info_blurb("strength and dexterity");
+    else if (intel_affected && dex_affected)
+        prompt += _vampire_stat_info_blurb("intelligence and dexterity");
+    else if (str_affected)
+        prompt += _vampire_stat_info_blurb("strength");
+    else if (intel_affected)
+        prompt += _vampire_stat_info_blurb("intelligence");
+    else if (dex_affected)
+    	prompt += _vampire_stat_info_blurb("dexterity");
+
+    prompt += "Continue?";
+
+    return prompt;
+}
+
+
 static bool _stat_affected_by_bat_form_stat_drain(int stat_value)
 {
     // We check whether the stat is greater than zero to avoid prompting if a
     // stat is already zero.
     return 0 < stat_value && stat_value <= VAMPIRE_BAT_FORM_STAT_DRAIN;
+}
+
+static bool _stat_affected_by_draw_out_blood_stat_drain(int stat_value)
+{
+    // We check whether the stat is greater than zero to avoid prompting if a
+    // stat is already zero.
+    return 0 < stat_value && stat_value <= VAMPIRE_DRAW_OUT_BLOOD_STAT_DRAIN;
 }
 
 /*
@@ -1940,11 +2004,46 @@ static bool _player_cancels_vampire_bat_transformation()
     return !proceed_with_transformation;
 }
 
+/*
+ * Give the player a chance to cancel a draw out blood which could
+ * cause their stats to be drained to zero.
+ *
+ * @returns Whether the player canceled the transformation.
+ */
+static bool _player_cancels_vampire_draw_out_blood()
+{
+
+    bool str_affected = _stat_affected_by_draw_out_blood_stat_drain(you.strength());
+    bool dex_affected = _stat_affected_by_draw_out_blood_stat_drain(you.dex());
+    bool intel_affected = _stat_affected_by_draw_out_blood_stat_drain(you.intel());
+
+    // Don't prompt if there's no risk of stat-zero
+    if (!str_affected && !dex_affected && !intel_affected)
+        return false;
+
+    string prompt = _vampire_draw_out_blood_prompt(str_affected, dex_affected,
+                                                  intel_affected);
+
+    bool proceed_with_healing = yesno(prompt.c_str(), false, 'n');
+
+    if (!proceed_with_healing)
+        canned_msg(MSG_OK);
+
+    return !proceed_with_healing;
+}
+
 static void _cause_vampire_bat_form_stat_drain()
 {
     lose_stat(STAT_STR, VAMPIRE_BAT_FORM_STAT_DRAIN);
     lose_stat(STAT_INT, VAMPIRE_BAT_FORM_STAT_DRAIN);
     lose_stat(STAT_DEX, VAMPIRE_BAT_FORM_STAT_DRAIN);
+}
+
+static void _cause_vampire_draw_out_blood_stat_drain()
+{
+    lose_stat(STAT_STR, VAMPIRE_DRAW_OUT_BLOOD_STAT_DRAIN);
+    lose_stat(STAT_INT, VAMPIRE_DRAW_OUT_BLOOD_STAT_DRAIN);
+    lose_stat(STAT_DEX, VAMPIRE_DRAW_OUT_BLOOD_STAT_DRAIN);
 }
 
 /*
@@ -2912,6 +3011,16 @@ static spret _do_ability(const ability_def& abil, bool fail)
 
         break;
     }
+    
+    case ABIL_DRAW_OUT_BLOOD:
+    {
+        if (_player_cancels_vampire_draw_out_blood())
+            return spret::abort;
+        fail_check();
+        potionlike_effect(POT_HEAL_WOUNDS, 40);
+        _cause_vampire_draw_out_blood_stat_drain();
+        break;
+    }
 
     case ABIL_EXSANGUINATE:
         fail_check();
@@ -3541,6 +3650,7 @@ vector<talent> your_talents(bool check_confused, bool include_unusable)
 
     if (you.species == SP_VAMPIRE)
     {
+    	_add_talent(talents, ABIL_DRAW_OUT_BLOOD, check_confused);
         if (!you.vampire_alive)
         {
             if (you.experience_level >= 3 && you.form != transformation::bat)
