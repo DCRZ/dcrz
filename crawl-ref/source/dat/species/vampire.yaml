@@ -53,6 +53,10 @@ mutations:
 fake_mutations:
   - long: You do not eat.
     short: no food
+  - long: You are resistant to damage.
+    short: damage resistance
+  - long: You can heal yourself by drinking your own blood.
+    short: heal wounds
 recommended_jobs:
   - JOB_GLADIATOR
   - JOB_ASSASSIN
