@@ -1912,6 +1912,14 @@ static const mutation_def mut_data[] =
   {"You feel resistant to acid.", "",  ""},
   {"You feel less resistant to acid.", "", ""},
 },
+
+{ MUT_STEALTHY_ARMOUR, 0, 1, mutflag::good, true,
+  "assimilated armour",
+
+  {"Your stealth is less affected by armour.", "", ""},
+  {"Your body grows into and around your armour.", "", ""},
+  {"Your armour suddenly feels uncomfortable.", "", ""},
+},
 };
 
 static const mutation_category_def category_mut_data[] =
