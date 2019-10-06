@@ -77,6 +77,7 @@ equipment_type beastly_slot(int mut);
 bool physiology_mutation_conflict(mutation_type mutat);
 int augmentation_amount();
 void reset_powered_by_death_duration();
+void reset_enhanced_by_death_duration();
 
 bool delete_all_temp_mutations(const string &reason);
 bool delete_temp_mutation();

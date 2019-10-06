@@ -668,6 +668,16 @@ static void _decrement_durations()
         you.props[POWERED_BY_DEATH_KEY] = pbd_str - 1;
         reset_powered_by_death_duration();
     }
+    
+    // Decrement Enhanced By Death strength
+    int ebd_str = you.props[ENHANCED_BY_DEATH_KEY].get_int();
+    if (ebd_str > 0 && _decrement_a_duration(DUR_ENHANCED_BY_DEATH, delay))
+    {
+        you.props[ENHANCED_BY_DEATH_KEY] = ebd_str - 1;
+        reset_enhanced_by_death_duration();
+        // Update the stat boost
+        notify_stat_change();
+    }
 
     dec_ambrosia_player(delay);
     dec_channel_player(delay);

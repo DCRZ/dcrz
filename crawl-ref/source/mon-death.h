@@ -78,3 +78,5 @@ bool mons_felid_can_revive(const monster* mons);
 void mons_felid_revive(monster* mons);
 
 bool mons_bennu_can_revive(const monster* mons);
+
+const int ENHANCED_BY_DEATH_CAP = 12;

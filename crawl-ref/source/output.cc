@@ -820,6 +820,7 @@ static short _get_stat_colour(stat_type stat)
 
     // Stat is magically increased.
     if (you.duration[DUR_DIVINE_STAMINA]
+        || you.props[ENHANCED_BY_DEATH_KEY].get_int()
         || stat == STAT_STR && you.duration[DUR_MIGHT]
         || stat == STAT_STR && you.duration[DUR_BERSERK]
         || stat == STAT_INT && you.duration[DUR_BRILLIANCE]

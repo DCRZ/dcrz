@@ -1065,6 +1065,22 @@ static const mutation_def mut_data[] =
    "Your sharp spines retract somewhat."},
 },
 
+{ MUT_ENHANCED_BY_DEATH, 0, 3, mutflag::good, false,
+  "enhanced by death",
+
+  {"Your attributes improve a little from kills.",
+   "Your attributes improve from kills.",
+   "Your attributes improve a lot from kills."},
+
+  {"You feel enhanced by death.",
+   "You feel even more enhanced by death.",
+   "You feel completely enhanced by death."},
+
+  {"Your enhancement by death is gone.",
+   "Your enhancement by death weakens.",
+   "Your enhancement by death weakens."},
+},
+
 { MUT_POWERED_BY_DEATH, 0, 3, mutflag::good, false,
   "powered by death",
 

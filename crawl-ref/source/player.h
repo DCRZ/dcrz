@@ -42,6 +42,7 @@
 #define BARBS_MOVE_KEY "moved_with_barbs_status"
 #define HORROR_PENALTY_KEY "horror_penalty"
 #define POWERED_BY_DEATH_KEY "powered_by_death_strength"
+#define ENHANCED_BY_DEATH_KEY "enhanced_by_death_strength"
 #define SONG_OF_SLAYING_KEY "song_of_slaying_bonus"
 #define FORCE_MAPPABLE_KEY "force_mappable"
 #define REGEN_AMULET_ACTIVE "regen_amulet_active"

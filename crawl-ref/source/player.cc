@@ -1052,7 +1052,7 @@ int player_teleport(bool calc_unid)
 }
 
 // Computes bonuses to regeneration from most sources. Does not handle
-// slow regeneration, vampireness, or Trog's Hand.
+// slow regeneration, powered by death or Trog's Hand.
 static int _player_bonus_regen()
 {
     int rr = 0;
@@ -1078,12 +1078,7 @@ static int _player_bonus_regen()
 
     // Fast heal mutation.
     rr += you.get_mutation_level(MUT_REGENERATION) * REGEN_PIP;
-
-    // Powered By Death mutation, boosts regen by variable strength
-    // if the duration of the effect is still active.
-    if (you.duration[DUR_POWERED_BY_DEATH])
-        rr += you.props[POWERED_BY_DEATH_KEY].get_int() * 100;
-
+    
     return rr;
 }
 
@@ -1138,6 +1133,13 @@ int player_regen()
     // Trog's Hand. This circumvents sickness or inhibited regeneration.
     if (you.duration[DUR_TROGS_HAND])
         rr += 100;
+
+    // Powered By Death mutation, boosts regen by variable strength
+    // if the duration of the effect is still active.
+    // This circumvents sickness or inhibited regeneration;
+    // in particular, this allows vampires to benefit from this mutation.
+    if (you.duration[DUR_POWERED_BY_DEATH])
+        rr += you.props[POWERED_BY_DEATH_KEY].get_int() * 100;
 
     return rr;
 }
@@ -4622,6 +4624,10 @@ void dec_disease_player(int delay)
         // Trog's Hand.
         if (you.duration[DUR_TROGS_HAND])
             rr += 100;
+        
+        // Powered by death mutation
+        if (you.duration[DUR_POWERED_BY_DEATH])
+            rr += you.props[POWERED_BY_DEATH_KEY].get_int() * 100;
 
         rr = div_rand_round(rr * delay, 50);
 
