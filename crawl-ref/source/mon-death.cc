@@ -54,6 +54,8 @@
 #include "mutation.h"
 #include "nearby-danger.h"
 #include "notes.h"
+#include "output.h"
+#include "player-stats.h"
 #include "religion.h"
 #include "rot.h"
 #include "spl-damage.h"
@@ -2546,6 +2548,31 @@ item_def* monster_die(monster& mons, killer_type killer,
             you.props[POWERED_BY_DEATH_KEY] = pbd_str + pbd_inc;
             dprf("Powered by Death strength +%d=%d", pbd_inc,
                  pbd_str + pbd_inc);
+        }
+    }
+    
+    // Player Enhanced by Death
+    if (gives_player_xp && you.get_mutation_level(MUT_ENHANCED_BY_DEATH)
+        && (killer == KILL_YOU
+            || killer == KILL_YOU_MISSILE
+            || killer == KILL_YOU_CONF
+            || pet_kill))
+    {
+        // Enable the status
+        reset_enhanced_by_death_duration();
+
+        // Maybe increase strength. The chance decreases with number
+        // of existing stacks.
+        const int ebd_level = you.get_mutation_level(MUT_ENHANCED_BY_DEATH);
+        const int ebd_str = you.props[ENHANCED_BY_DEATH_KEY].get_int();
+        if (x_chance_in_y(ENHANCED_BY_DEATH_CAP - ebd_str, ENHANCED_BY_DEATH_CAP))
+        {
+            const int ebd_inc = random2(1 + ebd_level);
+            you.props[ENHANCED_BY_DEATH_KEY] = ebd_str + ebd_inc;
+            dprf("Enhanced by Death strength +%d=%d", ebd_inc,
+                 ebd_str + ebd_inc);
+            // Update the stat boost
+            notify_stat_change();
         }
     }
 

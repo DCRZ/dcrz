@@ -34,6 +34,7 @@
 #include "output.h"
 #include "player-equip.h" // lose_permafly_source
 #include "player-stats.h"
+#include "player.h"
 #include "religion.h"
 #include "skills.h"
 #include "state.h"
@@ -2806,3 +2807,15 @@ void reset_powered_by_death_duration()
     const int pbd_dur = random_range(2, 5);
     you.set_duration(DUR_POWERED_BY_DEATH, pbd_dur);
 }
+
+void reset_enhanced_by_death_duration()
+{
+    const int ebd_str = you.props[ENHANCED_BY_DEATH_KEY].get_int();
+    const int ebd_dur_mult = max(1, (ENHANCED_BY_DEATH_CAP - ebd_str) / 2);
+    const int ebd_dur =  ebd_dur_mult * random_range(2, 5);
+    you.set_duration(DUR_ENHANCED_BY_DEATH, ebd_dur);
+}
+
+
+
+

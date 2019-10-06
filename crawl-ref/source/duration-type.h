@@ -60,6 +60,7 @@ enum duration_type
     DUR_EXCRUCIATING_WOUNDS,
     DUR_DEMONIC_GUARDIAN,       // demonic guardian timeout
     DUR_POWERED_BY_DEATH,
+    DUR_ENHANCED_BY_DEATH,
     DUR_SILENCE,
 #if TAG_MAJOR_VERSION == 34
     DUR_CONDENSATION_SHIELD,
