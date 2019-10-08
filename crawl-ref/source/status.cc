@@ -715,22 +715,6 @@ bool fill_status_info(int status, status_info& inf)
 static void _describe_hunger(status_info& inf)
 {
 
-    if (you.species == SP_VAMPIRE)
-    {
-        if (!you.vampire_alive)
-        {
-            inf.light_colour = LIGHTRED;
-            inf.light_text = "Bloodless";
-            inf.short_text = "bloodless";
-        }
-        else
-        {
-            inf.light_colour = GREEN;
-            inf.light_text = "Alive";
-        }
-        return;
-    }
-
     switch (you.hunger_state)
     {
     case HS_ENGORGED:
@@ -815,8 +799,6 @@ static void _describe_regen(status_info& inf)
     const bool regen = (you.duration[DUR_REGENERATION] > 0
                         || you.duration[DUR_TROGS_HAND] > 0);
     const bool no_heal = !player_regenerates_hp();
-    // Does vampire hunger level affect regeneration rate significantly?
-    const bool vampmod = !no_heal && !regen && you.species == SP_VAMPIRE;
 
     if (regen)
     {
@@ -846,11 +828,6 @@ static void _describe_regen(status_info& inf)
             inf.long_text  = "You are regenerating.";
         }
         _mark_expiring(inf, dur_expiring(DUR_REGENERATION));
-    }
-    else if (vampmod)
-    {
-        inf.short_text = you.disease ? "recuperating" : "regenerating";
-        inf.short_text += " quickly";
     }
 }
 

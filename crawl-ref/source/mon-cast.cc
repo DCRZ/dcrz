@@ -2013,9 +2013,6 @@ static bool _foe_should_res_negative_energy(const actor* foe)
             // Demonspawn are not demons, and statue form grants only
             // partial resistance.
             return false;
-        case US_SEMI_UNDEAD:
-            // Non-bloodless vampires do not appear immune.
-            return you.hunger_state <= HS_STARVING;
         default:
             return true;
         }

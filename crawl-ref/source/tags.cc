@@ -1403,7 +1403,6 @@ static void tag_construct_you(writer &th)
 
     marshallShort(th, you.hunger);
     marshallBoolean(th, you.fishtail);
-    marshallBoolean(th, you.vampire_alive);
     _marshall_as_int(th, you.form);
     CANARY;
 
@@ -2365,14 +2364,7 @@ static void tag_read_you(reader &th)
     you.hp              = unmarshallShort(th);
     you.hunger          = unmarshallShort(th);
     you.fishtail        = unmarshallBoolean(th);
-#if TAG_MAJOR_VERSION == 34
-    if (th.getMinorVersion() >= TAG_MINOR_VAMPIRE_NO_EAT)
-        you.vampire_alive = unmarshallBoolean(th);
-    else
-        you.vampire_alive = calc_hunger_state() > HS_STARVING;
-#else
-    you.vampire_alive   = unmarshallBoolean(th);
-#endif
+
 #if TAG_MAJOR_VERSION == 34
     if (th.getMinorVersion() < TAG_MINOR_NOME_NO_MORE)
         unmarshallInt(th);

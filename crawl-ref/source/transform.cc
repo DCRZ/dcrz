@@ -1544,19 +1544,16 @@ undead_form_reason lifeless_prevents_form(transformation which_trans,
     if (you.species != SP_VAMPIRE)
         return UFR_TOO_DEAD; // ghouls & mummies can't become anything else
 
-    if (which_trans == transformation::lich)
-        return UFR_TOO_DEAD; // vampires can never lichform
-
     if (which_trans == transformation::bat) // can batform bloodless
     {
         if (involuntary)
             return UFR_TOO_DEAD; // but not as a forced polymorph effect
 
-        return !you.vampire_alive ? UFR_GOOD : UFR_TOO_ALIVE;
+        return UFR_GOOD;
     }
 
-    // other forms can only be entered when alive
-    return you.vampire_alive ? UFR_GOOD : UFR_TOO_DEAD;
+    // other forms cannot be entered by vampires
+    return UFR_TOO_DEAD;
 }
 
 /**

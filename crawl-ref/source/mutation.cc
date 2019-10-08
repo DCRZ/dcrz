@@ -640,17 +640,6 @@ string describe_mutations(bool drop_title)
                          && you.form == transformation::dragon));
     }
 
-    if (you.species == SP_VAMPIRE)
-    {
-        if (!you.vampire_alive)
-        {
-            result += "<green>You do not regenerate when monsters are visible.</green>\n";
-            result += "<green>You are frail without blood (-20% HP).</green>\n";
-        }
-        else
-            result += "<green>Your natural rate of healing is unusually fast.</green>\n";
-    }
-
     if (you.species == SP_OCTOPODE)
     {
         result += _annotate_form_based("You are amphibious.",
@@ -753,77 +742,6 @@ string describe_mutations(bool drop_title)
     return result;
 }
 
-static formatted_string _vampire_Ascreen_footer(bool first_page)
-{
-    const char *text = first_page ? "<w>Mutations</w>|Blood properties"
-                                  : "Mutations|<w>Blood properties</w>";
-    const string fmt = make_stringf("[<w>!</w>/<w>^</w>"
-#ifdef USE_TILE_LOCAL
-            "|<w>Right-click</w>"
-#endif
-            "]: %s", text);
-    return formatted_string::parse_string(fmt);
-}
-
-static int _vampire_bloodlessness()
-{
-    return you.vampire_alive ? 1 : 2;
-}
-
-static string _display_vampire_attributes()
-{
-    ASSERT(you.species == SP_VAMPIRE);
-
-    string result;
-
-    const int lines = 11;
-    string column[lines][3] =
-    {
-        {"                     ", "<green>Alive</green>      ", "<lightred>Bloodless</lightred>"},
-                                 //Full       Bloodless
-        {"Regeneration         ", "fast       ", "none with monsters in sight"},
-
-        {"HP Modifier          ", "none       ", "-20%"},
-
-        {"Stealth boost        ", "none       ", "major "},
-
-        {"\n<w>Resistances</w>\n"
-         "Poison resistance    ", "           ", "immune"},
-
-        {"Cold resistance      ", "           ", "++    "},
-
-        {"Negative resistance  ", "           ", "+++   "},
-
-        {"Rotting resistance   ", "           ", "+     "},
-
-        {"Torment resistance   ", "           ", "+     "},
-
-        {"\n<w>Transformations</w>\n"
-         "Bat form             ", "no         ", "yes   "},
-
-        {"Other forms and \n"
-         "berserk              ", "yes        ", "no    "}
-    };
-
-    int current = _vampire_bloodlessness();
-
-    for (int y = 0; y < lines; y++)  // lines   (properties)
-    {
-        for (int x = 0; x < 3; x++)  // columns (hunger states)
-        {
-            if (y > 0 && x == current)
-                result += "<w>";
-            result += column[y][x];
-            if (y > 0 && x == current)
-                result += "</w>";
-        }
-        result += "\n";
-    }
-
-    trim_string_right(result);
-    return result;
-}
-
 void display_mutations()
 {
     string mutation_s = describe_mutations(true);
@@ -852,8 +770,7 @@ void display_mutations()
 
     auto switcher = make_shared<Switcher>();
 
-    const string vamp_s = you.species == SP_VAMPIRE ?_display_vampire_attributes() : "N/A";
-    const string descs[3] =  { mutation_s, vamp_s };
+    const string descs[3] =  { mutation_s, "N/A" };
     for (int i = 0; i < 2; i++)
     {
         auto scroller = make_shared<Scroller>();
@@ -873,12 +790,6 @@ void display_mutations()
 #endif
     vbox->add_child(switcher);
 
-    auto bottom = make_shared<Text>(_vampire_Ascreen_footer(true));
-    bottom->set_margin_for_sdl({20, 0, 0, 0});
-    bottom->set_margin_for_crt({1, 0, 0, 0});
-    if (you.species == SP_VAMPIRE)
-        vbox->add_child(bottom);
-
     auto popup = make_shared<ui::Popup>(vbox);
 
     bool done = false;
@@ -887,28 +798,13 @@ void display_mutations()
         if (ev.type != WME_KEYDOWN)
             return false;
         lastch = ev.key.keysym.sym;
-        if (you.species == SP_VAMPIRE && (lastch == '!' || lastch == CK_MOUSE_CMD || lastch == '^'))
-        {
-            int& c = switcher->current();
-
-            bottom->set_text(_vampire_Ascreen_footer(c));
-
-            c = 1 - c;
-#ifdef USE_TILE_WEB
-            tiles.json_open_object();
-            tiles.json_write_int("pane", c);
-            tiles.ui_state_change("mutations", 0);
-#endif
-        } else
-            done = !vbox->on_event(ev);
+        done = !vbox->on_event(ev);
         return true;
     });
 
 #ifdef USE_TILE_WEB
     tiles.json_open_object();
     tiles.json_write_string("mutations", mutation_s);
-    if (you.species == SP_VAMPIRE)
-        tiles.json_write_int("vampire", _vampire_bloodlessness());
     tiles.push_ui_layout("mutations", 1);
 #endif
 
@@ -1384,7 +1280,7 @@ static bool _resist_mutation(mutation_permanence_class mutclass,
 /*
  * Does the player rot instead of mutating?
  * Right now this is coextensive with whether the player is unable to mutate.
- * For most undead, they will never mutate and always rot instead; vampires always mutate and never rot.
+ * For most undead, they will never mutate and always rot instead.
  *
  * @return true if so.
  */
@@ -2808,6 +2704,7 @@ void reset_powered_by_death_duration()
 void reset_enhanced_by_death_duration()
 {
     const int ebd_str = you.props[ENHANCED_BY_DEATH_KEY].get_int();
+    // Lower levels of the enhanced by death stat boost last longer
     const int ebd_dur_mult = max(1, (ENHANCED_BY_DEATH_CAP - ebd_str) / 2);
     const int ebd_dur =  ebd_dur_mult * random_range(2, 5);
     you.set_duration(DUR_ENHANCED_BY_DEATH, ebd_dur);

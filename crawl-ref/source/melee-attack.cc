@@ -1861,7 +1861,7 @@ bool melee_attack::player_monattk_hit_effects()
     if (defender->type == MONS_NO_MONSTER)
         return false;
 
-    // Thirsty vampires will try to use a stabbing situation to draw blood.
+    // Vampires will try to use a stabbing situation to draw blood.
     if (you.species == SP_VAMPIRE
         && damage_done > 0
         && stab_attempt
@@ -3651,7 +3651,6 @@ bool melee_attack::_player_vampire_draws_blood(const monster* mon, const int dam
 bool melee_attack::_vamp_wants_blood_from_monster(const monster* mon)
 {
     return you.species == SP_VAMPIRE
-           && !you.vampire_alive
            && actor_is_susceptible_to_vampirism(*mon)
            && mons_has_blood(mon->type);
 }

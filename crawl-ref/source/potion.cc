@@ -239,7 +239,6 @@ public:
         if (you.species == SP_VAMPIRE)
         {
             mpr("Yummy - fresh blood!");
-            lessen_hunger(pow, true);
         }
         else
             mpr(_blood_flavour_message());
@@ -655,12 +654,6 @@ public:
 
     bool effect(bool was_known = true, int pow = 40, bool=true) const override
     {
-        if (you.species == SP_VAMPIRE && !you.vampire_alive)
-        {
-            mpr("You feel slightly irritated.");
-            return false;
-        }
-
         you.go_berserk(was_known, true);
         return true;
     }
@@ -921,7 +914,6 @@ public:
         if (you.species == SP_VAMPIRE)
         {
             mpr("This tastes delicious.");
-            lessen_hunger(pow, true);
         }
         else
             mpr(_blood_flavour_message());

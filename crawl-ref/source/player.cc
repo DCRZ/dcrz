@@ -1085,8 +1085,7 @@ static int _player_bonus_regen()
 // Inhibited regeneration: stops regeneration when monsters are visible
 bool regeneration_is_inhibited()
 {
-    if (you.get_mutation_level(MUT_INHIBITED_REGENERATION) == 1
-        || (you.species == SP_VAMPIRE && !you.vampire_alive))
+    if (you.get_mutation_level(MUT_INHIBITED_REGENERATION) == 1)
     {
         for (monster_near_iterator mi(you.pos(), LOS_NO_TRANS); mi; ++mi)
         {
@@ -1119,10 +1118,6 @@ int player_regen()
     // Before applying other effects, make sure that there's something
     // to heal.
     rr = max(1, rr);
-
-    // Bonus regeneration for alive vampires.
-    if (you.species == SP_VAMPIRE && you.vampire_alive)
-            rr += 20;
 
     if (you.duration[DUR_COLLAPSE])
         rr /= 4;
@@ -1404,9 +1399,6 @@ int player_res_cold(bool calc_unid, bool temp, bool items)
             rc++;
 
         rc += get_form()->res_cold();
-
-        if (you.species == SP_VAMPIRE && !you.vampire_alive)
-                rc += 2;
     }
 
     if (items)
@@ -1548,7 +1540,6 @@ bool player_res_torment(bool random)
     }
 
     return get_form()->res_neg() == 3
-           || you.species == SP_VAMPIRE && !you.vampire_alive
            || you.petrified()
 #if TAG_MAJOR_VERSION == 34
            || player_equip_unrand(UNRAND_ETERNAL_TORMENT)
@@ -1573,11 +1564,8 @@ int player_res_poison(bool calc_unid, bool temp, bool items)
             break;
         case US_HUNGRY_DEAD: //ghouls
         case US_UNDEAD: // mummies & lichform
-            return 3;
         case US_SEMI_UNDEAD: // vampire
-            if (!you.vampire_alive) // XXX: && temp?
-                return 3;
-            break;
+            return 3;
     }
 
     if (you.is_nonliving(temp)
@@ -1792,12 +1780,6 @@ int player_energy()
 int player_prot_life(bool calc_unid, bool temp, bool items)
 {
     int pl = 0;
-
-    // Hunger is temporary, true, but that's something you can control,
-    // especially as life protection only increases the hungrier you
-    // get.
-    if (you.species == SP_VAMPIRE && !you.vampire_alive)
-            pl = 3;
 
     // Same here. Your piety status, and, hence, TSO's protection, is
     // something you can more or less control.
@@ -2813,16 +2795,8 @@ void level_change(bool skip_attribute_increase)
             case SP_VAMPIRE:
                 if (you.experience_level == 3)
                 {
-                    if (you.vampire_alive)
-                    {
-                        mprf(MSGCH_INTRINSIC_GAIN, "If you were bloodless "
-                             "you could now transform into a vampire bat.");
-                    }
-                    else
-                    {
-                        mprf(MSGCH_INTRINSIC_GAIN,
-                             "You can now transform into a vampire bat.");
-                    }
+                    mprf(MSGCH_INTRINSIC_GAIN,
+                            "You can now transform into a vampire bat.");
                 }
                 break;
 
@@ -3127,9 +3101,8 @@ int player_stealth()
     if (you.duration[DUR_SILENCE])
         stealth -= STEALTH_PIP;
 
-    // Bloodless vampires are stealthier.
-    if (you.species == SP_VAMPIRE && !you.vampire_alive)
-            stealth += STEALTH_PIP * 2;
+    if (you.species == SP_VAMPIRE)
+            stealth += STEALTH_PIP;
 
     if (!you.airborne())
     {
@@ -3221,29 +3194,6 @@ static void _display_char_status(int value, const char *fmt, ...)
         mprf("%s.", msg.c_str());
 
     va_end(argp);
-}
-
-static void _display_vampire_status()
-{
-    string msg = "At your current blood state you ";
-    vector<const char *> attrib;
-
-    if (!you.vampire_alive)
-    {
-        attrib.push_back("are immune to poison");
-        attrib.push_back("significantly resist cold");
-        attrib.push_back("are immune to negative energy");
-        attrib.push_back("resist torment");
-        attrib.push_back("do not heal.");
-    }
-    else
-        attrib.push_back("heal quickly.");
-
-    if (!attrib.empty())
-    {
-        msg += comma_separated_line(attrib.begin(), attrib.end());
-        mpr(msg);
-    }
 }
 
 static void _display_movement_speed()
@@ -3361,9 +3311,6 @@ void display_char_status()
     }
     else if (you.haloed())
         mpr("An external divine halo illuminates you.");
-
-    if (you.species == SP_VAMPIRE)
-        _display_vampire_status();
 
     status_info inf;
     for (unsigned i = 0; i <= STATUS_LAST_STATUS; ++i)
@@ -3854,8 +3801,7 @@ int get_real_hp(bool trans, bool rotted)
                 + (you.get_mutation_level(MUT_RUGGED_BROWN_SCALES) ?
                    you.get_mutation_level(MUT_RUGGED_BROWN_SCALES) * 2 + 1 : 0)
                 - (you.get_mutation_level(MUT_FRAIL) * 10)
-                - (hep_frail ? 10 : 0)
-                - (!you.vampire_alive ? 20 : 0);
+                - (hep_frail ? 10 : 0);
 
     hitp /= 100;
 
@@ -4243,7 +4189,7 @@ void handle_player_poison(int delay)
 
     // Transforming into a form with no metabolism merely suspends the poison
     // but doesn't let your body get rid of it.
-    if (you.is_nonliving() || (you.undead_state() && !you.vampire_alive))
+    if (you.is_nonliving() || you.undead_state())
         return;
 
     // Other sources of immunity (Zin, staff of Olgreb) let poison dissipate.
@@ -5002,7 +4948,6 @@ player::player()
     royal_jelly_dead = false;
     transform_uncancellable = false;
     fishtail = false;
-    vampire_alive = true;
 
     pet_target      = MHITNOT;
 
@@ -6120,12 +6065,8 @@ int player::res_rotting(bool temp) const
         return 0;
 
     case US_HUNGRY_DEAD:
-        return 1; // rottable by Zin, not by necromancy
-
     case US_SEMI_UNDEAD:
-        if (temp && !you.vampire_alive)
-            return 1;
-        return 0; // no permanent resistance
+        return 1; // rottable by Zin, not by necromancy
 
     case US_UNDEAD:
         return 3; // full immunity
@@ -6994,19 +6935,12 @@ bool player::can_mutate() const
  */
 bool player::can_safely_mutate(bool temp) const
 {
-    if (!can_mutate())
-        return false;
-
-    return undead_state(temp) == US_ALIVE
-           || undead_state(temp) == US_SEMI_UNDEAD;
+    return false;
 }
 
 // Is the player too undead to bleed, rage, or polymorph?
 bool player::is_lifeless_undead(bool temp) const
 {
-    if (undead_state() == US_SEMI_UNDEAD)
-        return temp ? !you.vampire_alive : false;
-    else
         return undead_state(temp) != US_ALIVE;
 }
 

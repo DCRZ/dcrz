@@ -7,7 +7,7 @@ difficulty: Advanced
 difficulty_priority: 90
 aptitudes:
   xp: -1
-  hp: 0
+  hp: -2
   mp_mod: 0
   mr: 4
   fighting: -1
@@ -46,12 +46,16 @@ levelup_stats:
   - dex
 mutations:
   1:
+    MUT_NO_REGENERATION: 1
     MUT_FANGS: 3
     MUT_ACUTE_VISION: 1
     MUT_UNBREATHING: 1
     MUT_STEALTHY_ARMOUR: 1
     MUT_POWERED_BY_DEATH: 1
     MUT_ENHANCED_BY_DEATH: 1
+    MUT_NEGATIVE_ENERGY_RESISTANCE: 3
+    MUT_TORMENT_RESISTANCE: 1
+    MUT_COLD_RESISTANCE: 1
   11:
     MUT_POWERED_BY_DEATH: 1
     MUT_ENHANCED_BY_DEATH: 1
@@ -65,6 +69,8 @@ fake_mutations:
     short: damage resistance
   - long: You can heal yourself by drinking your own blood.
     short: heal wounds
+  - long: You are exceptionally light of foot. (Stealth+)
+    short: stealth
 recommended_jobs:
   - JOB_GLADIATOR
   - JOB_ASSASSIN
