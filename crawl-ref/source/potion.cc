@@ -564,12 +564,6 @@ public:
 
     bool effect(bool was_known = true, int = 40, bool=true) const override
     {
-        if (you.species == SP_VAMPIRE && !you.vampire_alive)
-        {
-            mpr("You feel slightly irritated.");
-            return false;
-        }
-
         you.go_berserk(was_known, true);
         return true;
     }

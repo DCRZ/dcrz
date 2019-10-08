@@ -716,22 +716,6 @@ bool fill_status_info(int status, status_info& inf)
 static void _describe_hunger(status_info& inf)
 {
 
-    if (you.species == SP_VAMPIRE)
-    {
-        if (!you.vampire_alive)
-        {
-            inf.light_colour = LIGHTRED;
-            inf.light_text = "Bloodless";
-            inf.short_text = "bloodless";
-        }
-        else
-        {
-            inf.light_colour = GREEN;
-            inf.light_text = "Alive";
-        }
-        return;
-    }
-
     switch (you.hunger_state)
     {
     case HS_ENGORGED:
@@ -838,11 +822,6 @@ static void _describe_regen(status_info& inf)
             inf.long_text  = "You are regenerating.";
         }
         _mark_expiring(inf, dur_expiring(DUR_TROGS_HAND));
-    }
-    else if (you.species == SP_VAMPIRE && you.vampire_alive)
-    {
-        inf.short_text = you.disease ? "recuperating" : "regenerating";
-        inf.short_text += " quickly";
     }
 }
 

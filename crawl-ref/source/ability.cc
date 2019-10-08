@@ -309,10 +309,6 @@ static const ability_def Ability_List[] =
 
     { ABIL_TRAN_BAT, "Bat Form",
       2, 0, 0, 0, {fail_basis::xl, 45, 2}, abflag::starve_ok },
-    { ABIL_EXSANGUINATE, "Exsanguinate",
-      0, 0, 0, 0, {}, abflag::delay},
-    { ABIL_REVIVIFY, "Revivify",
-      0, 0, 0, 0, {}, abflag::delay},
     { ABIL_DRAW_OUT_BLOOD, "Draw Out Blood",
       0, 0, 0, 0, {fail_basis::xl, 45, 2}, abflag::starve_ok },
 
@@ -782,9 +778,6 @@ const string make_cost_description(ability_type ability)
                             VAMPIRE_DRAW_OUT_BLOOD_STAT_DRAIN);
     }
 
-    if (ability == ABIL_REVIVIFY)
-        ret += ", Frailty";
-
     if (abil.hp_cost)
         ret += make_stringf(", %d HP", abil.hp_cost.cost(you.hp_max));
 
@@ -1196,17 +1189,13 @@ static void _print_talent_description(const talent& tal)
 void no_ability_msg()
 {
     // Give messages if the character cannot use innate talents right now.
-    // * Vampires can't turn into bats when full of blood.
+    // * Vampires can't turn into bats when in an uncancellable form (should be
+    // * impossible with purely undead vampires, but we keep this to be sure).
     // * Tengu can't start to fly if already flying.
     if (you.species == SP_VAMPIRE && you.experience_level >= 3)
     {
         if (you.transform_uncancellable)
             mpr("You can't untransform!");
-        else
-        {
-            ASSERT(you.vampire_alive);
-            mpr("Sorry, you cannot become a bat while alive.");
-        }
     }
     else if (you.get_mutation_level(MUT_TENGU_FLIGHT)
              || you.get_mutation_level(MUT_BIG_WINGS))
@@ -1335,22 +1324,6 @@ static bool _check_ability_possible(const ability_def& abil, bool quiet = false)
             if (!quiet)
             {
                 mprf("Turning back right now would cause you to %s!",
-                    env.grid(you.pos()) == DNGN_LAVA ? "burn" : "drown");
-            }
-
-            return false;
-        }
-    }
-    else if ((abil.ability == ABIL_EXSANGUINATE
-              || abil.ability == ABIL_REVIVIFY)
-            && you.form != transformation::none)
-    {
-        if (feat_dangerous_for_form(transformation::none, env.grid(you.pos())))
-        {
-            if (!quiet)
-            {
-                mprf("Becoming %s right now would cause you to %s!",
-                    abil.ability == ABIL_EXSANGUINATE ? "bloodless" : "alive",
                     env.grid(you.pos()) == DNGN_LAVA ? "burn" : "drown");
             }
 
@@ -2987,16 +2960,6 @@ static spret _do_ability(const ability_def& abil, bool fail)
         break;
     }
 
-    case ABIL_EXSANGUINATE:
-        fail_check();
-        start_delay<ExsanguinateDelay>(5);
-        break;
-
-    case ABIL_REVIVIFY:
-        fail_check();
-        start_delay<RevivifyDelay>(5);
-        break;
-
     case ABIL_JIYVA_CALL_JELLY:
     {
         fail_check();
@@ -3599,15 +3562,9 @@ vector<talent> your_talents(bool check_confused, bool include_unusable)
 
     if (you.species == SP_VAMPIRE)
     {
-    	_add_talent(talents, ABIL_DRAW_OUT_BLOOD, check_confused);
-        if (!you.vampire_alive)
-        {
-            if (you.experience_level >= 3 && you.form != transformation::bat)
-                _add_talent(talents, ABIL_TRAN_BAT, check_confused);
-            _add_talent(talents, ABIL_REVIVIFY, check_confused);
-        }
-        else
-            _add_talent(talents, ABIL_EXSANGUINATE, check_confused);
+        _add_talent(talents, ABIL_DRAW_OUT_BLOOD, check_confused);
+        if (you.experience_level >= 3 && you.form != transformation::bat)
+            _add_talent(talents, ABIL_TRAN_BAT, check_confused);
     }
 
     if (you.racial_permanent_flight() && !you.attribute[ATTR_PERM_FLIGHT])

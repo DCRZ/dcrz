@@ -1547,8 +1547,6 @@ const char *hunger_level()
 {
     ASSERT(you.hunger_state <= HS_ENGORGED);
 
-    if (you.species == SP_VAMPIRE)
-        return you.vampire_alive ? "alive" : "bloodless";
     return hunger_names[you.hunger_state];
 }
 

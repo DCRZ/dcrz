@@ -2777,8 +2777,7 @@ bool is_dangerous_item(const item_def &item, bool temp)
         case SCR_VULNERABILITY:
             return true;
         case SCR_TORMENT:
-            return !you.get_mutation_level(MUT_TORMENT_RESISTANCE)
-                   || !temp && you.species == SP_VAMPIRE;
+            return !you.get_mutation_level(MUT_TORMENT_RESISTANCE);
         case SCR_HOLY_WORD:
             return you.undead_or_demonic();
         default:
@@ -3000,9 +2999,7 @@ bool is_useless_item(const item_def &item, bool temp)
             return !you.can_safely_mutate(temp);
 
         case POT_LIGNIFY:
-            return you.undead_state(temp)
-                   && (you.species != SP_VAMPIRE
-                       || temp && !you.vampire_alive);
+            return you.undead_state(temp);
 
         case POT_FLIGHT:
             return you.permanent_flight()
@@ -3050,8 +3047,7 @@ bool is_useless_item(const item_def &item, bool temp)
         case AMU_REGENERATION:
             return you.get_mutation_level(MUT_NO_REGENERATION) > 0
                    || (temp
-                       && (you.get_mutation_level(MUT_INHIBITED_REGENERATION) > 0
-                           || you.species == SP_VAMPIRE)
+                       && you.get_mutation_level(MUT_INHIBITED_REGENERATION) > 0
                        && regeneration_is_inhibited());
 
 #if TAG_MAJOR_VERSION == 34
@@ -3063,8 +3059,7 @@ bool is_useless_item(const item_def &item, bool temp)
             return you.innate_sinv();
 
         case RING_POISON_RESISTANCE:
-            return player_res_poison(false, temp, false) > 0
-                   && (temp || you.species != SP_VAMPIRE);
+            return player_res_poison(false, temp, false) > 0;
 
         case RING_WIZARDRY:
             return you_worship(GOD_TROG);
