@@ -34,6 +34,10 @@ stop += A sentinel's mark forms upon you\.
 #
 ignore += Your skin is crawling a little less now.
 ignore += of your corpse armour falls away.
+ignore += Your icy armour evaporates
+ignore += Your battlesphere wavers and loses cohesion
+ignore += Your magical infusion is running out
+ignore += You are no longer magically infusing your attacks
 
 # Uskayaw -- ignore all Uskayaw power gain/loss messages since they happen constantly
 #
