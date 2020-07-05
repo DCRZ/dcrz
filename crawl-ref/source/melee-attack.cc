@@ -672,12 +672,6 @@ static void _consider_devouring(monster &defender)
 
     dprf("considering devouring");
 
-    // no unhealthy food
-    if (determine_chunk_effect(mons_corpse_effect(defender.type)) != CE_CLEAN)
-        return;
-
-    dprf("chunk ok");
-
     // shapeshifters are mutagenic
     if (defender.is_shapeshifter() && you.species != SP_GHOUL)
     {
@@ -692,7 +686,8 @@ static void _consider_devouring(monster &defender)
 
     dprf("shifter ok");
 
-    // or food that would incur divine penance...
+    // or food that would incur divine penance... (cannibalism is still bad
+    // even when transformed!)
     if (god_hates_eating(you.religion, defender.type))
         return;
 
