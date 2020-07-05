@@ -1720,11 +1720,6 @@ int player_spec_poison()
     return sp;
 }
 
-bool hungerless_spells()
-{
-    return you.wearing(EQ_STAFF, STAFF_ENERGY) || you.duration[DUR_BRILLIANCE];
-}
-
 // If temp is set to false, temporary sources of resistance won't be
 // counted.
 int player_prot_life(bool calc_unid, bool temp, bool items)
