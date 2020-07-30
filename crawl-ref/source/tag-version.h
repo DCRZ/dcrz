@@ -244,6 +244,8 @@ enum tag_minor_version
     TAG_MINOR_MORGUE_SCREENSHOTS,  // Screenshots morgue section
     TAG_MINOR_UNSTACK_TREMORSTONES, // Unstack tins of tremorstones
     TAG_MINOR_MONSTER_TYPE_SIZE,   // Consistently marshall monster_type enums
+    TAG_MINOR_SHAFT_CARD,          // Remove the Shaft card
+    TAG_MINOR_REALLY_UNSTACK_EVOKERS, // Unstack all evokers
 #endif
     NUM_TAG_MINORS,
     TAG_MINOR_VERSION = NUM_TAG_MINORS - 1
