@@ -623,7 +623,6 @@ static const char* _wand_type_name(int wandtype)
     case WAND_ACID:            return "acid";
     case WAND_RANDOM_EFFECTS:  return "random effects";
     case WAND_DISINTEGRATION:  return "disintegration";
-    case WAND_CLOUDS:          return "clouds";
     default:                   return item_type_removed(OBJ_WANDS, wandtype)
                                     ? "removedness"
                                     : "bugginess";
@@ -2971,9 +2970,6 @@ bool is_useless_item(const item_def &item, bool temp)
 
         if (item.sub_type == WAND_ENSLAVEMENT)
             return you.get_mutation_level(MUT_NO_LOVE);
-
-        if (item.sub_type == WAND_CLOUDS)
-            return temp && (env.level_state & LSTATE_STILL_WINDS);
 
         return false;
 
