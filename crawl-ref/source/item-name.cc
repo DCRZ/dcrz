@@ -3087,7 +3087,6 @@ bool is_useless_item(const item_def &item, bool temp)
         switch (item.sub_type)
         {
         case STAFF_WIZARDRY:
-        case STAFF_CONJURATION:
         case STAFF_SUMMONING:
             return you_worship(GOD_TROG);
         }
