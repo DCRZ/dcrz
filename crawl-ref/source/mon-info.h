@@ -182,6 +182,8 @@ enum monster_info_flags
     MB_HIGHLIGHTED_SUMMONER,
     MB_WATERLOGGED,
     MB_SHACKLED,
+    MB_WITHERING,
+    MB_CRUMBLING,
     NUM_MB_FLAGS
 };
 
