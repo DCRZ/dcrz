@@ -3458,6 +3458,39 @@ static const struct spell_desc spelldata[] =
 },
 
 {
+    // This "spell" is implemented in a way that ignores all this information,
+    // and it is never triggered the way spells usually are, but it still has
+    // a spell-type enum entry. So, use fake data in order to have a valid
+    // entry here. If it ever were to be castable, this would need some updates.
+    SPELL_SONIC_WAVE, "Sonic wave",
+    spschool::none,
+    spflag::noisy,
+    7, 0, -1, -1, 0, 0, TILEG_ERROR
+},
+
+{
+    SPELL_ROLL, "Roll",
+    spschool::earth,
+    spflag::monster,
+    5,
+    0,
+    -1, -1,
+    5, 0,
+    TILEG_ERROR
+},
+
+{
+    SPELL_HURL_SLUDGE, "Hurl Sludge",
+    spschool::poison | spschool::conjuration | spschool::transmutation,
+    spflag::dir_or_target | spflag::needs_tracer | spflag::monster,
+    6,
+    200,
+    5, 5,
+    3, 5,
+    TILEG_GENERIC_MONSTER_SPELL
+},
+
+{
     SPELL_NO_SPELL, "nonexistent spell",
     spschool::none,
     spflag::testing,

@@ -479,5 +479,6 @@ enum spell_type : int
     SPELL_ROLL,
     SPELL_SPLINTERSPRAY,
     SPELL_WOODWEAL,
+    SPELL_HURL_SLUDGE,
     NUM_SPELLS
 };

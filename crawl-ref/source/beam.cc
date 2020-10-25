@@ -2374,7 +2374,22 @@ void bolt::affect_endpoint()
         }
         create_feat_splash(pos(), 2, random_range(3, 12, 2));
         break;
+    }
+    case SPELL_HURL_SLUDGE:
+    {
+        // short duration to limit the ability of the player to use it
+        // against enemies
+        const int dur = random_range(20, 30);
+        // TODO: deduplicate with noxious_bog_cell
+        if (env.grid(pos()) == DNGN_DEEP_WATER || env.grid(pos()) == DNGN_LAVA)
+            break;
 
+        // intentionally don't use TERRAIN_CHANGE_BOG to avoid it vanishing
+        // when out of LOS
+        temp_change_terrain(pos(), DNGN_TOXIC_BOG, dur,
+                            TERRAIN_CHANGE_FLOOD,
+                            agent() ? agent()->as_monster() : nullptr);
+    }
     case SPELL_BLINKBOLT:
     {
         actor *act = agent(true); // use orig actor even when reflected
