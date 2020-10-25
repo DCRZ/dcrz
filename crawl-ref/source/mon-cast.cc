@@ -1426,6 +1426,15 @@ bolt mons_spell_beam(const monster* mons, spell_type spell_cast, int power,
         beam.pierce     = true;
         break;
 
+    case SPELL_SPLINTERSPRAY:
+        beam.name       = "spray of wooden splinters";
+        beam.short_name = "splinters";
+        beam.damage     = dice_def(3, 15 + power / 20);
+        beam.colour     = BROWN;
+        beam.flavour    = BEAM_FRAG;
+        beam.hit        = 17 + power / 30;
+        break;
+
     case SPELL_BLINK_OTHER:
         beam.flavour    = BEAM_BLINK;
         break;
@@ -1709,6 +1718,7 @@ bool setup_mons_cast(const monster* mons, bolt &pbolt, spell_type spell_cast,
     case SPELL_SUMMON_SMALL_MAMMAL:
     case SPELL_VAMPIRIC_DRAINING:
     case SPELL_MAJOR_HEALING:
+    case SPELL_WOODWEAL:
     case SPELL_SHADOW_CREATURES:       // summon anything appropriate for level
     case SPELL_FAKE_MARA_SUMMON:
     case SPELL_SUMMON_ILLUSION:
@@ -5668,6 +5678,11 @@ void mons_cast(monster* mons, bolt pbolt, spell_type spell_cast,
         return;
     }
 
+    case SPELL_WOODWEAL:
+        if (mons->heal(35 + random2(mons->spell_hd(spell_cast) * 3)))
+            simple_monster_message(*mons, " is healed.");
+        break;
+
     case SPELL_MAJOR_HEALING:
         if (mons->heal(50 + random2avg(mons->spell_hd(spell_cast) * 10, 2)))
             simple_monster_message(*mons, " is healed.");
@@ -7505,6 +7520,22 @@ static bool _ms_waste_of_time(monster* mon, mon_spell_slot slot)
 
     case SPELL_MAJOR_HEALING:
         return mon->hit_points > mon->max_hit_points / 2;
+
+    case SPELL_WOODWEAL:
+    {
+        bool touch_wood = false;
+        for (adjacent_iterator ai(mon->pos()); ai; ai++)
+        {
+            if (env.grid(*ai) == DNGN_TREE)
+            {
+                touch_wood = true;
+                break;
+            }
+        }
+        if (!touch_wood)
+            return ai_action::impossible();
+        return ai_action::good_or_bad(mon->hit_points <= mon->max_hit_points / 2);
+    }
 
     case SPELL_BLINK_CLOSE:
         if (!foe || adjacent(mon->pos(), foe->pos()))
