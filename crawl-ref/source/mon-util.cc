@@ -3411,8 +3411,8 @@ bool mons_self_destructs(const monster& m)
     return m.type == MONS_BALLISTOMYCETE_SPORE
         || m.type == MONS_BALL_LIGHTNING
         || m.type == MONS_LURKING_HORROR
-        || m.type == MONS_ORB_OF_DESTRUCTION
-        || m.type == MONS_FULMINANT_PRISM;
+        || m.type == MONS_FULMINANT_PRISM
+        || m.type == MONS_BLOATED_HUSK;
 }
 
 bool mons_att_wont_attack(mon_attitude_type fr)

@@ -1141,6 +1141,18 @@ static void _setup_inner_flame_explosion(bolt & beam, const monster& origin,
                                                      : KILL_MON_MISSILE;
 }
 
+static void _setup_bloated_husk_explosion(bolt & beam, const monster& origin)
+{
+    _setup_base_explosion(beam, origin);
+    beam.flavour = BEAM_MMISSILE;
+    beam.damage  = dice_def(8, origin.get_hit_dice());
+    beam.name    = "blast of putrescent gases";
+    beam.explode_noise_msg = "You hear an high-pitched explosion!";
+    beam.colour  = GREEN;
+    beam.ex_size = 2;
+
+}
+
 static bool _explode_monster(monster* mons, killer_type killer,
                              bool pet_kill, bool wizard)
 {
@@ -1180,9 +1192,20 @@ static bool _explode_monster(monster* mons, killer_type killer,
     {
         _setup_bennu_explosion(beam, *mons);
         sanct_msg = "By Zin's power, the bennu's fires are quelled.";
-    }
-    else if (mons->has_ench(ENCH_INNER_FLAME))
-    {
+        break;
+    case MONS_BLOATED_HUSK:
+        _setup_bloated_husk_explosion(beam, *mons);
+        sanct_msg    = "By Zin's power, the bloated husk's explosion is "
+                       "contained.";
+        break;
+    default:
+        if (!mons->has_ench(ENCH_INNER_FLAME))
+        {
+            msg::streams(MSGCH_DIAGNOSTICS) << "Unknown spore type: "
+                                            << static_cast<int>(type)
+                                            << endl;
+            return false;
+        }
         mon_enchant i_f = mons->get_ench(ENCH_INNER_FLAME);
         ASSERT(i_f.ench == ENCH_INNER_FLAME);
         agent = actor_by_mid(i_f.source);
@@ -1696,6 +1719,29 @@ static void _special_corpse_messaging(monster &mons)
     simple_monster_message(mons, message.c_str());
 }
 
+<<<<<<< HEAD
+=======
+static bool _monster_explodes(const monster &mons) {
+    // TODO: add a data structure or flag and unify with sanctuary contain
+    // messages, etc
+    if (mons.has_ench(ENCH_INNER_FLAME))
+        return true;
+    switch (mons.type)
+    {
+        case MONS_BALLISTOMYCETE_SPORE:
+        case MONS_BALL_LIGHTNING:
+        case MONS_LURKING_HORROR:
+        case MONS_BLOATED_HUSK:
+        case MONS_BENNU:
+            return true;
+        case MONS_FULMINANT_PRISM:
+            return mons.prism_charge > 0;
+        default:
+            return false;
+    }
+}
+
+>>>>>>> c768f44cc1... New monster: bloated husk
 /**
  * Kill off a monster.
  *
