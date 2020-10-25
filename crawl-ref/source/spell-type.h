@@ -480,5 +480,6 @@ enum spell_type : int
     SPELL_SPLINTERSPRAY,
     SPELL_WOODWEAL,
     SPELL_HURL_SLUDGE,
+    SPELL_MARSHLIGHT,
     NUM_SPELLS
 };
