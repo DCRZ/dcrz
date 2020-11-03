@@ -176,6 +176,7 @@ moth_of_wrath MONS_MOTH_OF_WRATH
 
 ## Aquatics (';')
 %sdir mon/aquatic
+%rim 0
 electric_eel MONS_ELECTRIC_EEL
 %rim 1
 

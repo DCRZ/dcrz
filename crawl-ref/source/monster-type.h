@@ -1068,7 +1068,6 @@ enum monster_type                      // menv[].type
     MONS_PALENTONGA,            // remove this someday
     MONS_BLOATED_HUSK,
     MONS_BUNYIP,
-    MONS_DEVOURING_SWARM,
     MONS_GOLIATH_FROG,
     MONS_ELEIONOMA,
     MONS_FENSTRIDER_WITCH,
