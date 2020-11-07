@@ -246,6 +246,7 @@ enum tag_minor_version
     TAG_MINOR_MONSTER_TYPE_SIZE,   // Consistently marshall monster_type enums
     TAG_MINOR_SHAFT_CARD,          // Remove the Shaft card
     TAG_MINOR_REALLY_UNSTACK_EVOKERS, // Unstack all evokers
+    TAG_MINOR_SETPOLY,             // Despoiler polymorph wands
 #endif
     NUM_TAG_MINORS,
     TAG_MINOR_VERSION = NUM_TAG_MINORS - 1

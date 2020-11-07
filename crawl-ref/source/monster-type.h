@@ -1085,6 +1085,7 @@ enum monster_type                      // menv[].type
     RANDOM_MOBILE_MONSTER, // used for monster generation (shadow creatures)
     RANDOM_COMPATIBLE_MONSTER, // used for player shadow creatures (prevents repulsing summons)
     RANDOM_BANDLESS_MONSTER,
+    RANDOM_POLYMORPH_MONSTER, // choose from a per-monster set
 
     // A random draconian, either base coloured drac or specialised.
     RANDOM_DRACONIAN,
