@@ -1109,7 +1109,8 @@ bool item_is_selected(const item_def &i, int selector)
                || (itype == OBJ_BOOKS && i.sub_type != BOOK_MANUAL);
 
     case OSEL_EVOKABLE:
-        return item_is_evokable(i, true, true);
+        // assumes valid link...would break with evoking from floor?
+        return item_is_evokable(i, true) && item_is_evokable(i, true, false);//evoke_check(i.link, true);
 
     case OSEL_ENCHANTABLE_ARMOUR:
         return is_enchantable_armour(i, true);
