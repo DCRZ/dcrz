@@ -51,7 +51,6 @@
 #define EMERGENCY_FLIGHT_KEY "emergency_flight"
 #define PARALYSED_BY_KEY "paralysed_by"
 #define PETRIFIED_BY_KEY "petrified_by"
-#define NOXIOUS_BOG_KEY "noxious_bog_pow"
 #define FROZEN_RAMPARTS_KEY "frozen_ramparts_position"
 
 // display/messaging breakpoints for penalties from Ru's MUT_HORROR

@@ -1299,6 +1299,11 @@ string spell_uselessness_reason(spell_type spell, bool temp, bool prevent,
             return "you cannot sustain more frozen ramparts right now.";
         break;
 
+    case SPELL_NOXIOUS_BOG:
+        if (temp && you.duration[DUR_NOXIOUS_BOG])
+            return "you cannot sustain more bogs right now.";
+        break;
+
     default:
         break;
     }

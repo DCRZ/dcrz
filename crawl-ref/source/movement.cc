@@ -42,7 +42,6 @@
 #include "state.h"
 #include "stringutil.h"
 #include "spl-damage.h"
-#include "spl-selfench.h" // noxious_bog_cell
 #include "target-compass.h"
 #include "terrain.h"
 #include "traps.h"
