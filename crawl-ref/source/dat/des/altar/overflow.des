@@ -123,7 +123,9 @@ function species_mock(e)
   elseif you.race() == "Deep Dwarf" then
     return "deep dwarf zombie"
   elseif you.race() == "Deep Elf" then
-    return "insubstantial wisp"
+    return "will-o-the-wisp"
+  elseif you.race() == "Gnoll" then
+    return "jackal"
   elseif you.race() == "Halfling" then
     return "hobgoblin ; mundane hunting sling"
   elseif you.race() == "Hill Orc" then
