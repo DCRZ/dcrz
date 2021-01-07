@@ -2618,9 +2618,6 @@ void bolt::affect_place_clouds()
     if (name == "blast of choking fumes")
         place_cloud(CLOUD_MEPHITIC, p, random2(4) + 3, agent());
 
-    if (name == "trail of fire")
-        place_cloud(CLOUD_FIRE, p, random2(ench_power) + ench_power, agent());
-
     if (origin_spell == SPELL_PETRIFYING_CLOUD)
         place_cloud(CLOUD_PETRIFY, p, random2(4) + 4, agent());
 

@@ -82,3 +82,5 @@ spret cast_absolute_zero(monster *mons, bool fail);
 
 spret cast_noxious_bog(int pow, bool fail);
 vector<coord_def> find_bog_locations(const coord_def &center, int pow);
+
+spret cast_flame_dance(const actor *caster, int pow, bolt& beam, bool fail);

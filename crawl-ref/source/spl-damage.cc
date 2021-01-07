@@ -3446,3 +3446,171 @@ spret cast_noxious_bog(int pow, bool fail)
 
     return spret::success;
 }
+
+static void _get_jitter_path(coord_def source, coord_def target, vector<bolt> &beams)
+{
+    const int NUM_TRIES = 10;
+    const int RANGE = 8;
+
+    bolt trace_beam;
+    trace_beam.source = source;
+    trace_beam.target = target;
+    trace_beam.aimed_at_spot = false;
+    trace_beam.is_tracer = true;
+    trace_beam.range = RANGE;
+    trace_beam.fire();
+
+    coord_def aim_dir = (source - target).sgn();
+
+    if (trace_beam.path_taken.back() != source)
+        target = trace_beam.path_taken.back();
+
+    vector<coord_def> path = trace_beam.path_taken;
+    // If possible, take what would be the midpoint of the beam if it were full range
+    unsigned int mid_i = min(3, max(0, int(path.size()) - 1));
+    coord_def mid = path[mid_i];
+
+    if (int(path.size()) > 3)
+    {
+        for (int n = 0; n < NUM_TRIES; ++n)
+        {
+            coord_def jitter_rnd;
+            jitter_rnd.x = random_range(-1, 1);
+            jitter_rnd.y = random_range(-1, 1);
+            coord_def jitter = clamp_in_bounds(mid + jitter_rnd);
+            if (jitter == target || jitter == source || cell_is_solid(jitter))
+                continue;
+
+            trace_beam.target = jitter;
+            trace_beam.fire();
+
+            coord_def delta = source - jitter;
+            //Don't try to aim at targets in the opposite direction of main aim
+            if ((abs(aim_dir.x - delta.sgn().x) + abs(aim_dir.y - delta.sgn().y) >= 2)
+                 && !delta.origin())
+            {
+                continue;
+            }
+
+            target = trace_beam.path_taken.back();
+            mid = jitter;
+            break;
+        }
+    }
+
+    for (int n = 0; n < NUM_TRIES; ++n)
+    {
+        coord_def jitter_rnd;
+        jitter_rnd.x = random_range(-3, 3);
+        jitter_rnd.y = random_range(-3, 3);
+        coord_def jitter = clamp_in_bounds(mid + jitter_rnd);
+        if (jitter == mid || jitter.distance_from(mid) < 2 || jitter == source
+            || cell_is_solid(jitter)
+            || !cell_see_cell(source, jitter, LOS_NO_TRANS)
+            || !cell_see_cell(target, jitter, LOS_NO_TRANS))
+        {
+            continue;
+        }
+
+        trace_beam.aimed_at_feet = false;
+        trace_beam.source = jitter;
+        trace_beam.target = target;
+        trace_beam.fire();
+
+        coord_def delta1 = source - jitter;
+        coord_def delta2 = source - trace_beam.path_taken.back();
+
+        //Don't try to aim at targets in the opposite direction of main aim
+        if (abs(aim_dir.x - delta1.sgn().x) + abs(aim_dir.y - delta1.sgn().y) >= 2
+            || abs(aim_dir.x - delta2.sgn().x) + abs(aim_dir.y - delta2.sgn().y) >= 2)
+        {
+            continue;
+        }
+
+        // Don't make l-turns
+        coord_def delta = jitter-target;
+        if (!delta.x || !delta.y)
+            continue;
+
+        if (find(begin(path), end(path), jitter) != end(path))
+            continue;
+
+        //mid = jitter;
+        break;
+    }
+
+    bolt beam1, beam2;
+
+    beam1.source = source;
+    beam1.target = mid;
+    beam1.range = RANGE;
+    beam1.aimed_at_spot = true;
+    beam1.is_tracer = true;
+    beam1.fire();
+    beam1.is_tracer = false;
+
+    beam2.source = mid;
+    beam2.target = target;
+    beam2.range = max(int(RANGE - beam1.path_taken.size()), mid.distance_from(target));
+    beam2.is_tracer = true;
+    beam2.fire();
+    beam2.is_tracer = false;
+
+    beams.push_back(beam1);
+    beams.push_back(beam2);
+}
+
+spret cast_flame_dance(const actor *caster, int pow, bolt& base_beam, bool fail)
+{
+    pow = min(50, pow);
+
+    ASSERT(caster->is_player());
+
+    fail_check();
+
+    if (cell_is_solid(base_beam.target))
+    {
+        canned_msg(MSG_UNTHINKING_ACT);
+        return spret::abort;
+    }
+
+    if (base_beam.target == caster->pos())
+    {
+        mprf(MSGCH_EXAMINE_FILTER, "That would be overly suicidal.");
+        return spret::abort;
+    }
+
+    // TODO: give a warning that accounts for the random beam path
+    monster* mons = monster_at(base_beam.target);
+    if (mons && !(have_passive(passive_t::shoot_through_plants)
+          && fedhas_protects(mons))
+        && stop_attack_prompt(mons, true, base_beam.target))
+    {
+        return spret::abort;
+    }
+
+    mpr("The flames dance!");
+
+    vector<bolt> beams;
+    
+    _get_jitter_path(caster->pos(), base_beam.target, beams);
+
+    for (bolt &beam : beams)
+    {
+        if (beam.source == beam.target)
+            continue;
+
+        beam.flavour    = BEAM_FIRE;
+        beam.colour     = RED;
+        beam.source_id  = MID_PLAYER;
+        beam.thrower    = KILL_YOU;
+        beam.pierce     = true;
+        beam.name       = "trail of fire";
+        beam.hit        = 8 + (pow/10);
+        beam.damage     = dice_def(2, 4 + pow/10);
+        beam.loudness   = 2;
+        beam.fire();
+    }
+
+    return spret::success;
+}

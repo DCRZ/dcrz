@@ -596,6 +596,10 @@ Fireball spell
 
 Hurls an explosive ball of fire.
 %%%%
+Flame Dance spell
+
+Fires a penetrating, zigzagging trail of flames.
+%%%%
 Flame Tongue spell
 
 Creates a short burst of flame.

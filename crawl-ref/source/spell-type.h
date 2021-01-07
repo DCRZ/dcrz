@@ -483,5 +483,6 @@ enum spell_type : int
     SPELL_LIGNIFY,
     SPELL_SLIMIFY,
     SPELL_AWAKEN_SLIME_MOULD,
+    SPELL_FLAME_DANCE,
     NUM_SPELLS
 };
