@@ -1820,8 +1820,8 @@ static string _describe_armour(const item_def &item, bool verbose)
             break;
 
         case SPARM_SHADOWS:
-            description += "It reduces the wearer's line of sight "
-                           "and spell power.";
+            description += "It shortens the distance the wearer can be seen at "
+                           "and can see.";
         }
     }
 
