@@ -1381,4 +1381,22 @@ _mon_hex_zap(ZAP_LIGNIFICATION, BEAM_LIGNIFICATION),
 
 _mon_hex_zap(ZAP_SLIMIFICATION, BEAM_SLIMIFICATION),
 
+{
+    ZAP_FLAME_DANCE,
+    "trail of fire",
+    50,
+    new dicedef_calculator<2, 4, 1, 10>,
+    new tohit_calculator<8, 1, 10>,
+    new dicedef_calculator<3, 5, 1, 40>,
+    new tohit_calculator<25, 1, 40>,
+    RED,
+    false,
+    BEAM_FIRE,
+    DCHAR_FIRED_ZAP,
+    true,
+    true,
+    false,
+    2
+},
+
 };

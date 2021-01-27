@@ -284,11 +284,13 @@ bool player_tracer(zap_type ztype, int power, bolt &pbolt, int range)
     zappy(ztype, power, false, pbolt);
 
     pbolt.is_tracer     = true;
-    pbolt.source        = you.pos();
     pbolt.source_id     = MID_PLAYER;
     pbolt.attitude      = ATT_FRIENDLY;
     pbolt.thrower       = KILL_YOU_MISSILE;
 
+    // Set source to player position unless already set
+    if (!pbolt.source.x && !pbolt.source.y)
+        pbolt.source    = you.pos();
 
     // Init tracer variables.
     pbolt.friend_info.reset();

@@ -3535,12 +3535,12 @@ static void _get_jitter_path(coord_def source, coord_def target, vector<bolt> &b
         if (find(begin(path), end(path), jitter) != end(path))
             continue;
 
-        //mid = jitter;
         break;
     }
 
     bolt beam1, beam2;
 
+    beam1.name = "trail of fire 1";
     beam1.source = source;
     beam1.target = mid;
     beam1.range = RANGE;
@@ -3549,6 +3549,7 @@ static void _get_jitter_path(coord_def source, coord_def target, vector<bolt> &b
     beam1.fire();
     beam1.is_tracer = false;
 
+    beam2.name = "trail of fire 2";
     beam2.source = mid;
     beam2.target = target;
     beam2.range = max(int(RANGE - beam1.path_taken.size()), mid.distance_from(target));
@@ -3562,34 +3563,7 @@ static void _get_jitter_path(coord_def source, coord_def target, vector<bolt> &b
 
 spret cast_flame_dance(const actor *caster, int pow, bolt& base_beam, bool fail)
 {
-    pow = min(50, pow);
-
-    ASSERT(caster->is_player());
-
     fail_check();
-
-    if (cell_is_solid(base_beam.target))
-    {
-        canned_msg(MSG_UNTHINKING_ACT);
-        return spret::abort;
-    }
-
-    if (base_beam.target == caster->pos())
-    {
-        mprf(MSGCH_EXAMINE_FILTER, "That would be overly suicidal.");
-        return spret::abort;
-    }
-
-    // TODO: give a warning that accounts for the random beam path
-    monster* mons = monster_at(base_beam.target);
-    if (mons && !(have_passive(passive_t::shoot_through_plants)
-          && fedhas_protects(mons))
-        && stop_attack_prompt(mons, true, base_beam.target))
-    {
-        return spret::abort;
-    }
-
-    mpr("The flames dance!");
 
     vector<bolt> beams;
     
@@ -3597,19 +3571,15 @@ spret cast_flame_dance(const actor *caster, int pow, bolt& base_beam, bool fail)
 
     for (bolt &beam : beams)
     {
-        if (beam.source == beam.target)
-            continue;
+        zap_type zap = ZAP_FLAME_DANCE;
+        const spret ret = beam.name == "trail of fire 1"
+                            ? zapping(zap, pow, beam, true, "The flames dance!", fail) 
+                            : (beam.source != beam.target
+                                ? zapping(zap, pow, beam, true, nullptr, fail)
+                                : spret::success);
 
-        beam.flavour    = BEAM_FIRE;
-        beam.colour     = RED;
-        beam.source_id  = MID_PLAYER;
-        beam.thrower    = KILL_YOU;
-        beam.pierce     = true;
-        beam.name       = "trail of fire";
-        beam.hit        = 8 + (pow/10);
-        beam.damage     = dice_def(2, 4 + pow/10);
-        beam.loudness   = 2;
-        beam.fire();
+        if (ret != spret::success)
+            return ret;
     }
 
     return spret::success;
