@@ -1538,11 +1538,3 @@ bool targeter_overgrow::set_aim(coord_def a)
 
     return affected_positions.size();
 }
-
-targeter_bog::targeter_bog(const actor *a, int pow)
-    : targeter_multiposition(a, { }, true)
-{
-    auto seeds = find_bog_locations(a->pos(), pow);
-    for (auto &c : seeds)
-        add_position(c);
-}

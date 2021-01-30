@@ -743,14 +743,6 @@ void move_player_action(coord_def move)
         else
         {
 
-            if (you.duration[DUR_NOXIOUS_BOG])
-            {
-                if (cell_is_solid(old_pos))
-                    ASSERT(you.wizmode_teleported_into_rock);
-                else
-                    noxious_bog_cell(old_pos);
-            }
-
             if (you.duration[DUR_CLOUD_TRAIL])
             {
                 if (cell_is_solid(old_pos))
