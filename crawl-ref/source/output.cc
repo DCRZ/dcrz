@@ -820,7 +820,7 @@ static short _get_stat_colour(stat_type stat)
         || you.props[ENHANCED_BY_DEATH_KEY].get_int())
     {
         return LIGHTBLUE;  // no end of effect warning
-
+    }
     // Stat is degenerated.
     if (you.stat_loss[stat] > 0)
         return YELLOW;
