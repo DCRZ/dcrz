@@ -330,8 +330,7 @@ static const map<spell_type, mons_spell_logic> spell_to_logic = {
        _always_worthwhile,
        _cast_marshlight,
     } },
-    { SPELL_IMPLANT_EGGS, { _implant_eggs_goodness, _cast_implant_eggs } },
-    { SPELL_STILL_WINDS, { _still_winds_goodness, _cast_still_winds } },
+    { SPELL_STILL_WINDS, { _should_still_winds, _cast_still_winds } },
     { SPELL_SMITING, { _always_worthwhile, _cast_smiting, } },
     { SPELL_RESONANCE_STRIKE, { _always_worthwhile, _cast_resonance_strike, } },
     { SPELL_FLAY, {
@@ -429,10 +428,8 @@ static const map<spell_type, mons_spell_logic> spell_to_logic = {
             return _torment_vulnerable(caster.get_foe());
         }, 6)
     },
-    { SPELL_AGONY, _hex_logic(SPELL_AGONY, [](const monster &caster) {
-            const actor* foe = caster.get_foe();
-            ASSERT(foe);
-            return ai_action::good_or_impossible(_torment_vulnerable(foe));
+    { SPELL_AGONY, _hex_logic(SPELL_AGONY_RANGE, [](const monster &caster) {
+            return _torment_vulnerable(caster.get_foe());
         }, 6)
     },
     { SPELL_STRIP_RESISTANCE,
@@ -7560,8 +7557,8 @@ static bool _ms_waste_of_time(monster* mon, mon_spell_slot slot)
             }
         }
         if (!touch_wood)
-            return ai_action::impossible();
-        return ai_action::good_or_bad(mon->hit_points <= mon->max_hit_points / 2);
+            return true;
+        return mon->hit_points > mon->max_hit_points / 2;
     }
 
     case SPELL_BLINK_CLOSE:
