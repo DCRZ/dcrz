@@ -672,20 +672,6 @@ static void _consider_devouring(monster &defender)
 
     dprf("considering devouring");
 
-    // shapeshifters are mutagenic
-    if (defender.is_shapeshifter() && you.species != SP_GHOUL)
-    {
-        // handle this carefully, so the player knows what's going on
-        mprf("You spit out %s as %s %s & %s in your mouth!",
-             defender.name(DESC_THE).c_str(),
-             defender.pronoun(PRONOUN_SUBJECTIVE).c_str(),
-             conjugate_verb("twist", defender.pronoun_plurality()).c_str(),
-             conjugate_verb("change", defender.pronoun_plurality()).c_str());
-        return;
-    }
-
-    dprf("shifter ok");
-
     // or food that would incur divine penance... (cannibalism is still bad
     // even when transformed!)
     if (god_hates_eating(you.religion, defender.type))
