@@ -41,7 +41,6 @@
 #include "xom.h"
 
 static void _describe_food_change(int hunger_increment);
-static void _heal_from_food(int hp_amt);
 
 void make_hungry(int hunger_amount, bool suppress_msg,
                  bool magic)
@@ -574,13 +573,6 @@ static void _eat_chunk(item_def& food)
     {
     case CE_CLEAN:
     {
-        if (you.species == SP_GHOUL)
-        {
-            suppress_msg = true;
-            const int hp_amt = 1 + random2avg(5 + you.experience_level, 3);
-            _heal_from_food(hp_amt);
-        }
-
         mprf("This raw flesh %s", _chunk_flavour_phrase(likes_chunks));
         do_eat = true;
         break;
@@ -792,21 +784,6 @@ corpse_effect_type determine_chunk_effect(corpse_effect_type chunktype)
     }
 
     return chunktype;
-}
-
-static void _heal_from_food(int hp_amt)
-{
-    if (hp_amt > 0)
-        inc_hp(hp_amt);
-
-    if (player_rotted())
-    {
-        mpr("You feel more resilient.");
-        unrot_hp(1);
-    }
-
-    calc_hp();
-    calc_mp();
 }
 
 int you_max_hunger()

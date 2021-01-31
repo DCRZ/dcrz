@@ -614,7 +614,7 @@ bool melee_attack::handle_phase_aux()
  *
  * @param defender  The monster in question.
  */
-static void _hydra_devour(monster &victim)
+static void _devour(monster &victim)
 {
     // what's the highest hunger level this lets the player get to?
     const hunger_state_t max_hunger = player_likes_chunks() ? HS_ENGORGED
@@ -643,22 +643,25 @@ static void _hydra_devour(monster &victim)
     if (victim.has_ench(ENCH_STICKY_FLAME))
         mprf("Spicy!");
 
+    const int equiv_chunks = 1 + random2(max_corpse_chunks(victim.type));
+
     // nutrition (maybe)
     if (filling)
-    {
-        const int equiv_chunks =
-            1 + random2(max_corpse_chunks(victim.type));
         lessen_hunger(CHUNK_BASE_NUTRITION * equiv_chunks, false, max_hunger);
-    }
 
     // healing
     if (!you.duration[DUR_DEATHS_DOOR])
     {
         const int healing = 1 + victim.get_experience_level() * 3 / 4
                               + random2(victim.get_experience_level() * 3 / 4);
+        canned_msg(MSG_GAIN_HEALTH);
+        if (player_rotted() && you.species == SP_GHOUL)
+        {
+            mpr("You feel more resilient.");
+            unrot_hp(equiv_chunks);
+        }
         you.heal(healing);
         calc_hp();
-        canned_msg(MSG_GAIN_HEALTH);
         dprf("healed for %d (%d hd)", healing, victim.get_experience_level());
     }
 
@@ -671,7 +674,7 @@ static void _hydra_devour(monster &victim)
  *
  * @param defender  The defender in question.
  */
-static void _hydra_consider_devouring(monster &defender)
+static void _consider_devouring(monster &defender)
 {
     ASSERT(!crawl_state.game_is_arena());
 
@@ -684,7 +687,7 @@ static void _hydra_consider_devouring(monster &defender)
     dprf("chunk ok");
 
     // shapeshifters are mutagenic
-    if (defender.is_shapeshifter())
+    if (defender.is_shapeshifter() && you.species != SP_GHOUL)
     {
         // handle this carefully, so the player knows what's going on
         mprf("You spit out %s as %s %s & %s in your mouth!",
@@ -714,7 +717,7 @@ static void _hydra_consider_devouring(monster &defender)
     dprf("corpse ok");
 
     // chow down.
-    _hydra_devour(defender);
+    _devour(defender);
 }
 
 /**
@@ -725,11 +728,12 @@ static void _hydra_consider_devouring(monster &defender)
  */
 bool melee_attack::handle_phase_killed()
 {
-    if (attacker->is_player() && you.form == transformation::hydra
+    if (attacker->is_player() && 
+        (you.form == transformation::hydra || you.species == SP_GHOUL)
         && defender->is_monster() // better safe than sorry
         && defender->type != MONS_NO_MONSTER) // already reset
     {
-        _hydra_consider_devouring(*defender->as_monster());
+        _consider_devouring(*defender->as_monster());
     }
 
     // Wyrmbane needs to be notified of deaths, including ones due to aux
