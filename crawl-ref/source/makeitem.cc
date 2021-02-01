@@ -1093,8 +1093,8 @@ static armour_type _get_random_armour_type(int item_level)
     }
     else if (x_chance_in_y(11 + item_level, 8000))
     {
-        // Crystal plate, some armours which are normally gained by butchering
-        // monsters for hides.
+        // Crystal plate, some armours which are normally gained by killing
+        // monsters.
         armtype = random_choose(ARM_CRYSTAL_PLATE_ARMOUR,
                                 ARM_TROLL_LEATHER_ARMOUR,
                                 ARM_FIRE_DRAGON_ARMOUR,

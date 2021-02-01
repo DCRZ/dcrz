@@ -1857,7 +1857,7 @@ bool transform(int pow, transformation which_trans, bool involuntary,
 
     // This only has an effect if the transformation happens passively,
     // for example if Xom decides to transform you while you're busy
-    // running around or butchering corpses.
+    // running around.
     // If you're turned into a tree, you stop taking stairs.
     stop_delay(which_trans == transformation::tree);
 

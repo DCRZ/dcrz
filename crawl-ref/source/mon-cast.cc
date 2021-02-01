@@ -1898,19 +1898,17 @@ static bool _mons_can_bind_soul(monster* binder, monster* bound)
 }
 
 // Function should return false if friendlies shouldn't animate any dead.
-// Currently, this only happens if the player is in the middle of butchering
-// a corpse (infuriating), or if they are less than satiated. Only applies
-// to friendly corpse animators. {due}
+// Currently, if the player can eat corpses and are less than satiated. 
+// Only applies to friendly corpse animators. {due}
 static bool _animate_dead_okay(spell_type spell)
 {
     // It's always okay in the arena.
     if (crawl_state.game_is_arena())
         return true;
 
-    if (you_are_delayed() && current_delay()->is_butcher()
-        || is_vampire_feeding()
-        || you.hunger_state < HS_SATIATED
-           && you.get_base_mutation_level(MUT_HERBIVOROUS) == 0
+    if (you.hunger_state < HS_SATIATED
+           && (you.species == SP_GHOUL
+               || you.species == SP_TROLL)
         || god_hates_spell(spell, you.religion)
         || will_have_passive(passive_t::convert_orcs))
     {

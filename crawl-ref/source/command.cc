@@ -554,11 +554,6 @@ void show_stash_search_help()
     show_specific_help("stash-search.prompt");
 }
 
-void show_butchering_help()
-{
-    show_specific_help("butchering");
-}
-
 void show_skill_menu_help()
 {
     show_specific_help("skill-menu");
@@ -745,9 +740,9 @@ static void _add_formatted_keyhelp(column_composer &cols)
                            CMD_CYCLE_QUIVER_BACKWARD });
     _add_insert_commands(cols, 0, "<cyan>[</cyan> : armour (<w>%</w>ear and <w>%</w>ake off)",
                          { CMD_WEAR_ARMOUR, CMD_REMOVE_ARMOUR });
-    _add_insert_commands(cols, 0, "<brown>percent</brown> : corpses and food "
-                                  "(<w>%</w>hop up and <w>%</w>at)",
-                         { CMD_BUTCHER, CMD_EAT });
+    _add_insert_commands(cols, 0, "<brown>percent</brown> : food "
+                                  "(<w>%</w>at)",
+                         { CMD_EAT });
     _add_insert_commands(cols, 0, "<w>?</w> : scrolls (<w>%</w>ead)",
                          { CMD_READ });
     _add_insert_commands(cols, 0, "<magenta>!</magenta> : potions (<w>%</w>uaff)",
@@ -908,7 +903,6 @@ static void _add_formatted_keyhelp(column_composer &cols)
             "<h>Item Interaction:\n");
 
     _add_command(cols, 1, CMD_INSCRIBE_ITEM, "inscribe item", 2);
-    _add_command(cols, 1, CMD_BUTCHER, "Chop up a corpse on floor", 2);
     _add_command(cols, 1, CMD_EAT, "Eat food (tries floor first) \n", 2);
     _add_command(cols, 1, CMD_FIRE, "Fire next appropriate item", 2);
     _add_command(cols, 1, CMD_THROW_ITEM_NO_QUIVER, "select an item and Fire it", 2);
@@ -1036,8 +1030,8 @@ static void _add_formatted_hints_help(column_composer &cols)
                          { CMD_WEAR_ARMOUR, CMD_REMOVE_ARMOUR });
     _add_insert_commands(cols, 1,
                          "<console><brown>percent</brown> : </console>"
-                         "corpses and food (<w>%</w>hop up and <w>%</w>at)",
-                         { CMD_BUTCHER, CMD_EAT });
+                         "food (<w>%</w>at)",
+                         { CMD_EAT });
     _add_insert_commands(cols, 1,
                          "<console><w>?</w> : </console>"
                          "scrolls (<w>%</w>ead)",

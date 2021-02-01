@@ -338,10 +338,12 @@ bool InventoryRegion::update_tip_text(string& tip)
             }
         }
         if (item.base_type == OBJ_CORPSES
-            && item.sub_type != CORPSE_SKELETON)
+            && item.sub_type != CORPSE_SKELETON
+            && (you.species == SP_GHOUL
+            || you.species == SP_TROLL))
         {
-            tip += "\n[Shift + L-Click] Chop up (%)";
-            cmd.push_back(CMD_BUTCHER);
+            tip += "\n[Shift + R-Click] Eat (e)";
+            cmd.push_back(CMD_EAT);
         }
         else if (item.base_type == OBJ_FOOD
                  && !you_foodless())

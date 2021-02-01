@@ -365,6 +365,9 @@ bool is_inedible(const item_def &item, bool temp)
         return true;
     }
 
+    if (item.base_type == OBJ_CORPSES)
+        return true;
+
     return false;
 }
 

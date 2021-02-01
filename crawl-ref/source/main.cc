@@ -759,7 +759,6 @@ static bool _cmd_is_repeatable(command_type cmd, bool is_again = false)
     case CMD_PICKUP:
     case CMD_DROP:
     case CMD_DROP_LAST:
-    case CMD_BUTCHER:
     case CMD_GO_UPSTAIRS:
     case CMD_GO_DOWNSTAIRS:
     case CMD_WIELD_WEAPON:
@@ -1824,7 +1823,6 @@ void process_command(command_type cmd)
         break;
 
         // Action commands.
-    case CMD_BUTCHER:              butchery();               break;
     case CMD_CAST_SPELL:           do_cast_spell_cmd(false); break;
     case CMD_DISPLAY_SPELLS:       inspect_spells();         break;
     case CMD_EAT:                  eat_food();               break;

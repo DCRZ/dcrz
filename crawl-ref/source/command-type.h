@@ -57,7 +57,6 @@ enum command_type
     CMD_PICKUP_QUANTITY,
     CMD_DROP,
     CMD_DROP_LAST,
-    CMD_BUTCHER,
     CMD_INSPECT_FLOOR,
     CMD_SHOW_TERRAIN,
     CMD_FULL_VIEW,

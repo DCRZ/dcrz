@@ -226,7 +226,6 @@ void butchery(item_def* specific_corpse)
                     break;
 
                 case '?':
-                    show_butchering_help();
                     clear_messages();
                     redraw_screen();
                     repeat_prompt = true;

@@ -840,16 +840,6 @@ static void _finish_butcher_delay(item_def& corpse)
     // We know the item is valid and a real corpse, because invalidated()
     // checked for that.
     finish_butchering(corpse);
-    // Don't waste time picking up chunks if you're already
-    // starving. (jpeg)
-    if (you.hunger_state > HS_STARVING
-        // Only pick up chunks if this is the last delay...
-        && (you.delay_queue.size() == 1
-        // ...Or, equivalently, if it's the last butcher one.
-            || !you.delay_queue[1]->is_butcher()))
-    {
-        request_autopickup();
-    }
     you.turn_is_over = true;
 }
 

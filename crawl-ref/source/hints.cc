@@ -1344,17 +1344,12 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
             }
         }
 
-        text << " When a corpse is lying on the ground, you "
-                "can <w>%</w>hop it up. Once hungry, you can "
-                "then <w>%</w>at the resulting chunks.";
-        cmd.push_back(CMD_BUTCHER);
+        text << " Skeletons can be used as components for certain "
+                "necromantic spells, and some monstrous species "
+                "(like ghouls and trolls) can <w>%</w>at corpses. "
+                "Apart from that, they are largely useless.";
         cmd.push_back(CMD_EAT);
 
-        text << "<tiles> You can also chop up any corpse that shows up in "
-                "the floor part of your inventory region, simply by "
-                "<w>left-clicking</w> on it while pressing <w>Shift</w>, and "
-                "then eat the resulting chunks with <w>Shift + right-mouse</w>"
-                ".</tiles>";
         break;
 
     case HINT_SEEN_JEWELLERY:
@@ -1823,22 +1818,17 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
         break;
 
     case HINT_YOU_HUNGRY:
-        text << "There are two ways to overcome hunger: food you started "
-                "with or found, and self-made chunks from corpses. To get the "
-                "latter, all you need to do is <w>%</w>hop up a corpse. "
-                "Luckily, all adventurers carry a pocket knife with them "
-                "which is perfect for butchering. Try to dine on chunks in "
-                "order to save permanent food.";
+        text << "You are hungry. Most species overcome hungry by <w>%</w>ating "
+                "rations in their inventory. Some monstrous species (like ghouls "
+                "and trolls) can also <w>%</w>at corpses from the dungeon floor.";
         if (Hints.hints_type == HINT_BERSERK_CHAR)
             text << "\nNote that you cannot Berserk while starving or near starving.";
-        cmd.push_back(CMD_BUTCHER);
+        cmd.push_back(CMD_EAT);
         break;
 
     case HINT_YOU_STARVING:
         text << "You are now suffering from terrible hunger. You'll need to "
-                "<w>%</w>at something quickly, or you'll die. The safest "
-                "way to deal with this is to simply eat something from your "
-                "inventory, rather than wait for a monster to leave a corpse.";
+                "<w>%</w>at something quickly, or you'll die.";
         cmd.push_back(CMD_EAT);
 
         if (Hints.hints_type == HINT_MAGIC_CHAR)
@@ -1871,11 +1861,12 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
         break;
 
     case HINT_MAKE_CHUNKS:
-        text << "How lucky! That monster left a corpse which you can now "
-                "<w>%</w>hop up, producing chunks that you can then "
+        if (you.species == SP_GHOUL || you.species == SP_TROLL)
+        {
+            text << "How lucky! That monster left a corpse which you can now "
                 "<w>%</w>at.";
-        cmd.push_back(CMD_BUTCHER);
-        cmd.push_back(CMD_EAT);
+            cmd.push_back(CMD_EAT);
+        }
         break;
 
     case HINT_SHIFT_RUN:
@@ -2714,7 +2705,7 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
         break;
     case HINT_ANIMATE_CORPSE_SKELETON:
         text << "Animate Skeleton works on the corpse of any monster that has "
-                "a skeleton inside, and will also butcher them automatically.";
+                "a skeleton inside.";
         break;
     default:
         text << "You've found something new (but I don't know what)!";

@@ -146,7 +146,7 @@ public:
     }
 
     /**
-     * @return whether this is a butcher delay (including blood bottling).
+     * @return whether this is a butcher delay (devouring corpses on the floor).
      */
     virtual bool is_butcher() const
     {

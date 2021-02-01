@@ -1616,11 +1616,11 @@ bool mons_class_fast_regen(monster_type mc)
 }
 
 /**
- * Do monsters of the given type ever leave a hide?
+ * Do monsters of the given type ever leave an armour?
  *
  * @param mc      The class of monster in question.
  * @return        Whether the monster has a chance of dropping a hide when
- *                butchered.
+ *                killed.
  */
 bool mons_class_leaves_hide(monster_type mc)
 {
