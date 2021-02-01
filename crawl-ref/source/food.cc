@@ -147,37 +147,13 @@ static bool _eat_check(bool check_hunger = true, bool silent = false,
     return true;
 }
 
-// Returns which of two food items is older (true for first, else false).
-static bool _compare_by_freshness(const item_def *food1, const item_def *food2)
-{
-    ASSERT(food1->base_type == OBJ_CORPSES || food1->base_type == OBJ_FOOD);
-    ASSERT(food2->base_type == OBJ_CORPSES || food2->base_type == OBJ_FOOD);
-    ASSERT(food1->base_type == food2->base_type);
-
-    if (is_inedible(*food1))
-        return false;
-
-    if (is_inedible(*food2))
-        return true;
-
-    // Permafood can last longest, skip it if possible.
-    if (food1->base_type == OBJ_FOOD && food1->sub_type != FOOD_CHUNK)
-        return false;
-    if (food2->base_type == OBJ_FOOD && food2->sub_type != FOOD_CHUNK)
-        return true;
-
-    // At this point, we know both are corpses or chunks, edible
-
-    return food1->freshness < food2->freshness;
-}
-
 // [ds] Returns true if something was eaten.
 bool eat_food()
 {
     if (!_eat_check())
         return false;
 
-    food_type want = player_likes_chunks() ? FOOD_CHUNK : FOOD_RATION;
+    food_type want = FOOD_RATION;
 
     bool found_valid = false;
     vector<item_def *> snacks;
@@ -208,11 +184,7 @@ bool eat_food()
     }
 
     if (found_valid)
-    {
-        if (want == FOOD_CHUNK)
-            sort(snacks.begin(), snacks.end(), _compare_by_freshness);
         return eat_item(*snacks.front());
-    }
 
     return false;
 }
@@ -355,19 +327,6 @@ static void _finished_eating_message(food_type type)
     }
 }
 
-// Only for ghouls
-static void _eat_chunk()
-{
-    if (you.species != SP_GHOUL)
-        return;
-
-    int nutrition     = CHUNK_BASE_NUTRITION;
-
-    mpr("This raw flesh tastes great!");
-    dprf("nutrition: %d", nutrition);
-    lessen_hunger(nutrition, true);
-}
-
 bool eat_item(item_def &food)
 {
     if (food.is_type(OBJ_CORPSES, CORPSE_BODY))
@@ -376,20 +335,13 @@ bool eat_item(item_def &food)
     mprf("You eat %s%s.", food.quantity > 1 ? "one of " : "",
                           food.name(DESC_THE).c_str());
 
-    if (food.sub_type == FOOD_CHUNK)
-        _eat_chunk();
-    else
-    {
-        int value = food_value(food);
-        ASSERT(value > 0);
-        lessen_hunger(value, true);
-        _finished_eating_message(static_cast<food_type>(food.sub_type));
-    }
+    int value = food_value(food);
+    ASSERT(value > 0);
+    lessen_hunger(value, true);
+    _finished_eating_message(static_cast<food_type>(food.sub_type));
 
     count_action(CACT_EAT, food.sub_type);
 
-    if (is_perishable_stack(food)) // chunks
-        remove_oldest_perishable_item(food);
     if (in_inventory(food))
         dec_inv_item_quantity(food.link, 1);
     else
@@ -411,18 +363,6 @@ bool is_inedible(const item_def &item, bool temp)
         && !can_eat(item, true, false, temp))
     {
         return true;
-    }
-
-    if (item.base_type == OBJ_CORPSES)
-    {
-        if (item.sub_type == CORPSE_SKELETON)
-            return true;
-
-        item_def chunk = item;
-        chunk.base_type = OBJ_FOOD;
-        chunk.sub_type  = FOOD_CHUNK;
-        if (is_inedible(chunk, temp))
-            return true;
     }
 
     return false;
@@ -448,14 +388,6 @@ bool can_eat(const item_def &food, bool suppress_msg, bool check_hunger,
 
     if (food.base_type == OBJ_CORPSES)
         return false;
-
-    if (food.sub_type == FOOD_CHUNK)
-    {
-        if (player_likes_chunks())
-            return true;
-
-        FAIL("Raw flesh disgusts you!")
-    }
 
     // Any food types not specifically handled until here (e.g. meat
     // rations for non-herbivores) are okay.

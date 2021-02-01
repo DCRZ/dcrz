@@ -125,7 +125,7 @@ class item_def_printer:
         yield f('base_type')
         yield g('sub_type', sub_type_type)
 
-        if ty == 'OBJ_CORPSES' or (ty == 'OBJ_FOOD' and sub_ty == 'FOOD_CHUNK'):
+        if ty == 'OBJ_CORPSES':
             yield f('mon_type')
         else:
             yield f('plus')

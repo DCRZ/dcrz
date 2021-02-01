@@ -3003,7 +3003,7 @@ SUBST:  . = ..", X = xxB
 KPROP:  "B = bloody
 SUBST:  " = ., B = x
 NSUBST: . = 5:d / 10=d. / 2:e / 1:e. / *=.f
-ITEM:   ration / w:5 minotaur chunk
+ITEM:   ration
 : dgn.delayed_decay(_G, 'e', 'minotaur corpse')
 ITEM:   hand axe
 SUBST:  ' = .
@@ -3089,7 +3089,7 @@ SUBST:  a = a A:4, b = b B:4
 KPROP:  ABd = bloody
 SUBST:  A = a, B = b
 NSUBST: a = 5:c / *:. , b = 5:c / *:.
-: dgn.delayed_decay(_G, 'c', 'human chunk q:1')
+: dgn.delayed_decay(_G, 'c', 'human corpse')
 MAP
   aaa.....bbb
  aaaaa...bbbbb

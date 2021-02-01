@@ -680,7 +680,6 @@ static int Food_index[NUM_FOODS];
 static const food_def Food_prop[] =
 {
     { FOOD_RATION,       "ration",       3400,  1900,  1900 },
-    { FOOD_CHUNK,        "chunk",        1000,  1300,     0 },
 
 #if TAG_MAJOR_VERSION == 34
     // is_real_food assumes we list FOOD_ROYAL_JELLY as the first removed
@@ -706,6 +705,7 @@ static const food_def Food_prop[] =
     { FOOD_SAUSAGE,      "buggy fruit",  1200,   150,  -400 },
     { FOOD_BEEF_JERKY,   "buggy fruit",  1500,   200,  -200 },
     { FOOD_PIZZA,        "buggy fruit",  1500,     0,     0 },
+    { FOOD_CHUNK,        "chunk",        1000,  1300,     0 },
 #endif
 };
 
@@ -796,6 +796,7 @@ const set<pair<object_class_type, int> > removed_items =
     { OBJ_SCROLLS,   SCR_CURSE_WEAPON },
     { OBJ_SCROLLS,   SCR_CURSE_ARMOUR },
     { OBJ_SCROLLS,   SCR_CURSE_JEWELLERY },
+    { OBJ_FOOD,      FOOD_CHUNK },
     { OBJ_FOOD,      FOOD_BREAD_RATION },
     { OBJ_FOOD,      FOOD_ROYAL_JELLY },
     { OBJ_FOOD,      FOOD_UNUSED },

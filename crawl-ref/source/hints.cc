@@ -3303,11 +3303,6 @@ string hints_describe_item(const item_def &item)
                     ". ";
             cmd.push_back(CMD_EAT);
 
-            if (item.sub_type == FOOD_CHUNK)
-            {
-                ostr << "Note that most species refuse to eat raw meat "
-                        "unless hungry. ";
-            }
             Hints.hints_events[HINT_SEEN_FOOD] = false;
             break;
 
@@ -3404,10 +3399,17 @@ string hints_describe_item(const item_def &item)
                         "largely useless.";
                 break;
             }
+            
+            if (you.species == SP_GHOUL || you.species == SP_TROLL)
+            {
+                ostr << "Ghouls and trolls can <w>%</w>at intact corpses.";
+                cmd.push_back(CMD_EAT);
+                break;
+            }
 
-            ostr << "Most corpses can be <w>%</w>hopped into edible chunks.";
-            cmd.push_back(CMD_BUTCHER);
+            ostr << "Gross, only a ghoul or troll would want to mess with this.";
             break;
+
 
        case OBJ_STAVES:
             ostr << "This staff can enhance your spellcasting, possibly "

@@ -780,24 +780,6 @@ void objstat_record_monster(const monster *mons)
 
     _record_monster_stat(lev, mons_ind, "MonsHP", mons->max_hit_points);
     _record_monster_stat(lev, mons_ind, "MonsHD", mons->get_experience_level());
-
-    // Record chunks/nutrition if monster leaves a corpse.
-    if (mons_class_can_leave_corpse(type))
-    {
-        item_def chunk_item = _dummy_item(item_type(ITEM_FOOD, FOOD_CHUNK));
-
-        you.mutation[MUT_CARNIVOROUS] = 1;
-        int carn_value = food_value(chunk_item);
-        you.mutation[MUT_CARNIVOROUS] = 0;
-
-        // copied from turn_corpse_into_chunks()
-        double chunks = (1 + stepdown_value(max_corpse_chunks(type),
-                                            4, 4, 12, 12)) / 2.0;
-        _record_monster_stat(lev, mons_ind, "MonsNumChunks", chunks);
-
-        _record_monster_stat(lev, mons_ind, "TotalGhoulNutr",
-                             chunks * carn_value);
-    }
 }
 
 static void _record_feature_stat(const level_id &lev,

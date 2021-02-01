@@ -2004,7 +2004,7 @@ ENDMAP
 NAME: lightli_orcish_oven
 DEPTH: D:6-11, Orc
 MONS: orc warrior, orc
-ITEM: ration
+:dgn.delayed_decay(_G, '1', 'rat corpse')
 MAP
 xxxxxxxxxx
 xvvv....xx
@@ -2507,9 +2507,9 @@ TAGS:   no_monster_gen no_item_gen patrolling
 MONS:   spriggan skeleton / centaur skeleton
 MONS:   troll skeleton / hungry ghost
 KMONS:  A = unseen horror
-ITEM:   ration q:1 w:15 / nothing
 SUBST:  D : DDDDE
 NSUBST: D = 1 = A:4 .:1 / 2:d / 2:e / 1:1, E = 2:d / 2:e / 2:1
+KPROP: def = bloody
 MAP
  cccccccccc
 ccxx1x1+DDc

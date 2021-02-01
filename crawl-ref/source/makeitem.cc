@@ -1275,21 +1275,6 @@ static void _generate_armour_item(item_def& item, bool allow_uniques,
     }
 }
 
-static monster_type _choose_random_monster_corpse()
-{
-    for (int count = 0; count < 1000; ++count)
-    {
-        monster_type spc = mons_species(static_cast<monster_type>(
-                                        random2(NUM_MONSTERS)));
-        if (mons_class_flag(spc, M_NO_POLY_TO | M_CANT_SPAWN))
-            continue;
-        if (mons_class_can_leave_corpse(spc))
-            return spc;
-    }
-
-    return MONS_RAT;          // if you can't find anything else...
-}
-
 /**
  * Choose a random wand subtype for ordinary wand generation.
  *
@@ -1357,16 +1342,6 @@ static void _generate_food_item(item_def& item, int force_quant, int force_type)
         item.sub_type = FOOD_RATION;
     else
         item.sub_type = force_type;
-
-    // Happens with ghoul food acquirement -- use place_chunks() outherwise
-    if (item.sub_type == FOOD_CHUNK)
-    {
-        // Set chunk flavour:
-        item.plus = _choose_random_monster_corpse();
-        item.orig_monnum = item.plus;
-        // Set duration.
-        item.freshness = (10 + random2(11)) * 10;
-    }
 
     // Determine quantity.
     item.quantity = force_quant > 1 ? force_quant : 1;

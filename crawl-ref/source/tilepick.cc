@@ -2406,21 +2406,11 @@ static tileidx_t _tileidx_armour(const item_def &item)
     return tileidx_enchant_equ(item, tile);
 }
 
-static tileidx_t _tileidx_chunk(const item_def &item)
-{
-    if (is_inedible(item))
-        return TILE_FOOD_CHUNK_INEDIBLE;
-
-    return TILE_FOOD_CHUNK;
-}
-
 static tileidx_t _tileidx_food(const item_def &item)
 {
 
     switch (item.sub_type)
     {
-    case FOOD_CHUNK:
-        return _tileidx_chunk(item);
     case FOOD_RATION:
     case NUM_FOODS:
     {

@@ -297,10 +297,6 @@ chain mail
 
 A suit of armour made entirely out of tiny metal rings.
 %%%%
-chunk of flesh
-
-A piece of raw meat found in the dungeon. It won't stay fresh for long.
-%%%%
 cloak
 
 A cloth cloak.
@@ -322,7 +318,7 @@ clouds, acidic fog and clouds of negative energy become available.
 %%%%
 corpse
 
-A corpse. You can butcher it to produce chunks of meat.
+A corpse. Monstrous species like trolls and ghouls can devour it for satiation.
 %%%%
 crystal plate armour
 
@@ -503,10 +499,6 @@ ice dragon scales
 
 The scales of a cold-breathing dragon. It provides great protection from cold,
 while rendering its wearer more susceptible to fire.
-%%%%
-inedible chunk of flesh
-
-<chunk of flesh>
 %%%%
 javelin
 

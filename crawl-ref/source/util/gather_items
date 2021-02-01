@@ -61,8 +61,6 @@ $data =~ s/.*all_decks =(.*?)};.*/$1/s or die "can't find all_decks\n";
 $items{"deck of $_"} = 1 for $data =~ /^\s+"([^"]+)"/mg;
 
 $items{$_} = 1 for (split /\n/, <<END);
-chunk of flesh
-inedible chunk of flesh
 corpse
 eggplant
 gold piece

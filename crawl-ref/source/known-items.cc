@@ -117,9 +117,6 @@ public:
         {
             switch (item->sub_type)
             {
-            case FOOD_CHUNK:
-                name = "chunks";
-                break;
             case FOOD_RATION:
                 name = "rations";
                 break;
@@ -257,11 +254,6 @@ static void _add_fake_item(object_class_type base, int sub,
         ptmp->charges = wand_charge_value(ptmp->sub_type);
     else if (base == OBJ_GOLD)
         ptmp->quantity = 18;
-    else if (ptmp->is_type(OBJ_FOOD, FOOD_CHUNK))
-    {
-        ptmp->freshness = 100;
-        ptmp->mon_type = MONS_RAT;
-    }
 
     if (force_known_type)
         ptmp->flags |= ISFLAG_KNOW_TYPE;

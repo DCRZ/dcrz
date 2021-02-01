@@ -1569,7 +1569,9 @@ MARKER: F = lua:fog_machine { \
 MONS:   death yak w:5 / dream sheep w:3 / yak w:7
 MONS:   generate_awake human ; dagger | hand axe
 SUBST:  F=d, 2=2.
-ITEM:   ration w:5 / nothing
+# these corpses are in the freezer, so never_decay is appropriate. (Also, I
+# couldn't get this item_spec to work with delayed_decay.)
+ITEM:   never_decay yak corpse w:1 / nothing
 KFEAT:  ~ = closed_clear_door
 MAP
 cccccc       ccccccc
