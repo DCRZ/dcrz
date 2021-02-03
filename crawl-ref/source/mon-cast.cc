@@ -1906,9 +1906,8 @@ static bool _animate_dead_okay(spell_type spell)
     if (crawl_state.game_is_arena())
         return true;
 
-    if (you.hunger_state < HS_SATIATED
-           && (you.species == SP_GHOUL
-               || you.species == SP_TROLL)
+    if (you_are_delayed() && current_delay()->is_butcher()
+        || you.hunger_state < HS_SATIATED && player_eats_corpses()
         || god_hates_spell(spell, you.religion)
         || will_have_passive(passive_t::convert_orcs))
     {

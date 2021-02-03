@@ -1230,9 +1230,9 @@ int player_spell_levels()
     return sl;
 }
 
-bool player_likes_chunks()
+bool player_eats_corpses()
 {
-    return you.species == SP_GHOUL;
+    return you.species == SP_GHOUL || you.species == SP_TROLL;
 }
 
 // If temp is set to false, temporary sources or resistance won't be counted.

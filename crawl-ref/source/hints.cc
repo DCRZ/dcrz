@@ -1861,7 +1861,7 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
         break;
 
     case HINT_MAKE_CHUNKS:
-        if (you.species == SP_GHOUL || you.species == SP_TROLL)
+        if (player_eats_corpses())
         {
             text << "How lucky! That monster left a corpse which you can now "
                 "<w>%</w>at.";
@@ -3391,7 +3391,7 @@ string hints_describe_item(const item_def &item)
                 break;
             }
             
-            if (you.species == SP_GHOUL || you.species == SP_TROLL)
+            if (player_eats_corpses())
             {
                 ostr << "Ghouls and trolls can <w>%</w>at intact corpses.";
                 cmd.push_back(CMD_EAT);

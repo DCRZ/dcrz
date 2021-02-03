@@ -2930,12 +2930,13 @@ static bool _is_option_autopickup(const item_def &item, bool ignore_force)
     return Options.autopickups[item.base_type];
 }
 
-/// Should the player automatically butcher the given item?
+/// Should the player automatically eat the given item?
 static bool _should_autobutcher(const item_def &item)
 {
     return Options.auto_butcher
            && item.base_type == OBJ_CORPSES
-           && !is_inedible(item);
+           && !is_inedible(item)
+           && player_wants_devour_corpse();
 }
 
 /** Is the item something that we should try to autopickup?
@@ -3200,7 +3201,7 @@ static void _do_autopickup()
             if (_should_autobutcher(mi))
             {
                 if (you_are_delayed() && current_delay()->want_autoeat())
-                    butchery(&mi);
+                    devour_corpse(&mi, true);
                 else
                     o = next;
                 continue;

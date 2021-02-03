@@ -59,7 +59,7 @@ mutations:
 fake_mutations:
   - long: Your body is rotting away.
     short: rotting body
-  - long: You thrive by devouring corpses.
+  - long: You gain health and satiation by devouring corpses.
 recommended_jobs:
   - JOB_WARPER
   - JOB_GLADIATOR

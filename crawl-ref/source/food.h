@@ -29,7 +29,7 @@ constexpr int hunger_threshold[HS_ENGORGED + 1] =
     HUNGER_ENGORGED
 };
 
-bool eat_food();
+bool eat_food(bool only_auto = false);
 
 void make_hungry(int hunger_amount, bool suppress_msg, bool magic = false);
 

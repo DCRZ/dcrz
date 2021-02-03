@@ -2548,6 +2548,7 @@ static vector<command_type> _allowed_actions(const item_def& item)
         else
             actions.push_back(CMD_WEAR_ARMOUR);
         break;
+    case OBJ_CORPSES:
     case OBJ_FOOD:
         if (can_eat(item, true, false))
             actions.push_back(CMD_EAT);

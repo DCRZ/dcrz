@@ -16,6 +16,7 @@
 #include "art-enum.h"
 #include "attitude-change.h"
 #include "bloodspatter.h"
+#include "butcher.h"
 #include "chardump.h"
 #include "cloud.h"
 #include "delay.h"
@@ -611,7 +612,7 @@ bool melee_attack::handle_phase_aux()
  *
  * @param defender  The monster in question.
  */
-static void _devour(monster &victim)
+static void _devour_monster(monster &victim)
 {
     // will eating this actually fill the player up?
     const bool filling = !have_passive(passive_t::goldify_corpses)
@@ -642,20 +643,7 @@ static void _devour(monster &victim)
         lessen_hunger(CHUNK_BASE_NUTRITION * equiv_chunks, false, HS_ENGORGED);
 
     // healing
-    if (!you.duration[DUR_DEATHS_DOOR])
-    {
-        const int healing = 1 + victim.get_experience_level() * 3 / 4
-                              + random2(victim.get_experience_level() * 3 / 4);
-        canned_msg(MSG_GAIN_HEALTH);
-        if (player_rotted() && you.species == SP_GHOUL)
-        {
-            mpr("You feel more resilient.");
-            unrot_hp(equiv_chunks);
-        }
-        you.heal(healing);
-        calc_hp();
-        dprf("healed for %d (%d hd)", healing, victim.get_experience_level());
-    }
+    heal_from_devouring(equiv_chunks);
 
     // and devour the corpse.
     victim.props[NEVER_CORPSE_KEY] = true;
@@ -666,18 +654,11 @@ static void _devour(monster &victim)
  *
  * @param defender  The defender in question.
  */
-static void _consider_devouring(monster &defender)
+static void _consider_devouring_monster(monster &defender)
 {
     ASSERT(!crawl_state.game_is_arena());
 
     dprf("considering devouring");
-
-    // or food that would incur divine penance... (cannibalism is still bad
-    // even when transformed!)
-    if (god_hates_eating(you.religion, defender.type))
-        return;
-
-    dprf("god ok");
 
     // can't eat enemies that leave no corpses...
     if (!mons_class_can_leave_corpse(mons_species(defender.type))
@@ -690,7 +671,7 @@ static void _consider_devouring(monster &defender)
     dprf("corpse ok");
 
     // chow down.
-    _devour(defender);
+    _devour_monster(defender);
 }
 
 /**
@@ -706,7 +687,7 @@ bool melee_attack::handle_phase_killed()
         && defender->is_monster() // better safe than sorry
         && defender->type != MONS_NO_MONSTER) // already reset
     {
-        _consider_devouring(*defender->as_monster());
+        _consider_devouring_monster(*defender->as_monster());
     }
 
     // Wyrmbane needs to be notified of deaths, including ones due to aux

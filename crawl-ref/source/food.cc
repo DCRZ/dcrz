@@ -13,6 +13,7 @@
 #include <cstring>
 #include <sstream>
 
+#include "butcher.h"
 #include "chardump.h"
 #include "database.h"
 #include "delay.h"
@@ -147,44 +148,93 @@ static bool _eat_check(bool check_hunger = true, bool silent = false,
     return true;
 }
 
-// [ds] Returns true if something was eaten.
-bool eat_food()
+static bool _prompt_eat_item(item_def &item)
 {
-    if (!_eat_check())
+    if (!can_eat(item, false))
         return false;
 
-    food_type want = FOOD_RATION;
-
-    bool found_valid = false;
-    vector<item_def *> snacks;
-
-    for (stack_iterator si(you.pos(), true); si; ++si)
+    if (you.species == SP_GHOUL && you.hunger_state >= HS_SATIATED)
     {
-        if (si->base_type != OBJ_FOOD
-                 || si->sub_type != want)
+        mprf("You would gain no satiety by eating a ration right now.");
+        return false;
+    }
+
+    string item_name = item.name(DESC_A);
+    bool repeat_prompt = false;
+    // Shall we eat this item?
+    do
+    {
+        mprf(MSGCH_PROMPT,
+             "Eat %s? [(y)es/(n)o]",
+             item_name.c_str());
+        repeat_prompt = false;
+
+        switch (toalower(getchm(KMC_CONFIRM)))
         {
-            continue;
+        case 'y':
+            return eat_item(item);
+
+        default:
+            canned_msg(MSG_OK);
+            break;
+        }
+    } while (repeat_prompt);
+
+    return false;
+}
+
+// [ds] Returns true if something was eaten.
+bool eat_food(bool only_auto)
+{
+    if (!_eat_check(true, only_auto, true))
+        return false;
+
+    bool want_ration = true;
+
+    if (!only_auto && player_eats_corpses())
+        want_ration = !devour_corpse(nullptr, only_auto);
+
+    if (only_auto && you.hunger_state >= HS_SATIATED)
+        want_ration = false;
+
+    if (want_ration)
+    {
+        vector<item_def *> snacks;
+        bool found_valid = false;
+
+        for (stack_iterator si(you.pos(), true); si; ++si)
+        {
+            if (si->base_type != OBJ_FOOD)
+                continue;
+
+            found_valid = true;
+            snacks.push_back(&(*si));
         }
 
-        found_valid = true;
-        snacks.push_back(&(*si));
+        // Then search through the inventory.
+        for (auto &item : you.inv)
+        {
+            if (!item.defined())
+                continue;
+
+            if (item.base_type != OBJ_FOOD)
+                continue;
+
+            found_valid = true;
+            snacks.push_back(&item);
+        }
+
+        if (found_valid)
+        {
+            if (!only_auto && player_eats_corpses())
+                return _prompt_eat_item(*snacks.front());
+            else
+                return eat_item(*snacks.front());
+        }
+        else
+            mprf(MSGCH_PROMPT, "%s",
+                 no_selectables_message(OBJ_FOOD).c_str());
     }
-
-    // Then search through the inventory.
-    for (auto &item : you.inv)
-    {
-        if (!item.defined())
-            continue;
-
-        if (item.base_type != OBJ_FOOD || item.sub_type != want)
-            continue;
-
-        found_valid = true;
-        snacks.push_back(&item);
-    }
-
-    if (found_valid)
-        return eat_item(*snacks.front());
 
     return false;
 }
@@ -329,7 +379,7 @@ static void _finished_eating_message(food_type type)
 
 bool eat_item(item_def &food)
 {
-    if (food.is_type(OBJ_CORPSES, CORPSE_BODY))
+    if (food.base_type != OBJ_FOOD)
         return false;
 
     mprf("You eat %s%s.", food.quantity > 1 ? "one of " : "",
@@ -359,13 +409,7 @@ bool is_inedible(const item_def &item, bool temp)
     if (you_foodless(temp))
         return true;
 
-    if (item.base_type == OBJ_FOOD // XXX: removeme?
-        && !can_eat(item, true, false, temp))
-    {
-        return true;
-    }
-
-    if (item.base_type == OBJ_CORPSES)
+    if (!can_eat(item, true, false, temp))
         return true;
 
     return false;
@@ -390,8 +434,15 @@ bool can_eat(const item_def &food, bool suppress_msg, bool check_hunger,
         return false;
 
     if (food.base_type == OBJ_CORPSES)
-        return false;
-
+    {
+        if (player_eats_corpses() && food.sub_type != CORPSE_SKELETON)
+            return true;
+        else
+        {
+            FAIL("Sorry, you don't eat raw flesh.");
+            return false;
+        }
+    }
     // Any food types not specifically handled until here (e.g. meat
     // rations for non-herbivores) are okay.
     return true;

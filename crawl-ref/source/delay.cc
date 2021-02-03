@@ -129,7 +129,7 @@ static void _interrupt_butchering(const char* action)
 
 bool ButcherDelay::try_interrupt()
 {
-    _interrupt_butchering("butchering");
+    _interrupt_butchering("devouring");
     return true;
 }
 
@@ -257,7 +257,7 @@ void stop_delay(bool stop_stair_travel)
     // as the effect of a delay doesn't normally allow interaction
     // until it is done... it merely chains up individual actions
     // into a single action.  -- bwr
-    // Butcher delays do this on their own, in order to determine the old
+    // Devour delays do this on their own, in order to determine the old
     // list of delays before clearing it.
     if (!delay->is_butcher())
         _clear_pending_delays();
@@ -280,14 +280,6 @@ shared_ptr<Delay> current_delay()
                              : nullptr;
 }
 
-bool is_being_drained(const item_def &item)
-{
-    if (!you_are_delayed())
-        return false;
-
-    return current_delay()->is_being_used(&item, OPER_EAT);
-}
-
 bool is_being_butchered(const item_def &item, bool just_first)
 {
     for (const auto delay : you.delay_queue)
@@ -300,14 +292,6 @@ bool is_being_butchered(const item_def &item, bool just_first)
     }
 
     return false;
-}
-
-bool is_vampire_feeding()
-{
-    if (!you_are_delayed())
-        return false;
-
-    return current_delay()->is_being_used(nullptr, OPER_EAT);
 }
 
 bool player_stair_delay()
@@ -410,8 +394,7 @@ static bool _auto_eat()
 {
     return Options.auto_eat
            && Options.autopickup_on > 0
-           && (player_likes_chunks() && player_rotted()
-               || you.hunger_state < HS_SATIATED);
+           && you.hunger_state < HS_SATIATED;
 }
 
 void clear_macro_process_key_delay()
@@ -496,7 +479,7 @@ void BaseRunDelay::handle()
         if (want_autoeat() && _auto_eat())
         {
             const interrupt_block block_interrupts;
-            if (eat_food())
+            if (eat_food(true))
                 return;
         }
 
@@ -571,7 +554,7 @@ static bool _check_corpse_gone(item_def& item, const char* action)
 
 bool ButcherDelay::invalidated()
 {
-    return _check_corpse_gone(corpse, "butcher it");
+    return _check_corpse_gone(corpse, "devour it");
 }
 
 bool MultidropDelay::invalidated()
@@ -1002,7 +985,7 @@ static bool _should_stop_activity(Delay* delay,
         }
     }
 
-    // Don't interrupt feeding or butchering for monsters already in view.
+    // Don't interrupt devouring for monsters already in view.
     if (curr->is_butcher() && ai == activity_interrupt::see_monster
         && testbits(at.mons_data->flags, MF_WAS_IN_VIEW))
     {
@@ -1271,9 +1254,9 @@ bool interrupt_activity(activity_interrupt ai,
 
     const auto delay = current_delay();
 
-    // If we get hungry while traveling, let's try to auto-eat a chunk.
+    // If we get hungry while traveling, let's try to auto-eat.
     if (ai == activity_interrupt::hungry && delay->want_autoeat() && _auto_eat()
-        && eat_food())
+        && eat_food(true))
     {
         return false;
     }

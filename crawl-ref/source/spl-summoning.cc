@@ -1740,8 +1740,7 @@ int animate_remains(const coord_def &a, corpse_type class_allowed,
         if (!_animatable_remains(*si))
             continue;
 
-        const bool was_draining = is_being_drained(*si);
-        const bool was_butchering = is_being_butchered(*si);
+        const bool was_devouring = is_being_butchered(*si);
 
         const bool success = _raise_remains(a, si.index(), beha, hitting,
                                             as, nas, god, actual,
@@ -1750,11 +1749,9 @@ int animate_remains(const coord_def &a, corpse_type class_allowed,
         if (actual && success)
         {
             // Ignore quiet.
-            if (was_butchering || was_draining)
+            if (was_devouring)
             {
-                mprf("The corpse you are %s rises to %s!",
-                     was_draining ? "drinking from"
-                                  : "butchering",
+                mprf("The corpse you are devouring rises to %s!",
                      beha == BEH_FRIENDLY ? "join your ranks"
                                           : "attack");
             }
@@ -1762,7 +1759,7 @@ int animate_remains(const coord_def &a, corpse_type class_allowed,
             if (!quiet && you.see_cell(a))
                 _display_undead_motions(motions);
 
-            if (was_butchering)
+            if (was_devouring)
                 xom_is_stimulated(200);
         }
 
@@ -2026,8 +2023,7 @@ bool monster_simulacrum(monster *mon, bool actual)
                                   div_rand_round(
                                     max_corpse_chunks(si->mon_type), 2));
             how_many  = stepdown_value(how_many, 2, 2, 6, 6);
-            bool was_draining = is_being_drained(*si);
-            bool was_butchering = is_being_butchered(*si);
+            bool was_devouring = is_being_butchered(*si);
             bool was_successful = false;
             for (int i = 0; i < how_many; ++i)
             {
@@ -2048,10 +2044,9 @@ bool monster_simulacrum(monster *mon, bool actual)
                 did_creation = true;
                 turn_corpse_into_skeleton(*si);
                 // Ignore quiet.
-                if (was_butchering || was_draining)
+                if (was_devouring)
                 {
-                    mprf("The flesh of the corpse you are %s vaporises!",
-                         was_draining ? "drinking from" : "butchering");
+                    mprf("The flesh of the corpse you are devouring vaporises!");
                     xom_is_stimulated(200);
                 }
 

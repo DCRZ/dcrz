@@ -318,7 +318,7 @@ clouds, acidic fog and clouds of negative energy become available.
 %%%%
 corpse
 
-A corpse. Monstrous species like trolls and ghouls can devour it for satiation.
+A corpse. Monstrous species like ghouls and trolls can eat it for satiation.
 %%%%
 crystal plate armour
 

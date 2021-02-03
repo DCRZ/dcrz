@@ -146,7 +146,7 @@ public:
     }
 
     /**
-     * @return whether this is a butcher delay (devouring corpses on the floor).
+     * @return whether this is a butcher delay (devouring).
      */
     virtual bool is_butcher() const
     {
@@ -357,7 +357,7 @@ public:
 
     const char* name() const override
     {
-        return "butcher";
+        return "butcher"; // change to devour?
     }
 };
 
@@ -693,14 +693,12 @@ shared_ptr<Delay> start_delay(Args&&... args)
     return delay;
 }
 
+bool is_being_butchered(const item_def &item, bool just_first = true);
 void stop_delay(bool stop_stair_travel = false);
 bool you_are_delayed();
 shared_ptr<Delay> current_delay();
 void handle_delay();
 
-bool is_being_drained(const item_def &item);
-bool is_being_butchered(const item_def &item, bool just_first = true);
-bool is_vampire_feeding();
 bool player_stair_delay();
 bool already_learning_spell(int spell = -1);
 

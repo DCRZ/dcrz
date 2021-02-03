@@ -3399,7 +3399,7 @@ void read_scroll(item_def& scroll)
 void tile_item_use_floor(int idx)
 {
     if (mitm[idx].is_type(OBJ_CORPSES, CORPSE_BODY))
-        butchery(&mitm[idx]);
+        devour_corpse(&mitm[idx]);
 }
 
 void tile_item_pickup(int idx, bool part)
@@ -3439,6 +3439,8 @@ void tile_item_eat_floor(int idx)
 {
     if (can_eat(mitm[idx], false))
         eat_item(mitm[idx]);
+    else if (mitm[idx].is_type(OBJ_CORPSES, CORPSE_BODY))
+        devour_corpse(&mitm[idx]);
 }
 
 void tile_item_use_secondary(int idx)

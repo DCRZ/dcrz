@@ -279,12 +279,12 @@ LUARET1(you_gourmand, boolean, you.gourmand(false))
  * @function res_corr
  */
 LUARET1(you_res_corr, boolean, you.res_corr(false))
-/*** Do you like to eat chunks?
+/*** Do you like to eat corpses?
  * Returns a number so as not to break existing scripts.
  * @treturn int
- * @function like_chunks
+ * @function eat_corpses
  */
-LUARET1(you_like_chunks, number, player_likes_chunks() ? 3 : 0)
+LUARET1(you_eat_corpses, number, player_eats_corpses() ? 3 : 0)
 /*** Are you flying?
  * @treturn boolean
  * @function flying
@@ -1208,7 +1208,7 @@ static const struct luaL_reg you_clib[] =
     { "res_mutation", you_res_mutation },
     { "see_invisible", you_see_invisible },
     { "spirit_shield", you_spirit_shield },
-    { "like_chunks",  you_like_chunks },
+    { "eat_corpses",  you_eat_corpses },
     { "gourmand",     you_gourmand },
     { "res_corr",     you_res_corr },
     { "flying",       you_flying },
