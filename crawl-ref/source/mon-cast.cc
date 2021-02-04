@@ -1781,6 +1781,7 @@ bool setup_mons_cast(const monster* mons, bolt &pbolt, spell_type spell_cast,
     case SPELL_AWAKEN_FOREST:
     case SPELL_DRUIDS_CALL:
     case SPELL_SUMMON_HOLIES:
+    case SPELL_REGENERATION:
     case SPELL_CORPSE_ROT:
     case SPELL_SUMMON_DRAGON:
     case SPELL_SUMMON_HYDRA:
@@ -6282,6 +6283,16 @@ void mons_cast(monster* mons, bolt pbolt, spell_type spell_cast,
         }
         return;
 
+    case SPELL_REGENERATION:
+    {
+        simple_monster_message(*mons,
+                               "'s wounds begin to heal before your eyes!");
+        const int dur = BASELINE_DELAY
+            * min(5 + roll_dice(2, (mons->spell_hd(spell_cast) * 10) / 3 + 1), 100);
+        mons->add_ench(mon_enchant(ENCH_REGENERATION, 0, mons, dur));
+        return;
+    }
+
     case SPELL_OZOCUBUS_ARMOUR:
     {
         if (you.can_see(*mons))
@@ -7494,6 +7505,9 @@ static bool _ms_waste_of_time(monster* mon, mon_spell_slot slot)
 #endif
     case SPELL_SPRINT:
         return mon->has_ench(ENCH_SWIFT);
+
+    case SPELL_REGENERATION:
+        return mon->has_ench(ENCH_REGENERATION);
 
     case SPELL_MAJOR_HEALING:
         return mon->hit_points > mon->max_hit_points / 2;

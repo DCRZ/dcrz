@@ -139,6 +139,7 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_SONG_OF_SLAYING,
     SPELL_OZOCUBUS_ARMOUR,
     SPELL_SPECTRAL_WEAPON,
+    SPELL_REGENERATION,
 },
 #endif
 {   // Book of Clouds
@@ -153,6 +154,7 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_PAIN,
     SPELL_ANIMATE_SKELETON,
     SPELL_VAMPIRIC_DRAINING,
+    SPELL_REGENERATION,
     SPELL_ANIMATE_DEAD,
     SPELL_AGONY,
 },
@@ -224,6 +226,7 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_SONG_OF_SLAYING,
     SPELL_OZOCUBUS_ARMOUR,
     SPELL_SPECTRAL_WEAPON,
+    SPELL_REGENERATION,
 },
 #endif
 

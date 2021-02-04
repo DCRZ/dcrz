@@ -44,7 +44,6 @@ levelup_stat_frequency: 5
 mutations:
   1:
     MUT_FANGS: 3
-    MUT_STABLE_TAIL: 1
 fake_mutations:
   - long: You sometimes cause those who miss you in melee to attack themselves.
     short: redirection

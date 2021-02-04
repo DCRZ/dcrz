@@ -1813,6 +1813,10 @@ static spret _do_cast(spell_type spell, int powc, const dist& spd,
     case SPELL_NECROMUTATION:
         return cast_transform(powc, transformation::lich, fail);
 
+    // General enhancement.
+    case SPELL_REGENERATION:
+        return cast_regen(powc, fail);
+
     case SPELL_SWIFTNESS:
         return cast_swiftness(powc, fail);
 
@@ -2325,7 +2329,6 @@ const set<spell_type> removed_spells =
     SPELL_POISON_CLOUD,
     SPELL_POISON_WEAPON,
     SPELL_REARRANGE_PIECES,
-    SPELL_REGENERATION,
     SPELL_RESURRECT,
     SPELL_SACRIFICE,
     SPELL_SEE_INVISIBLE,

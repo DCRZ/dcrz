@@ -787,6 +787,17 @@ static const struct spell_desc spelldata[] =
     TILEG_TWISTED_RESURRECTION,
 },
 
+{
+    SPELL_REGENERATION, "Regeneration",
+    spschool::charms | spschool::necromancy,
+    spflag::selfench | spflag::utility,
+    3,
+    200,
+    -1, -1,
+    3, 0,
+    TILEG_REGENERATION,
+},
+
 // Monster-only, players can use Lugonu's ability
 {
     SPELL_BANISHMENT, "Banishment",
@@ -3519,7 +3530,6 @@ AXED_SPELL(SPELL_MISLEAD, "Mislead")
 AXED_SPELL(SPELL_PHASE_SHIFT, "Phase Shift")
 AXED_SPELL(SPELL_POISON_WEAPON, "Poison Weapon")
 AXED_SPELL(SPELL_REARRANGE_PIECES, "Rearrange the Pieces")
-AXED_SPELL(SPELL_REGENERATION, "Regeneration")
 AXED_SPELL(SPELL_SEE_INVISIBLE, "See Invisible")
 AXED_SPELL(SPELL_SHAFT_SELF, "Shaft Self")
 AXED_SPELL(SPELL_SILVER_BLAST, "Silver Blast")
