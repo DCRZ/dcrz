@@ -4062,7 +4062,6 @@ void handle_god_time(int /*time_delta*/)
 #endif
         case GOD_JIYVA:
         case GOD_WU_JIAN:
-        case GOD_SIF_MUNA:
             if (one_chance_in(17))
                 lose_piety(1);
             break;
@@ -4072,6 +4071,7 @@ void handle_god_time(int /*time_delta*/)
         case GOD_HEPLIAKLQANA:
         case GOD_FEDHAS:
         case GOD_CHEIBRIADOS:
+        case GOD_SIF_MUNA:
         case GOD_SHINING_ONE:
         case GOD_NEMELEX_XOBEH:
             if (one_chance_in(35))
