@@ -339,7 +339,7 @@ bool InventoryRegion::update_tip_text(string& tip)
         }
         if (item.base_type == OBJ_CORPSES
             && item.sub_type != CORPSE_SKELETON
-            && player_eats_corpses)
+            && player_eats_corpses())
         {
             tip += "\n[Shift + R-Click] Eat (e)";
             cmd.push_back(CMD_EAT);

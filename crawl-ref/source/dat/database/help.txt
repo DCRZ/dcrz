@@ -246,7 +246,7 @@ Only corpses that your species can eat will be available here.
 
 <h>Notes for Tiles</h>
 If you are playing with Tiles you can eat a single
-corpse on the ground by clicking the <w>left mouse button</w> while pressing
+corpse on the ground by clicking the <w>right mouse button</w> while pressing
 <w>Shift</w>.
 %%%%
 skill-menu
