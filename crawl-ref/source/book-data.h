@@ -264,7 +264,7 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Book of Cantrips
     SPELL_CORONA,
-    SPELL_ANIMATE_SKELETON,
+    SPELL_INFUSION,
     SPELL_SUMMON_SMALL_MAMMAL,
     SPELL_APPORTATION,
 },

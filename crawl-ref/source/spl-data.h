@@ -625,7 +625,7 @@ static const struct spell_desc spelldata[] =
     SPELL_ANIMATE_SKELETON, "Animate Skeleton",
     spschool::necromancy,
     spflag::utility,
-    1,
+    2,
     50,
     -1, -1,
     1, 0,
