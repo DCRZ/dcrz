@@ -7051,20 +7051,25 @@ bool player::can_mutate() const
 }
 
 /**
- * Can the player be mutated without rotting instead?
+ * Can the player be mutated without stat drain instead?
  *
  * @param temp      Whether to consider temporary modifiers (lichform)
- * @return Whether the player will mutate when mutated, instead of rotting.
+ * @return Whether the player will mutate when mutated, instead of draining
+ *         stats.
  */
 bool player::can_safely_mutate(bool temp) const
 {
-    return false;
+    if (!can_mutate())
+        return false;
+
+    return undead_state(temp) == US_ALIVE
+           || undead_state(temp) == US_SEMI_UNDEAD;
 }
 
 // Is the player too undead to bleed, rage, or polymorph?
 bool player::is_lifeless_undead(bool temp) const
 {
-        return undead_state(temp) != US_ALIVE;
+    return undead_state(temp) != US_ALIVE;
 }
 
 bool player::can_polymorph() const
