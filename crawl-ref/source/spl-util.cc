@@ -1398,9 +1398,6 @@ bool spell_no_hostile_in_range(spell_type spell)
     case SPELL_DAZZLING_FLASH:
         return cast_dazzling_flash(pow, false, true) == spret::abort;
 
-     case SPELL_ABSOLUTE_ZERO:
-         return cast_absolute_zero(pow, false, true) == spret::abort;
-
     default:
         break;
     }

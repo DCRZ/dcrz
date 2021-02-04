@@ -5,7 +5,7 @@ Reduces the remaining duration of any nearby hostile summoned creatures.
 %%%%
 Absolute Zero spell
 
-Entirely removes the heat from the enemy nearest the caster, instantly
+Entirely removes the heat from an adjacent creature, instantly
 freezing it into a block of solid ice.
 %%%%
 Acid Splash spell

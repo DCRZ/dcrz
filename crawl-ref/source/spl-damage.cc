@@ -3345,69 +3345,48 @@ spret cast_frozen_ramparts(int pow, bool fail)
     return spret::success;
 }
 
-//returns the closest target to the player
-static monster* _closest_target_in_range(int radius)
+spret cast_absolute_zero(monster *mon, bool fail)
 {
-    for (distance_iterator di(you.pos(), true, true, radius); di; ++di)
+    if (!mon || mon->submerged())
     {
-        monster *mon = monster_at(*di);
-        if (mon
-            && you.see_cell_no_trans(mon->pos())
-            && !mon->wont_attack()
-            && !mons_is_firewood(*mon))
-        {
-            return mon;
-        }
+        fail_check();
+        canned_msg(MSG_NOTHING_CLOSE_ENOUGH);
+        // If there's no monster there, you still pay the costs in
+        // order to prevent locating invisible/submerged monsters.
+        return spret::success;
     }
 
-    return nullptr;
-}
-
-spret cast_absolute_zero(int pow, bool fail, bool tracer)
-{
-    monster* const mon = _closest_target_in_range(
-            spell_range(SPELL_ABSOLUTE_ZERO, pow));
-
-    if (tracer)
+    if (stop_attack_prompt(mon, false, you.pos()))
     {
-        if (!mon)
-            return spret::abort;
-        else
-            return spret::success;
-    }
-
-    if (mon && you.can_see(*mon) && stop_attack_prompt(mon, false, mon->pos()))
+        canned_msg(MSG_OK);
         return spret::abort;
+    }
 
     fail_check();
 
-    if (!mon)
-        canned_msg(MSG_NOTHING_HAPPENS);
+    targeter_radius hitfunc(&you, LOS_NO_TRANS);
+    flash_view_delay(UA_PLAYER, LIGHTCYAN, 100, &hitfunc);
+
+    god_conduct_trigger conducts[3];
+    set_attack_conducts(conducts, *mon, you.can_see(*mon));
+
+    if (mon->type == MONS_ROYAL_JELLY && !mon->is_summoned())
+    {
+        // need to do this here, because react_to_damage is never called
+        mprf("A cloud of jellies burst out of %s as it chills to"
+             " absolute zero!",
+             mon->name(DESC_THE, false).c_str());
+        trj_spawn_fineff::schedule(&you, mon, mon->pos(), mon->hit_points);
+    }
     else
     {
-        targeter_radius hitfunc(&you, LOS_NO_TRANS);
-        flash_view_delay(UA_PLAYER, LIGHTCYAN, 100, &hitfunc);
-
-        god_conduct_trigger conducts[3];
-        set_attack_conducts(conducts, *mon, you.can_see(*mon));
-
-        if (mon->type == MONS_ROYAL_JELLY && !mon->is_summoned())
-        {
-            // need to do this here, because react_to_damage is never called
-            mprf("A cloud of jellies burst out of %s as it chills to"
-                 " absolute zero!", mon->name(DESC_THE, false).c_str());
-            trj_spawn_fineff::schedule(&you, mon, mon->pos(), mon->hit_points);
-        }
-        else
-        {
-            mprf("You chill %s to absolute zero!",
-                 you.can_see(*mon) ? mon->name(DESC_THE).c_str() : "something");
-        }
-
-        const coord_def pos = mon->pos();
-        glaciate_freeze(mon, KILL_YOU, actor_to_death_source(&you));
-        noisy(spell_effect_noise(SPELL_ABSOLUTE_ZERO), pos, you.mid);
+        mprf("You chill %s to absolute zero!",
+             you.can_see(*mon) ? mon->name(DESC_THE).c_str() : "something");
     }
+
+    const coord_def pos = mon->pos();
+    glaciate_freeze(mon, KILL_YOU, actor_to_death_source(&you));
+    noisy(spell_effect_noise(SPELL_ABSOLUTE_ZERO), pos, you.mid);
 
     return spret::success;
 }

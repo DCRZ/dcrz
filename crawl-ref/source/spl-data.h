@@ -3437,10 +3437,10 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_ABSOLUTE_ZERO, "Absolute Zero",
     spschool::ice,
-    spflag::no_ghost,
+    spflag::dir_or_target | spflag::not_self | spflag::no_ghost,
     9,
     200,
-    5, 5,
+    1, 1,
     9, 40,  // 40 noise at 0 spellpower
     TILEG_ICE_STORM,
 },

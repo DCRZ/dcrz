@@ -1575,7 +1575,7 @@ static spret _do_cast(spell_type spell, int powc, const dist& spd,
                            bolt& beam, god_type god, bool fail)
 {
     const coord_def target = spd.isTarget ? beam.target : you.pos() + spd.delta;
-    if (spell == SPELL_FREEZE || spell == SPELL_VAMPIRIC_DRAINING)
+    if (spell == SPELL_FREEZE || spell == SPELL_VAMPIRIC_DRAINING || spell == SPELL_ABSOLUTE_ZERO)
     {
         if (!adjacent(you.pos(), target))
             return spret::abort;
@@ -1907,7 +1907,7 @@ static spret _do_cast(spell_type spell, int powc, const dist& spd,
         return cast_hailstorm(powc, fail);
 
     case SPELL_ABSOLUTE_ZERO:
-        return cast_absolute_zero(powc, fail);
+        return cast_absolute_zero(monster_at(target), fail);
 
     case SPELL_ISKENDERUNS_MYSTIC_BLAST:
         return cast_imb(powc, fail);
