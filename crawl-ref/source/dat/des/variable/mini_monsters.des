@@ -2898,10 +2898,6 @@ KFEAT:  " = floor
 : if crawl.one_chance_in(3) and (not you.in_branch("Lair") or crawl.coinflip()) then
 MONS:   lava snake, orange crystal statue
 SUBST:  wW = l
-: elseif crawl.coinflip() then
-MONS:   oklob plant, floating eye
-MONS:   plant, bush
-SUBST:  w = 334, W = .
 : else
 MONS:   electric eel, basilisk
 : end
