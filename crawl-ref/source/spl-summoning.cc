@@ -1646,9 +1646,6 @@ static bool _raise_remains(const coord_def &pos, int corps, beh_type beha,
     if (!mons)
         return false;
 
-    if (god == GOD_NO_GOD) // only Yred dead-raising lasts forever.
-        mons->add_ench(mon_enchant(ENCH_FAKE_ABJURATION, 4));
-
     // If the original monster has been levelled up, its HD might be different
     // from its class HD. For player spells the hd is scaled with spellpower.
     if (nas.empty())
