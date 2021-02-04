@@ -760,7 +760,7 @@ static const struct spell_desc spelldata[] =
     spflag::dir_or_target | spflag::needs_tracer,
     4,
     100,
-    1, 1,
+    4, 4,
     4, 0,
     TILEG_DISPEL_UNDEAD,
 },
@@ -940,7 +940,7 @@ static const struct spell_desc spelldata[] =
         | spflag::MR_check,
     5,
     200,
-    1, 1,
+    LOS_RADIUS, LOS_RADIUS,
     4, 0,
     TILEG_AGONY,
 },
@@ -3410,29 +3410,6 @@ static const struct spell_desc spelldata[] =
     4, 4,
     6, 0,
     TILEG_NOXIOUS_BOG,
-},
-
-{
-    SPELL_AGONY_RANGE, "Agony Range",
-    spschool::necromancy,
-    spflag::dir_or_target | spflag::not_self | spflag::needs_tracer
-        | spflag::monster | spflag::MR_check,
-    5,
-    200,
-    LOS_RADIUS, LOS_RADIUS,
-    4, 0,
-    TILEG_AGONY,
-},
-
-{
-    SPELL_DISPEL_UNDEAD_RANGE, "Dispel Undead Range",
-    spschool::necromancy,
-    spflag::dir_or_target | spflag::needs_tracer | spflag::monster,
-    5,
-    100,
-    4, 4,
-    4, 0,
-    TILEG_DISPEL_UNDEAD,
 },
 
 {

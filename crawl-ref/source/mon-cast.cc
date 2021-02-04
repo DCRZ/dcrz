@@ -424,11 +424,7 @@ static const map<spell_type, mons_spell_logic> spell_to_logic = {
     { SPELL_TELEPORT_OTHER, _hex_logic(SPELL_TELEPORT_OTHER,
                                          _foe_not_teleporting) },
     { SPELL_DIMENSION_ANCHOR, _hex_logic(SPELL_DIMENSION_ANCHOR, nullptr, 6)},
-    { SPELL_AGONY_RANGE, _hex_logic(SPELL_AGONY_RANGE, [](const monster &caster) {
-            return _torment_vulnerable(caster.get_foe());
-        }, 6)
-    },
-    { SPELL_AGONY, _hex_logic(SPELL_AGONY_RANGE, [](const monster &caster) {
+    { SPELL_AGONY, _hex_logic(SPELL_AGONY, [](const monster &caster) {
             return _torment_vulnerable(caster.get_foe());
         }, 6)
     },
@@ -1313,7 +1309,7 @@ bolt mons_spell_beam(const monster* mons, spell_type spell_cast, int power,
         zappy(ZAP_FREEZING_BLAST, power, true, beam);
         break;
 
-    case SPELL_DISPEL_UNDEAD_RANGE:
+    case SPELL_DISPEL_UNDEAD:
         beam.flavour  = BEAM_DISPEL_UNDEAD;
         beam.damage   = dice_def(3, min(6 + power / 10, 40));
         break;
@@ -7485,7 +7481,7 @@ static bool _ms_waste_of_time(monster* mon, mon_spell_slot slot)
     case SPELL_MIASMA_BREATH:
         return !foe || foe->res_rotting() || no_clouds;
 
-    case SPELL_DISPEL_UNDEAD_RANGE:
+    case SPELL_DISPEL_UNDEAD:
         // [ds] How is dispel undead intended to interact with vampires?
         // Currently if the vampire's undead state returns MH_UNDEAD it
         // affects the player.

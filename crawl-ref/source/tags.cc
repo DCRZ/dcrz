@@ -2353,12 +2353,6 @@ static spell_type _fixup_positional_monster_spell(spell_type s)
         case SPELL_ISKENDERUNS_MYSTIC_BLAST:
             return SPELL_FORCE_LANCE;
 
-        case SPELL_AGONY:
-            return SPELL_AGONY_RANGE;
-
-        case SPELL_DISPEL_UNDEAD:
-            return SPELL_DISPEL_UNDEAD_RANGE;
-
         default:
             return s;
     }
