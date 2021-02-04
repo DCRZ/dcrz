@@ -3924,7 +3924,7 @@ ENDMAP
 
 NAME:   cheibrodos_wizards_tower
 TAGS:   no_pool_fixup
-DEPTH:  D:7-, Elf
+DEPTH:  D:12-, Elf
 ORIENT: float
 ITEM:   robe good_item / cloak good_item / scarf / pair of boots good_item \
         / pair of gloves good_item / hat good_item
