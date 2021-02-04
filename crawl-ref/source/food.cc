@@ -231,7 +231,7 @@ bool eat_food(bool only_auto)
             else
                 return eat_item(*snacks.front());
         }
-        else
+        else if (!only_auto)
             mprf(MSGCH_PROMPT, "%s",
                  no_selectables_message(OBJ_FOOD).c_str());
     }
