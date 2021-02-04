@@ -2392,7 +2392,7 @@ DUMMY(MONS_INSUBSTANTIAL_WISP, 'v', LIGHTGREY, "insubstantial wisp",
     4, 10, MST_WILL_O_THE_WISP, false, S_MOAN,
     I_BRAINLESS, HT_LAND, 10, DEFAULT_ENERGY,
     MONUSE_NOTHING, SIZE_TINY, MON_SHAPE_MISC,
-    {TILEP_MONS_PROGRAM_BUG}, TILE_ERROR
+    {TILEP_MONS_WILL_O_THE_WISP}, TILE_ERROR
 }, // TODO: get proper tile for will-o-the-wisp
 
 { // miscast only
