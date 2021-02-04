@@ -143,6 +143,7 @@ bool player::extra_balanced() const
               || form == transformation::tree
               || grid == DNGN_SHALLOW_WATER
                   && (species == SP_NAGA // tails, not feet
+                      || you.get_mutation_level(MUT_STABLE_TAIL)
                       || body_size(PSIZE_BODY) >= SIZE_LARGE)
                   && form_keeps_mutations();
 }

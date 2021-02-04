@@ -813,6 +813,14 @@ static const mutation_def mut_data[] =
   {"", "", ""},
 },
 
+{ MUT_STABLE_TAIL, 0, 1, mutflag::good, true,
+  "stable tail",
+
+  {"You use your tail to help maintain balance. (Acc +2)", "", ""},
+  {"Your tail grows long enough to improve your stability.", "", ""},
+  {"Your tail grows shorter.", "", ""},
+},
+
 // Naga and Draconian only
 { MUT_STINGER, 8, 3, mutflag::good, true,
   "stinger",

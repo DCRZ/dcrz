@@ -312,34 +312,46 @@ bool melee_attack::handle_phase_dodged()
         && !defender->cannot_act() && !defender->confused()
         && (!defender->is_player() || (!you.duration[DUR_LIFESAVING]
                                        && !attacker->as_monster()->neutral()))
-        && !mons_aligned(attacker, defender) // confused friendlies attacking
+        && !mons_aligned(attacker, defender)) // confused friendlies attacking
+    {
         // Retaliation only works on the first attack in a round.
         // FIXME: player's attack is -1, even for auxes
-        && effective_attack_number <= 0)
-    {
-        if (defender->is_player() ?
-                you.species == SP_MINOTAUR :
-                mons_species(mons_base_type(*defender->as_monster()))
-                    == MONS_MINOTAUR)
+        if (effective_attack_number <= 0)
         {
-            do_minotaur_retaliation();
+            if (defender->is_player() ?
+                    you.species == SP_MINOTAUR :
+                    mons_species(mons_base_type(*defender->as_monster()))
+                        == MONS_MINOTAUR)
+            {
+                do_minotaur_retaliation();
+            }
+
+            // Retaliations can kill!
+            if (!attacker->alive())
+                return false;
+
+            if (defender->is_player())
+            {
+                const bool using_lbl = defender->weapon()
+                    && item_attack_skill(*defender->weapon()) == SK_LONG_BLADES;
+                const bool using_fencers
+                    = player_equip_unrand(UNRAND_FENCERS);
+                const int chance = using_lbl + using_fencers;
+
+                if (x_chance_in_y(chance, 3) && !is_riposte) // no ping-pong!
+                    riposte();
+
+                // Retaliations can kill!
+                if (!attacker->alive())
+                    return false;
+            }
         }
 
-        // Retaliations can kill!
-        if (!attacker->alive())
-            return false;
-
-        if (defender->is_player())
+        // Kobold redirection works on every attack in a round.
+        if (defender->is_player() && you.species == SP_KOBOLD)
         {
-            const bool using_lbl = defender->weapon()
-                && item_attack_skill(*defender->weapon()) == SK_LONG_BLADES;
-            const bool using_fencers
-                = player_equip_unrand(UNRAND_FENCERS);
-            const int chance = using_lbl + using_fencers;
-
-            if (x_chance_in_y(chance, 3) && !is_riposte) // no ping-pong!
-                riposte();
-
+            do_kobold_redirection();
+            
             // Retaliations can kill!
             if (!attacker->alive())
                 return false;
@@ -3228,6 +3240,22 @@ void melee_attack::riposte()
     melee_attack attck(defender, attacker, 0, effective_attack_number + 1);
     attck.is_riposte = true;
     attck.attack();
+}
+
+void melee_attack::do_kobold_redirection()
+{
+    if (2 * you.strength() + 3 * you.dex() > random2(300))
+    {
+        if (you.see_cell(defender->pos()))
+        {
+            mprf("%s cause%s the %s to attack %s.", defender->name(DESC_THE).c_str(),
+                 defender->is_player() ? "" : "s", attacker->name(DESC_THE).c_str(),
+                 attacker->pronoun(PRONOUN_REFLEXIVE).c_str());
+        }
+        // change target of attack to the attacker
+        melee_attack attck(attacker, attacker, 0, effective_attack_number + 1);
+        attck.attack();
+    }
 }
 
 bool melee_attack::do_knockback(bool trample)
