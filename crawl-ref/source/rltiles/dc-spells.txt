@@ -143,6 +143,7 @@ spellforged_servitor SPELLFORGED_SERVITOR
 %sdir gui/spells/translocation
 apportation APPORTATION
 beckoning BECKONING
+blink_other BLINK_OTHER
 blink BLINK
 controlled_blink CONTROLLED_BLINK
 disjunction DISJUNCTION
@@ -176,7 +177,6 @@ bolt_energy ENERGY_BOLT
 generic GENERIC_MONSTER_SPELL
 air_elementals AIR_ELEMENTALS
 awaken_vines AWAKEN_VINES
-blink_other BLINK_OTHER
 brain_feed BRAIN_FEED
 call_down_damnation CALL_DOWN_DAMNATION
 cantrip CANTRIP

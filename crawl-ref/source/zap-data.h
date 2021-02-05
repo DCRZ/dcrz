@@ -1322,4 +1322,22 @@ _mon_hex_zap(ZAP_DRAIN_MAGIC, BEAM_DRAIN_MAGIC),
     0 // Noise comes from explosion
 },
 
+{
+    ZAP_BLINK,
+    "blinking",
+    50,
+    nullptr,
+    nullptr,
+    nullptr,
+    nullptr,
+    ETC_WARP,
+    true,
+    BEAM_BLINK,
+    DCHAR_FIRED_ZAP,
+    false,
+    false,
+    false,
+    0
+},
+
 };

@@ -162,8 +162,8 @@ Translocates the caster a short distance towards a targeted enemy.
 %%%%
 Blink Other Close spell
 
-Translocates a targeted enemy a short distance towards the caster. It cannot be
-resisted by usual means of magic resistance.
+Randomly translocates a targeted enemy a short distance. When used by residents
+of the dungeon, it cannot be resisted by usual means of magic resistance.
 %%%%
 Blink Other spell
 

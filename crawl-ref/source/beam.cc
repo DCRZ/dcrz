@@ -4973,7 +4973,6 @@ bool bolt::has_saving_throw() const
     case BEAM_INVISIBILITY:
     case BEAM_DISPEL_UNDEAD:
     case BEAM_BLINK_CLOSE:
-    case BEAM_BLINK:
     case BEAM_BECKONING:
     case BEAM_MALIGN_OFFERING:
     case BEAM_AGILITY:
@@ -4986,6 +4985,8 @@ bool bolt::has_saving_throw() const
     case BEAM_IRRESISTIBLE_CONFUSION:
     case BEAM_VILE_CLUTCH:
         return false;
+    case BEAM_BLINK: // resistable only if used by the player
+        return (agent() && agent()->is_player());
     case BEAM_VULNERABILITY:
         return !one_chance_in(3);  // Ignores MR 1/3 of the time
     case BEAM_PARALYSIS:        // Giant eyeball paralysis is irresistible
@@ -6138,6 +6139,7 @@ bool bolt::nasty_to(const monster* mon) const
             // Co-aligned inner flame is fine.
             return !mons_aligned(mon, agent());
         case BEAM_TELEPORT:
+        case BEAM_BLINK:
         case BEAM_BECKONING:
         case BEAM_INFESTATION:
         case BEAM_VILE_CLUTCH:

@@ -1611,10 +1611,10 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_BLINK_OTHER, "Blink Other",
     spschool::translocation,
-    spflag::dir_or_target | spflag::not_self | spflag::escape | spflag::monster
-        | spflag::emergency | spflag::needs_tracer,
-    2,
-    0,
+    spflag::dir_or_target | spflag::not_self | spflag::escape
+        | spflag::emergency | spflag::needs_tracer | spflag::MR_check,
+    1,
+    50,
     LOS_RADIUS, LOS_RADIUS,
     2, 0,
     TILEG_BLINK_OTHER,
