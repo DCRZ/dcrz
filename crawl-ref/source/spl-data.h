@@ -1195,7 +1195,7 @@ static const struct spell_desc spelldata[] =
     SPELL_ENGLACIATION, "Metabolic Englaciation",
     spschool::hexes | spschool::ice,
     spflag::area,
-    5,
+    4,
     200,
     -1, -1,
     4, 0,

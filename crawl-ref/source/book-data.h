@@ -295,7 +295,7 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_FALSE_IMAGE,
     SPELL_INNER_FLAME,
     SPELL_CAUSE_FEAR,
-    SPELL_LEDAS_LIQUEFACTION,
+    SPELL_ENGLACIATION,
 },
 
 {   // Book of the Dragon
