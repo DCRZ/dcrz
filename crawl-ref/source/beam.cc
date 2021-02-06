@@ -5651,7 +5651,7 @@ mon_resist_type bolt::apply_enchantment_to_monster(monster* mon)
 
     case BEAM_SHACKLE:
     {
-        const int dur = (ench_power + 1) * BASELINE_DELAY / 3;
+        const int dur = (4 + div_rand_round(ench_power, 8)) * BASELINE_DELAY;
         mon->add_ench(mon_enchant(ENCH_SHACKLE, 0, &you, dur));
         if (simple_monster_message(*mon, " is shackled."))
             obvious_effect = true;
