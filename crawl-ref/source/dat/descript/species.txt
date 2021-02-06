@@ -99,8 +99,8 @@ of close and ranged combat.
 %%%%
 Mummy
 
-Compelled to walk by an ancient curse, Mummies are adept at Necromancy but
-learn other skills very slowly. They are unable to consume any food or potions.
+Compelled to walk by an ancient curse, Mummies learn most skills very slowly. They
+cannot use potions, but have gained mental clarity from centuries of contemplation.
 %%%%
 Naga
 
