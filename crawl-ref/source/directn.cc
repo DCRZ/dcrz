@@ -3102,6 +3102,9 @@ static vector<string> _get_monster_desc_vector(const monster_info& mi)
     if (mi.is(MB_UMBRAED))
         descs.emplace_back("umbra");
 
+    if (mi.is(MB_SHACKLED))
+        descs.emplace_back("shackled");
+
     if (mi.fire_blocker)
     {
         descs.push_back("fire blocked by " // FIXME, renamed features
@@ -3222,6 +3225,9 @@ static string _get_monster_desc(const monster_info& mi)
         text += pronoun + " " + conjugate_verb("are", mi.pronoun_plurality())
                 + " filled with an inner flame.\n";
     }
+    
+    if (mi.is(MB_SHACKLED))
+        text += pronoun + " is shackled in place.\n";
 
     if (mi.fire_blocker)
     {

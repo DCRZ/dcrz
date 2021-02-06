@@ -111,4 +111,5 @@ static const vector<monster_info_flag_name> monster_info_flag_names = {
     { MB_PAIN_BOND, "pain bonded", "sharing @possessive@ pain", "pain bonded"},
     { MB_IDEALISED, "idealised", "idealised", "idealised"},
     { MB_ENSLAVED, "", "disembodied soul", "" },
+    { MB_SHACKLED, "shackled", "shackled", "shackled"}
 };

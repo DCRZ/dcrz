@@ -110,6 +110,7 @@ static map<enchant_type, monster_info_flags> trivial_ench_mb_mappings = {
     { ENCH_SLOWLY_DYING,    MB_SLOWLY_DYING },
     { ENCH_VILE_CLUTCH,     MB_VILE_CLUTCH },
     { ENCH_WATERLOGGED,     MB_WATERLOGGED },
+    { ENCH_SHACKLE,         MB_SHACKLED },
 };
 
 static monster_info_flags ench_to_mb(const monster& mons, enchant_type ench)

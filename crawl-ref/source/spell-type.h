@@ -477,5 +477,6 @@ enum spell_type : int
     SPELL_WOODWEAL,
     SPELL_HURL_SLUDGE,
     SPELL_MARSHLIGHT,
+    SPELL_SHACKLE,
     NUM_SPELLS
 };

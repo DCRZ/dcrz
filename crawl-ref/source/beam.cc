@@ -5077,6 +5077,10 @@ bool ench_flavour_affects_monster(beam_type flavour, const monster* mon,
                || testbits(mon->flags, MF_DEMONIC_GUARDIAN));
         break;
 
+    case BEAM_SHACKLE:
+        rc = !(mons_is_slime(*mon) || mon->is_insubstantial());
+        break;
+
     default:
         break;
     }
@@ -5643,6 +5647,15 @@ mon_resist_type bolt::apply_enchantment_to_monster(monster* mon)
         return MON_AFFECTED;
     }
 
+    case BEAM_SHACKLE:
+    {
+        const int dur = (ench_power + 1) * BASELINE_DELAY / 3;
+        mon->add_ench(mon_enchant(ENCH_SHACKLE, 0, &you, dur));
+        if (simple_monster_message(*mon, " is shackled."))
+            obvious_effect = true;
+        return MON_AFFECTED;
+    }
+
     default:
         break;
     }
@@ -6151,6 +6164,7 @@ bool bolt::nasty_to(const monster* mon) const
         case BEAM_PAIN:
         case BEAM_AGONY:
         case BEAM_HIBERNATION:
+        case BEAM_SHACKLE:
             return ench_flavour_affects_monster(flavour, mon);
         case BEAM_TUKIMAS_DANCE:
             return tukima_affects(*mon); // XXX: move to ench_flavour_affects?
@@ -6421,6 +6435,7 @@ static string _beam_type_name(beam_type type)
     case BEAM_IRRESISTIBLE_CONFUSION:return "confusion";
     case BEAM_INFESTATION:           return "infestation";
     case BEAM_VILE_CLUTCH:           return "vile clutch";
+    case BEAM_SHACKLE:               return "shackles";
 
     case NUM_BEAMS:                  die("invalid beam type");
     }

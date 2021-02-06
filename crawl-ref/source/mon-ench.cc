@@ -990,6 +990,11 @@ void monster::remove_enchantment_effect(const mon_enchant &me, bool quiet)
         if (!quiet)
             simple_monster_message(*this, " is no longer waterlogged.");
         break;
+ 
+    case ENCH_SHACKLE:
+        if (!quiet)
+            simple_monster_message(*this, "'s shackles fade away.");
+        break;
 
     default:
         break;
@@ -1398,6 +1403,7 @@ void monster::apply_enchantment(const mon_enchant &me)
     case ENCH_VILE_CLUTCH:
     case ENCH_GRASPING_ROOTS:
     case ENCH_WATERLOGGED:
+    case ENCH_SHACKLE:
         decay_enchantment(en);
         break;
 
@@ -2041,7 +2047,7 @@ static const char *enchant_names[] =
 #if TAG_MAJOR_VERSION == 34
     "pinned_by_whirlwind",
 #endif
-    "vortex", "vortex_cooldown", "vile_clutch", "waterlogged",
+    "vortex", "vortex_cooldown", "vile_clutch", "waterlogged", "shackled",
     "buggy",
 };
 

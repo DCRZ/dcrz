@@ -207,6 +207,7 @@ define(function () {
     // [0, 0x2000000] was PINNED
     fg_flags.flags.VILE_CLUTCH  = [0, 0x4000000];
     fg_flags.flags.POSSESSABLE  = [0, 0x8000000];
+    fg_flags.flags.SHACKLE      = [0, 0x10000000];
 
     // Three levels of poison in 2 bits.
     fg_flags.exclusive_flags.push({

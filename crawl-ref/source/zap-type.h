@@ -88,5 +88,6 @@ enum zap_type
     ZAP_FOXFIRE,
     ZAP_TREMORSTONE,
     ZAP_BLINK,
+    ZAP_SHACKLE,
     NUM_ZAPS
 };
