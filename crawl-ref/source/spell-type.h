@@ -478,5 +478,6 @@ enum spell_type : int
     SPELL_HURL_SLUDGE,
     SPELL_MARSHLIGHT,
     SPELL_SHACKLE,
+    SPELL_FALSE_IMAGE,
     NUM_SPELLS
 };

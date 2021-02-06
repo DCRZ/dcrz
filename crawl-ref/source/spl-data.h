@@ -3490,6 +3490,17 @@ static const struct spell_desc spelldata[] =
 },
 
 {
+    SPELL_FALSE_IMAGE, "False Image",
+    spschool::summoning | spschool::hexes,
+    spflag::target | spflag::not_self | spflag::neutral,
+    3,
+    100,
+    2, 2,
+    2, 0,
+    TILEG_FALSE_IMAGE,
+},
+
+{
     SPELL_NO_SPELL, "nonexistent spell",
     spschool::none,
     spflag::testing,

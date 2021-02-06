@@ -122,6 +122,7 @@ noxious_bog NOXIOUS_BOG
 mass_abjuration MASS_ABJURATION
 call_canine_familiar CALL_CANINE_FAMILIAR
 call_imp CALL_IMP
+false_image FALSE_IMAGE
 malign_gateway MALIGN_GATEWAY
 recall RECALL
 sticks_to_snakes STICKS_TO_SNAKES

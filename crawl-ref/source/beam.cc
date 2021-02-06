@@ -4617,6 +4617,8 @@ void bolt::affect_monster(monster* mon)
         {
             if (testbits(mon->flags, MF_DEMONIC_GUARDIAN))
                 mpr("Your demonic guardian avoids your attack.");
+            else if (mon->type == MONS_FALSE_IMAGE)
+                mpr("Your image avoids your attack.");
             else if (!bush_immune(*mon))
             {
                 simple_god_message(
@@ -6546,8 +6548,10 @@ bool shoot_through_monster(const bolt& beam, const monster* victim)
 
     return (origin_worships_fedhas
             && fedhas_protects(victim))
-           || (originator->is_player()
+           || ((originator->is_player()
                && testbits(victim->flags, MF_DEMONIC_GUARDIAN))
+           || (originator->is_player()
+               && victim->type == MONS_FALSE_IMAGE))
            && !beam.is_enchantment()
            && beam.origin_spell != SPELL_CHAIN_LIGHTNING
            && (mons_atts_aligned(victim->attitude, origin_attitude)
