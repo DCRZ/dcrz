@@ -1198,7 +1198,8 @@ void no_ability_msg()
             mpr("You can't untransform!");
     }
     else if (you.get_mutation_level(MUT_TENGU_FLIGHT)
-             || you.get_mutation_level(MUT_BIG_WINGS))
+             || you.get_mutation_level(MUT_BIG_WINGS)
+             || you.get_mutation_level(MUT_FAIRY_FLIGHT))
     {
         if (you.airborne())
             mpr("You're already flying!");
@@ -2224,7 +2225,7 @@ static spret _do_ability(const ability_def& abil, bool fail)
 
     case ABIL_FLY:
         fail_check();
-        // Te or Dr/Gr wings
+        // Fr, high level Te, or Dr/Gr wings
         if (you.racial_permanent_flight())
         {
             you.attribute[ATTR_PERM_FLIGHT] = 1;

@@ -1354,9 +1354,11 @@ bool is_valid_shaft_effect_level()
     const level_id place = level_id::current();
     const Branch &branch = branches[place.branch];
 
-    // Don't shaft the player when we can't, and also when it would be into a
-    // dangerous end.
-    return is_valid_shaft_level()
+    // Don't shaft the player when:
+    // the player is on the first 3 floors;
+    // shafts aren't allowed in the location;
+    // it would be into a dangerous end
+    return is_valid_shaft_level() && env.absdepth0 > 3
            && !(branch.branch_flags & brflag::dangerous_end
                 && brdepth[place.branch] - place.depth == 1);
 }
@@ -1386,8 +1388,10 @@ void do_trap_effects()
 
     // Teleport effects are allowed everywhere, no need to check
     vector<trap_type> available_traps = { TRAP_TELEPORT };
-    // Don't shaft the player when shafts aren't allowed in the location or when
-    //  it would be into a dangerous end.
+    // Don't shaft the player when:
+    // the player is on the first 3 floors;
+    // shafts aren't allowed in the location;
+    // it would be into a dangerous end
     if (is_valid_shaft_effect_level())
         available_traps.push_back(TRAP_SHAFT);
     // No alarms on the first 3 floors

@@ -216,6 +216,7 @@ enum mutation_type
     MUT_HOP,
     MUT_NO_REGENERATION,
     MUT_STRONG_NOSE,
+    MUT_FAIRY_FLIGHT,
 #if TAG_MAJOR_VERSION == 34
     MUT_ACID_RESISTANCE,
 #endif

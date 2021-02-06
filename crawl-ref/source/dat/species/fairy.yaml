@@ -1,0 +1,63 @@
+enum: SP_FAIRY
+monster: MONS_BUTTERFLY
+name: Fairy
+difficulty: Simple
+difficulty_priority: 90
+aptitudes:
+  xp: 0
+  hp: 0
+  mp_mod: 2
+  mr: 4
+  fighting: -1
+  short_blades: -2
+  long_blades: -2
+  axes: -2
+  maces_and_flails: -1
+  polearms: -2
+  staves: -1
+  slings: -2
+  bows: -2
+  crossbows: -2
+  throwing: -1
+  armour: False
+  dodging: 3
+  stealth: -2
+  shields: 2
+  unarmed_combat: -1
+  spellcasting: 2
+  conjurations: 2
+  summoning: 1
+  translocations: 1
+  fire_magic: 2
+  ice_magic: 2
+  air_magic: 2
+  earth_magic: 2
+  poison_magic: 2
+  evocations: 1
+undead_type: US_ALIVE
+str: 6
+int: 11
+dex: 7
+levelup_stat_frequency: 4
+levelup_stats:
+  - int
+  - dex
+mutations:
+  1:
+    MUT_FAIRY_FLIGHT: 1
+fake_mutations:
+  - long: Your spells' MP costs are reduced by 1.
+    short: magic attunement
+  - long: Your bright wings attract enemies. (Stealth-)
+    short: unstealthy
+  - long: You cannot fit into any form of body armour.
+  - short: unfitting armour
+recommended_jobs:
+  - JOB_WIZARD
+  - JOB_CONJURER
+  - JOB_NECROMANCER
+  - JOB_ICE_ELEMENTALIST
+  - JOB_FIRE_ELEMENTALIST
+  - JOB_AIR_ELEMENTALIST
+  - JOB_EARTH_ELEMENTALIST
+  - JOB_VENOM_MAGE

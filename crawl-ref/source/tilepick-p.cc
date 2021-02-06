@@ -496,6 +496,7 @@ tileidx_t tileidx_player()
         case SP_PURPLE_DRACONIAN:  ch = TILEP_TRAN_DRAGON_PURPLE;  break;
         case SP_WHITE_DRACONIAN:   ch = TILEP_TRAN_DRAGON_WHITE;   break;
         case SP_RED_DRACONIAN:     ch = TILEP_TRAN_DRAGON_RED;     break;
+        case SP_FAIRY:             ch = TILEP_TRAN_DRAGON_FAERIE;  break;
         default:                   ch = TILEP_TRAN_DRAGON;         break;
         }
         break;
@@ -647,6 +648,8 @@ tileidx_t tilep_species_to_base_tile(int sp, int level)
         return TILEP_BASE_BARACHI;
     case SP_GNOLL:
         return TILEP_BASE_GNOLL;
+    case SP_FAIRY:
+        return TILEP_BASE_FAERIE_DRAGON;
     default:
         return TILEP_BASE_HUMAN;
     }
@@ -737,6 +740,9 @@ void tilep_race_default(int sp, int level, dolls_data *doll)
         case SP_GNOLL:
         case SP_GARGOYLE:
         case SP_VINE_STALKER:
+            hair = 0;
+            break;
+        case SP_FAIRY:
             hair = 0;
             break;
         default:
@@ -998,6 +1004,10 @@ void tilep_calc_flags(const dolls_data &doll, int flag[])
     {
         flag[TILEP_PART_BOOTS] = flag[TILEP_PART_LEG] = TILEP_FLAG_HIDE;
         flag[TILEP_PART_BODY]  = TILEP_FLAG_CUT_CENTAUR;
+    }
+    else if (is_player_tile(doll.parts[TILEP_PART_BASE], TILEP_BASE_FAERIE_DRAGON))
+    {
+        flag[TILEP_PART_LEG]   = TILEP_FLAG_HIDE;
     }
     else if (is_player_tile(doll.parts[TILEP_PART_BASE], TILEP_BASE_MERFOLK_WATER))
     {
