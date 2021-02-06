@@ -1348,7 +1348,7 @@ static const struct spell_desc spelldata[] =
 
 {
     SPELL_PORTAL_PROJECTILE, "Portal Projectile",
-    spschool::translocation | spschool::hexes,
+    spschool::charms | spschool::translocation,
     spflag::none,
     3,
     50,

@@ -293,7 +293,6 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_CORONA,
     SPELL_SHACKLE,
     SPELL_INNER_FLAME,
-    SPELL_PORTAL_PROJECTILE,
     SPELL_CAUSE_FEAR,
     SPELL_LEDAS_LIQUEFACTION,
 },
