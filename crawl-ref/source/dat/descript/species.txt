@@ -129,8 +129,8 @@ They regenerate health rapidly.
 %%%%
 Vampire
 
-Shifting between the states of life and undeath, Vampires are accomplished
-stabbers and casters.
+Vampires are undead creatures that can only regenerate from the life force of the 
+creatures they slay. They are frail, but are supernaturally stealthy even in armour.
 %%%%
 Vine Stalker
 

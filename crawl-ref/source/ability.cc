@@ -2956,6 +2956,7 @@ static spret _do_ability(const ability_def& abil, bool fail)
         if (_player_cancels_vampire_draw_out_blood())
             return spret::abort;
         fail_check();
+        mpr("You suck your own blood to restart your metabolism.");
         potionlike_effect(POT_HEAL_WOUNDS, 40);
         _cause_vampire_draw_out_blood_stat_drain();
         break;
