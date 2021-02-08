@@ -79,6 +79,7 @@
 #include "spl-damage.h"
 #include "spl-goditem.h"
 #include "spl-other.h"
+#include "spl-selfench.h"
 #include "spl-summoning.h"
 #include "spl-transloc.h"
 #include "spl-util.h"
@@ -220,22 +221,6 @@ static void _decrement_paralysis(int delay)
             if (you.props.exists(PARALYSED_BY_KEY))
                 you.props.erase(PARALYSED_BY_KEY);
         }
-    }
-}
-
-/**
- * Check whether the player's ice (Ozocubu's) armour was melted this turn.
- * If so, print the appropriate message and clear the flag.
- */
-static void _maybe_melt_armour()
-{
-    // We have to do the messaging here, because a simple wand of flame will
-    // call _maybe_melt_player_enchantments twice. It also avoids duplicate
-    // messages when melting because of several heat sources.
-    if (you.props.exists(MELT_ARMOUR_KEY))
-    {
-        you.props.erase(MELT_ARMOUR_KEY);
-        mprf(MSGCH_DURATION, "The heat melts your icy armour.");
     }
 }
 
@@ -441,7 +426,6 @@ void player_reacts_to_monsters()
         you.stop_being_constricted(true);
     }
 
-    _maybe_melt_armour();
     _update_cowardice();
     if (you_worship(GOD_USKAYAW))
         _handle_uskayaw_time(you.time_taken);
@@ -543,16 +527,11 @@ static void _decrement_durations()
     if (you.duration[DUR_LIQUID_FLAMES])
         dec_napalm_player(delay);
 
-    const bool melted = you.props.exists(MELT_ARMOUR_KEY);
-    if (_decrement_a_duration(DUR_ICY_ARMOUR, delay,
-                              "Your icy armour evaporates.",
-                              melted ? 0 : coinflip(),
-                              melted ? nullptr
-                              : "Your icy armour starts to melt."))
+    const bool melting = you.props[MELT_ARMOUR_KEY].get_bool();
+    if (you.props.exists(ICY_ARMOUR_KEY)
+        && _decrement_a_duration(DUR_ICY_ARMOUR, delay, melting ? nullptr : "Your icy armour starts to melt."))
     {
-        if (you.props.exists(ICY_ARMOUR_KEY))
-            you.props.erase(ICY_ARMOUR_KEY);
-        you.redraw_armour_class = true;
+        melt_ice_armour(delay / BASELINE_DELAY);
     }
 
     // Possible reduction of silence radius.

@@ -37,7 +37,7 @@
 #include "uncancellable-type.h"
 #include "unique-item-status-type.h"
 
-#define ICY_ARMOUR_KEY "ozocubu's_armour_pow"
+#define ICY_ARMOUR_KEY "ozocubu's_armour_ac_bonus"
 #define TRANSFORM_POW_KEY "transform_pow"
 #define BARBS_MOVE_KEY "moved_with_barbs_status"
 #define HORROR_PENALTY_KEY "horror_penalty"

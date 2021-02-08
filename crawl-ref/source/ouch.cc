@@ -54,6 +54,7 @@
 #include "prompt.h"
 #include "random.h"
 #include "religion.h"
+#include "spl-selfench.h"
 #include "shopping.h"
 #include "shout.h"
 #include "spl-clouds.h"
@@ -65,6 +66,20 @@
 #include "tutorial.h"
 #include "view.h"
 #include "xom.h"
+
+void melt_ice_armour(int amount)
+{
+    you.props[ICY_ARMOUR_KEY] 
+        = max(0, you.props[ICY_ARMOUR_KEY].get_int() - 100 * amount);
+
+    int net_ac_bonus = you.props[ICY_ARMOUR_KEY].get_int()
+                            - you.unadjusted_body_armour_penalty() * 50;
+    if (net_ac_bonus / 100 <= 0)
+        remove_ice_armour();
+    else
+        reset_ice_armour_duration();
+    you.redraw_armour_class = true;
+}
 
 void maybe_melt_player_enchantments(beam_type flavour, int damage)
 {
@@ -79,13 +94,10 @@ void maybe_melt_player_enchantments(beam_type flavour, int damage)
             you.redraw_armour_class = true;
         }
 
-        if (you.duration[DUR_ICY_ARMOUR] > 0)
+        if (you.props.exists(ICY_ARMOUR_KEY) && damage)
         {
-            you.duration[DUR_ICY_ARMOUR] -= damage * BASELINE_DELAY;
-            if (you.duration[DUR_ICY_ARMOUR] <= 0)
-                remove_ice_armour();
-            else
-                you.props[MELT_ARMOUR_KEY] = true;
+            mprf(MSGCH_DURATION, "The heat melts your icy armour.");
+            melt_ice_armour(damage / 2);
         }
     }
 }

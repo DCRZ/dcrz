@@ -6012,8 +6012,12 @@ int player::armour_class_with_specific_items(vector<const item_def *> items) con
 
     if (duration[DUR_ICY_ARMOUR])
     {
-        AC += max(0, 500 + you.props[ICY_ARMOUR_KEY].get_int() * 8
-                     - unadjusted_body_armour_penalty() * 50);
+        int net_ac_bonus = you.props[ICY_ARMOUR_KEY].get_int() 
+                            - you.unadjusted_body_armour_penalty() * 50;
+        if (net_ac_bonus / 100 <= 0)
+            remove_ice_armour();
+        else
+            AC += net_ac_bonus;
     }
 
     if (has_mutation(MUT_ICEMAIL))

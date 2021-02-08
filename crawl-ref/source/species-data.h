@@ -565,7 +565,7 @@ static const map<species_type, species_def> species_data =
     HT_LAND, US_UNDEAD, SIZE_MEDIUM,
     11, 7, 7,
     { STAT_STR, STAT_INT, STAT_DEX }, 5,
-    { { MUT_COLD_RESISTANCE, 1, 1 }, { MUT_NEGATIVE_ENERGY_RESISTANCE, 3, 1 }, { MUT_TORMENT_RESISTANCE, 1, 1 }, { MUT_UNBREATHING, 1, 1 }, { MUT_NECRO_ENHANCER, 1, 13 }, { MUT_NECRO_ENHANCER, 1, 26 } },
+    { { MUT_CLARITY, 1, 1 }, { MUT_COLD_RESISTANCE, 1, 1 }, { MUT_NEGATIVE_ENERGY_RESISTANCE, 3, 1 }, { MUT_TORMENT_RESISTANCE, 1, 1 }, { MUT_UNBREATHING, 1, 1 }, { MUT_NECRO_ENHANCER, 1, 13 }, { MUT_NECRO_ENHANCER, 1, 26 } },
     { "You do not eat or drink.", "Your flesh is vulnerable to fire." },
     { "no food or potions", "fire vulnerability" },
     { JOB_WIZARD, JOB_CONJURER, JOB_NECROMANCER, JOB_ICE_ELEMENTALIST, JOB_FIRE_ELEMENTALIST, JOB_SUMMONER },

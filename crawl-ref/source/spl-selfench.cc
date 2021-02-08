@@ -45,26 +45,39 @@ spret cast_deaths_door(int pow, bool fail)
     return spret::success;
 }
 
+void reset_ice_armour_duration(bool cast)
+{
+    const int ia_dur = cast ? random_range(20, 25) : random_range(3, 4);
+    you.props[MELT_ARMOUR_KEY] = !cast;
+    you.set_duration(DUR_ICY_ARMOUR, ia_dur);
+}
+
 void remove_ice_armour()
 {
-    mprf(MSGCH_DURATION, "Your icy armour melts away.");
-    you.redraw_armour_class = true;
+    mprf(MSGCH_DURATION, "Your icy armour evaporates.");
     you.duration[DUR_ICY_ARMOUR] = 0;
+    you.props.erase(ICY_ARMOUR_KEY);
+    you.props.erase(MELT_ARMOUR_KEY);
 }
 
 spret ice_armour(int pow, bool fail)
 {
+    if (you.duration[DUR_ICY_ARMOUR])
+    {
+        mpr("You cannot make your icy armour any thicker.");
+        return spret::abort;
+    }
+
     fail_check();
 
-    if (you.duration[DUR_ICY_ARMOUR])
-        mpr("Your icy armour thickens.");
-    else if (you.form == transformation::ice_beast)
+    if (you.form == transformation::ice_beast)
         mpr("Your icy body feels more resilient.");
     else
         mpr("A film of ice covers your body!");
 
-    you.increase_duration(DUR_ICY_ARMOUR, random_range(40, 50), 50);
-    you.props[ICY_ARMOUR_KEY] = pow;
+    reset_ice_armour_duration(true);
+    // Set initial AC bonus
+    you.props[ICY_ARMOUR_KEY] = 500 + pow * 8;
     you.redraw_armour_class = true;
 
     return spret::success;

@@ -69,6 +69,7 @@ enum kill_method_type
     NUM_KILLBY
 };
 
+void melt_ice_armour(int amount);
 void maybe_melt_player_enchantments(beam_type flavour, int damage);
 int check_your_resists(int hurted, beam_type flavour, string source,
                        bolt *beam = 0, bool doEffects = true);
