@@ -429,7 +429,7 @@ struct timed_effect
 static struct timed_effect timed_effects[] =
 {
     { rot_corpses,               200,   200, true  },
-    { _hell_effects,                 200,   600, false },
+    { _hell_effects,                 200,   400, false },
 #if TAG_MAJOR_VERSION == 34
     { nullptr,                         0,     0, false },
 #endif
