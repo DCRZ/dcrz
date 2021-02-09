@@ -3087,6 +3087,13 @@ static string _player_spell_desc(spell_type spell)
                     " and also " + _miscast_damage_string(spell) : "")
                 << ".\n";
 
+    if (spell_typematch(spell, spschool::charms))
+    {
+        description << "Successfully casting this spell (or any other spell"
+                    << " of the charms school) will also cause magic"
+                    << " contamination.\n";
+    }
+    
     if (spell == SPELL_SPELLFORGED_SERVITOR)
     {
         spell_type servitor_spell = player_servitor_spell();

@@ -1500,6 +1500,9 @@ spret your_spells(spell_type spell, int powc, bool allow_fail,
     {
     case spret::success:
     {
+        if (spell_typematch(spell, spschool::charms))
+            contaminate_player(1000 + random2(500));
+
         if (you.props.exists("battlesphere") && allow_fail)
             trigger_battlesphere(&you, beam);
 
