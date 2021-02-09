@@ -163,7 +163,7 @@ ENDMAP
 NAME:     nzn_winding_woodlands_huge
 ORIENT:   float
 TAGS:     uniq_winding_woodlands transparent
-DEPTH:    D:11-, Depths, Lair:2-
+DEPTH:    D:10-, Depths, Lair:2-
 SUBVAULT: A : winding_woodlands_5x15
 SUBVAULT: B : winding_woodlands_5x15
 SUBVAULT: C : winding_woodlands_5x15
@@ -346,7 +346,7 @@ ENDMAP
 NAME:     nzn_winding_woodlands_stair_trap
 ORIENT:   float
 TAGS:     uniq_winding_woodlands transparent
-DEPTH:    D:11-, Depths, Lair:2-
+DEPTH:    D:10-, Depths, Lair:2-
 SUBVAULT: A : winding_woodlands_5x15
 SUBVAULT: B : winding_woodlands_5x15
 SUBVAULT: C : winding_woodlands_5x15
@@ -911,7 +911,7 @@ ENDMAP
 
 NAME:   nzn_winding_woodlands_15x15_eel_pit
 TAGS:   winding_woodlands_15x15 unrand no_pool_fixup
-DEPTH:  D:7-12, Lair
+DEPTH:  D:7-11, Lair
 MONS:   plant
 KMONS:  2 = electric eel
 SUBST:  2 = 22w

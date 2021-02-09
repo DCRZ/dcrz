@@ -208,7 +208,7 @@ ENDMAP
 # Steading of the Giant Chief
 #
 NAME:    giant_chief_lemuel
-DEPTH:   D:11-, Orc, Depths:2-, !Depths:$
+DEPTH:   D:10-, Orc, Depths:2-, !Depths:$
 ORIENT:  north
 SUBST:   ; = .'
 : if you.branch() == "Depths" then
@@ -304,7 +304,7 @@ ENDMAP
 NAME:   minmay_elf_outpost
 TAGS:   no_rotate
 ORIENT: northwest
-DEPTH:  D:12-
+DEPTH:  D:11-
 MONS:   deep elf mage / nothing, deep elf knight / deep elf archer
 MONS:   deep elf mage w:30 / nothing
 MAP
@@ -337,7 +337,7 @@ ENDMAP
 NAME:   minmay_ice_pillars
 TAGS:   no_rotate no_pool_fixup no_monster_gen no_tele_into
 ORIENT: north
-DEPTH:  D:11-, !D:$
+DEPTH:  D:10-, !D:$
 WEIGHT: 5
 MONS:   ice beast / nothing w:3, ice statue, ice dragon / nothing
 SUBST:  y : y:48 w:1 W:1, Y : Y:48 W:1 .:1, y = wwW, Y = WW.
@@ -470,7 +470,7 @@ ENDMAP
 NAME:   orc_temple
 ORIENT: southwest
 TAGS:   no_rotate
-DEPTH:  D:12-, !D:$, Orc
+DEPTH:  D:11-, !D:$, Orc
 MONS:   orc warlord, patrolling orc priest, patrolling orc high priest
 MONS:   orc warrior, orc wizard, orc knight, orc sorcerer
 KFEAT:  C = altar_beogh
@@ -507,7 +507,7 @@ ENDMAP
 NAME:   fort_yaktaur
 TAGS:   no_pool_fixup
 ORIENT: southeast
-DEPTH:  D:11-, !D:$
+DEPTH:  D:10-, !D:$
 MONS:   gnoll, yak, death yak, yaktaur, minotaur
 MAP
 .........@....wwwwwwwwwwwwwwwwwxxx
@@ -1062,7 +1062,7 @@ ENDMAP
 #
 NAME:   evilmike_library_of_no_secrets
 ORIENT: southeast
-DEPTH:  D:11-, Depths
+DEPTH:  D:10-, Depths
 TAGS:   no_pool_fixup no_monster_gen
 TILE:   c = DNGN_STONE_WALL_BLUE
 COLOUR: c" = lightblue
@@ -1129,7 +1129,7 @@ ENDMAP
 NAME:    evilmike_iron_armoury
 TAGS:    no_monster_gen no_item_gen
 ORIENT:  southeast
-DEPTH:   D:11-, Depths
+DEPTH:   D:10-, Depths
 : if you.absdepth() < 16 then
 MONS:    orc warrior / deep elf knight w:1 / deep elf archer w:1
 MONS:    orc warrior w:20 / centaur warrior
@@ -1421,7 +1421,7 @@ ENDMAP
 ################################################################################
 # Based off Zaba's beehive_diamond.
 NAME:    hangedman_what_comes_after_a
-DEPTH:   D:11-, Lair:2-, !Lair:$
+DEPTH:   D:10-, Lair:2-, !Lair:$
 ORIENT:  north
 WEIGHT:  8
 MONS:    killer bee, meliai, queen bee, oklob plant
@@ -1511,7 +1511,7 @@ ENDMAP
 NAME:   kennysheep_seaside_town
 ORIENT: northeast
 TAGS:   no_monster_gen
-DEPTH:  D:7-14
+DEPTH:  D:7-
 KFEAT:  W = open_sea
 MONS:   ogre, orc warrior, gnoll shaman, centaur, big kobold
 KMONS:  8 = orc warrior band
@@ -1661,7 +1661,7 @@ ENDMAP
 NAME:   kennysheep_tiny_hell
 TAGS:   no_monster_gen
 ORIENT: centre
-DEPTH:  D:13-14
+DEPTH:  D:13-
 WEIGHT: 5
 FTILE:  *|c.12${} = floor_infernal_blank
 TILE:   c = dngn_stone_dark
@@ -1745,7 +1745,7 @@ ppptc.......c..........c...c...ctpt''
 ENDMAP
 
 NAME: cheibrodos_hippocracy
-DEPTH: D:12-
+DEPTH: D:11-
 TAGS: no_item_gen no_monster_gen no_pool_fixup
 ORIENT: north
 MONS: glowing orange brain, small abomination, floating eye, demonic crawler
@@ -1786,7 +1786,7 @@ xxxwxxxx......xxxw.xx..xxx..xxx
 ENDMAP
 
 NAME:    kennysheep_kobold_grotto
-DEPTH:   D:13-, !D:$
+DEPTH:   D:11
 TAGS:    no_monster_gen
 ORIENT:  northwest
 MONS:    big kobold, patrolling kobold demonologist, kobold, plant
@@ -1825,7 +1825,7 @@ ENDMAP
 
 # Based off of hive_mumbra_combs, for the old proposed portal.
 NAME:    regret_index_combs_of_tragedy
-DEPTH:   D:11-, Lair:2-, !Lair:$
+DEPTH:   D:10-, Lair:2-, !Lair:$
 ORIENT:  south
 WEIGHT:  8
 MONS:    killer bee, meliai, queen bee
@@ -1891,7 +1891,7 @@ ENDMAP
 # Very loosely based off of linley's beehive.
 NAME:    regret_index_wax_grids
 TAGS:    no_pool_fixup
-DEPTH:   D:11-, Lair:2-, !Lair:$
+DEPTH:   D:10-, Lair:2-, !Lair:$
 ORIENT:  northwest
 WEIGHT:  6
 MONS:    killer bee, meliai, queen bee
@@ -1950,7 +1950,7 @@ ENDMAP
 
 # Loosely based off of R1's beehive2.
 NAME:    regret_index_bee_streams
-DEPTH:   D:11-, Lair:2-, !Lair:$
+DEPTH:   D:10-, Lair:2-, !Lair:$
 ORIENT:  south
 WEIGHT:  6
 MONS:    killer bee, meliai, queen bee
@@ -2010,7 +2010,7 @@ ENDMAP
 # Very loosely based off of minmay's beehive_corners.
 NAME:    regret_index_harrowing_hell_hive
 TAGS:    no_pool_fixup
-DEPTH:   D:11-, Lair:2-, !Lair:$
+DEPTH:   D:10-, Lair:2-, !Lair:$
 ORIENT:  southwest
 WEIGHT:  4
 MONS:    killer bee, meliai, queen bee, oklob plant
@@ -2076,7 +2076,7 @@ ENDMAP
 # ...not even recognizable as beehive_tunnels anymore. Oh well.
 NAME:    regret_index_tunnel_blossom
 TAGS:    no_pool_fixup
-DEPTH:   D:11-, Lair:2-, !Lair:$
+DEPTH:   D:10-, Lair:2-, !Lair:$
 ORIENT:  float
 WEIGHT:  6
 MONS:    killer bee, meliai, queen bee
@@ -2244,7 +2244,7 @@ ENDMAP
 
 NAME:    doesnt_quadruple_sword
 TAGS:    no_monster_gen no_item_gen
-DEPTH:   D:13-
+DEPTH:   D:11-
 ORIENT:  north
 MONS:    dancing weapon ; long sword
 ITEM:    double sword, triple sword
@@ -2304,7 +2304,7 @@ ENDMAP
 
 NAME:   cheibrodos_body_horror
 TAGS:   no_item_gen no_monster_gen
-DEPTH:  D:12-
+DEPTH:  D:11-
 ORIENT: north
 MONS:   small abomination, demonic crawler, ugly thing, chaos spawn, neqoxec
 MONS:   large abomination / very ugly thing

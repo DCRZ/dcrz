@@ -440,7 +440,7 @@ ccnn==nncc
 ENDMAP
 
 NAME:   gammafunk_ghost_door_vault
-DEPTH:  D:13-, Depths, Elf, Crypt, Zot
+DEPTH:  D:11-, Depths, Elf, Crypt, Zot
 WEIGHT: 2
 ORIENT: float
 : ghost_good_loot(_G, "45")
@@ -488,12 +488,12 @@ MONS:   skeleton place:D:9 / zombie place:D:9 / spectre place:D:9 / \
         simulacrum place:D:9
 SUBST:  d = *, e = *%, f = %$--, ghij = -
 NSUBST: 1 = 2=1 / 1-
-:     elseif you.depth() < 12 then
-MONS:   w:5 zombie place:D:12 / spectre place:D:12 / simulacrum place:D:12
+:     elseif you.depth() < 11 then
+MONS:   w:5 zombie place:D:11 / spectre place:D:11 / simulacrum place:D:11
 SUBST:  e = *, f = %$, ghij = -
 NSUBST: 1 = 3=1 / 1-, - = 1- / -
-:     elseif you.depth() < 14 then
-MONS:   w:5 zombie place:D:15 / spectre place:D:15 / simulacrum place:D:15
+:     elseif you.depth() < 12 then
+MONS:   w:5 zombie place:D:12 / spectre place:D:12 / simulacrum place:D:12
 SUBST:  f = |*, g = *%, h = %$--, ij = -
 NSUBST: - = 4=1- / -
 :     else
@@ -663,14 +663,14 @@ MONS:   wraith / vampire
 SUBST:  d = *, e = *%, f = %$,  ghi = -
 NSUBST: D = 2=1 / 3=1- / 2- / 2--- / -
 :     elseif you.depth() < 12 then
-MONS:   mummy / wight / zombie place:D:12 / spectre place:D:12 / \
-        simulacrum place:D:12 / phantom / hungry ghost / wraith / vampire
+MONS:   mummy / wight / zombie place:D:11 / spectre place:D:11 / \
+        simulacrum place:D:11 / phantom / hungry ghost / wraith / vampire
 MONS:   vampire mosquito band / shadow / death knight / skeletal warrior / \
         freezing wraith w:5
 SUBST:  e = *, f = *%,  g = %$--, hi = -
 NSUBST: D = 2=1 / 4=1- / 2=2- / -
 :     elseif you.depth() < 14 then
-MONS:   zombie place:D:15 / spectre place:D:15 / simulacrum place:D:15 / \
+MONS:   zombie place:D:12 / spectre place:D:12 / simulacrum place:D:12 / \
         vampire mosquito band / death knight / skeletal warrior
 MONS:   freezing wraith / necromancer / shadow wraith / vampire knight / \
         phantasmal warrior / flayed ghost
@@ -687,7 +687,7 @@ SUBST:  f = |*, g = *, h = %$, ij = -
 NSUBST: D = 4=1 / 4=1- / 2 / 2=2- / -
 :     end
 : elseif you.in_branch("Swamp") then
-MONS:   spectre place:Swamp:4 / simulacrum place:Swamp:4 / bloated husk / \
+MONS:   spectre place:Swamp:3 / simulacrum place:Swamp:3 / bloated husk / \
         bog body / vampire mosquito band / tyrant leech
 MONS:   ghost crab / hydra spectre / hydra simulacrum
 SUBST:  fg = |*, h = *%, i = %$--, j = -
@@ -792,7 +792,7 @@ cct'''-n.
 ENDMAP
 
 NAME:   gammafunk_ghost_fury_of_okawaru
-DEPTH:  D:12-, Orc, Elf, Crypt
+DEPTH:  D:11-, Orc, Elf, Crypt
 ORIENT: float
 KFEAT:  OP = altar_okawaru
 KMONS:  OP = player ghost
@@ -879,7 +879,7 @@ ORIENT: float
 KMONS:  O = player_ghost
 : if you.in_branch("D") then
 MONS:   skeletal warrior / vampire
-MONS:   wraith / simulacrum place:D:15
+MONS:   wraith / simulacrum place:D:12
 MONS:   necromancer
 MONS:   lich
 : else
@@ -1197,7 +1197,7 @@ ENDMAP
 
 NAME:   maelrawn_ghost_gauntlet_escape
 # Same depths where Gauntlets can place
-DEPTH:  D:11-, Lair, Orc:$
+DEPTH:  D:10-, Lair, Orc:$
 ORIENT: float
 KPROP:  x = bloody
 KMONS:  O = player ghost
@@ -1543,7 +1543,7 @@ ccccccccccccc
 ENDMAP
 
 NAME:   gammafunk_ghost_nasty_kobolds
-DEPTH:  D:3-13
+DEPTH:  D:3-11
 KMONS:  pq = plant / fungus
 KFEAT:  q = W
 KMONS:  O = player ghost
@@ -1759,7 +1759,7 @@ MAP
 ENDMAP
 
 NAME:   gammafunk_ghost_tricky_traps
-DEPTH:  D:15, Shoals, Spider, Elf, Depths, Zot
+DEPTH:  D:$, Shoals, Spider, Elf, Depths, Zot
 KFEAT:  ^ = zot trap / dispersal trap w:5 / alarm trap w:1 / floor w:16
 KFEAT:  ' = zot trap / dispersal trap w:5 / alarm trap w:1 / floor w:8
 : kitem("O = " .. dgn.randart_aux_armour)
@@ -1807,7 +1807,7 @@ cccnn===nnccc
 ENDMAP
 
 NAME:    gammafunk_ghost_crypt
-DEPTH:   D:13-, Crypt, Depths, Zot
+DEPTH:   D:11-, Crypt, Depths, Zot
 : item(dgn.loot_scrolls .. " / " .. dgn.loot_potions)
 # Always place one randart aux, one randart jewel, and one nice book, each
 # using the possible ghost locations.

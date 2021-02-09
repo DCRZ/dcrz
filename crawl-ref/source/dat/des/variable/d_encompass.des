@@ -622,7 +622,7 @@ ENDMAP
 NAME:   kennysheep_town
 TAGS:   uniq_d_encompass
 ORIENT: encompass
-DEPTH:  D:8-11
+DEPTH:  D:8-10
 WEIGHT: 5
 KMONS:  op = plant
 KMONS:  P = bush

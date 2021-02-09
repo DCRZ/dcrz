@@ -3020,7 +3020,7 @@ xxxxxxxxx
 ENDMAP
 
 NAME:   dk_vineyard_1
-DEPTH:  D:2-12
+DEPTH:  D:2-11
 WEIGHT: 4
 TAGS:   no_item_gen no_monster_gen uniq_vineyard extra
 ITEM:   ration / nothing
@@ -3042,7 +3042,7 @@ xxxxxxxxx
 ENDMAP
 
 NAME:   dk_vineyard_2
-DEPTH:  D:2-12
+DEPTH:  D:2-11
 WEIGHT: 4
 TAGS:   no_item_gen no_monster_gen uniq_vineyard extra
 ITEM:   ration / nothing
@@ -3059,7 +3059,7 @@ xxxxxxxx
 ENDMAP
 
 NAME:   dk_vineyard_3
-DEPTH:  D:2-12
+DEPTH:  D:2-11
 WEIGHT: 4
 TAGS:   no_item_gen no_monster_gen uniq_vineyard extra transparent
 ITEM:   ration / nothing
@@ -3102,7 +3102,7 @@ ENDMAP
 
 NAME:  mrwooster_statue_mirror
 TAGS:  no_item_gen no_monster_gen extra luniq decor transparent
-DEPTH: D:2-12
+DEPTH: D:2-11
 NSUBST: a : 3:% / *:.
 MAP
 ...........
@@ -3187,7 +3187,7 @@ ENDMAP
 
 NAME: nicolae_zen_rock_garden
 TAGS: no_monster_gen no_trap_gen no_item_gen extra decor
-DEPTH: D:4-12
+DEPTH: D:4-11
 SUBST: Q = TPW, T = tP, P = p'', Y = W', Z = tW, ' = ':13 r:1
 FTILE: tp'r = floor_sand
 KMONS: p = plant
@@ -3330,7 +3330,7 @@ ENDMAP
 ##########################################################################
 
 NAME:   lemuel_flamethrower_3
-DEPTH:  D:12-, Depths, Elf, Geh, Abyss
+DEPTH:  D:11-, Depths, Elf, Geh, Abyss
 TAGS:   allow_dup ruin_abyss
 MARKER: * = lua:fog_machine { cloud_type="flame", \
             pow_min = 20, pow_max = 40, delay = 150, \
@@ -3470,7 +3470,7 @@ xxxxxxxxxxx
 ENDMAP
 
 NAME:  lemuel_nasty_fountain
-DEPTH: D:11-, Depths, Crypt, Tar
+DEPTH: D:10-, Depths, Crypt, Tar
 TAGS:  allow_dup
 MARKER: Y = lua:fog_machine { cloud_type = "foul pestilence", \
              pow_min = 8, pow_max = 12, delay_min = 20, delay_max = 30, \
@@ -3513,7 +3513,7 @@ ccccc.@.ccccc
 ENDMAP
 
 NAME:    lemuel_freeze_loot_1
-DEPTH:   D:12-, Depths, Crypt
+DEPTH:   D:11-, Depths, Crypt
 SUBST:   * : **$
 SUBST:   * = **|
 NSUBST:  N = 1:+ / *:n
