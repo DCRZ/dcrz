@@ -40,7 +40,7 @@ default-depth: D:7-, Depths, Lair:2-
 NAME:     nzn_winding_woodlands_small
 ORIENT:   float
 TAGS:     uniq_winding_woodlands transparent
-DEPTH:    D:7-, Depths, Lair:2-, Swamp:2-3
+DEPTH:    D:7-, Depths, Lair:2-, Swamp:2
 SUBVAULT: A : winding_woodlands_5x15
 SUBVAULT: B : winding_woodlands_center
 SUBVAULT: C : winding_woodlands_5x15
@@ -76,7 +76,7 @@ ENDMAP
 NAME:     nzn_winding_woodlands_medium
 ORIENT:   float
 TAGS:     uniq_winding_woodlands transparent
-DEPTH:    D:7-, Depths, Lair:2-, Swamp:2-3
+DEPTH:    D:7-, Depths, Lair:2-, Swamp:2
 SUBVAULT: A : winding_woodlands_5x5
 SUBVAULT: B : winding_woodlands_5x15
 SUBVAULT: C : winding_woodlands_5x5
@@ -215,7 +215,7 @@ ENDMAP
 NAME:     nzn_winding_woodlands_cross
 ORIENT:   float
 TAGS:     uniq_winding_woodlands transparent
-DEPTH:    D:7-, Depths, Lair:2-, Swamp:2-3
+DEPTH:    D:7-, Depths, Lair:2-, Swamp:2
 SUBVAULT: A : winding_woodlands_5x15
 SUBVAULT: B : winding_woodlands_5x15
 SUBVAULT: C : winding_woodlands_5x15
@@ -263,7 +263,7 @@ ENDMAP
 NAME:     nzn_winding_woodlands_three_and_one
 ORIENT:   float
 TAGS:     uniq_winding_woodlands transparent
-DEPTH:    D:7-, Depths, Lair:2-, Swamp:2-3
+DEPTH:    D:7-, Depths, Lair:2-, Swamp:2
 SUBVAULT: A : winding_woodlands_5x15
 SUBVAULT: B : winding_woodlands_5x15
 SUBVAULT: C : winding_woodlands_5x15

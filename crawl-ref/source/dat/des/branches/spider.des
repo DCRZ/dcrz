@@ -328,7 +328,7 @@ ENDMAP
 
 NAME:   spiders_nest_the_unseen
 TAGS:   no_item_gen no_monster_gen
-DEPTH:  Spider:3-
+DEPTH:  Spider:2-
 MONS:   patrolling ghost moth
 SUBST:  | = %%d, * = ..%%d
 ITEM:   potion of ambrosia ident:type
@@ -353,7 +353,7 @@ ENDMAP
 
 NAME:   spiders_nest_ghost_moth_duel
 TAGS:   no_item_gen no_monster_gen
-DEPTH:  Spider:3-
+DEPTH:  Spider:2-
 MONS:   ghost moth, tarantella
 ITEM:   potion of ambrosia ident:type
 MAP
@@ -951,7 +951,7 @@ ENDMAP
 
 NAME:   nicolae_orb_stairs_large
 TAGS:   no_pool_fixup no_monster_gen
-DEPTH:  Spider:2-3
+DEPTH:  Spider:2
 ORIENT: float
 WEIGHT: 3
 MONS:   orb spider / redback

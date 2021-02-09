@@ -282,7 +282,7 @@ ENDMAP
 NAME:   nicolae_sea_snake_s
 MONS:   naga mage, naga
 ORIENT: float
-DEPTH:  Snake:2-3
+DEPTH:  Snake:2
 TAGS:   no_monster_gen
 SHUFFLE: {[(
 SHUFFLE: (<
@@ -323,7 +323,7 @@ xxsssssxxxxxx
 ENDMAP
 
 NAME:   nicolae_cobra_stairs
-DEPTH:  Snake:2-3
+DEPTH:  Snake:2
 ORIENT: float
 TAGS:   no_pool_fixup patrolling
 SHUFFLE: }])
@@ -370,7 +370,7 @@ ENDMAP
 # The disgraced guardian serpent Aizul has been
 # demoted to watching the stairs.
 NAME:   nicolae_aizul_guard
-DEPTH:  Snake:2-3
+DEPTH:  Snake:2
 TAGS:   no_rotate no_hmirror no_vmirror transparent
 ORIENT: float
 SHUFFLE: ]})>
