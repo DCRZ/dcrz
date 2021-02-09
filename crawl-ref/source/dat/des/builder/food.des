@@ -2,10 +2,10 @@
 # Helper function to weight the secondary food vaults properly.
 # We want each level in the range to have a roughly even chance of placing
 # the vault.
-# The uppermost level we place it on is D:7, and the lowermost is D:14;
-# thus the first level, D:7, has a 1 in 8 chance of placing it. If it
-# doesn't place on D:7, D:8 has a 1 in 7 chance of placing it; D:9 has a
-# 1 in 6 chance, etc. up until D:14 has a 100% chance.
+# The uppermost level we place it on is D:7, and the lowermost is D:12;
+# thus the first level, D:7, has a 1 in 6 chance of placing it. If it
+# doesn't place on D:7, D:8 has a 1 in 5 chance of placing it; D:9 has a
+# 1 in 4 chance, etc. up until D:12 has a 100% chance.
 # If the levels are traversed in order, there is therefore an even
 # distribution of where the food vault is placed.
 ##########################################################################
@@ -60,7 +60,7 @@ MAP
 ENDMAP
 
 NAME:   the_bakery
-DEPTH:  D:7-14
+DEPTH:  D:7-
 # Previously this was a 25% CHANCE; I'm assuming this was meant to weight this
 # higher than the other food vaults, which mostly had a 15% CHANCE, but
 # placing by chance tag doesn't work that way. Hence, there's also a WEIGHT
@@ -85,7 +85,7 @@ x+xxxx
 ENDMAP
 
 NAME:   david_nohive_1
-DEPTH:  D:8-14
+DEPTH:  D:8-
 : food_weight(_G, 8)
 WEIGHT: 15
 TAGS:   uniq_second_food extra chance_second_food
@@ -112,7 +112,7 @@ MAP
 ENDMAP
 
 NAME:     blue_anna_alchemist
-DEPTH:    D:8-14
+DEPTH:    D:8-
 : food_weight(_G, 8)
 WEIGHT: 15
 TAGS:     uniq_second_food extra chance_second_food
@@ -135,7 +135,7 @@ ENDMAP
 
 # Not really a fish farm now that fish are gone...
 NAME:   hangedman_fish_farm
-DEPTH:  D:9-14
+DEPTH:  D:9-
 : food_weight(_G, 7)
 WEIGHT: 15
 TAGS:   uniq_second_food extra chance_second_food no_monster_gen no_pool_fixup \
@@ -153,7 +153,7 @@ xxxxxx
 ENDMAP
 
 NAME:   hangedman_pestilent_swarm
-DEPTH:  D:8-14
+DEPTH:  D:8-
 : food_weight(_G, 8)
 WEIGHT: 15
 TAGS:   uniq_second_food extra chance_second_food no_monster_gen patrolling
@@ -170,7 +170,7 @@ MAP
 ENDMAP
 
 NAME:   hangedman_little_slice_of_home
-DEPTH:  D:8-14
+DEPTH:  D:8-
 : food_weight(_G, 8)
 WEIGHT: 10
 TAGS:   uniq_second_food extra chance_second_food
@@ -194,7 +194,7 @@ MAP
 ENDMAP
 
 NAME:     hangedman_ranch
-DEPTH:    D:8-14
+DEPTH:    D:8-
 : food_weight(_G, 8)
 WEIGHT:   10
 TAGS:     uniq_second_food extra chance_second_food no_monster_gen patrolling
@@ -225,7 +225,7 @@ xxxxx@xxxx
 ENDMAP
 
 NAME:    hangedman_stone_soup
-DEPTH:   D:10-14
+DEPTH:   D:10-
 : food_weight(_G, 8)
 WEIGHT:  10
 TAGS:    uniq_second_food extra chance_second_food patrolling no_rotate no_vmirror
@@ -265,7 +265,7 @@ ENDMAP
 
 # A tengu has staked out a little piece of the dungeon.
 NAME:   grunt_tengu_nest
-DEPTH:  D:10-14
+DEPTH:  D:10-
 : food_weight(_G, 10)
 WEIGHT: 15
 TAGS:   uniq_second_food extra chance_second_food no_monster_gen patrolling
@@ -284,7 +284,7 @@ ENDMAP
 
 # An ogre roasts intruders over his little campfire.
 NAME:   grunt_ogre_cave
-DEPTH:  D:7-14
+DEPTH:  D:7-
 : food_weight(_G, 7)
 WEIGHT: 15
 TAGS:   uniq_second_food extra chance_second_food no_monster_gen no_trap_gen \
@@ -321,7 +321,7 @@ xx.xxx.
 ENDMAP
 
 NAME:   grunt_livestock
-DEPTH:  D:7-14
+DEPTH:  D:7-
 : food_weight(_G, 7)
 WEIGHT: 15
 TAGS:   uniq_second_food extra chance_second_food no_monster_gen no_trap_gen \
@@ -352,7 +352,7 @@ ENDMAP
 # Welcome to Pandemonium Pizzeria; is this for carry-out or delivery?
 # (Ideally the cashier would have a silly hat, but they can't wear hats.)
 NAME:   grunt_pizzeria
-DEPTH:  D:8-14
+DEPTH:  D:8-
 : food_weight(_G, 8)
 WEIGHT: 10
 TAGS:   uniq_second_food extra chance_second_food no_monster_gen no_trap_gen \

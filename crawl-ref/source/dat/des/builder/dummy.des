@@ -42,7 +42,7 @@ ENDMAP
 # we use this dummy vault.
 #
 NAME: dummy_balancer
-DEPTH: D:1-11
+DEPTH: D:1-10
 # Vaults tagged "dummy" are no-ops when the dungeon builder is looking for maps
 # by depth.
 TAGS: dummy
