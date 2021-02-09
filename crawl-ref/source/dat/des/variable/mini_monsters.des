@@ -2597,7 +2597,7 @@ ENDMAP
 
 NAME:    hangedman_batty
 TAGS:    patrolling no_monster_gen no_item_gen
-DEPTH:   D:11-, Crypt, !Crypt:$
+DEPTH:   D:11-, Crypt
 WEIGHT:  5
 MONS:    bat, phantom, vampire, unseen horror
 MONS:    phantasmal warrior, vampire knight, jiangshi
@@ -3509,7 +3509,7 @@ MAP
 ENDMAP
 
 NAME:    pandoras_box_mu
-DEPTH:   Depths, Crypt:1-4
+DEPTH:   Depths, Crypt
 TAGS:    no_monster_gen no_item_gen transparent
 MARKER:  a = lua:fog_machine { \
                  pow_max = 10, delay_min = 10, delay_max = 40, \

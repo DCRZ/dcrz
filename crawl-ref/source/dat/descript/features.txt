@@ -853,7 +853,7 @@ A carved rock wall
 
 A wall decorated with images of death and destruction.
 %%%%
-# evilmike_haunted_forest (Crypt:5)
+# evilmike_haunted_forest (Crypt:$)
 A dead tree
 
 A tree, as dead as everything else here.

@@ -120,7 +120,7 @@ const Branch branches[NUM_BRANCHES] =
       'B', {}, branch_noise::quiet },
 #endif
 
-    { BRANCH_CRYPT, BRANCH_VAULTS, 2, 3, 3, 19,
+    { BRANCH_CRYPT, BRANCH_VAULTS, 2, 3, 1, 19,
       brflag::dangerous_end,
       DNGN_ENTER_CRYPT, DNGN_EXIT_CRYPT, NUM_FEATURES,
       "Crypt", "the Crypt", "Crypt",

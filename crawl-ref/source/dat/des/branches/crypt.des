@@ -348,7 +348,7 @@ ENDMAP
 NAME:   grunt_crypt_arrival_webbed
 TAGS:   extra uniq_crypt_arrival no_monster_gen no_trap_gen no_item_gen
 KFEAT:  ^ = known web trap / w:20 floor
-DEPTH:  Crypt:1
+DEPTH:  Crypt
 WEIGHT: 30
 ORIENT: south
 MAP
@@ -373,7 +373,7 @@ ENDMAP
 
 NAME:   grunt_crypt_arrival_split
 TAGS:   extra uniq_crypt_arrival no_monster_gen no_trap_gen no_item_gen
-DEPTH:  Crypt:1
+DEPTH:  Crypt
 WEIGHT: 30
 ORIENT: south
 MAP
@@ -400,7 +400,7 @@ NAME:   grunt_crypt_arrival_guarded_gate
 TAGS:   uniq_crypt_arrival no_item_gen no_monster_gen no_trap_gen \
         layout_rooms layout_city layout_corridors no_hmirror no_rotate extra
 ORIENT: south
-DEPTH:  Crypt:1
+DEPTH:  Crypt
 WEIGHT: 30
 TILE:   H = dngn_sarcophagus_pedestal_left
 TILE:   I = dngn_sarcophagus_pedestal_right
@@ -962,7 +962,7 @@ ENDMAP
 
 NAME:    hangedman_hall_of_fallen_heroes
 TAGS:    no_monster_gen no_item_gen
-DEPTH:   Crypt:2-
+DEPTH:   Crypt
 ORIENT:  float
 MONS:    wight band, phantasmal warrior
 MONS:    skeletal warrior ; long sword | war axe | trident | flail . \
@@ -1108,7 +1108,7 @@ cccc*ccc...v0cc
 ENDMAP
 
 NAME: cheibrodos_crypt_down_in_the_bonehoard
-DEPTH: Crypt, !Crypt:$
+DEPTH: Crypt
 TAGS: no_item_gen no_monster_gen no_pool_fixup
 ORIENT: float
 MONS: lich, mummy priest, freezing wraith / w:5 flayed ghost
@@ -1142,7 +1142,7 @@ cc.ccccc.cc...c+WWWWWcc...cc
 ENDMAP
 
 NAME: cheibrodos_crypt_eye_of_stone
-DEPTH: Crypt, !Crypt:$
+DEPTH: Crypt
 TAGS: no_item_gen no_monster_gen
 ORIENT: float
 MONS: floating eye / curse skull, obsidian statue / orange crystal statue
@@ -1172,7 +1172,7 @@ cc.4.cAc...cV...
 ENDMAP
 
 NAME: nicolae_crypt_statuary_hall
-DEPTH: Crypt, !Crypt:1, !Crypt:$
+DEPTH: Crypt
 TAGS: decor transparent
 SHUFFLE: {[(, }])
 MAP
@@ -1244,7 +1244,7 @@ ENDMAP
 
 # deep troll shamans will buff undead trolls too!
 NAME:    skrybe_necro_troll_1
-DEPTH:   Crypt, !Crypt:$
+DEPTH:   Crypt
 TAGS:    no_monster_gen uniq_necro_troll
 KMONS:   S = deep troll shaman
 KFEAT:   S = ] / } / )
@@ -1349,7 +1349,7 @@ ENDMAP
 
 NAME: cheibrodos_crypt_draghalla
 TAGS: no_item_gen no_monster_gen
-DEPTH: Crypt, !Crypt:$
+DEPTH: Crypt
 ORIENT: float
 # Monster density might be off here
 MONS: fire dragon skeleton / quicksilver dragon skeleton w:5 \

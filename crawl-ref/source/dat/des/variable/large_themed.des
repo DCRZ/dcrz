@@ -98,12 +98,8 @@ ENDMAP
 #
 NAME:    statuecave_lemuel
 ORIENT:  northeast
-DEPTH:   D:7-, Lair, Crypt:1-4
-: if you.in_branch("Crypt") then
-MONS:    orange crystal statue
-: else
+DEPTH:   D:7-, Lair
 MONS:    ice statue / obsidian statue / orange crystal statue
-: end
 SHUFFLE: 1|/!*
 SUBST:   *:*$, ?:x., !:., '=w.
 ITEM:    ring of flight ident:type

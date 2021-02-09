@@ -277,7 +277,7 @@ DEPTH:  D:14-, Elf, !Elf:$, Snake, Spider
 
 NAME:   uniq_aizul
 DEPTH:  Depths:1-3, Elf, Swamp, Snake, Shoals, Spider, Vaults, !Vaults:$
-DEPTH:  Crypt:1
+DEPTH:  Crypt
 WEIGHT: 50(Snake), 10
 : place_unique(_G, "Aizul")
 
@@ -360,7 +360,7 @@ DEPTH:  Depths:3-, Vaults:2-, Crypt
 
 NAME:   uniq_donald
 DEPTH:  Swamp, Snake, Shoals, Spider, Slime, Vaults, !Vaults:$
-DEPTH:  Crypt, !Crypt:$, Elf, Orc:$
+DEPTH:  Crypt, Elf, Orc:$
 : place_unique(_G, "Donald")
 
 NAME:   uniq_vashnia

@@ -2565,7 +2565,7 @@ ENDMAP
 NAME:    hangedman_staggered_hall
 TAGS:    transparent allow_dup no_monster_gen
 ORIENT:  float
-DEPTH:   Elf, !Elf:$, Crypt, !Crypt:$
+DEPTH:   Elf, !Elf:$
 : if you.in_branch("Crypt") then
 TAGS:    patrolling
 MONS:    skeletal warrior / eidolon, necromancer
@@ -2777,7 +2777,7 @@ ENDMAP
 
 NAME:   ragdoll_tomb_raider
 TAGS:   no_item_gen no_monster_gen patrolling
-DEPTH:  D:14-, Depths, Crypt, !Crypt:$
+DEPTH:  D:14-, Depths
 ORIENT: float
 KITEM:  $ = amulet_of_vitality / any good_item
 KITEM:  12345d = gold / any / nothing
@@ -4668,7 +4668,7 @@ ENDMAP
 # Elevator
 NAME:    lemuel_elevator
 TAGS:    allow_dup extra luniq_staircase
-DEPTH:   D:2-, !D:$, Elf:1, Crypt:2-, !Crypt:$, Zot:2-, !Zot:$, \
+DEPTH:   D:2-, !D:$, Elf:1, Zot:2-, !Zot:$, \
          Tar:2-, !Tar:$, Dis:2-, !Dis:$, Geh:2-, !Geh:$, Coc:2-, !Coc:$
 ORIENT:  float
 WEIGHT:  10 (D), 5
@@ -5907,7 +5907,7 @@ ENDMAP
 
 NAME: grunt_deathspiral_small
 TAGS: patrolling uniq_deathspiral
-DEPTH: Depths, !Depths:$, Crypt, !Crypt:$, \
+DEPTH: Depths, !Depths:$, \
        Dis, !Dis:$, Geh, !Geh:$, Tar, !Tar:$, Coc, !Coc:$, \
        Zot, !Zot:$
 ORIENT: centre
@@ -9076,7 +9076,7 @@ ENDMAP
 NAME:   gammafunk_dig_for_victory
 TAGS:   no_monster_gen no_trap_gen
 # This must not place on a branch end so it can place a downhatch.
-DEPTH:  Crypt, !Crypt:$, D:13-, !D:$, Depths, !Depths:$, Pan, Zot, !Zot:$
+DEPTH:  D:13-, !D:$, Depths, !Depths:$, Pan, Zot, !Zot:$
 ORIENT: float
 KPROP:  1DEFHJR|*$efm = no_tele_into
 {{

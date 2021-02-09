@@ -582,7 +582,7 @@ ENDMAP
 # Previously named "layout_city".
 #
 NAME:   layout_regular_city
-DEPTH:  Lair, Crypt, !Crypt:$, Dis, !Dis:$
+DEPTH:  Lair, Dis, !Dis:$
 WEIGHT: 10, 15 (Lair)
 ORIENT: encompass
 TAGS:   overwritable layout allow_dup unrand layout_type_city
