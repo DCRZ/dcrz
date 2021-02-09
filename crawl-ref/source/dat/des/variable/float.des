@@ -4668,7 +4668,7 @@ ENDMAP
 # Elevator
 NAME:    lemuel_elevator
 TAGS:    allow_dup extra luniq_staircase
-DEPTH:   D:2-, !D:$, Elf:2, Crypt:2-, !Crypt:$, Zot:2-, !Zot:$, \
+DEPTH:   D:2-, !D:$, Elf:1, Crypt:2-, !Crypt:$, Zot:2-, !Zot:$, \
          Tar:2-, !Tar:$, Dis:2-, !Dis:$, Geh:2-, !Geh:$, Coc:2-, !Coc:$
 ORIENT:  float
 WEIGHT:  10 (D), 5
@@ -5021,7 +5021,7 @@ ENDMAP
 # and the walls are always diggable then.
 #
 NAME:    dpeg_oklob_shooting_range
-DEPTH:   Depths, !Depths:$, Lair:2-, Elf:2-
+DEPTH:   Depths, !Depths:$, Lair:2-, Elf
 WEIGHT:  2
 ORIENT:  float
 SHUFFLE: ab" / AB'

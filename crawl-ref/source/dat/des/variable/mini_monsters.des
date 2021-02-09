@@ -7343,7 +7343,7 @@ ENDMAP
 # Lava pond
 NAME: minivault_8
 TAGS: transparent
-DEPTH: D:9-, Elf:1-2
+DEPTH: D:9-, Elf:1
 MONS: patrolling molten gargoyle
 SUBST: F = G:99 F:1
 KMONS: F = orange crystal statue / obsidian statue / ice statue
