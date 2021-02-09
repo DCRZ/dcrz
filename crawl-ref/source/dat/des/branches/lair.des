@@ -498,8 +498,8 @@ DEPTH:  Lair
 ORIENT: north
 KMONS:  p = plant
 KMONS:  P = oklob plant
-# Lair:1 is absdepth 11, for reference.
-: local size = crawl.random2(10) + you.absdepth() - 10
+# Lair:1 is absdepth 9, for reference.
+: local size = crawl.random2(10) + you.absdepth() - 8
 : if size > 8 then
 SUBST:  '`" = ., yza = x, XYZ = ?, 1234 = p
 NSUBST: ? = 1:% / 4:P / * = ?
@@ -1829,7 +1829,7 @@ ENDMAP
 # Rats! (Lemuel) [combined both Lair and D versions]
 NAME:    lemuel_ratsnest
 ORIENT:  northeast
-DEPTH:   D:5-8, Lair:1-3
+DEPTH:   D:5-8, Lair:1-2
 MONS:    rat, quokka, river rat, hell rat
 ITEM:    ration
 SUBST:   d = d$$$........., e = d$$$
@@ -1875,7 +1875,7 @@ ENDMAP
 # A comfortable, reclusive cottage for the summer holidays (Eino)
 NAME:    pond_and_an_island_with_a_cottage
 ORIENT:  float
-DEPTH:   Lair:3-, !Lair:$
+DEPTH:   Lair:2-, !Lair:$
 MONS:    necromancer, elephant zombie
 MONS:    crocodile zombie / basilisk zombie / \
          komodo dragon zombie w:4
@@ -1906,7 +1906,7 @@ ENDMAP
 # Ice dragon lair with assorted imp pets
 NAME:   bobbens_ice_dragon_lair
 TAGS:   no_monster_gen
-DEPTH:  Lair:4-
+DEPTH:  Lair:3-
 MONS:   ice dragon
 MONS:   white imp
 SUBST:  $ = $:3 *:2, _ = %:1 `:3
@@ -1972,7 +1972,7 @@ ENDMAP
 # Drake nest (minmay)
 NAME:   minmay_lair_drake_nest
 TAGS:   transparent
-DEPTH:  Lair:4-
+DEPTH:  Lair:3-
 MONS:   rime drake, plant w:20 / fungus w:1 / bush w:1
 NSUBST: 1 = 2:1 / * = 1.., ' = 4:2 / * = ., . = 1:2 / 1:% / * = ..%2
 MAP
@@ -2047,7 +2047,7 @@ ENDMAP
 # Catoblepas lookout (blackcustard)
 NAME: lookout_lair_type
 TAGS: extra no_pool_fixup transparent
-DEPTH: Lair:4-
+DEPTH: Lair:3-
 MONS: w:1 generate_awake patrolling catoblepas / w:4 nothing
 SUBST: a = w W .
 SUBST: ' = W .
@@ -2137,7 +2137,7 @@ ENDMAP
 # to make this only accessible from the floor below.
 NAME:   kennysheep_catoblepas_arena
 TAGS:   no_monster_gen ruin
-DEPTH:  Lair:3-, !Lair:$
+DEPTH:  Lair:2-, !Lair:$
 MONS:   catoblepas
 NSUBST: d = 4=%* / 3:0 / *:.
 MAP
@@ -2162,7 +2162,7 @@ ENDMAP
 
 NAME:   kennysheep_basilisk_garden
 TAGS:   transparent
-DEPTH:  Lair:3-
+DEPTH:  Lair:2-
 MONS:   basilisk
 NSUBST: . = 2:1 / 3 = 111G / *:.
 MAP
@@ -2277,7 +2277,7 @@ ENDMAP
 
 NAME:   nicolae_lair_yak_garden
 TAGS:   no_monster_gen no_item_gen no_trap_gen transparent
-DEPTH:  Lair:4-
+DEPTH:  Lair:3-
 KMONS:  Y = yak
 KMONS:  D = death yak
 KMONS:  C = catoblepas
@@ -2308,7 +2308,7 @@ ENDMAP
 # Snail & Pal
 NAME:   pf_torpor_hydra
 TAGS:   no_monster_gen no_item_gen
-DEPTH:  Lair:3-, !Lair:$
+DEPTH:  Lair:2-, !Lair:$
 MONS:   torpor snail, hydra
 # A decent item visible from the door, a superb item not visible,
 # and a couple of floor items anywhere

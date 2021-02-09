@@ -54,7 +54,7 @@ const Branch branches[NUM_BRANCHES] =
       'K', {}, branch_noise::normal },
 #endif
 
-    { BRANCH_LAIR, BRANCH_DUNGEON, 7, 10, 6, 8,
+    { BRANCH_LAIR, BRANCH_DUNGEON, 7, 10, 4, 8,
       brflag::none,
       DNGN_ENTER_LAIR, DNGN_EXIT_LAIR, NUM_FEATURES,
       "Lair", "the Lair of Beasts", "Lair",
@@ -62,7 +62,7 @@ const Branch branches[NUM_BRANCHES] =
       GREEN, BROWN,
       'L', {}, branch_noise::normal },
 
-    { BRANCH_SWAMP, BRANCH_LAIR, 2, 4, 3, 15,
+    { BRANCH_SWAMP, BRANCH_LAIR, 2, 3, 3, 15,
       brflag::dangerous_end | brflag::spotty,
       DNGN_ENTER_SWAMP, DNGN_EXIT_SWAMP, NUM_FEATURES,
       "Swamp", "the Swamp", "Swamp",
@@ -70,7 +70,7 @@ const Branch branches[NUM_BRANCHES] =
       BROWN, BROWN,
       'S', { RUNE_SWAMP }, branch_noise::normal },
 
-    { BRANCH_SHOALS, BRANCH_LAIR, 2, 4, 3, 15,
+    { BRANCH_SHOALS, BRANCH_LAIR, 2, 3, 3, 15,
       brflag::dangerous_end,
       DNGN_ENTER_SHOALS, DNGN_EXIT_SHOALS, NUM_FEATURES,
       "Shoals", "the Shoals", "Shoals",
@@ -78,7 +78,7 @@ const Branch branches[NUM_BRANCHES] =
       BROWN, BROWN,
       'A', { RUNE_SHOALS }, branch_noise::loud },
 
-    { BRANCH_SNAKE, BRANCH_LAIR, 2, 4, 3, 15,
+    { BRANCH_SNAKE, BRANCH_LAIR, 2, 3, 3, 15,
       brflag::dangerous_end,
       DNGN_ENTER_SNAKE, DNGN_EXIT_SNAKE, NUM_FEATURES,
       "Snake Pit", "the Snake Pit", "Snake",
@@ -86,7 +86,7 @@ const Branch branches[NUM_BRANCHES] =
       LIGHTGREEN, YELLOW,
       'P', { RUNE_SNAKE }, branch_noise::normal },
 
-    { BRANCH_SPIDER, BRANCH_LAIR, 2, 4, 3, 15,
+    { BRANCH_SPIDER, BRANCH_LAIR, 2, 3, 3, 15,
       brflag::dangerous_end,
       DNGN_ENTER_SPIDER, DNGN_EXIT_SPIDER, NUM_FEATURES,
       "Spider Nest", "the Spider Nest", "Spider",
@@ -94,7 +94,7 @@ const Branch branches[NUM_BRANCHES] =
       BROWN, YELLOW,
       'N', { RUNE_SPIDER }, branch_noise::normal },
 
-    { BRANCH_SLIME, BRANCH_LAIR, 5, 6, 5, 17,
+    { BRANCH_SLIME, BRANCH_LAIR, 4, 4, 5, 17,
       brflag::no_items | brflag::dangerous_end | brflag::spotty,
       DNGN_ENTER_SLIME, DNGN_EXIT_SLIME, NUM_FEATURES,
       "Slime Pits", "the Pits of Slime", "Slime",
