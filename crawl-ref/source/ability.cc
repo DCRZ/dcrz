@@ -505,6 +505,8 @@ static const ability_def Ability_List[] =
       0, 0, 0, 15, {fail_basis::invo}, abflag::none },
 
     // Fedhas
+    { ABIL_FEDHAS_LIQUEFACTION, "Liquefaction",
+      4, 0, 50, 4, {fail_basis::invo, 50, 4, 20}, abflag::none},
     { ABIL_FEDHAS_WALL_OF_BRIARS, "Wall of Briars",
       3, 0, 50, 2, {fail_basis::invo, 30, 6, 20}, abflag::none},
     { ABIL_FEDHAS_GROW_BALLISTOMYCETE, "Grow Ballistomycete",
@@ -2903,6 +2905,16 @@ static spret _do_ability(const ability_def& abil, bool fail)
         fail_check();
         mpr("You stop recalling your allies.");
         end_recall();
+        break;
+
+    case ABIL_FEDHAS_LIQUEFACTION:
+        fail_check();
+        if (your_spells(SPELL_LEDAS_LIQUEFACTION,
+                        12 + skill_bump(SK_INVOCATIONS, 6),
+                        false, nullptr) == spret::abort)
+        {
+            return spret::abort;
+        }
         break;
 
     case ABIL_FEDHAS_WALL_OF_BRIARS:

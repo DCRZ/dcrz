@@ -1643,8 +1643,9 @@ static spret _do_cast(spell_type spell, int powc, const dist& spd,
     case SPELL_IRRADIATE:
         return cast_irradiate(powc, &you, fail);
 
+    // Fedhas ability, no failure.
     case SPELL_LEDAS_LIQUEFACTION:
-        return cast_liquefaction(powc, fail);
+        return cast_liquefaction(powc);
 
     case SPELL_OZOCUBUS_REFRIGERATION:
         return fire_los_attack_spell(spell, powc, &you, fail);

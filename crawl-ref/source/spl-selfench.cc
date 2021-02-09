@@ -217,9 +217,8 @@ spret cast_silence(int pow, bool fail)
     return spret::success;
 }
 
-spret cast_liquefaction(int pow, bool fail)
+spret cast_liquefaction(int pow)
 {
-    fail_check();
     flash_view_delay(UA_PLAYER, BROWN, 80);
     flash_view_delay(UA_PLAYER, YELLOW, 80);
     flash_view_delay(UA_PLAYER, BROWN, 140);

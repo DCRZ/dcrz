@@ -478,6 +478,17 @@ Bring an orc corpse back to life. The orc will be an ally, even if it was not
 already one before it died.
 %%%%
 # Fedhas
+Liquefaction ability
+
+Liquefies the ground around you, making it difficult to move through.
+Any movement through liquefied ground will be slowed, and creatures stuck in
+the liquefied ground will be unable to fly. Attempts to attack you in melee 
+may fail.
+
+The effect starts out with a radius depending on invocations, which will then
+shrink, eventually covering only you, before it times out. Maintaining
+the connection to the ground slows your movement, even if you are flying.
+%%%%
 Wall of Briars ability
 
 Grow short-lived briar patches around you. Monsters attacking these briars will
