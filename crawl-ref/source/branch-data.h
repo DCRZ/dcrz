@@ -194,7 +194,6 @@ const Branch branches[NUM_BRANCHES] =
       "You feel the power of the Orb interfering with translocations here.",
       BLACK, BLACK, // set per-map
       'Z', {}, branch_noise::normal },
-#if TAG_MAJOR_VERSION == 34
 
     { BRANCH_FOREST, BRANCH_VAULTS, 2, 3, 5, 19,
       brflag::spotty,
@@ -203,7 +202,6 @@ const Branch branches[NUM_BRANCHES] =
       nullptr,
       BROWN, BROWN,
       'F', {}, branch_noise::normal },
-#endif
 
     { BRANCH_ABYSS, NUM_BRANCHES, -1, -1, 5, 24,
       brflag::no_x_level_travel | brflag::no_map,
