@@ -296,10 +296,6 @@ static const pop_entry pop_swamp[] =
   {  0,  3,   500, FLAT, MONS_ALLIGATOR },
   {  0,  3,   400, RISE, MONS_ALLIGATOR },
   // Top-tier threats:
-  {  0,  3,   33, FLAT, MONS_THORN_HUNTER },
-  {  0,  3,  133, RISE, MONS_THORN_HUNTER },
-  {  0,  3,   33, FLAT, MONS_SHAMBLING_MANGROVE },
-  {  0,  3,  133, RISE, MONS_SHAMBLING_MANGROVE },
   {  0,  3,   29, FLAT, MONS_FENSTRIDER_WITCH },
   {  0,  3,  129, RISE, MONS_FENSTRIDER_WITCH },
   {  0,  3,    5, FLAT, MONS_TENTACLED_MONSTROSITY },
@@ -319,7 +315,6 @@ static const pop_entry pop_swamp[] =
 static const pop_entry pop_shoals[] =
 { // Shoals
   { -3,  3,   89, SEMI, MONS_CENTAUR },
-  {  -1,  2,  355, SEMI, MONS_FAUN },
   {  -1,  3,  220, FALL, MONS_HIPPOGRIFF },
   {  -1,  5,  300, SEMI, MONS_WATER_NYMPH },
   {  -1,  5,  170, SEMI, MONS_MERFOLK_AVATAR },
@@ -337,7 +332,6 @@ static const pop_entry pop_shoals[] =
   {  0,  3,  175, FLAT, MONS_HARPY },
   {  0,  6,  135, PEAK, MONS_MERFOLK_JAVELINEER },
   {  0,  6,   85, PEAK, MONS_ALLIGATOR_SNAPPING_TURTLE },
-  {  1,  3,  190, SEMI, MONS_SATYR },
   { 0,0,0,FLAT,MONS_0 }
 };
 
@@ -718,28 +712,22 @@ static const pop_entry pop_zot[] =
 
 static const pop_entry pop_forest[] =
 { // Forest
-  {  1,  5,  120, FALL, MONS_WOLF },
-  {  1,  5,   35, FALL, MONS_BLACK_BEAR },
-  {  1,  5,   50, FLAT, MONS_YAK },
-  {  1,  7,  145, SEMI, MONS_DIRE_ELEPHANT },
-  {  1,  5,   45, FLAT, MONS_HORNET },
-  {  1,  6,   75, FALL, MONS_REDBACK },
-  {  2,  7,   35, SEMI, MONS_WOLF_SPIDER },
+  {  1,  7,  100, SEMI, MONS_DIRE_ELEPHANT },
   {  1,  9,   75, SEMI, MONS_OKLOB_PLANT },
   {  1,  5,  170, FLAT, MONS_DRYAD },
-  {  1,  5,  120, FLAT, MONS_WIND_DRAKE },
-  { -1,  5,   75, SEMI, MONS_FAUN },
-  {  0,  9,  105, SEMI, MONS_SATYR },
-  {  2,  8,   55, SEMI, MONS_SPRIGGAN_DRUID },
-  {  1,  6,  155, SEMI, MONS_SPRIGGAN_RIDER },
+  { -1,  5,   75, FALL, MONS_FAUN },
+  {  0,  9,  100, FALL, MONS_SATYR },
+  {  2,  8,  150, SEMI, MONS_SPRIGGAN_DRUID },
+  {  1,  6,   50, FALL, MONS_SPRIGGAN_RIDER },
   {  1,  9,  235, SEMI, MONS_SPRIGGAN_BERSERKER },
-  {  1,  8,  155, SEMI, MONS_SPRIGGAN_AIR_MAGE },
-  {  3,  5,  115, RISE, MONS_SPRIGGAN_DEFENDER },
+  {  1,  8,  200, SEMI, MONS_SPRIGGAN_AIR_MAGE },
+  {  3,  5,  165, RISE, MONS_SPRIGGAN_DEFENDER },
   {  1,  7,   85, PEAK, MONS_APIS },
   {  2,  7,  165, SEMI, MONS_SHAMBLING_MANGROVE },
-  {  1,  6,   85, SEMI, MONS_ANACONDA },
   {  1,  9,  100, PEAK, MONS_THORN_HUNTER },
   {  1,  5,  125, FLAT, MONS_BUTTERFLY },
+  {  1, 10,  100, RISE, MONS_CAUSTIC_SHRIKE },
+  {  1, 10,  100, SEMI, MONS_SPARK_WASP },
   { 0,0,0,FLAT,MONS_0 }
 };
 
@@ -1057,16 +1045,12 @@ static const pop_entry pop_depths[] =
   {  1,  7,  100, FALL, MONS_TENGU_CONJURER },
   {  1,  8,  600, FALL, MONS_STONE_GIANT },
   {  1,  8,  370, FALL, MONS_ETTIN },
-  {  1, 10,  100, SEMI, MONS_SPARK_WASP },
   {  1, 12,   60, FLAT, MONS_LICH },
   {  1, 12,   40, FLAT, MONS_FLAYED_GHOST },
   {  1, 14,   80, SEMI, MONS_GLOWING_SHAPESHIFTER },
   {  1, 14,   80, SEMI, MONS_TENGU_REAVER },
   {  1, 14,   60, SEMI, MONS_SPHINX },
-  {  2,  8,  135, SEMI, MONS_SPRIGGAN_AIR_MAGE },
-  {  2,  8,  185, SEMI, MONS_SPRIGGAN_BERSERKER },
   {  2, 10,   25, FLAT, MONS_FLOATING_EYE },
-  {  3, 14,   45, FLAT, MONS_SPRIGGAN_DEFENDER },
   {  4, 14,   80, SEMI, MONS_TENTACLED_MONSTROSITY },
   {  4, 14,   40, FLAT, MONS_STORM_DRAGON },
   {  4, 14,   40, FLAT, MONS_SHADOW_DRAGON },
@@ -1080,7 +1064,6 @@ static const pop_entry pop_depths[] =
   {  4, 14,   25, RISE, MONS_DEEP_ELF_DEATH_MAGE },
   {  4, 14,   25, RISE, MONS_DEEP_ELF_ELEMENTALIST },
   {  5, 14,   50, FLAT, MONS_JUGGERNAUT },
-  {  5, 14,   50, FLAT, MONS_CAUSTIC_SHRIKE },
   {  6, 14,   50, FLAT, MONS_TITAN },
   { 10, 14,   10, FLAT, MONS_ANCIENT_LICH },
   { 0,0,0,FLAT,MONS_0 }
@@ -1327,6 +1310,14 @@ static const pop_entry pop_water_hell[] =
   { 0,0,0,FLAT,MONS_0 }
 };
 
+static const pop_entry pop_water_forest[] =
+{ // Forest branch water monsters
+  {  1,  5,   115, FLAT, MONS_WATER_ELEMENTAL },
+  {  0,  5,    74, RISE, MONS_WATER_NYMPH },
+  {  0,  5,    74, RISE, MONS_ELEMENTAL_WELLSPRING },
+  { 0,0,0,FLAT,MONS_0 }
+};
+
 // This list must be in the same order as the branch-type enum values.
 // Shoals, Abyss, Pan, Zot, D:1-5 liquid monsters are blocked in dungeon.cc
 static const population_list population_water[] =
@@ -1359,7 +1350,7 @@ static const population_list population_water[] =
     POP(water_hell), // Coc
     POP(water_hell), // Tar
     POP(water_generic), // Zot
-    POP(water_generic), // Forest
+    POP(water_forest), // Forest
     POP(water_generic), // Abyss
     POP(water_generic), // Pan
     POP(water_generic), // Zig
@@ -1469,9 +1460,7 @@ static const population_list population_lava[] =
     POP(lava_hell), // Coc
     POP(lava_hell), // Tar
     POP(lava_generic), // Zot
-#if TAG_MAJOR_VERSION == 34
     POP(lava_generic), // Forest
-#endif
     POP(lava_generic), // Abyss
     POP(lava_generic), // Pan
     POP(lava_generic), // Zig

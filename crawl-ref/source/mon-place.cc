@@ -1892,6 +1892,7 @@ static const map<monster_type, band_set> bands_by_leader = {
     { MONS_TENGU_CONJURER,  { {2}, {{ BAND_TENGU, {1, 2}, true }}}},
     { MONS_TENGU_WARRIOR,   { {2}, {{ BAND_TENGU, {1, 2}, true }}}},
     { MONS_SOJOBO,          { {}, {{ BAND_SOJOBO, {2, 3}, true }}}},
+    { MONS_DRYAD,           { {}, {{ BAND_FAUNS, {2, 4}, true }}}},
     { MONS_SPRIGGAN_RIDER,  { {3}, {{ BAND_SPRIGGAN_RIDERS, {1, 3} }}}},
     { MONS_SPRIGGAN_BERSERKER, { {2}, {{ BAND_SPRIGGANS, {2, 4} }}}},
     { MONS_SPRIGGAN_DEFENDER, { {}, {{ BAND_SPRIGGAN_ELITES, {2, 5}, true }}}},
@@ -2231,7 +2232,7 @@ static const map<band_type, vector<member_possibilites>> band_membership = {
 
                                 {{MONS_VAULT_GUARD, 1}}}},
 
-    { BAND_FAUN_PARTY,          {{{MONS_MERFOLK_SIREN, 1}},
+    { BAND_FAUN_PARTY,          {{{MONS_DRYAD, 1}},
 
                                  {{MONS_FAUN, 1}}}},
 
