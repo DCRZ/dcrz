@@ -1122,6 +1122,10 @@ Random Bolt spell
 Fires, at random, a bolt of venom, negative energy, fire, cold, dispelling
 energy, electricity, or acid.
 %%%%
+Rearrange the Pieces spell
+
+This spell swaps positions of random pairs of nearby creatures.
+%%%%
 Recall spell
 
 Recalls any friendly creatures on the same level to a position adjacent to the

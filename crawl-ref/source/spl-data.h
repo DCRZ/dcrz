@@ -3501,6 +3501,17 @@ static const struct spell_desc spelldata[] =
 },
 
 {
+    SPELL_REARRANGE_PIECES, "Rearrange the Pieces",
+    spschool::translocation | spschool::hexes,
+    spflag::area | spflag::monster | spflag::chaotic,
+    8,
+    200,
+    -1, -1,
+    0, 0,
+    TILEG_REARRANGE_PIECES,
+},
+
+{
     SPELL_NO_SPELL, "nonexistent spell",
     spschool::none,
     spflag::testing,
@@ -3551,7 +3562,6 @@ AXED_SPELL(SPELL_MELEE, "Melee")
 AXED_SPELL(SPELL_MISLEAD, "Mislead")
 AXED_SPELL(SPELL_PHASE_SHIFT, "Phase Shift")
 AXED_SPELL(SPELL_POISON_WEAPON, "Poison Weapon")
-AXED_SPELL(SPELL_REARRANGE_PIECES, "Rearrange the Pieces")
 AXED_SPELL(SPELL_SEE_INVISIBLE, "See Invisible")
 AXED_SPELL(SPELL_SHAFT_SELF, "Shaft Self")
 AXED_SPELL(SPELL_SILVER_BLAST, "Silver Blast")

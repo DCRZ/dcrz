@@ -205,6 +205,7 @@ phantom_mirror PHANTOM_MIRROR
 polymorph POLYMORPH
 porkalator PORKALATOR
 quicksilver_bolt QUICKSILVER_BOLT
+rearrange_pieces REARRANGE_PIECES
 seal_doors SEAL_DOORS
 sentinel_mark SENTINEL_MARK
 sleep SLEEP

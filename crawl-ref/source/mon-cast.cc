@@ -1844,6 +1844,7 @@ bool setup_mons_cast(const monster* mons, bolt &pbolt, spell_type spell_cast,
     case SPELL_BIND_SOULS:
     case SPELL_DREAM_DUST:
     case SPELL_SPORULATE:
+    case SPELL_REARRANGE_PIECES:
         pbolt.range = 0;
         pbolt.glyph = 0;
         return true;
@@ -6610,6 +6611,41 @@ void mons_cast(monster* mons, bolt pbolt, spell_type spell_cast,
         if (monster* const spore = create_monster(mgen))
             spore->add_ench(ENCH_SHORT_LIVED);
 
+        return;
+    }
+
+    case SPELL_REARRANGE_PIECES:
+    {
+        bool did_message = false;
+        vector<actor* > victims;
+        for (actor_near_iterator ai(mons, LOS_NO_TRANS); ai; ++ai)
+            victims.push_back(*ai);
+        shuffle_array(victims);
+        for (vector<actor* >::iterator it = victims.begin();
+             it != victims.end(); it++)
+        {
+            actor* victim1 = *it;
+            it++;
+            if (it == victims.end())
+                break;
+            actor* victim2 = *it;
+            if (victim1->is_player())
+                swap_with_monster(victim2->as_monster());
+            else if (victim2->is_player())
+                swap_with_monster(victim1->as_monster());
+            else
+            {
+                if (!did_message
+                    && (you.can_see(*victim1)
+                        || you.can_see(*victim2)))
+                {
+                    mpr("Some monsters swap places.");
+                    did_message = true;
+                }
+
+                swap_monsters(victim1->as_monster(), victim2->as_monster());
+            }
+        }
         return;
     }
 

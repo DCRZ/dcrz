@@ -1067,6 +1067,19 @@ static monsterentry mondata[] =
     {TILEP_MONS_BOGGART}, TILE_ERROR
 },
 
+{
+    MONS_PIXIE, 'g', LIGHTRED, "pixie",
+    M_WARM_BLOOD | M_SEE_INVIS | M_FLIES,
+    MR_NO_FLAGS,
+    10, MONS_SPRIGGAN, MONS_PIXIE, MH_NATURAL, 120,
+    { {AT_HIT, AF_CHAOTIC, 20}, AT_NO_ATK, AT_NO_ATK, AT_NO_ATK },
+    14, 440,
+    1, 22, MST_PIXIE, false, S_SHOUT,
+    I_HUMAN, HT_LAND, 12, DEFAULT_ENERGY,
+    MONUSE_WEAPONS_ARMOUR, SIZE_TINY, MON_SHAPE_HUMANOID,
+    {TILEP_MONS_PIXIE}, TILE_ERROR
+},
+
 { // Another dummy monster.
     MONS_DWARF, 'g', GREEN, "dwarf",
     M_WARM_BLOOD | M_SPEAKS | M_NO_POLY_TO,

@@ -279,6 +279,15 @@ static const mon_spellbook mspell_list[] =
       }
     },
 
+    {  MST_PIXIE,
+      {
+       { SPELL_TELEPORT_OTHER, 33, MON_SPELL_WIZARD },
+       { SPELL_INVISIBILITY, 11, MON_SPELL_WIZARD },
+       { SPELL_MASS_CONFUSION, 22, MON_SPELL_WIZARD },
+       { SPELL_REARRANGE_PIECES, 11, MON_SPELL_WIZARD },
+      }
+    },
+
     // ('h') Carnivorous quadrupeds.
     { MST_HOWLER_MONKEY,
       {

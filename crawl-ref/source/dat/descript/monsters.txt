@@ -1894,6 +1894,11 @@ pandemonium lord
 A formidable demon lord inhabiting the endless halls of Pandemonium. Each one
 is different, with its own set of strengths and weaknesses.
 %%%%
+pixie
+
+A mischievous, insect-winged humanoid, tasked by Xom to spread chaos and
+confusion. 
+%%%%
 peacekeeper
 
 A four-legged humanoid construct, tasked with recapturing escaped slaves and
