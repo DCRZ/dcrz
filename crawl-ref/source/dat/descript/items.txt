@@ -396,6 +396,13 @@ executioner's axe
 A fearsome weapon covered in dried blood and crude engravings of torture and
 death, bearing an enormous axehead.
 %%%%
+faerie dragon scales
+
+The scales of a faerie dragon. Although it does not provide its wearer with as
+much protection as the armour made from the scales of some larger dragons, it is
+somewhat lighter and less encumbering. Its shimmering scales are excellent at 
+repelling attacks.
+%%%%
 falchion
 
 A long single-edged sword with a slightly curved blade.

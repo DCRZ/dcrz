@@ -347,6 +347,7 @@ static void _populate_armour_intrinsic_artps(const armour_type arm,
     proprt[ARTP_MAGIC_RESISTANCE] += armour_type_prop(arm, ARMF_RES_MAGIC);
     proprt[ARTP_STEALTH] += armour_type_prop(arm, ARMF_STEALTH);
     proprt[ARTP_REGENERATION] += armour_type_prop(arm, ARMF_REGENERATION);
+    proprt[ARTP_SHIELDING] += armour_type_prop(arm, ARMF_SHIELDING) * ARMF_SHIELDING_SH / 2;
 }
 
 /// The artefact properties corresponding to a given piece of jewellery.
@@ -1686,47 +1687,6 @@ bool make_item_randart(item_def &item, bool force_mundane)
     return true;
 }
 
-static void _make_faerie_armour(item_def &item)
-{
-    item_def doodad;
-    for (int i=0; i<100; i++)
-    {
-        doodad.clear();
-        doodad.base_type = item.base_type;
-        doodad.sub_type = item.sub_type;
-        if (!make_item_randart(doodad))
-        {
-            i--; // Forbidden props are not absolute, artefactness is.
-            continue;
-        }
-
-        // -Cast makes no sense on someone called "the Enchantress".
-        if (artefact_property(doodad, ARTP_PREVENT_SPELLCASTING))
-            continue;
-
-        if (one_chance_in(20))
-            artefact_set_property(doodad, ARTP_CLARITY, 1);
-        if (one_chance_in(20))
-            artefact_set_property(doodad, ARTP_MAGICAL_POWER, 1 + random2(10));
-        if (one_chance_in(20))
-            artefact_set_property(doodad, ARTP_HP, random2(16) - 5);
-
-        break;
-    }
-    ASSERT(is_artefact(doodad));
-    ASSERT(doodad.sub_type == item.sub_type);
-
-    doodad.props[ARTEFACT_APPEAR_KEY].get_string()
-        = item.props[ARTEFACT_APPEAR_KEY].get_string();
-    doodad.props.erase(ARTEFACT_NAME_KEY);
-    item.props = doodad.props;
-
-    // On body armour, an enchantment of less than 0 is never viable.
-    int high_plus = random2(6) - 2;
-    high_plus += random2(6);
-    item.plus = max(high_plus, random2(2));
-}
-
 static jewellery_type octoring_types[8] =
 {
     RING_SEE_INVISIBLE, RING_PROTECTION_FROM_FIRE, RING_PROTECTION_FROM_COLD,
@@ -1779,9 +1739,7 @@ bool make_item_unrandart(item_def &item, int unrand_index)
 
     _set_unique_item_status(unrand_index, true);
 
-    if (unrand_index == UNRAND_FAERIE)
-        _make_faerie_armour(item);
-    else if (unrand_index == UNRAND_OCTOPUS_KING_RING)
+    if (unrand_index == UNRAND_OCTOPUS_KING_RING)
         _make_octoring(item);
     else if (unrand_index == UNRAND_WOE && you.species != SP_FELID
              && !you.could_wield(item, true, true))

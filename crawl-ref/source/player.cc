@@ -2222,6 +2222,14 @@ int player_shield_class()
               * AMU_REFLECT_SH * 100;
     shield += you.scan_artefacts(ARTP_SHIELDING) * 200;
 
+    // Faerie dragon scales
+    const item_def *body_armour = you.slot_item(EQ_BODY_ARMOUR);
+    if (body_armour)
+    {
+        shield += armour_type_prop(body_armour->sub_type, ARMF_SHIELDING) 
+                    * ARMF_SHIELDING_SH * 100;
+    }
+
     // Fairies get bonus SH from shimmering scales
     if (you.species == SP_FAIRY)
         shield += 600 + 200 * you.experience_level / 3;

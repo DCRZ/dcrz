@@ -444,6 +444,7 @@ dragonarm_blue DRAGONARM_BLUE
 dragonarm_shadow DRAGONARM_SHADOW
 dragonarm_gold DRAGONARM_GOLD
 dragonarm_pearl DRAGONARM_PEARL
+dragonarm_faerie DRAGONARM_FAERIE
 
 aragorn ARAGORN
 aragorn2 ARAGORN2
@@ -464,7 +465,6 @@ iron_troll_leather IRON_TROLL_LEATHER
 
 maxwell MAXWELL
 lears_hauberk LEARS_HAUBERK
-faerie_dragon_armour FAERIE_DRAGON_ARMOUR
 moon_troll_leather_armour MOON_TROLL_LEATHER_ARMOUR
 orange_crystal ORANGE_CRYSTAL
 vines VINES

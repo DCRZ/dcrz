@@ -39,12 +39,14 @@ enum armour_flag
     ARMF_RES_POISON         = 1 << 19,
     ARMF_RES_CORR           = 1 << 20,
     ARMF_RES_STEAM          = 1 << 21,
+    ARMF_SHIELDING          = 1 << 22,
     // vulnerabilities
     ARMF_VUL_FIRE           = ard(ARMF_RES_FIRE, -1),
     ARMF_VUL_COLD           = ard(ARMF_RES_COLD, -1),
 };
 
 #define AMU_REFLECT_SH 5*2
+#define ARMF_SHIELDING_SH 5*2
 
 /// Removed items that have item knowledge.
 extern const set<pair<object_class_type, int> > removed_items;
