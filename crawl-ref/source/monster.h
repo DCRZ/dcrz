@@ -31,6 +31,8 @@ const int KRAKEN_TENTACLE_RANGE = 3;
 /// has a given hound already used up its howl?
 #define DOOM_HOUND_HOWLED_KEY "doom_hound_howled"
 
+#define MONS_FAERIE_DRAGON_SH 5*2
+
 #define DROPPER_MID_KEY "dropper_mid"
 
 #define MAP_KEY "map"

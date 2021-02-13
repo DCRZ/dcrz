@@ -3130,7 +3130,7 @@ int monster::shield_bonus() const
     if (incapacitated())
         return -100;
 
-    int sh = -100;
+    int sh = 0;
     const item_def *shld = shield();
     if (shld && get_armour_slot(*shld) == EQ_SHIELD)
     {
@@ -3146,9 +3146,9 @@ int monster::shield_bonus() const
         sh += AMU_REFLECT_SH;
     // faerie dragon innate bonus
     if (type == MONS_FAERIE_DRAGON)
-        sh += 5;
+        sh += MONS_FAERIE_DRAGON_SH;
 
-    return sh;
+    return sh ? sh : -100;
 }
 
 int monster::shield_block_penalty() const
