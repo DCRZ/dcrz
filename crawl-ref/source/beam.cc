@@ -3900,6 +3900,13 @@ void bolt::affect_player()
             you.duration[DUR_FROZEN] = (2 + random2(3)) * BASELINE_DELAY;
         }
     }
+
+    else if (origin_spell == SPELL_DAZZLING_BOLT
+             && !(you.holiness() & (MH_UNDEAD | MH_NONLIVING | MH_PLANT)))
+    {
+        if (x_chance_in_y(85 - you.experience_level * 3 , 100))
+            you.confuse(agent(), 5 + random2(3));
+    }
 }
 
 int bolt::apply_AC(const actor *victim, int hurted)
@@ -4248,6 +4255,22 @@ void bolt::enchantment_affect_monster(monster* mon)
     extra_range_used += range_used_on_hit();
 }
 
+static bool _dazzle_monster(monster* mons, actor* act)
+{
+    if (!mons_can_be_dazzled(mons->type))
+        return false;
+
+    if (x_chance_in_y(95 - mons->get_hit_dice() * 5 , 100))
+    {
+        simple_monster_message(*mons, " is dazzled.");
+        mons->add_ench(mon_enchant(ENCH_BLIND, 1, act,
+                       random_range(4, 8) * BASELINE_DELAY));
+        return true;
+    }
+
+    return false;
+}
+
 void glaciate_freeze(monster* mon, killer_type englaciator,
                              int kindex)
 {
@@ -4355,6 +4378,9 @@ void bolt::monster_post_hit(monster* mon, int dmg)
         beogh_follower_convert(mon, true);
 
     knockback_actor(mon, dmg);
+    
+    if (origin_spell == SPELL_DAZZLING_BOLT)
+        _dazzle_monster(mon, agent());
 
     if (origin_spell == SPELL_FLASH_FREEZE
              || name == "blast of ice"
@@ -6342,6 +6368,9 @@ string bolt::get_short_name() const
 
     if (name == "bolt of dispelling energy")
         return "dispelling energy";
+
+    if (origin_spell == SPELL_DAZZLING_BOLT)
+        return "dazzling energy";
 
     if (flavour == BEAM_NONE || flavour == BEAM_MISSILE
         || flavour == BEAM_MMISSILE)

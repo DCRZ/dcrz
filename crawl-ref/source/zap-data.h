@@ -1359,4 +1359,22 @@ _mon_hex_zap(ZAP_DRAIN_MAGIC, BEAM_DRAIN_MAGIC),
     0
 },
 
+{
+    ZAP_DAZZLING_BOLT,
+    "bolt of dazzling energy",
+    200,
+    new calcdice_calculator<6, 15, 2, 3>,
+    new tohit_calculator<10, 1, 25>,
+    new dicedef_calculator<3, 20, 0, 1>,
+    new tohit_calculator<16, 1, 25>,
+    ETC_RANDOM,
+    false,
+    BEAM_MMISSILE,
+    DCHAR_FIRED_ZAP,
+    true,
+    true,
+    false,
+    6
+},
+
 };

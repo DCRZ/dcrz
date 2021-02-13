@@ -16,6 +16,7 @@ magic_dart MAGIC_DART
 orb_of_destruction IOOD
 battlesphere BATTLESPHERE
 dazzling_spray DAZZLING_SPRAY
+dazzling_spray DAZZLING_BOLT
 force_lance FORCE_LANCE
 fulminant_prism FULMINANT_PRISM
 searing_ray SEARING_RAY

@@ -89,5 +89,6 @@ enum zap_type
     ZAP_TREMORSTONE,
     ZAP_BLINK,
     ZAP_SHACKLE,
+    ZAP_DAZZLING_BOLT,
     NUM_ZAPS
 };

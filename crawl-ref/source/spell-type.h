@@ -479,5 +479,6 @@ enum spell_type : int
     SPELL_MARSHLIGHT,
     SPELL_SHACKLE,
     SPELL_FALSE_IMAGE,
+    SPELL_DAZZLING_BOLT,
     NUM_SPELLS
 };

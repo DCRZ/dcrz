@@ -257,6 +257,7 @@ iron_dragon CORPSE_IRON_DRAGON
 storm_dragon CORPSE_STORM_DRAGON
 golden_dragon CORPSE_GOLDEN_DRAGON
 shadow_dragon CORPSE_SHADOW_DRAGON
+faerie_dragon CORPSE_FAERIE_DRAGON
 mon/holy/pearl_dragon CORPSE_PEARL_DRAGON
 
 ## Hybrids ('H')

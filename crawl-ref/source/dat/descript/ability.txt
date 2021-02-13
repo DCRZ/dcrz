@@ -11,6 +11,12 @@ Blink ability
 
 Randomly translocates the user a short distance.
 %%%%
+Breathe Dazzling Energy ability
+
+Breathes a bolt of scintillating energy at a targeted creature. Any living 
+creature hit by the bolt may be dazzled and left stumbling blindly. The range
+of the bolt is decreased by one for every creature it strikes.
+%%%%
 Breathe Dispelling Energy ability
 
 Breathes a bolt of dispelling energy at a targeted creature, possibly removing

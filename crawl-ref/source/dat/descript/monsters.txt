@@ -160,6 +160,12 @@ Eustachio
 An apprentice summoner with a flowing moustache. He has funny ideas about
 honour.
 %%%%
+faerie dragon
+
+A very small dragon, covered with shimmering scales that repel attacks.
+Scintillating energies dance around its snout. Unlike their draconic cousins, 
+faerie dragons have the intellect and magical affinity required for spellcasting.
+%%%%
 Fannar
 
 A cold-hearted elven sorcerer, draped in robes of high office. They whisper

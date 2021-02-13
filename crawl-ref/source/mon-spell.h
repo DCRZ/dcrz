@@ -944,6 +944,15 @@ static const mon_spellbook mspell_list[] =
       }
     },
 
+    {  MST_FAERIE_DRAGON,
+      {
+       { SPELL_DAZZLING_BOLT, 44, MON_SPELL_NATURAL | MON_SPELL_BREATH
+                                  | MON_SPELL_NOISY },
+       { SPELL_INVISIBILITY, 11, MON_SPELL_WIZARD },
+       { SPELL_BLINK, 11, MON_SPELL_WIZARD},
+      }
+    },
+
     // ('E') Elementals.
     {  MST_AIR_ELEMENTAL,
       {

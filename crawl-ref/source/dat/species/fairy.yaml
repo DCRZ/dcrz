@@ -1,5 +1,5 @@
 enum: SP_FAIRY
-monster: MONS_BUTTERFLY
+monster: MONS_FAERIE_DRAGON
 name: Fairy
 difficulty: Simple
 difficulty_priority: 90

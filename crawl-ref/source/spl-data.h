@@ -3512,6 +3512,17 @@ static const struct spell_desc spelldata[] =
 },
 
 {
+    SPELL_DAZZLING_BOLT, "Dazzling Bolt",
+    spschool::conjuration | spschool::hexes,
+    spflag::dir_or_target | spflag::monster | spflag::needs_tracer,
+    3,
+    200,
+    LOS_RADIUS, LOS_RADIUS,
+    5, 0,
+    TILEG_DAZZLING_BOLT,
+},
+
+{
     SPELL_NO_SPELL, "nonexistent spell",
     spschool::none,
     spflag::testing,

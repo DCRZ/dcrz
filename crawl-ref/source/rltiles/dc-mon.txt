@@ -630,6 +630,7 @@ ice_dragon MONS_ICE_DRAGON
 steam_dragon MONS_STEAM_DRAGON
 swamp_dragon MONS_SWAMP_DRAGON
 acid_dragon MONS_ACID_DRAGON
+faerie_dragon MONS_FAERIE_DRAGON
 %rim 0
 quicksilver_dragon MONS_QUICKSILVER_DRAGON
 iron_dragon MONS_IRON_DRAGON

@@ -369,6 +369,10 @@ Darkness spell
 
 Dims the light of the dungeon, reducing the range of vision.
 %%%%
+Dazzling Bolt spell
+
+<Breathe Dazzling Energy ability>
+%%%%
 Dazzling Flash spell
 
 The caster erupts in a scintillating display of light. Any living creature
