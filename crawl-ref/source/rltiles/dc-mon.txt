@@ -673,6 +673,7 @@ sphinx MONS_SPHINX
 minotaur MONS_MINOTAUR
 %rim 0
 fenstrider_witch MONS_FENSTRIDER_WITCH
+greenwood_witch MONS_GREENWOOD_WITCH
 %rim 1
 tengu MONS_TENGU
 tengu_conjurer MONS_TENGU_CONJURER

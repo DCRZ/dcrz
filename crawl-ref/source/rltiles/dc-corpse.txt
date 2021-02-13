@@ -269,6 +269,7 @@ manticore CORPSE_MANTICORE
 harpy CORPSE_HARPY
 minotaur CORPSE_MINOTAUR
 fenstrider_witch CORPSE_FENSTRIDER_WITCH
+greenwood_witch CORPSE_GREENWOOD_WITCH
 sphinx CORPSE_SPHINX
 tengu CORPSE_TENGU
 mon/unique/arachne_staveless CORPSE_ARACHNE
