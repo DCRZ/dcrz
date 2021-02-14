@@ -7597,6 +7597,65 @@ void player::weaken(actor */*attacker*/, int pow)
     increase_duration(DUR_WEAK, pow + random2(pow + 3), 50);
 }
 
+// copied from art-func.h due to compiler complaining
+static monster* _find_nearest_possible_beholder()
+{
+    for (distance_iterator di(you.pos(), true, true, LOS_RADIUS); di; ++di)
+    {
+        monster *mon = monster_at(*di);
+        if (mon && you.can_see(*mon)
+            && you.possible_beholder(mon)
+            && mons_is_threatening(*mon))
+        {
+            return mon;
+        }
+    }
+
+    return nullptr;
+}
+
+void player::get_wendigo_beholder()
+{
+
+    monster* mon = _find_nearest_possible_beholder();
+
+    if (!mon)
+        return;
+
+    monster& closest = *mon;
+
+    if (!you.beheld_by(closest))
+    {
+        mprf("Visions of devouring %s flood into your mind.",
+             closest.name(DESC_THE).c_str());
+
+        // The monsters (if any) currently mesmerising the player do not include
+        // this monster. To avoid trapping the player, all other beholders
+        // are removed.
+
+        you.clear_beholders();
+    }
+
+    you.add_beholder(closest, true);
+}
+
+void player::inflict_wendigo_psychosis(bool needs_message)
+{
+    if (you_foodless())
+        return;
+
+    if (needs_message)
+    {
+        if (!duration[DUR_WENDIGO])
+            mprf(MSGCH_WARN, "You feel overwhelmed by an insatiable desire for flesh.");
+        else
+            mprf(MSGCH_WARN, "Your desire for flesh feels stronger.");
+    }
+    you.increase_duration(DUR_WENDIGO, 20 + random2(20), 40);
+    you.get_wendigo_beholder();
+    you.update_beholders();
+}
+
 /**
  * Check if the player is about to die from flight/form expiration.
  *

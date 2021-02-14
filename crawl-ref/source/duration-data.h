@@ -622,6 +622,11 @@ static const duration_def duration_data[] =
     { DUR_HEAVENLY_STORM, 0, "", "heavenly storm", "",
       "Heavenly clouds are increasing your accuracy and damage.", D_NO_FLAGS,
       {{ "", wu_jian_decrement_heavenly_storm }}},
+    { DUR_WENDIGO,
+      RED, "Wendigo",
+      "wendigo psychosis", "wendigo",
+      "You are overwhelmed by the desire to consume your enemies.", D_DISPELLABLE,
+      {{ "You desire for flesh subsides." }}},
 
 
 #if TAG_MAJOR_VERSION == 34

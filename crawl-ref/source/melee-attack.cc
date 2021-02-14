@@ -19,6 +19,7 @@
 #include "butcher.h"
 #include "chardump.h"
 #include "cloud.h"
+#include "coordit.h"     // For distance_iterator()
 #include "delay.h"
 #include "english.h"
 #include "env.h"
@@ -2998,6 +2999,11 @@ void melee_attack::mons_apply_attack_flavour()
     case AF_WEAKNESS:
         if (coinflip())
             defender->weaken(attacker, 12);
+        break;
+    
+    case AF_WENDIGO:
+        if (defender->is_player() && !you_foodless() && one_chance_in(3))
+            you.inflict_wendigo_psychosis();
         break;
     }
 }

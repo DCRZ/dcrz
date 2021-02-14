@@ -1038,6 +1038,10 @@ void player_reacts()
     if (grd(you.pos()) == DNGN_LAVA)
         maybe_melt_player_enchantments(BEAM_FIRE, you.time_taken);
 
+    if (you.duration[DUR_WENDIGO])
+        you.get_wendigo_beholder();
+        
+
     // Handle starvation before subtracting hunger for this turn (including
     // hunger from the berserk duration) and before monsters react, so you
     // always get a turn (though it may be a delay or macro!) between getting

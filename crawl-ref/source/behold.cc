@@ -261,5 +261,7 @@ bool player::possible_beholder(const monster* mon) const
             && !mon->berserk_or_insane()
             && !mons_is_fleeing(*mon)
             && !is_sanctuary(pos())
-          || player_equip_unrand(UNRAND_DEMON_AXE));
+          || player_equip_unrand(UNRAND_DEMON_AXE)
+          || (you.duration[DUR_WENDIGO]
+            && mons_class_can_leave_corpse(mon->type)));
 }

@@ -731,6 +731,7 @@ static const pop_entry pop_forest[] =
   {  0,  6,  165, SEMI, MONS_PIXIE },
   {  1,  5,  125, FLAT, MONS_FAERIE_DRAGON },
   {  1,  9,  125, PEAK, MONS_GREENWOOD_WITCH },
+  {  1, 10,  125, RISE, MONS_WENDIGO },
   { 0,0,0,FLAT,MONS_0 }
 };
 

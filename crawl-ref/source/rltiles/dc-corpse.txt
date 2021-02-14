@@ -190,6 +190,7 @@ eleionoma CORPSE_ELEIONOMA
 bog_body CORPSE_BOG_BODY
 necrophage CORPSE_NECROPHAGE
 ghoul CORPSE_GHOUL
+wendigo CORPSE_WENDIGO
 
 ## Orcs ('o')
 %back blood_puddle_red blood_puddle_red1 blood_puddle_red2 blood_puddle_red3 blood_puddle_red4

@@ -722,6 +722,8 @@ public:
     void slow_down(actor *, int str) override;
     void confuse(actor *, int strength) override;
     void weaken(actor *attacker, int pow) override;
+    void get_wendigo_beholder();
+    void inflict_wendigo_psychosis(bool needs_message = true);
     bool heal(int amount) override;
     bool drain_exp(actor *, bool quiet = false, int pow = 3) override;
     bool rot(actor *, int amount, bool quiet = false, bool no_cleanup = false)

@@ -1020,6 +1020,7 @@ necrophage MONS_NECROPHAGE
 bloated_husk MONS_BLOATED_HUSK
 %rim 1
 ghoul MONS_GHOUL
+wendigo MONS_WENDIGO
 
 %sdir mon/unique
 blork_the_orc MONS_BLORK_THE_ORC
