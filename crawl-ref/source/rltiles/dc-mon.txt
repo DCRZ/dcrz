@@ -94,6 +94,7 @@ cat4 MONS_FELID
 %rim 0
 %sdir mon/unique
 natasha MONS_NATASHA
+sasquatch MONS_SASQUATCH
 %rim 1
 %sdir mon/animals
 

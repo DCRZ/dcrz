@@ -2091,6 +2091,10 @@ A small, human-shaped agglomeration of salt. It was created by the last
 fugitive loyalists of the fallen eastern empire, forced in desperation to
 construct golems from local resources to defend themselves.
 %%%%
+the Sasquatch
+
+A large bipedal primate whose appearance is strangely blurred.
+%%%%
 satyr
 
 A more intelligent relative of the faun, often found in their company, and far

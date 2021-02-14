@@ -358,6 +358,11 @@ DEPTH:  Depths:3-, Vaults:2-, Crypt
 # Uniques which appear in neither the Dungeon nor the Depths:
 ################################################################################
 
+NAME:   uniq_sasquatch
+DEPTH:  Forest
+WEIGHT: 1
+: place_unique(_G, "The Sasquatch")
+
 NAME:   uniq_donald
 DEPTH:  Swamp, Snake, Shoals, Spider, Slime, Vaults, !Vaults:$
 DEPTH:  Crypt, Elf, Orc:$

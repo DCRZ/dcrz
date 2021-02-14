@@ -41,6 +41,8 @@ polar_bear CORPSE_POLAR_BEAR
 ancient_bear CORPSE_ANCIENT_BEAR
 %sdir player/felids
 cat1 CORPSE_FELID
+%sdir mon/unique
+sasquatch CORPSE_SASQUATCH
 %sdir mon/animals
 
 ## Lizards ('l')
