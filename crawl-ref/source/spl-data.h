@@ -1580,7 +1580,7 @@ static const struct spell_desc spelldata[] =
     spflag::dir_or_target | spflag::monster | spflag::needs_tracer,
     4,
     0,
-    3, 3,
+    5, 5,
     5, 0,
     TILEG_METAL_SPLINTERS, // close enough
 },
