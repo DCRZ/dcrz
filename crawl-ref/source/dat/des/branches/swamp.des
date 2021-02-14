@@ -1739,7 +1739,7 @@ DEPTH:  Swamp, !Swamp:$
 TAGS:   ruin
 ORIENT: float
 MONS:   toadstool
-KMONS:  2 = thorn hunter
+KMONS:  2 = shambling mangrove
 KFEAT:  2 = W
 KFEAT:  - = .
 SUBST:  " = ---Wtt1, t = ttt-, - = -:50 .
@@ -1849,7 +1849,7 @@ NAME:   nicolae_swamp_phyte_club
 DEPTH:  Swamp:2-, !Swamp:$
 ORIENT: float
 TAGS:   transparent no_monster_gen no_item_gen
-KMONS:  Hh = thorn hunter
+KMONS:  Hh = shambling mangrove
 KITEM:  h^m = % / * w:5
 KITEM:  o = * / | w:5
 KITEM:  b = Fen Folio ident:type
@@ -2038,7 +2038,7 @@ WEIGHT:  20
 ORIENT:  float
 TAGS:    no_rotate
 MONS:    swamp dragon, swamp drake, hydra
-MONS:    thorn hunter / shambling mangrove / spriggan druid
+MONS:    shambling mangrove / spriggan druid
 KMONS:   O = fire dragon w:1 / ice dragon w:1 / hydra w:18
 KMONS:   & = the lernaean hydra
 KITEM:   O& = decaying rune of Zot
@@ -2078,7 +2078,7 @@ PLACE:   Swamp:$
 WEIGHT:  20
 ORIENT:  float
 MONS:    swamp dragon, swamp drake, hydra, lindwurm, rime drake, bog body
-MONS:    thorn hunter / shambling mangrove / spriggan druid
+MONS:    shambling mangrove / spriggan druid
 KMONS:   O = fire dragon w:2 / hydra w:18
 KMONS:   P = ice dragon w:2 / hydra w:18
 KMONS:   & = the lernaean hydra
@@ -2422,7 +2422,7 @@ NSUBST:  O = 1:O / *:*
 : if crawl.one_chance_in(11) then
      KMONS: O = the lernaean hydra
 : else
-     KMONS: O* = thorn hunter / shambling mangrove / spriggan berserker
+     KMONS: O* = shambling mangrove / spriggan berserker
      KITEM: * = *
 : end
 MAP
@@ -2461,7 +2461,7 @@ MONS:    freezing wraith / flayed ghost / phantasmal warrior
 MONS:    hydra skeleton / swamp dragon skeleton / death drake skeleton
 MONS:    hydra zombie / swamp dragon zombie / death drake zombie
 MONS:    spectral hydra / hydra simulacrum
-MONS:    patrolling thorn hunter / patrolling shambling mangrove
+MONS:    patrolling shambling mangrove
 MONS:    patrolling spriggan druid god:fedhas
 KITEM:   O = decaying rune of Zot
 KFEAT:   _ = altar_fedhas

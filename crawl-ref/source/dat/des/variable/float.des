@@ -1406,7 +1406,7 @@ ORIENT:  float
 KMONS:   1 = tyrant leech / swamp worm w:50 / \
              vampire mosquito band / goliath frog / swamp drake w:15
 KMONS:   23 = alligator / swamp dragon / hydra
-KMONS:   45 = tentacled monstrosity / thorn hunter
+KMONS:   45 = tentacled monstrosity / shambling mangrove
 KITEM:   3 = any good_item / any potion / gold
 KITEM:   5 = superb_item / gold good_item / any potion q:4 w:20
 KMONS:   P = plant
