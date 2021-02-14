@@ -212,6 +212,7 @@ mana_viper MONS_MANA_VIPER
 ## Bears ('h' again)
 black_bear MONS_BLACK_BEAR
 polar_bear MONS_POLAR_BEAR
+ancient_bear MONS_ANCIENT_BEAR
 
 ## Yaks, sheep and elephants ('Y')
 dream_sheep MONS_DREAM_SHEEP

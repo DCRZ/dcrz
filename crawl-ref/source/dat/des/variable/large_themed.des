@@ -2347,7 +2347,7 @@ KMONS:  1 = electric eel / rime drake / elephant / wyvern
 KMONS:  2 = lindwurm / dire elephant / catoblepas
 : elseif you.branch() == "Forest" then
 KMONS:  1 = water elemental / water nymph / elemental wellspring
-KMONS:  2 = thorn hunter / shambling mangrove / wendigo
+KMONS:  2 = ancient bear / shambling mangrove / wendigo
 : end
 KITEM:  2 = * / |
 KFEAT:  q = W

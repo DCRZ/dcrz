@@ -31,7 +31,7 @@ function wad_woods_setup(e, uniq, weight, mist, delaynum, sizenum, spreadnum)
     elseif you.in_branch("Forest") then
         e.mons("spriggan defender / w:3 spriggan rider / w:2 spriggan druid"
                 .. " / w:3 spriggan air mage / w:3 spriggan berserker")
-        e.mons("apis / w:4 shambling mangrove / w:2 thorn hunter")
+        e.mons("apis / w:4 ancient bear / w:2 shambling mangrove ")
     else
         if you.absdepth() >= 12 then
             e.mons("centaur warrior / two-headed ogre")

@@ -892,16 +892,36 @@ void bolt::burn_wall_effect()
     }
     else if (you.can_smell())
         emit_message("You smell burning wood.");
+    
+    bool player_caused = false;
     if (whose_kill() == KC_YOU)
+    {
         did_god_conduct(DID_KILL_PLANT, 1, god_cares());
+        player_caused = true;
+    }
     else if (whose_kill() == KC_FRIENDLY && !crawl_state.game_is_arena())
+    {
         did_god_conduct(DID_KILL_PLANT, 1, god_cares());
+        player_caused = true;
+    }
 
     // Trees do not burn so readily in a wet environment.
     if (player_in_branch(BRANCH_SWAMP))
         place_cloud(CLOUD_FIRE, pos(), random2(12)+5, agent());
     else
         place_cloud(CLOUD_FOREST_FIRE, pos(), random2(30)+25, agent());
+
+    // Only you can prevent forest fires
+    if (player_caused == true)
+    {
+        for (distance_iterator di(pos(), false, false, LOS_RADIUS); di; ++di)
+        {
+            monster *mon = monster_at(*di);
+            if (mon && mon->type == MONS_ANCIENT_BEAR)
+                mon->go_berserk(true);
+        }
+    }
+    
     obvious_effect = true;
 
     finish_beam();

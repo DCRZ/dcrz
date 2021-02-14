@@ -544,6 +544,12 @@ A humanoid construct of insubstantial memory, floating through the air. Though
 perhaps somewhat changed in shape and bearing few discernable features, still
 they seem somehow to resemble a warrior from the distantly remembered past.
 %%%%
+ancient bear
+
+A lumbering ursine figure, grown venerable beyond its natural years by the magic
+of its forest home. Centuries of protecting the forest from fires has left its
+russet fur with a strange warm sheen and an unnatural resilience to heat.
+%%%%
 ancient champion
 
 An unfathomably ancient skeleton. It has hundreds of golden sigils etched onto
