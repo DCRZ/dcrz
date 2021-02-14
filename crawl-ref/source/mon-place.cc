@@ -1038,6 +1038,9 @@ static monster* _place_monster_aux(const mgen_data &mg, const monster *leader,
             mon->god = GOD_KIKUBAAQUDGHA;
         else if (mg.cls == MONS_CORRUPTER)
             mon->god = GOD_LUGONU;
+        // Pixies belong to Xom
+        else if (mg.cls == MONS_PIXIE)
+            mon->god = GOD_XOM;
         else
         {
             switch (mons_genus(mg.cls))

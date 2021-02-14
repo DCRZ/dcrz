@@ -187,7 +187,7 @@ const string describe_xom_favour()
 }
 
 #define XOM_SPEECH(x) x
-static string _get_xom_speech(const string &key)
+string get_xom_speech(const string &key)
 {
     string result = getSpeakString("Xom " + key);
 
@@ -545,7 +545,7 @@ static void _xom_random_spell(int sever)
     if (spell == SPELL_NO_SPELL)
         return;
 
-    god_speaks(GOD_XOM, _get_xom_speech("spell effect").c_str());
+    god_speaks(GOD_XOM, get_xom_speech("spell effect").c_str());
 
 #if defined(DEBUG_DIAGNOSTICS) || defined(DEBUG_RELIGION) || defined(DEBUG_XOM)
     mprf(MSGCH_DIAGNOSTICS,
@@ -561,7 +561,7 @@ static void _xom_random_spell(int sever)
 /// Map out the level.
 static void _xom_magic_mapping(int sever)
 {
-    god_speaks(GOD_XOM, _get_xom_speech("divination").c_str());
+    god_speaks(GOD_XOM, get_xom_speech("divination").c_str());
 
     // power isn't relevant at present, but may again be, someday?
     const int power = stepdown_value(sever, 10, 10, 40, 45);
@@ -573,7 +573,7 @@ static void _xom_magic_mapping(int sever)
 /// Detect items across the level.
 static void _xom_detect_items(int sever)
 {
-    god_speaks(GOD_XOM, _get_xom_speech("divination").c_str());
+    god_speaks(GOD_XOM, get_xom_speech("divination").c_str());
 
     if (detect_items(sever) == 0)
         canned_msg(MSG_DETECT_NOTHING);
@@ -587,7 +587,7 @@ static void _xom_detect_items(int sever)
 /// Detect creatures across the level.
 static void _xom_detect_creatures(int sever)
 {
-    god_speaks(GOD_XOM, _get_xom_speech("divination").c_str());
+    god_speaks(GOD_XOM, get_xom_speech("divination").c_str());
 
     const int prev_detected = count_detected_mons();
     const int num_creatures = detect_creatures(sever);
@@ -667,7 +667,7 @@ static void _xom_make_item(object_class_type base, int subtype, int power)
 /// Xom's 'acquirement'. A gift for the player, of a sort...
 static void _xom_acquirement(int /*sever*/)
 {
-    god_speaks(GOD_XOM, _get_xom_speech("general gift").c_str());
+    god_speaks(GOD_XOM, get_xom_speech("general gift").c_str());
 
     const object_class_type types[] =
     {
@@ -698,7 +698,7 @@ static void _xom_acquirement(int /*sever*/)
 /// Create a random item and give it to the player.
 static void _xom_random_item(int sever)
 {
-    god_speaks(GOD_XOM, _get_xom_speech("general gift").c_str());
+    god_speaks(GOD_XOM, get_xom_speech("general gift").c_str());
     _xom_make_item(OBJ_RANDOM, OBJ_RANDOM, sever * 3);
     more();
 }
@@ -972,7 +972,7 @@ static void _xom_do_potion(int /*sever*/)
     }
     while (!get_potion_effect(pot)->can_quaff()); // ugh
 
-    god_speaks(GOD_XOM, _get_xom_speech("potion effect").c_str());
+    god_speaks(GOD_XOM, get_xom_speech("potion effect").c_str());
 
     if (pot == POT_INVISIBILITY)
         you.attribute[ATTR_INVIS_UNCANCELLABLE] = 1;
@@ -1012,7 +1012,7 @@ static void _xom_confuse_monsters(int sever)
 
         // Only give this message once.
         if (!spoke)
-            god_speaks(GOD_XOM, _get_xom_speech("confusion").c_str());
+            god_speaks(GOD_XOM, get_xom_speech("confusion").c_str());
         spoke = true;
 
         _confuse_monster(*mi, sever);
@@ -1059,7 +1059,7 @@ static void _xom_send_allies(int sever)
 
     if (num_actually_summoned)
     {
-        god_speaks(GOD_XOM, _get_xom_speech("multiple summons").c_str());
+        god_speaks(GOD_XOM, get_xom_speech("multiple summons").c_str());
 
         const string note = make_stringf("summons %d friendly demon%s",
                                          num_actually_summoned,
@@ -1080,7 +1080,7 @@ static void _xom_send_one_ally(int sever)
 
     if (monster *summons = create_monster(mg))
     {
-        god_speaks(GOD_XOM, _get_xom_speech("single summon").c_str());
+        god_speaks(GOD_XOM, get_xom_speech("single summon").c_str());
 
         const string note = make_stringf("summons friendly %s",
                                          summons->name(DESC_PLAIN).c_str());
@@ -1099,8 +1099,8 @@ static void _xom_send_one_ally(int sever)
 static void _xom_polymorph_monster(monster &mons, bool helpful)
 {
     god_speaks(GOD_XOM,
-               helpful ? _get_xom_speech("good monster polymorph").c_str()
-                       : _get_xom_speech("bad monster polymorph").c_str());
+               helpful ? get_xom_speech("good monster polymorph").c_str()
+                       : get_xom_speech("bad monster polymorph").c_str());
 
     const bool see_old = you.can_see(mons);
     const string old_name = see_old ? mons.full_name(DESC_PLAIN)
@@ -1219,7 +1219,7 @@ static void _xom_rearrange_pieces(int sever)
     if (mons.empty())
         return;
 
-    god_speaks(GOD_XOM, _get_xom_speech("rearrange the pieces").c_str());
+    god_speaks(GOD_XOM, get_xom_speech("rearrange the pieces").c_str());
 
     const int num_mons = mons.size();
 
@@ -1309,7 +1309,7 @@ static void _xom_snakes_to_sticks(int /*sever*/)
         {
             take_note(Note(NOTE_XOM_EFFECT, you.piety, -1,
                            "snakes to sticks"), true);
-            god_speaks(GOD_XOM, _get_xom_speech("snakes to sticks").c_str());
+            god_speaks(GOD_XOM, get_xom_speech("snakes to sticks").c_str());
             action = true;
         }
 
@@ -1384,7 +1384,7 @@ static void _xom_animate_monster_weapon(int sever)
     if (!mon)
         return;
 
-    god_speaks(GOD_XOM, _get_xom_speech("animate monster weapon").c_str());
+    god_speaks(GOD_XOM, get_xom_speech("animate monster weapon").c_str());
 
     // ...and get its weapon.
     const int wpn = mon->inv[MSLOT_WEAPON];
@@ -1422,8 +1422,8 @@ static void _xom_give_mutations(bool good)
     if (!you.can_safely_mutate())
         return;
 
-    god_speaks(GOD_XOM, good ? _get_xom_speech("good mutations").c_str()
-                             : _get_xom_speech("random mutations").c_str());
+    god_speaks(GOD_XOM, good ? get_xom_speech("good mutations").c_str()
+                             : get_xom_speech("random mutations").c_str());
 
     const int num_tries = random2(4) + 1;
 
@@ -1569,7 +1569,7 @@ static void _xom_place_altars()
     {
         take_note(Note(NOTE_XOM_EFFECT, you.piety, -1,
                        "scenery: create altars"), true);
-        god_speaks(GOD_XOM, _get_xom_speech("scenery").c_str());
+        god_speaks(GOD_XOM, get_xom_speech("scenery").c_str());
     }
 }
 
@@ -1624,7 +1624,7 @@ static void _xom_change_scenery(int /*sever*/)
     if (!doors_open && !doors_close && !fountains_blood)
         return;
 
-    god_speaks(GOD_XOM, _get_xom_speech("scenery").c_str());
+    god_speaks(GOD_XOM, get_xom_speech("scenery").c_str());
 
     vector<string> effects, terse;
     if (fountains_blood > 0)
@@ -1712,7 +1712,7 @@ static void _xom_destruction(int sever, bool real)
         if (!real)
         {
             if (!rc)
-                god_speaks(GOD_XOM, _get_xom_speech("fake destruction").c_str());
+                god_speaks(GOD_XOM, get_xom_speech("fake destruction").c_str());
             rc = true;
             backlight_monster(*mi);
             continue;
@@ -1734,7 +1734,7 @@ static void _xom_destruction(int sever, bool real)
 
         // Only give this message once.
         if (!rc)
-            god_speaks(GOD_XOM, _get_xom_speech("destruction").c_str());
+            god_speaks(GOD_XOM, get_xom_speech("destruction").c_str());
         rc = true;
 
         beam.explode();
@@ -1757,8 +1757,8 @@ static void _xom_enchant_monster(bool helpful)
         return;
 
     god_speaks(GOD_XOM,
-               helpful ? _get_xom_speech("good enchant monster").c_str()
-                       : _get_xom_speech("bad enchant monster").c_str());
+               helpful ? get_xom_speech("good enchant monster").c_str()
+                       : get_xom_speech("bad enchant monster").c_str());
 
     beam_type ench;
 
@@ -1808,13 +1808,13 @@ static void _xom_fog(int /*sever*/)
 {
     big_cloud(CLOUD_RANDOM_SMOKE, &you, you.pos(), 50, 8 + random2(8));
     take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, "fog"), true);
-    god_speaks(GOD_XOM, _get_xom_speech("cloud").c_str());
+    god_speaks(GOD_XOM, get_xom_speech("cloud").c_str());
 }
 
 static void _xom_pseudo_miscast(int /*sever*/)
 {
     take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, "silly message"), true);
-    god_speaks(GOD_XOM, _get_xom_speech("zero miscast effect").c_str());
+    god_speaks(GOD_XOM, get_xom_speech("zero miscast effect").c_str());
 
     vector<string> messages;
     vector<string> priority;
@@ -2121,7 +2121,7 @@ static void _xom_chaos_upgrade(int /*sever*/)
     if (!mon)
         return;
 
-    god_speaks(GOD_XOM, _get_xom_speech("chaos upgrade").c_str());
+    god_speaks(GOD_XOM, get_xom_speech("chaos upgrade").c_str());
 
     mon_inv_type slots[] = {MSLOT_WEAPON, MSLOT_ALT_WEAPON, MSLOT_MISSILE};
 
@@ -2151,7 +2151,7 @@ static void _xom_player_confusion_effect(int sever)
     if (!confuse_player(5 + random2(3), true))
         return;
 
-    god_speaks(GOD_XOM, _get_xom_speech("confusion").c_str());
+    god_speaks(GOD_XOM, get_xom_speech("confusion").c_str());
     mprf(MSGCH_WARN, "You are %sconfused.",
          conf ? "more " : "");
 
@@ -2375,7 +2375,7 @@ static void _xom_repel_stairs(bool unclimbable)
             real_stairs = true;
 
     // Don't mention staircases if there aren't any nearby.
-    string stair_msg = _get_xom_speech("repel stairs");
+    string stair_msg = get_xom_speech("repel stairs");
     if (stair_msg.find("@staircase@") != string::npos)
     {
         string feat_name;
@@ -2431,13 +2431,13 @@ static void _xom_cloud_trail(int /*sever*/)
 
     take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, "cloud trail"), true);
 
-    const string speech = _get_xom_speech("cloud trail");
+    const string speech = get_xom_speech("cloud trail");
     god_speaks(GOD_XOM, speech.c_str());
 }
 
 static void _xom_statloss(int /*sever*/)
 {
-    const string speech = _get_xom_speech("draining or torment");
+    const string speech = get_xom_speech("draining or torment");
     const bool nasty = _xom_feels_nasty();
 
     const stat_type stat = static_cast<stat_type>(random2(NUM_STATS));
@@ -2462,7 +2462,7 @@ static void _xom_statloss(int /*sever*/)
 
 static void _xom_draining(int /*sever*/)
 {
-    const string speech = _get_xom_speech("draining or torment");
+    const string speech = get_xom_speech("draining or torment");
     god_speaks(GOD_XOM, speech.c_str());
 
     drain_player(100, true);
@@ -2472,7 +2472,7 @@ static void _xom_draining(int /*sever*/)
 
 static void _xom_torment(int /*sever*/)
 {
-    const string speech = _get_xom_speech("draining or torment");
+    const string speech = get_xom_speech("draining or torment");
     god_speaks(GOD_XOM, speech.c_str());
 
     torment_player(0, TORMENT_XOM);
@@ -2532,7 +2532,7 @@ static void _xom_summon_hostiles(int sever)
                                          num_summoned > 1 ? "s" : "");
         take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, note), true);
 
-        const string speech = _get_xom_speech("hostile monster");
+        const string speech = get_xom_speech("hostile monster");
         god_speaks(GOD_XOM, speech.c_str());
     }
 }
@@ -2579,8 +2579,8 @@ static void _revert_banishment(bool xom_banished = true)
 {
     more();
     god_speaks(GOD_XOM, xom_banished
-               ? _get_xom_speech("revert own banishment").c_str()
-               : _get_xom_speech("revert other banishment").c_str());
+               ? get_xom_speech("revert own banishment").c_str()
+               : get_xom_speech("revert other banishment").c_str());
     down_stairs(DNGN_EXIT_ABYSS);
     take_note(Note(NOTE_XOM_EFFECT, you.piety, -1,
                    "revert banishment"), true);
@@ -2605,7 +2605,7 @@ xom_event_type xom_maybe_reverts_banishment(bool xom_banished, bool debug)
 
 static void _xom_do_banishment(bool real)
 {
-    god_speaks(GOD_XOM, _get_xom_speech("banishment").c_str());
+    god_speaks(GOD_XOM, get_xom_speech("banishment").c_str());
 
     // Handles note taking, scales depth by XL
     banished("Xom", you.experience_level);
@@ -2621,7 +2621,7 @@ static void _xom_noise(int /*sever*/)
     // Ranges from shout to shatter volume.
     const int noisiness = 12 + random2(19);
 
-    god_speaks(GOD_XOM, _get_xom_speech("noise").c_str());
+    god_speaks(GOD_XOM, get_xom_speech("noise").c_str());
     // Xom isn't subject to silence.
     fake_noisy(noisiness, you.pos());
 
@@ -2651,7 +2651,7 @@ static void _xom_blink_monsters(int /*sever*/)
 
         // Only give this message once.
         if (!blinks)
-            god_speaks(GOD_XOM, _get_xom_speech("blink monsters").c_str());
+            god_speaks(GOD_XOM, get_xom_speech("blink monsters").c_str());
 
         if (blink_to_player)
             blink_other_close(*mi, you.pos());
@@ -2670,7 +2670,7 @@ static void _xom_blink_monsters(int /*sever*/)
 
 static void _xom_cleaving(int sever)
 {
-    god_speaks(GOD_XOM, _get_xom_speech("cleaving").c_str());
+    god_speaks(GOD_XOM, get_xom_speech("cleaving").c_str());
 
     you.increase_duration(DUR_CLEAVE, 10 + random2(sever));
 
@@ -2734,8 +2734,8 @@ static void _handle_accidental_death(const int orig_hp,
     }
 
     canned_msg(MSG_YOU_DIE);
-    god_speaks(GOD_XOM, _get_xom_speech(speech_type).c_str());
-    god_speaks(GOD_XOM, _get_xom_speech("resurrection").c_str());
+    god_speaks(GOD_XOM, get_xom_speech(speech_type).c_str());
+    god_speaks(GOD_XOM, get_xom_speech("resurrection").c_str());
 
     int pre_mut_hp = you.hp;
     if (you.hp <= 0)
@@ -3257,14 +3257,14 @@ void xom_death_message(const kill_method_type killed_by)
     if (!_death_is_funny(killed_by) && you.hp >= -1 * random2(3)
         && death_tension <= random2(10))
     {
-        god_speaks(GOD_XOM, _get_xom_speech("boring death").c_str());
+        god_speaks(GOD_XOM, get_xom_speech("boring death").c_str());
     }
     // Unusual methods of dying, really low hp, or high tension make
     // for funny deaths.
     else if (_death_is_funny(killed_by) || you.hp <= -10
              || death_tension >= 20)
     {
-        god_speaks(GOD_XOM, _get_xom_speech("laughter").c_str());
+        god_speaks(GOD_XOM, get_xom_speech("laughter").c_str());
     }
 
     // All others just get ignored by Xom.
@@ -3346,7 +3346,7 @@ bool xom_saves_your_life(const kill_method_type death_type)
 
     const string key = _get_death_type_keyword(death_type);
     // XOM_SPEECH("life saving actor") or XOM_SPEECH("life saving general")
-    string speech = _get_xom_speech("life saving " + key);
+    string speech = get_xom_speech("life saving " + key);
     god_speaks(GOD_XOM, speech.c_str());
 
     // Give back some hp.
@@ -3377,7 +3377,7 @@ void xom_new_level_noise_or_stealth()
     {
         if (!player_under_penance(GOD_XOM) && coinflip())
         {
-            god_speaks(GOD_XOM, _get_xom_speech("stealth player").c_str());
+            god_speaks(GOD_XOM, get_xom_speech("stealth player").c_str());
             mpr(you.duration[DUR_STEALTH] ? "You feel more catlike."
                                           : "You feel stealthy.");
             you.increase_duration(DUR_STEALTH, 10 + random2(80));
@@ -3397,7 +3397,7 @@ void xom_new_level_noise_or_stealth()
  */
 static void _xom_good_teleport(int /*sever*/)
 {
-    god_speaks(GOD_XOM, _get_xom_speech("teleportation journey").c_str());
+    god_speaks(GOD_XOM, get_xom_speech("teleportation journey").c_str());
     int count = 0;
     do
     {
@@ -3427,7 +3427,7 @@ static void _xom_good_teleport(int /*sever*/)
 static void _xom_bad_teleport(int /*sever*/)
 {
     god_speaks(GOD_XOM,
-               _get_xom_speech("teleportation journey").c_str());
+               get_xom_speech("teleportation journey").c_str());
 
     int count = 0;
     do
@@ -3459,7 +3459,7 @@ static void _xom_chaos_cloud(int /*sever*/)
                       nullptr, spread_rate);
     take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, "chaos cloud"),
               true);
-    god_speaks(GOD_XOM, _get_xom_speech("cloud").c_str());
+    god_speaks(GOD_XOM, get_xom_speech("cloud").c_str());
 }
 
 struct xom_effect_count

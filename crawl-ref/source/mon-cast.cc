@@ -6618,6 +6618,12 @@ void mons_cast(monster* mons, bolt pbolt, spell_type spell_cast,
     case SPELL_REARRANGE_PIECES:
     {
         bool did_message = false;
+        if (mons->god == GOD_XOM)
+        {
+            god_speaks(GOD_XOM, get_xom_speech("rearrange the pieces").c_str());
+            did_message = true;
+        }
+
         vector<actor* > victims;
         for (actor_near_iterator ai(mons, LOS_NO_TRANS); ai; ++ai)
             victims.push_back(*ai);
