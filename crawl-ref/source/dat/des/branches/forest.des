@@ -89,39 +89,6 @@ xxtttt...ttttxx
    xxtt..ttx
 ENDMAP
 
-NAME:    bh_autumn_forest_stairs
-# No threat or loot, so allow another vault.
-TAGS:    extra
-ORIENT:  float
-DEPTH:   Forest
-COLOUR:  t = lightred / red w:3
-SHUFFLE: Aaq / Bbr / Ccs
-SUBST:   q = @
-SUBST:   A = ., bBcCdDrs = t
-COLOUR:  t = lightred / red w:3 / green w:3 / lightgreen w:1
-TILE:    t = dngn_tree_lightred / dngn_tree_red w:4 / dngn_tree_yellow w:4
-COLOUR:  a = lightred / red / green / lightgreen
-TILE:    a = dngn_tree_lightred / dngn_tree_red / dngn_tree_yellow / dngn_tree
-SUBST:   a = t
-MAP
-  aaaa qqq aaaa
- caaaaaAAAaaaaab
-cccaaaaAAAaaaabbb
-ccc...........bbb
-ccc...........bbb
- cc..xxxxxxx..bb
-sCC..x.....x..BBr
-sCC..x..{..x..BBr
-sCC..x.....x..BBr
- cc..xV...Vx..bb
-ccc..xx+++xx..bbb
-ccc...........bbb
-ccc...........bbb
-ccctttttttttttbbb
- cctttttttttttbb
-  ctttt    tttb
-ENDMAP
-
 ##############################################################################
 # Forest minivaults
 ##############################################################################
@@ -483,6 +450,370 @@ tt.......xxxxx..sxxxxssxx
  tttxxxxx......xx.sxx..xx
 txxxxxxxxxx....xxx.1.xxxx
  txxxxxxxxxxxxxxxxxxxxxxx
+ENDMAP
+
+NAME:    bh_autumn_forest_stairs
+# No threat or loot, so allow another vault.
+TAGS:    extra
+ORIENT:  float
+DEPTH:   Forest
+COLOUR:  t = lightred / red w:3
+SHUFFLE: Aaq / Bbr / Ccs
+SUBST:   q = @
+SUBST:   A = ., bBcCdDrs = t
+COLOUR:  t = lightred / red w:3 / green w:3 / lightgreen w:1
+TILE:    t = dngn_tree_lightred / dngn_tree_red w:4 / dngn_tree_yellow w:4
+COLOUR:  a = lightred / red / green / lightgreen
+TILE:    a = dngn_tree_lightred / dngn_tree_red / dngn_tree_yellow / dngn_tree
+SUBST:   a = t
+MAP
+  aaaa qqq aaaa
+ caaaaaAAAaaaaab
+cccaaaaAAAaaaabbb
+ccc...........bbb
+ccc...........bbb
+ cc..xxxxxxx..bb
+sCC..x.....x..BBr
+sCC..x..{..x..BBr
+sCC..x.....x..BBr
+ cc..xV...Vx..bb
+ccc..xx+++xx..bbb
+ccc...........bbb
+ccc...........bbb
+ccctttttttttttbbb
+ cctttttttttttbb
+  ctttt    tttb
+ENDMAP
+
+# A den of bears.
+NAME:   gammafunk_forest_bear_cave
+TAGS:   patrolling no_monster_gen
+DEPTH:  Forest
+MONS:   ancient bear
+KFEAT:  " = W
+KMONS:  " = water elemental w:40 / elemental wellspring
+KITEM:  % = ration
+SUBST:  % = %., * = *:40 |, B = 1., E = tE
+CLEAR:  E
+MAP
+EEEEEEEEEEEEEEEEEEEEEEEEE
+EtttttxxtttxxxxxxttxxtttE
+EttxxxxxxxxxxxxxxxxxxxxxE
+Etxxxxxxxxxxx..xxxxxxxxtE
+Etxxxxx"Wxx......x.xxxttE
+Exxx%...1.....x....xxxxtE
+Exxx%B.1...xxxxx.....xxtE
+Exxxx%%%*xxxxxxxxxxx..xtE
+Etxxx*xxxxxxxtxxxxxxx...@
+Etxxxxxxxxxxtttttttxxx..@
+EttxxxxxttttttttttttttttE
+EEEEEEEEEEEEEEEEEEEEEEEEE
+ENDMAP
+
+NAME:   nicolae_forest_garden
+TAGS:   no_monster_gen no_item_gen no_trap_gen transparent
+DEPTH:  Forest
+KMONS:  Y = faun
+KMONS:  D = satyr
+KMONS:  C = dryad
+KMONS:  P = plant
+KITEM:  f = ration
+SUBST:  P = P., f = f...
+NSUBST: D = 1:D / *:.
+MAP
+        .@@@.
+      .........
+    tt...P.P....tt
+   tttttPPPPPPPtttt.
+  .ttDfPP.Y....tDtt...
+ .PPttP..P.P.PP.ftP...
+ .P....PPP...PPP.PP..@
+..PP..PPPwwwC.P..PPP.@
+......Y.wwwwww.Y.ttP.@
+.@.PP..Pwwwwww...fttt.
+ @..P..PP.wwwPP.ttttt
+  @.PP.PPP..PP..PPttt
+  ...Ptt.P.PPPPPP....
+  ...ttfDttPP.......
+    .tttttt......@
+     ..tt.......
+        .....
+ENDMAP
+
+NAME: nicolae_forest_triple_paths
+TAGS: transparent extra decor
+SUBST: T = t_
+CLEAR: _
+MAP
+         Tt@tT
+         Tt.tT
+     @TTTTt.tTTTT@
+    T..tttt.tttt..T
+    TT....t.t....TT
+     Tttt.t.t.tttT
+    TTttt.t.t.tttTT
+TTTTTtttt.t.t.ttttTTTTT
+ttttttttt.t.t.ttttttttt
+TTTTTtttt.t.t.ttttTTTTT
+    TTttt.t.t.tttTT
+     Tttt.t.t.tttT
+    TT....t.t....TT
+    T..tttt.tttt..T
+     @TTTtt.ttTTT@
+        TTt.tTT
+         Tt@tT
+ENDMAP
+
+NAME: nicolae_forest_godswood
+TAGS: transparent extra decor
+MAP
+ttt     ttt
+..ttttttt..
+@...ttt...@
+.tt..t..tt.
+tttt...tttt
+ tt..t..tt
+ t.......t
+ tt..w..tt
+  t.www.t
+ tt..w..tt
+ t...C...t
+ tt..t..tt
+  tt...tt
+   ttttt
+ENDMAP
+
+NAME: nicolae_forest_orc_logging_accident
+TAGS: decor extra no_monster_gen no_trap_gen
+SUBST: F = 't, T = _t
+NSUBST: p = 4:p / *:., ' = o / '
+SUBST: . = ...b
+KPROP: bp = bloody
+SUBST: b = .
+{{
+dgn.delayed_decay_extra(_G, 'o', 'orc corpse', 'hand axe / broad axe, ' ..
+   'leather armour / pair of gloves, mundane quarterstaff')
+dgn.delayed_decay_extra(_G, 'p', 'orc corpse', 'hand axe / broad axe, ' ..
+   'leather armour / pair of gloves')
+}}
+KITEM: w = mundane quarterstaff
+KITEM: s = ration
+KFEAT: 'o = W
+CLEAR:  _
+MAP
+       TTTTT
+     TTtttttTTT
+    TttttFFttttTT
+   TttttFF'FtttttT
+  TtttttF'''FtttttT
+ TtttttttF''FttttttT
+ Ttt.p........p.ttttT
+TTt..xxxx........tptT
+Tttp.xwwx...xxmx...tT
+Tt...xww+...xpsx...tT
+Tt.p.xwwxp..+.sm.p.tT
+Tt...xxxx...x.sx..ttT
+Tt..p.......xxmx..tTT
+Ttt.....p......p.ttT
+TTtttt..........ttTT
+ TTTTtttt@@ttttttTT
+    TTTT     TTTTT
+ENDMAP
+
+NAME:    nicolae_forest_spriggan_camp
+DEPTH:   Forest
+KMONS:   D = patrolling spriggan rider
+KMONS:   SGHI = spriggan berserker / nothing
+KMONS:   F = spriggan druid
+SHUFFLE: Ff/Gg/Hh/Ii
+SUBST:   ghi = .
+MAP
+       ttttt
+  ttttttgggt
+ @.ttt.t.G.t
+@......tt.tt
+t...D..S...t
+tttt.......tt
+ ttt.S..S...t
+ tt......tt.t
+tttt.tt.tt..t
+ti...t...tH.t
+tiI..t.F.thht
+ti...tffftttt
+tttttttttt
+ENDMAP
+
+NAME: nicolae_forest_oklob_treasure_island
+TAGS: no_pool_fixup
+DEPTH: Forest, !Forest:$
+SHUFFLE: Aa/Bb/Cc/Dd/Ee/Ff/Gg/Hh/Ii, %*$
+NSUBST: ' = 1:^ / 1:o / *:'
+SUBST: abcde = w, fghi = t, ABCDE = .wW, FGHI = .t, ' = ':100 $$$%%, \
+       _ = .._, . = ......W
+KFEAT: ^ = permanent teleport trap
+KMONS: o = oklob plant
+CLEAR: _
+MAP
+       _____
+     __.....__
+    _........._
+   _...GGFFF..._
+  _...GggfffF..._
+ _...GggGFFffF..._
+ _..GggG'''FeeE.._
+_..AaaA'''''EeeE.._
+_..AaA'''''''EeE.._
+_..AaA'''''''EeE.._
+_..AaA'''''''DdD.._
+_..BbbB'''''DddD.._
+ _..BbbB'''DddD.._
+ _...BbbCCCcdD..._
+  _...BbccccC..._
+   _...BCCCC..._
+    _........._
+     __.....__
+       _____
+ENDMAP
+
+NAME:  nicolae_forest_game_of_thorns
+DEPTH: Forest
+TAGS:  no_monster_gen transparent
+MONS:  thorn hunter
+SUBST: T = t., W = WWWWw, q = W.
+KFEAT: t = tree
+MAP
+      ttttt
+    TtTTTtttT
+   ....q.TTqTTTT
+  @..1WT.WWWW.qT
+ T.T..qWWqqWWTTT
+TT..WWWqT.TW.q.T
+t.TqWWq..T..W..tt
+t.TTWWWq.Wq1.W.Tt
+tqWW...WWqWWWq.Tt
+tWq1.WWq..WWWq..t
+tT..Wq.TT.qWWWWqt
+tT..W..1.WWq..qWt
+tTTTTWWWWTTTWWW.t
+tT...WWWWTTTWWT.T
+ T.q.1..qW..TT..
+ TT.qt.qWq.1..@
+  TT.tTTq....q
+   TTtttTTTtTT
+      ttttt
+ENDMAP
+
+##############################################################################
+
+# A trio of precisely-mirrored pools.
+NAME:    nicolae_quartered_pool_little
+TAGS:    transparent extra decor uniq_qpool
+DEPTH:   Forest
+SHUFFLE: Aa, Bb, Cc, Dd, Ee, Ff, Gg, Hh, Ii, Jj, Kk, Ll, Mm, Nn, Oo, Pp, Qq
+SUBST:   abcdefghijklmnopq = ., ABCDEFGHIJKLMNOPQ = W
+NSUBST:  7 = 1:@ / * = t@@@
+MAP
+    777777
+   7qolLOQ7
+  7pnkiIKNP7
+ 7pmjhfFHJMP7
+7qnjgedDEGJNQ7
+7okhecbBCEHKO7
+7lifdbaABDFIL7
+7LIFDBAabdfil7
+7OKHECBbcehko7
+7QNJGEDdegjnq7
+ 7PMJHFfhjmp7
+  7PNKIiknp7
+   7QOLloq7
+    777777
+ENDMAP
+
+NAME:    nicolae_quartered_pool_medium
+TAGS:    transparent extra decor uniq_qpool
+DEPTH:   Forest
+SHUFFLE: Aa, Bb, Cc, Dd, Ee, Ff, Gg, Hh, Ii, Jj, Kk, Ll, Mm
+SHUFFLE: Nn, Oo, Pp, Qq, Rr, Ss, Tt, Uu
+SUBST:   abcdefghijklmnopqrstu = ., ABCDEFGHIJKLMNOPQRSTU = W
+NSUBST:  7 = 1:@ / * = t@@
+MAP
+      7777
+    77spPS77
+   7urolLORU7
+  7tqnkiIKNQT7
+ 7uqmjhfFHJMQU7
+ 7rnjgedDEGJNR7
+7sokhecbBCEHKOS7
+7plifdbaABDFILP7
+7PLIFDBAabdfilp7
+7SOKHECBbcehkos7
+ 7RNJGEDdegjnr7
+ 7UQMJHFfhjmqu7
+  7TQNKIiknqt7
+   7UROLloru7
+    77SPps77
+      7777
+ENDMAP
+
+NAME:    nicolae_quartered_pool_super
+TAGS:    transparent extra decor uniq_qpool
+DEPTH:   Forest
+SHUFFLE: Aa, Bb, Cc, Dd, Ee, Ff, Gg, Hh, Ii, Jj, Kk, Ll, Mm
+SHUFFLE: Nn, Oo, Pp, Qq, Rr, Ss, Tt, Uu, Vv, Ww, Xx, Yy, Zz
+SHUFFLE: 12, 34, 56
+SUBST:   abcdefghijklmnopqrstuvwxyz135 = ., ABCDEFGHIJKLMNOPQRSTUVWXYZ246 = W
+NSUBST:  7 = 1:@ / * = t@
+MAP
+      777777
+    771xtTX277
+   75zwspPSWZ67
+  73yvrolLORVY47
+ 75yuqnkiIKNQUY67
+ 7zvqmjhfFHJMQVZ7
+71wrnjgedDEGJNRW27
+7xsokhecbBCEHKOSX7
+7tplifdbaABDFILPT7
+7TPLIFDBAabdfilpt7
+7XSOKHECBbcehkosx7
+72WRNJGEDdegjnrw17
+ 7ZVQMJHFfhjmqvz7
+ 76YUQNKIiknquy57
+  74YVROLlorvy37
+   76ZWSPpswz57
+    772XTtx177
+      777777
+ENDMAP
+
+##############################################################################
+
+NAME:    nicolae_forest_grove_arrangements
+TAGS:    transparent decor extra
+DEPTH:   Forest
+SHUFFLE: abcdefghi/''''T''''/T'''''''T/T'''T'''T/T'T'''T'T/T'T'T'T'T/\
+         TTT'''TTT/'T'T'T'T'/T'T''''T'/'T'TTT'T'/'T'''''T'/TTTT'TTTT/\
+         T'TTTTT'T/TT'TTT'TT/'''TTT'''/T'TT'TTTT/TT'T'T'TT/TT'''''TT/\
+         TT''T''TT/TT''TT'T'/T''''T'T'
+SUBST:   abcdefghiT = ttttt., ' = ., _ = ._
+CLEAR:   _
+MAP
+__________________
+_................_
+_..aa...bb...cc.._
+_.aaaa.bbbb.cccc._
+_.aaaa.bbbb.cccc._
+_..aa...bb...cc.._
+_................_
+_..dd...ee...ff.._
+_.dddd.eeee.ffff._
+_.dddd.eeee.ffff._
+_..dd...ee...ff.._
+_................_
+_..gg...hh...ii.._
+_.gggg.hhhh.iiii._
+_.gggg.hhhh.iiii._
+_..gg...hh...ii.._
+_................_
+__________________
 ENDMAP
 
 ##############################################################################
