@@ -318,6 +318,7 @@ colour_t rune_colour(int type)
     {
         case RUNE_SWAMP: return GREEN;
         case RUNE_SNAKE: return GREEN;
+        case RUNE_FOREST: return GREEN;
         case RUNE_SHOALS: return LIGHTBLUE;
         case RUNE_SLIME: return LIGHTGREEN;
         case RUNE_VAULTS: return WHITE;

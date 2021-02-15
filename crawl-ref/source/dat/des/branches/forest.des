@@ -491,9 +491,10 @@ ENDMAP
 NAME:   grunt_forest_end_chambers
 ORIENT: north
 PLACE:  Forest:$
-KITEM:  O = superb_item
+KITEM:  O = mossy rune of Zot
+KITEM:  0 = superb_item
 KITEM:  1 = superb_item
-KMONS:  O = the Enchantress
+KMONS:  0 = the Enchantress
 KMONS:  1 = spriggan defender
 MONS:   spriggan defender, spriggan berserker, spriggan druid
 MONS:   spriggan rider, spriggan air mage
@@ -501,19 +502,19 @@ MONS:   spriggan defender / spriggan berserker / spriggan druid / \
         spriggan rider / spriggan air mage / nothing w:100
 MONS:   thorn hunter / shambling mangrove
 TILE:   c = wall_marble
-COLOUR: .|*%OT123456+ = lightgray
-FTILE:  .|*%OT123456+ = floor_normal
+COLOUR: .|*%OT0123456+ = lightgray
+FTILE:  .|*%OT0123456+ = floor_normal
 MAP
 tttttttttttttttttttttttttttttttttt
 tttttttttttttccccccccttttttttttttt
-tttttttttttccc||||||cccttttttttttt
+tttttttttttccc||O|||cccttttttttttt
 ttttttttttcc..........cctttttttttt
 tttttttttcc....4444....ccttttttttt
 tttttttttc..............cttttttttt
 ttttttttcc..6.5....5.6..cctttttttt
 ttttttttc%.6..........6.%ctttttttt
 ttttttttc*.6..........6.*ctttttttt
-ttttttttc*.6....O1....6.*ctttttttt
+ttttttttc*.6....01....6.*ctttttttt
 ttttttttc*.6....11....6.*ctttttttt
 ttttttttc*.6..........6.*ctttttttt
 ttttttttc%.6..5....5..6.%ctttttttt
@@ -554,6 +555,7 @@ ENDMAP
 NAME:   kb_forest_enchantress_palace
 ORIENT: northeast
 PLACE:  Forest:$
+KITEM:  O = mossy rune of Zot
 MONS:   spriggan rider / spriggan druid / \
         spriggan berserker / spriggan defender / \
         spriggan air mage
@@ -584,11 +586,11 @@ COLOUR: C = white
 KFEAT:  C = stone_wall
 TILE:   C = wall_marble
 KFEAT:  - = floor
-FTILE:  R-~67ABXYfg$*| = floor_normal
+FTILE:  OR-~67ABXYfg$*| = floor_normal
 MAP
 ttttttttttttttttttttttttttttttttttttttttttt
 tttCCCCCCCCCCCCCCtttttttttttttttttttttttttt
-tttC-----7------CtttttttttTTTTTttTTTTtttttt
+tttC-----7O-----CtttttttttTTTTTttTTTTtttttt
 tttC--B------A--CtttQTtttTT.T.Ttt.T.TTTtttt
 tttC----6--6----Ctt..ccccc....cccc.TT.Ttttt
 tttCCCCCC~~CCCCCC....c..1c....c.1c.t.TTtttt
@@ -617,6 +619,7 @@ NAME:   grunt_forest_end_winery
 TAGS:   no_pool_fixup
 PLACE:  Forest:$
 ORIENT: northeast
+KITEM:  O = mossy rune of Zot
 MONS:   the Enchantress band 
 MONS:   spriggan berserker / spriggan defender
 MONS:   spriggan druid / spriggan air mage, plant
@@ -632,14 +635,14 @@ KFEAT:  : = floor
 ITEM:   ration q:1 / ration q:2 / nothing w:180
 ITEM:   any potion / ration q:1 / nothing w:30
 TILE:   c = wall_vines
-FTILE:  e123+|%*$- = floor_vines
+FTILE:  e123+|%*$-O = floor_vines
 MAP
 tttttttttttttttttttttttttttttttttttttttttttt
 Xttttttttttttttttttttttttttttttttttttttttttt
 XttTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTtt
 XttT.5...................................Ttt
 XttT..4d4d4.cccccccccccccccccccccccccccc.Ttt
-XttT..4d4d4.ce-e-e-e-e-e-e-eceeeeee+|||c.Ttt
+XttT..4d4d4.ce-e-e-e-e-e-e-eceeeeee+||Oc.Ttt
 XttT..4d4d4.c-e-e-e-c-e-e-e-c------c|||c.Ttt
 XttT..4d4d4.ce-e2e-ece-e2e-ec------cc+cc.Ttt
 XttT..4d4d4.cc+ccccccc+cccccc------c%**c.Ttt
@@ -669,6 +672,8 @@ ENDMAP
 NAME:   grunt_forest_end_shrine
 PLACE:  Forest:$
 ORIENT: float
+NSUBST: O = 1:A / 1:|
+KITEM:  A = mossy rune of Zot
 MONS:   the Enchantress band
 MONS:   wendigo / shambling mangrove
 MONS:   spriggan air mage / spriggan druid / \
@@ -680,7 +685,7 @@ KFEAT:  _ = altar_xom
 KFEAT:  - = floor
 SUBST:  T = tx
 CLEAR:  x
-FTILE:  14|*$-+ = floor_dirt
+FTILE:  14|*$-+AP = floor_dirt
 TILE:   c = wall_church
 MAP
   TTTTTTTTTTTTT
@@ -688,13 +693,13 @@ MAP
 TTtt.........ttTT
 Ttt3.........3ttT
 Tt..ccccccccc..tTTTTTTTT
-Tt..c||c4$$$c..ttttttttt
-Tt..c|-c****c.2t..3....t
+Tt..cO|c4$$$c..ttttttttt
+Tt..c||c****c.2t..3....t
 Tt..cc+c----+....G.G.G..
 Tt2.c----1_-+..2.......@
 Tt..cc+c----+....G.G.G..
-Tt..c|-c****c.2t..3....t
-Tt..c||c4$$$c..ttttttttt
+Tt..c||c****c.2t..3....t
+Tt..cO|c4$$$c..ttttttttt
 Tt..ccccccccc..tTTTTTTTT
 Ttt3.........3ttT
 TTtt.........ttTT
@@ -709,15 +714,16 @@ NAME:     gammafunk_forest_water_palace
 PLACE:    Forest:$
 ORIENT:   north
 TAGS:     no_monster_gen no_rotate patrolling
-SHUFFLE:  HI / JK, QR / OP
+SHUFFLE:  HI / JK, QR / SP
 SUBVAULT: H : gammafunk_forest_water_palace_column
 SUBVAULT: I : gammafunk_forest_water_palace_column
 SUBVAULT: J : gammafunk_forest_water_palace_pool
 SUBVAULT: K : gammafunk_forest_water_palace_pool
 SUBVAULT: Q : gammafunk_forest_water_palace_column
 SUBVAULT: R : gammafunk_forest_water_palace_column
-SUBVAULT: O : gammafunk_forest_water_palace_pool
+SUBVAULT: S : gammafunk_forest_water_palace_pool
 SUBVAULT: P : gammafunk_forest_water_palace_pool
+KITEM:    O = mossy rune of Zot
 MONS:     nothing w:30 / spriggan air mage / spriggan druid 
 MONS:     w:20 faun / satyr, spriggan berserker
 KMONS:    4 = caustic shrike
@@ -728,21 +734,21 @@ KMONS:    8 = the Enchantress
 KMONS:    A = water elemental
 KMONS:    L = greenwood witch / wendigo w:30
 KMONS:    N = water nymph
-KMONS:    S = elemental wellspring
+KMONS:    M = elemental wellspring
 KFEAT:    ALNS = shallow_water
 COLOUR:   c = white
-FTILE:    |*123456GTU+. = floor_pebble_cyan
+FTILE:    |*1234568GTU+.O = floor_pebble_cyan
 CLEAR:    E
 MAP
 ttttttttttttttttttttttttttttttttttttttttttttttttt
 Ett.....WWWWWWWWcccccccccccccccccWWWWWWWW.....ttE
-Ett....WWWWWWWWcc*..|||||||||..*ccWWWWWWWW....ttE
+Ett....WWWWWWWWcc*..||||O||||..*ccWWWWWWWW....ttE
 Ett....WWWGLWWWc**.....585.....**cWWWLGWWW....ttE
 Ett....WWWWWWWWc**.4..........4**cWWWWWWWW....ttE
 Ett....WWWWWccccccccccc+++cccccccccccWWWWW....ttE
 Ett....WWWWccWWWWWWWWWWWWWWWWWWWWWWWccWWWW....ttE
 Ett.1..WWWWcWWWWWWWWWWWWWWWWWWWWWWWWWcWWWW..1.ttE
-Ett....WWLWcWWHHHWWSWWW.U.WWWSWWIIIWWcWWLW....ttE
+Ett....WWLWcWWHHHWWMWWW.U.WWWMWWIIIWWcWWLW....ttE
 Ett....WWWWcWWHHHWWWWWU...UWWWWWIIIWWcWWWW....ttE
 Ett....WWWWcWWHHHWWWW.......WWWWIIIWWcWWWW....ttE
 Ett.1..WWWWcWWWWWWWWW..555..WWWWWWWWWcWWWW..1.ttE

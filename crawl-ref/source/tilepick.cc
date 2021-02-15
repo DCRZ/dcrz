@@ -309,7 +309,6 @@ tileidx_t tileidx_feature_base(dungeon_feature_type feat)
     // branch entry stairs
 #if TAG_MAJOR_VERSION == 34
     case DNGN_ENTER_DWARF:
-    case DNGN_ENTER_FOREST:
     case DNGN_ENTER_BLADE:
         return TILE_DNGN_ENTER;
 #endif
@@ -329,6 +328,8 @@ tileidx_t tileidx_feature_base(dungeon_feature_type feat)
         return TILE_DNGN_ENTER_SPIDER;
     case DNGN_ENTER_SHOALS:
         return TILE_DNGN_ENTER_SHOALS;
+    case DNGN_ENTER_FOREST:
+        return TILE_DNGN_ENTER_FOREST;
     case DNGN_ENTER_SLIME:
         return TILE_DNGN_ENTER_SLIME;
     case DNGN_ENTER_DEPTHS:
@@ -367,7 +368,6 @@ tileidx_t tileidx_feature_base(dungeon_feature_type feat)
     // branch exit stairs
 #if TAG_MAJOR_VERSION == 34
     case DNGN_EXIT_DWARF:
-    case DNGN_EXIT_FOREST:
     case DNGN_EXIT_BLADE:
         return TILE_DNGN_RETURN;
 #endif
@@ -387,6 +387,8 @@ tileidx_t tileidx_feature_base(dungeon_feature_type feat)
         return TILE_DNGN_EXIT_SPIDER;
     case DNGN_EXIT_SHOALS:
         return TILE_DNGN_EXIT_SHOALS;
+    case DNGN_EXIT_FOREST:
+        return TILE_DNGN_EXIT_FOREST;
     case DNGN_EXIT_SLIME:
         return TILE_DNGN_EXIT_SLIME;
     case DNGN_EXIT_DEPTHS:
@@ -2517,9 +2519,9 @@ static tileidx_t _tileidx_uncollected_rune(const item_def &item)
     case RUNE_TOMB:        return TILE_UNCOLLECTED_RUNE_TOMB;
     case RUNE_SWAMP:       return TILE_UNCOLLECTED_RUNE_SWAMP;
     case RUNE_SHOALS:      return TILE_UNCOLLECTED_RUNE_SHOALS;
-    case RUNE_ELF:         return TILE_UNCOLLECTED_RUNE_ELVEN;
+    case RUNE_FOREST:      return TILE_UNCOLLECTED_RUNE_FOREST;
 
-    case RUNE_FOREST:
+    case RUNE_ELF:
     default:               return TILE_MISC_UNCOLLECTED_RUNE_OF_ZOT;
     }
 }
@@ -2551,9 +2553,9 @@ static tileidx_t _tileidx_rune(const item_def &item)
     case RUNE_TOMB:        return TILE_RUNE_TOMB;
     case RUNE_SWAMP:       return TILE_RUNE_SWAMP;
     case RUNE_SHOALS:      return TILE_RUNE_SHOALS;
-    case RUNE_ELF:         return TILE_RUNE_ELVEN;
+    case RUNE_FOREST:      return TILE_RUNE_FOREST;
 
-    case RUNE_FOREST:
+    case RUNE_ELF:
     default:               return TILE_MISC_RUNE_OF_ZOT;
     }
 }

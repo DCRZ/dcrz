@@ -356,6 +356,8 @@ enter_spider DNGN_ENTER_SPIDER
 exit_spider DNGN_EXIT_SPIDER
 enter_shoals DNGN_ENTER_SHOALS
 exit_shoals DNGN_EXIT_SHOALS
+enter_forest DNGN_ENTER_FOREST
+exit_forest DNGN_EXIT_FOREST
 enter_slime DNGN_ENTER_SLIME
 exit_slime DNGN_EXIT_SLIME
 enter_vaults_closed DNGN_ENTER_VAULTS_CLOSED

@@ -1077,6 +1077,7 @@ rune_swamp RUNE_SWAMP
 rune_shoals RUNE_SHOALS
 rune_spider RUNE_SPIDER
 rune_slime RUNE_SLIME
+rune_forest RUNE_FOREST
 rune_vaults RUNE_VAULTS
 rune_tomb RUNE_TOMB
 rune_abyss RUNE_ABYSS
@@ -1086,7 +1087,6 @@ rune_demonic_3
 rune_demonic_4
 rune_demonic_5
 rune_demonic_6
-rune_elven RUNE_ELVEN
 
 %sdir item/misc/uncollected_runes
 generic MISC_UNCOLLECTED_RUNE_OF_ZOT
@@ -1102,12 +1102,12 @@ rune_snake UNCOLLECTED_RUNE_SNAKE
 rune_swamp UNCOLLECTED_RUNE_SWAMP
 rune_shoals UNCOLLECTED_RUNE_SHOALS
 rune_spider UNCOLLECTED_RUNE_SPIDER
+rune_forest UNCOLLECTED_RUNE_FOREST
 rune_slime UNCOLLECTED_RUNE_SLIME
 rune_vaults UNCOLLECTED_RUNE_VAULTS
 rune_tomb UNCOLLECTED_RUNE_TOMB
 rune_abyss UNCOLLECTED_RUNE_ABYSS
 rune_demonic UNCOLLECTED_RUNE_DEMONIC
-rune_elven UNCOLLECTED_RUNE_ELVEN
 
 #OBJ_CORPSES
 #handled in dc-corpse.txt

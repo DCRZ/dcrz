@@ -3828,6 +3828,9 @@ colour_t item_def::rune_colour() const
         case RUNE_SHOALS:                   // barnacled
             return ETC_WATER;
 
+        case RUNE_FOREST:                   // mossy
+            return ETC_TREE;
+
             // This one is hardly unique, but colour isn't used for
             // stacking, so we don't have to worry too much about this.
             // - bwr

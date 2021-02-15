@@ -22,6 +22,7 @@ static const branch_type logical_branch_order[] = {
     BRANCH_SHOALS,
     BRANCH_SNAKE,
     BRANCH_SPIDER,
+    BRANCH_FOREST,
     BRANCH_SLIME,
     BRANCH_ORC,
     BRANCH_ELF,
@@ -31,7 +32,6 @@ static const branch_type logical_branch_order[] = {
     BRANCH_VAULTS,
 #if TAG_MAJOR_VERSION == 34
     BRANCH_BLADE,
-    BRANCH_FOREST,
 #endif
     BRANCH_CRYPT,
     BRANCH_TOMB,
@@ -86,6 +86,7 @@ static const branch_type danger_branch_order[] = {
     BRANCH_ABYSS,
     BRANCH_WIZLAB,
     BRANCH_SLIME,
+    BRANCH_FOREST,
     BRANCH_DEPTHS,
     BRANCH_VESTIBULE,
     BRANCH_ZOT,
@@ -99,7 +100,6 @@ static const branch_type danger_branch_order[] = {
 #if TAG_MAJOR_VERSION == 34
     BRANCH_DWARF,
     BRANCH_BLADE,
-    BRANCH_FOREST,
     BRANCH_LABYRINTH,
 #endif
 };

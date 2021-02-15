@@ -389,7 +389,7 @@ enum rune_type
     RUNE_GLOORX_VLOQ,
 
     RUNE_SPIDER,
-    RUNE_FOREST, // only used in sprints
+    RUNE_FOREST,
     NUM_RUNE_TYPES
 };
 
