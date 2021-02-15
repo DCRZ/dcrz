@@ -27,6 +27,13 @@ the sun long ago. Their halls are filled with riches, but a deadly welcome
 awaits any would-be robbers. In their long seclusion, the deep elves have
 perfected dark sorceries of a power the orcs can only dream of!
 %%%%
+Enchanted Forest
+
+Amongst these dark and sinister woods lie the lairs of spriggans, fauns, and
+other creatures capable of bending the minds of unwilling intruders to their
+will. Powerful illusory and hindering magicks are the norm, rather than the
+exception.
+%%%%
 Lair
 
 Most adventurers find the Lair of Beasts to be an exciting change of climate.

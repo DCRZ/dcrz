@@ -198,7 +198,7 @@ const Branch branches[NUM_BRANCHES] =
     { BRANCH_FOREST, BRANCH_VAULTS, 2, 3, 5, 19,
       brflag::spotty | brflag::dangerous_end,
       DNGN_ENTER_FOREST, DNGN_EXIT_FOREST, NUM_FEATURES,
-      "Forest", "the Enchanted Forest", "Forest",
+      "Enchanted Forest", "the Enchanted Forest", "Forest",
       nullptr,
       BROWN, BROWN,
       'F', { RUNE_FOREST }, branch_noise::normal },
