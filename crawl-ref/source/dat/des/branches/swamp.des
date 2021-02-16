@@ -1178,44 +1178,6 @@ www.cc+c.www
     w.@w
 ENDMAP
 
-NAME: grunt_witch_cave
-MONS: wizard
-MONS: hydra
-{{
-  dgn.delayed_decay(_G, 'd',
-                    'human skeleton / elf skeleton / dwarf skeleton' ..
-                    ' / orc skeleton')
-}}
-NSUBST: : = 5:W / *:.
-SUBST: w = w:10 t:10
-KFEAT: K = shallow_water
-KITEM: K = potion of degeneration w:20 / potion of mutation
-KPROP: w = no_tele_into
-MARKER: K = lua:fog_machine { cloud_type="black smoke", \
-                              pow_min = 10, pow_max = 30, delay = 50, \
-                              size = 1, walk_dist = 2, spread_rate = 25 }
-MARKER: L = lua:fog_machine { cloud_type="flame", \
-                              pow_min = 100, pow_max = 100, delay = 100, \
-                              size = 1, excl_rad = 0, walk_dist = 0 }
-MAP
-     wwwwww
-    wwxxxxww
-  wwxxx**xxxw
- wwxxd%%%%Wxww
-wwxx::::vvvxxw
-wwx:d::1:KvLxw
-wxx::2::vvvdxw
-wxW:::::::2:xww
-wxx::::2::::dxw
-wxW::::::::xxxw
-wxxd:::::xxxww
-wwxxx:.:xxww
- wwwxx.xxw
-   wwx.xww
-    wd.dww
-   ww.@.www
-ENDMAP
-
 NAME: grunt_lady_of_the_lake
 SUBST: w = w:50 t:10
 SUBST: W = w
@@ -1509,29 +1471,6 @@ xxx%%xxxxxxxx%.....%xxxxxxxx..xxx
             ttttttttt
 ENDMAP
 
-NAME:  cheibrodos_swamp_witchery
-TAGS:  no_item_gen no_monster_gen
-DEPTH: Swamp, !Swamp:$
-WEIGHT: 2
-MONS:  fenstrider witch
-ITEM:  book of callings, book of summonings
-SUBST: ' = %:20 d:1 e:1
-SUBST: 1 = 1:1 .:1
-MAP
-        WWW
-       WxxxW
-      Wxx'xxW
-      Wx.1'xW
-    WWWx+.xxW
-  WWWW..xxxW
- Wxxx..WWWWW
-Wxx.+xW..WW
-Wx'1.xWWW@
-Wxx'xxWWW
- WxxxWW
-  WWW
-ENDMAP
-
 NAME:  cheibrodos_swamp_pet_leeches
 TAGS:  no_item_gen no_monster_gen
 DEPTH: Swamp, !Swamp:$
@@ -1782,36 +1721,6 @@ tttcc"""ccW-t'
 tttt----WWtt'
  tttttttttt'
   '''''''''
-ENDMAP
-
-NAME:   nzn_swamp_weyward_sisters
-DEPTH:  Swamp:2-
-TAGS:   no_pool_fixup
-SUBST:  e = ddee. *:5
-SUBST:  2 = 222. *:1
-NSUBST: 3 = 3 / f / .
-MONS:   patrolling fenstrider witch, fungus, human att:good_neutral
-KITEM:  f = any good_item no_pickup
-KFEAT:  n = iron_grate
-MARKER: O = lua:fog_machine {   cloud_type = "flame", pow_min = 10, \
-                                pow_max = 10, delay = 10, size = 1, \
-                                walk_dist = 0, excl_rad = 0 }
-: dgn.delayed_decay(_G, 'd', 'human corpse')
-: dgn.delayed_decay(_G, 'e', 'human skeleton')
-MAP
-    xxxxx@t
-    xxOxxWt
-    xeeexWt
-    x.1.xWt
-    xxAxxWt
-     t.tWWt
-tttttt.Wwxxxxx
-@WWWWwW.tx.n3x
-xxxxxW.W.A1=3x
-x222x.WWwx.n3x
-x21.AWtWwxxxxx
-x222xtttWWWWW@
-xxxxx  ttttttt
 ENDMAP
 
 NAME:   nzn_swamp_stair_ambush
