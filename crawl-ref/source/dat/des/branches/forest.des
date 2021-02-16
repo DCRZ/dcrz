@@ -884,6 +884,7 @@ ENDMAP
 #     - ManMan
 ##############################################################################
 NAME:   grunt_forest_end_chambers
+TAGS:   no_item_gen no_mons_gen
 ORIENT: north
 PLACE:  Forest:$
 KITEM:  O = mossy rune of Zot
@@ -894,7 +895,8 @@ KMONS:  1 = spriggan defender
 MONS:   spriggan defender, spriggan berserker, spriggan druid
 MONS:   spriggan rider, spriggan air mage
 MONS:   spriggan defender / spriggan berserker / spriggan druid / \
-        spriggan rider / spriggan air mage / nothing w:100
+        spriggan rider / spriggan air mage / spriggan w:50 / \
+        nothing w:100
 MONS:   thorn hunter / shambling mangrove
 TILE:   c = wall_marble
 COLOUR: .|*%OT0123456+ = lightgray
@@ -948,12 +950,13 @@ ttttttttttttttttL@LLtttttttttttttt
 ENDMAP
 
 NAME:   kb_forest_enchantress_palace
+TAGS:   no_item_gen no_mons_gen
 ORIENT: northeast
 PLACE:  Forest:$
 KITEM:  O = mossy rune of Zot
 MONS:   spriggan rider / spriggan druid / \
         spriggan berserker / spriggan defender / \
-        spriggan air mage
+        spriggan air mage / spriggan w:100
 MONS:   spriggan rider
 MONS:   spriggan druid
 MONS:   spriggan berserker
@@ -964,7 +967,7 @@ KMONS:  A = greenwood witch
 KMONS:  B = pixie
 KMONS:  X = spriggan rider / spriggan druid / \
             spriggan berserker / spriggan defender / \
-            spriggan air mage
+            spriggan air mage / spriggan w:50
 KMONS:  Y = spriggan air mage
 KFEAT:  ~ = +
 SUBST:  . = .:100 / 1:2 / 2:1 / 3:1 / 4:1 / 5:1
@@ -1013,7 +1016,7 @@ tttttttttttttttttttttt@tt..@ttttttttttttttt
 ENDMAP
 
 NAME:   grunt_forest_end_winery
-TAGS:   no_pool_fixup
+TAGS:   no_pool_fixup no_item_gen no_mons_gen
 PLACE:  Forest:$
 ORIENT: northeast
 KITEM:  O = mossy rune of Zot
@@ -1067,16 +1070,16 @@ XXXXXXXXXXXXT@TXXXXXXXXXXXXXXT@TXXXXXXXXXXXt
 ENDMAP
 
 NAME:   grunt_forest_end_shrine
+TAGS:   no_item_gen no_mons_gen
 PLACE:  Forest:$
 ORIENT: float
 NSUBST: O = 1:A / 1:|
 KITEM:  A = mossy rune of Zot
 MONS:   the Enchantress band
 MONS:   wendigo / shambling mangrove
-MONS:   spriggan air mage / spriggan druid / \
-        spriggan berserker / spriggan rider w:5 / \
-        spriggan defender w:5 / ancient bear w:5 / \ 
-        thorn hunter w:5 / shambling mangrove w:5
+MONS:   spriggan / spriggan air mage / spriggan druid / \
+        spriggan berserker / spriggan rider w:5 / spriggan defender w:5 / \ 
+        thorn hunter w:5 / shambling mangrove w:5 / ancient bear w:5
 KMONS:  4 = pixie
 KFEAT:  _ = altar_xom
 KFEAT:  - = floor
@@ -1112,6 +1115,7 @@ ENDMAP
 ## A palace where denizens of the forest gather to worship a powerful
 ## water deity
 NAME:     gammafunk_forest_water_palace
+TAGS:     no_item_gen no_mons_gen
 PLACE:    Forest:$
 ORIENT:   north
 TAGS:     no_monster_gen no_rotate patrolling
@@ -1125,7 +1129,7 @@ SUBVAULT: R : gammafunk_forest_water_palace_column
 SUBVAULT: S : gammafunk_forest_water_palace_pool
 SUBVAULT: P : gammafunk_forest_water_palace_pool
 KITEM:    O = mossy rune of Zot
-MONS:     nothing w:30 / spriggan air mage / spriggan druid 
+MONS:     nothing w:20 / spriggan / spriggan air mage / spriggan druid 
 MONS:     w:20 faun / satyr, spriggan berserker
 KMONS:    4 = caustic shrike
 KMONS:    5 = spriggan defender
