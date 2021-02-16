@@ -31,8 +31,8 @@ Enchanted Forest
 
 Amongst these dark and sinister woods lie the lairs of spriggans, fauns, and
 other creatures capable of bending the minds of unwilling intruders to their
-will. Powerful illusory and hindering magicks are the norm, rather than the
-exception.
+will. Deep within the forest lies the Enchantress' palace, where she has 
+amassed great riches.
 %%%%
 Lair
 

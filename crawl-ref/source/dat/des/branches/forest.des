@@ -873,6 +873,15 @@ ENDMAP
 
 ##############################################################################
 # Forest ends
+#
+# IMPORTANT: If you intend to contribute a Forest end vault, please follow 
+# these guidelines:
+#  * Ensure that your vault includes the Enchantress in a palace or
+#    similar building;
+#  * Place approximately 20 superb items (|) and 30 good items (*) to ensure
+#    that the Forest end vault loot is consistently comparable to (but  
+#    noticeably worse than) Slime.
+#     - ManMan
 ##############################################################################
 NAME:   grunt_forest_end_chambers
 ORIENT: north
@@ -898,34 +907,34 @@ ttttttttttcc..........cctttttttttt
 tttttttttcc....4444....ccttttttttt
 tttttttttc..............cttttttttt
 ttttttttcc..6.5....5.6..cctttttttt
-ttttttttc%.6..........6.%ctttttttt
-ttttttttc*.6..........6.*ctttttttt
-ttttttttc*.6....01....6.*ctttttttt
-ttttttttc*.6....11....6.*ctttttttt
-ttttttttc*.6..........6.*ctttttttt
-ttttttttc%.6..5....5..6.%ctttttttt
+ttttttttc|.6..........6.|ctttttttt
+ttttttttc|.6..........6.|ctttttttt
+ttttttttc|.6....01....6.|ctttttttt
+ttttttttc|.6....11....6.|ctttttttt
+ttttttttc|.6..........6.|ctttttttt
+ttttttttc|.6..5....5..6.|ctttttttt
 ttttttttcc..6........6..cctttttttt
 tttttttttc..............cttttttttt
 tttttttttcc....4224....ccttttttttt
 ttttcccccccc..........cccccccctttt
-tttcc......ccc......ccc......ccttt
+tttcc******ccc......ccc******ccttt
 ttcc.4.4.4..cccc++cccc..4.4.4.cctt
 tcc..........c.6..6.c..........cct
-tc%..........c+.66.+c..........%ct
-tc%......1....cccccc....1......%ct
-tc%....T.2....cccccc....2.T....%ct
-tc%...........cccccc...........%ct
-tc%.6........c+.66.+c........6.%ct
+tc*..........c+.66.+c..........*ct
+tc*......1....cccccc....1......*ct
+tc*....T.2....cccccc....2.T....*ct
+tc*...........cccccc...........*ct
+tc*.6........c+.66.+c........6.*ct
 tcc.6........c.6..6.c........6.cct
 ttc..66.....cccc++cccc.....66..ctt
 ttccc..66..cccc....cccc..66..ccctt
-ttttccc..cccc........cccc..cccLttt
+ttttccc**cccc........cccc**cccLttt
 tLttLLcccccc...6446...ccccccLtLtLt
 ttLLLLtLLLcc..........cctLLLtttLLt
-ttLLLLLLLLc..6......6..cLLtLLtttLt
-tLLtLLL7LLc..6..TT..6..cLLLLtLLLLt
-ttLLLLLLLLc..6..TT..6..cLLLLLLLLLt
-tttLtLLLLLc..6......6..cLLtLLLtLLt
+ttLLLLLLLLc*.6......6.*cLLtLLtttLt
+tLLtLLL7LLc*.6..TT..6.*cLLLLtLLLLt
+ttLLLLLLLLc*.6..TT..6.*cLLLLLLLLLt
+tttLtLLLLLc*.6......6.*cLLtLLLtLLt
 ttLLLLLtLLcc..........ccLLL7LLLLLt
 ttLL7LLLLLLc...6666...cLLLLLtLL7Lt
 tLLLLLLLLLLcc........ccLLtLLLLLLtt
@@ -950,7 +959,7 @@ MONS:   spriggan druid
 MONS:   spriggan berserker
 MONS:   spriggan air mage
 MONS:   spriggan defender
-MONS:   the Enchantress
+KMONS:  7 = the Enchantress
 KMONS:  A = greenwood witch
 KMONS:  B = pixie
 KMONS:  X = spriggan rider / spriggan druid / \
@@ -964,10 +973,12 @@ KMONS:  P = plant / plant / bush / nothing
 KMONS:  R = plant
 KMONS:  Q = bush
 KMONS:  K = hornet
-KITEM:  f = dagger / short sword / rapier / flail / whip /  shortbow
-KITEM:  g = robe / cloak / hat / buckler
+KITEM:  f = any weapon good_item
+KITEM:  g = any armour good_item
+KITEM:  h = *
+KITEM:  7 = |
 KMONS:  L = spriggan ; robe . dagger
-KITEM:  h = ration q:2
+KITEM:  i = ration q:2
 COLOUR: C = white
 KFEAT:  C = stone_wall
 TILE:   C = wall_marble
@@ -976,16 +987,16 @@ FTILE:  OR-~67ABXYfg$*| = floor_normal
 MAP
 ttttttttttttttttttttttttttttttttttttttttttt
 tttCCCCCCCCCCCCCCtttttttttttttttttttttttttt
-tttC-----7O-----CtttttttttTTTTTttTTTTtttttt
+tttC|||||7O|||||CtttttttttTTTTTttTTTTtttttt
 tttC--B------A--CtttQTtttTT.T.Ttt.T.TTTtttt
 tttC----6--6----Ctt..ccccc....cccc.TT.Ttttt
-tttCCCCCC~~CCCCCC....c..1c....c.1c.t.TTtttt
-tttC---C6--6C$*|CtT..c.1.+....+..cT.TT.tttt
-tttC---~----~$*|Ctt..ccccc....cccc.TT.Ttttt
-tttC---C6--6C$*|CttQ..................ttttt
+tttCCCCCC~~CCCCCC....ch.1c....c.hc.t.TTtttt
+tttC*|*C6--6C*|*CtT..ch1.+....+1hcT.TT.tttt
+tttC|*|~----~|*|Ctt..ccccc....cccc.TT.Ttttt
+tttC*|*C6--6C*|*CttQ..................ttttt
 tttCCCCCC~~CCCCCCttttccccc....cccc......ttt
-tttCgggC--X-CfffCttttchxLc....c1.c.....tttt
-tttCggg~----~fffCttttch..+....+.4c..1...ttt
+tttCgggC--X-CfffCttttcixLc....c1hc.....tttt
+tttCggg~----~fffCttttci..+....+4hc..1...ttt
 tttCgggCX--XCfffCttttccccc....cccc...1.tttt
 tttCCCCCC~~CCCCCCttttt...................tt
 tttCR-----X----RCccccccccc....5.........ttt
@@ -1006,7 +1017,7 @@ TAGS:   no_pool_fixup
 PLACE:  Forest:$
 ORIENT: northeast
 KITEM:  O = mossy rune of Zot
-MONS:   the Enchantress band 
+MONS:   the Enchantress band
 MONS:   spriggan berserker / spriggan defender
 MONS:   spriggan druid / spriggan air mage, plant
 MONS:   faun w:20 / satyr / thorn hunter w:5
@@ -1018,8 +1029,8 @@ KFEAT:  T = tree / floor
 SUBST:  X = xt
 CLEAR:  x
 KFEAT:  : = floor
-ITEM:   ration q:1 / ration q:2 / nothing w:180
-ITEM:   any potion / ration q:1 / nothing w:30
+ITEM:   ration / nothing w:90
+ITEM:   any potion / ration w:5 / nothing w:25
 TILE:   c = wall_vines
 FTILE:  e123+|%*$-O = floor_vines
 MAP
@@ -1028,16 +1039,16 @@ Xttttttttttttttttttttttttttttttttttttttttttt
 XttTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTtt
 XttT.5...................................Ttt
 XttT..4d4d4.cccccccccccccccccccccccccccc.Ttt
-XttT..4d4d4.ce-e-e-e-e-e-e-eceeeeee+||Oc.Ttt
-XttT..4d4d4.c-e-e-e-c-e-e-e-c------c|||c.Ttt
-XttT..4d4d4.ce-e2e-ece-e2e-ec------cc+cc.Ttt
-XttT..4d4d4.cc+ccccccc+cccccc------c%**c.Ttt
-XttT..4d4d45c-----3---3-----+----1-c%**c.Ttt
-XttT..4d4d4.c-------2-------+------c%**c.Ttt
-XtT...4d4d4.c--wwwwwwwwwww--+------c%**c.Ttt
-XtT...4d4d4.c--wwwwwwwwwww--c------c$$$c.Ttt
-XtT...4d4d4.c-----3---3-----c------c$$$c.Ttt
-XtT...4d4d4.c---------------ceeeeee+$$$c.Ttt
+XttT..4d4d4.ce-e-e-e-e-e-e-ec******+||Oc.Ttt
+XttT..4d4d4.c-e-e-e-c-e-e-e-c-----*c|||c.Ttt
+XttT..4d4d4.ce-e2e-ece-e2e-ec-----*cc+cc.Ttt
+XttT..4d4d4.cc+ccccccc+cccccc-----*c|*|c.Ttt
+XttT..4d4d45c-----3---3-----+----1*c|*|c.Ttt
+XttT..4d4d4.c-------2-------+-----*c|*|c.Ttt
+XtT...4d4d4.c--wwwwwwwwwww--+-----*c|*|c.Ttt
+XtT...4d4d4.c--wwwwwwwwwww--c-----*c|*|c.Ttt
+XtT...4d4d4.c-----3---3-----c-----*c|*|c.Ttt
+XtT...4d4d4.c---------------c******+|*|c.Ttt
 XTT...4d4d4.cc++cccccccccccccccccccccccc.Ttt
 T.......5......5............5............Ttt
 @TT...44444444..444444444444..4444444444.Ttt
@@ -1066,29 +1077,33 @@ MONS:   spriggan air mage / spriggan druid / \
         spriggan berserker / spriggan rider w:5 / \
         spriggan defender w:5 / ancient bear w:5 / \ 
         thorn hunter w:5 / shambling mangrove w:5
-MONS:   pixie
+KMONS:  4 = pixie
 KFEAT:  _ = altar_xom
 KFEAT:  - = floor
 SUBST:  T = tx
 CLEAR:  x
-FTILE:  14|*$-+AP = floor_dirt
+FTILE:  14|*$-+AP_ = floor_dirt
+KITEM:  4 = *
+KITEM:  _ = |
 TILE:   c = wall_church
 MAP
   TTTTTTTTTTTTT
  TTtttttttttttTT
-TTtt.........ttTT
-Ttt3.........3ttT
-Tt..ccccccccc..tTTTTTTTT
-Tt..cO|c4$$$c..ttttttttt
-Tt..c||c****c.2t..3....t
-Tt..cc+c----+....G.G.G..
-Tt2.c----1_-+..2.......@
-Tt..cc+c----+....G.G.G..
-Tt..c||c****c.2t..3....t
-Tt..cO|c4$$$c..ttttttttt
-Tt..ccccccccc..tTTTTTTTT
-Ttt3.........3ttT
-TTtt.........ttTT
+TTtt...........ttTT
+Ttt3...........3ttT
+Tt..ccccccccccc..tTTTTTTTT
+Tt..c|||c4****c..ttttttttt
+Tt..c|O|c*****c.2t..3....t
+Tt..c|||c*****c..........t
+Tt..cc+cc-----+....G.G.G..
+Tt2.c-----1_--+..2.......@
+Tt..cc+cc-----+....G.G.G..
+Tt..c|||c*****c..........t
+Tt..c|O|c*****c.2t..3....t
+Tt..c|||c4****c..ttttttttt
+Tt..ccccccccccc..tTTTTTTTT
+Ttt3...........3ttT
+TTtt...........ttTT
  TTtttttttttttTT
   TTTTTTTTTTTTT
 ENDMAP
@@ -1121,16 +1136,17 @@ KMONS:    A = water elemental
 KMONS:    L = greenwood witch / wendigo w:30
 KMONS:    N = water nymph
 KMONS:    M = elemental wellspring
-KFEAT:    ALNS = shallow_water
+KFEAT:    ALMNS = shallow_water
+KITEM:    458 = *
 COLOUR:   c = white
-FTILE:    |*1234568GTU+.O = floor_pebble_cyan
+FTILE:    |*12345678GTU+.O = floor_pebble_cyan
 CLEAR:    E
 MAP
 ttttttttttttttttttttttttttttttttttttttttttttttttt
 Ett.....WWWWWWWWcccccccccccccccccWWWWWWWW.....ttE
-Ett....WWWWWWWWcc*..||||O||||..*ccWWWWWWWW....ttE
-Ett....WWWGLWWWc**.....585.....**cWWWLGWWW....ttE
-Ett....WWWWWWWWc**.4..........4**cWWWWWWWW....ttE
+Ett....WWWWWWWWcc|||||||O|||||||ccWWWWWWWW....ttE
+Ett....WWWGLWWWc||*****585*****||cWWWLGWWW....ttE
+Ett....WWWWWWWWc||4***********4||cWWWWWWWW....ttE
 Ett....WWWWWccccccccccc+++cccccccccccWWWWW....ttE
 Ett....WWWWccWWWWWWWWWWWWWWWWWWWWWWWccWWWW....ttE
 Ett.1..WWWWcWWWWWWWWWWWWWWWWWWWWWWWWWcWWWW..1.ttE
