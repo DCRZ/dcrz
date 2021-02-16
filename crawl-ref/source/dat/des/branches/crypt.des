@@ -1006,6 +1006,9 @@ cccccc+c......Cc._z.dcc
 ENDMAP
 
 ## Yred has crafted an undead forest in mockery of Fedhas.
+#  This vault should be merged with its forest variant
+#  gammafunk_forest_yreds_foothold in float.des, but it's too 
+#  much of a pain
 NAME:    gammafunk_crypt_yreds_forest
 DEPTH:   Crypt
 ORIENT:  float
@@ -1019,7 +1022,7 @@ TILE:    t = dngn_tree_dead
 MONS:    flayed ghost / phantasmal warrior
 MONS:    vampire mage / vampire knight
 MONS:    jiangshi / eidolon / shadow wraith / freezing wraith
-MONS:    ancient champion / w:20 ghoul
+MONS:    ancient champion / ghoul / wendigo
 MONS:    w:20 death knight / w:20 bone dragon / revenant
 MONS:    profane servitor
 KFEAT:   7 = altar_yredelemnul
