@@ -52,15 +52,6 @@
 #include "viewchar.h"
 #include "unwind.h"
 
-// The Forest's magic makes the player forgetful
-static void _forest_maybe_forget_map(int /*time_delta*/)
-{
-    if (!player_in_branch(BRANCH_FOREST) || you.runes[RUNE_FOREST])
-        return;
-
-    forget_map(true);
-}
-
 /**
  * Choose a random, spooky hell effect message, print it, and make a loud noise
  * if appropriate. (1/6 chance of loud noise.)
@@ -461,7 +452,6 @@ static struct timed_effect timed_effects[] =
 #if TAG_MAJOR_VERSION == 34
     { nullptr,                         0,     0, false },
 #endif
-    { _forest_maybe_forget_map,        10,    10, false },
 };
 
 // Do various time related actions...
@@ -483,9 +473,13 @@ void handle_time()
                     spawn_random_monsters();
     }
 
-    // Abyss maprot.
-    if (player_in_branch(BRANCH_ABYSS))
+    // Abyss/Forest maprot
+    if (player_in_branch(BRANCH_ABYSS)
+        || (player_in_branch(BRANCH_FOREST) 
+            && !you.runes[RUNE_FOREST]))
+    {
         forget_map(true);
+    }
 
     // Magic contamination from spells and Orb.
     if (!crawl_state.game_is_arena())
