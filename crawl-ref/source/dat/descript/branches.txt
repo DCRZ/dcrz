@@ -32,7 +32,9 @@ Enchanted Forest
 Amongst these dark and sinister woods lie the lairs of spriggans, fauns, and
 other creatures capable of bending the minds of unwilling intruders to their
 will. Deep within the forest lies the Enchantress' palace, where she has 
-amassed great riches.
+amassed great riches. Many a helpless adventurer has lost their way in these 
+twisted woods, as the magic of the forest makes memorizing its 
+maze-like structure impossible.
 %%%%
 Lair
 
