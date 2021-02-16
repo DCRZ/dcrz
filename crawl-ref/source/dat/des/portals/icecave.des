@@ -271,7 +271,7 @@ ENDMAP
 
 NAME:   portal_ice_cave_entry_animals_and_master
 TAGS:   patrolling no_monster_gen no_trap_gen
-DEPTH:  D:11-, Lair:4-, Orc
+DEPTH:  D:11-, Lair:3-, Orc
 WEIGHT: 6
 : ice_cave_portal(_G)
 MONS:   wolf, yak, polar bear, rime drake, ice dragon

@@ -131,11 +131,11 @@ DEPTH:  D:10-12, Elf:1, Swamp:1-2, Snake:1-2, Shoals:1-2, Spider:1-2
 : place_unique(_G, "Frances")
 
 NAME:   uniq_fannar
-DEPTH:  D:8-10, Orc:1, Lair:1-3
+DEPTH:  D:8-10, Orc:1, Lair:1-2
 : place_unique(_G, "Fannar")
 
 NAME:   uniq_gastronok
-DEPTH:  D:8-11, Orc:1, Lair:1-3
+DEPTH:  D:8-11, Orc:1, Lair:1-2
 WEIGHT: 5, 15(Lair)
 : place_unique(_G, "Gastronok")
 
@@ -169,11 +169,11 @@ DEPTH:  D:7-10, Lair:1
 : place_unique(_G, "Joseph")
 
 NAME:   uniq_josephine
-DEPTH:  D:10-, Orc, Lair:4-, Swamp:1, Shoals:1, Snake:1, Spider:1
+DEPTH:  D:10-, Orc, Lair:3-, Swamp:1, Shoals:1, Snake:1, Spider:1
 : place_unique(_G, "Josephine band")
 
 NAME:   uniq_kirke
-DEPTH:  D:11-, Lair:4-, Elf:1, Swamp, Snake, Shoals, Spider
+DEPTH:  D:11-, Lair:3-, Elf:1, Swamp, Snake, Shoals, Spider
 : place_unique(_G, "Kirke band")
 
 NAME:   uniq_louise
@@ -197,11 +197,11 @@ DEPTH:  D:2-4
 : place_unique(_G, "Natasha")
 
 NAME:   uniq_nergalle
-DEPTH:  D:10-11, Orc, !Orc:$, Lair:1-4
+DEPTH:  D:10-11, Orc, !Orc:$, Lair:1-3
 : place_unique(_G, "Nergalle")
 
 NAME:   uniq_nessos
-DEPTH:  D:11-, Orc:$, Lair:4-
+DEPTH:  D:11-, Orc:$, Lair:3-
 : place_unique(_G, "Nessos")
 
 NAME:   uniq_pikel
@@ -215,7 +215,7 @@ TAGS:   uniq_ribbit
 : place_unique(_G, "Prince Ribbit")
 
 NAME:   uniq_prince_ribbit2
-DEPTH:  Lair:1-3
+DEPTH:  Lair:1-2
 WEIGHT: 3
 TAGS:   uniq_ribbit
 : place_unique(_G, "Prince Ribbit band")
@@ -244,7 +244,7 @@ MAP
 ENDMAP
 
 NAME:   uniq_rupert
-DEPTH:  D:11-, Lair:3-, Orc:$, Snake:1, Spider:1
+DEPTH:  D:11-, Lair:2-, Orc:$, Snake:1, Spider:1
 : place_unique(_G, "Rupert")
 
 NAME:   uniq_sigmund
@@ -252,7 +252,7 @@ DEPTH:  D:2-6
 : place_unique(_G, "Sigmund")
 
 NAME:   uniq_snorg
-DEPTH:  D:10-, Lair:3-, Orc
+DEPTH:  D:10-, Lair:2-, Orc
 : place_unique(_G, "Snorg")
 
 NAME:   uniq_sonja

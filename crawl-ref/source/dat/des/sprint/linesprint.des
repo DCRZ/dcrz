@@ -301,8 +301,8 @@ ENDMAP
 NAME:     lair_1
 TAGS:     lair_1
 KMONS:    1 = place:Lair:1
-KMONS:    2 = place:Lair:3
-KMONS:    3 = place:Lair:5
+KMONS:    2 = place:Lair:2
+KMONS:    3 = place:Lair:4
 COLOUR:   123 = green
 : line_setup(_G)
 : general_item_setup(_G)
@@ -330,7 +330,7 @@ SHUFFLE:  123456
 : line_setup(_G)
 : general_item_setup(_G)
 : lua_marker('~', props_marker {
-:           door_description_suffix=" to Lair:6",
+:           door_description_suffix=" to Lair:4",
 :           })
 MAP
 xxxxxxxxxxxxx

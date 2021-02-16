@@ -1401,7 +1401,7 @@ ENDMAP
 #
 NAME:    onia_ninara_swampy_vault
 TAGS:    no_pool_fixup no_monster_gen
-DEPTH:   Lair:4-, !Lair:$, Snake, !Snake:$, Depths, !Depths:$
+DEPTH:   Lair:3-, !Lair:$, Snake, !Snake:$, Depths, !Depths:$
 ORIENT:  float
 KMONS:   1 = tyrant leech / swamp worm w:50 / \
              vampire mosquito band / goliath frog / swamp drake w:15
@@ -1557,7 +1557,7 @@ ENDMAP
 # of opening the doors so animals can go for a walk, that's intended.
 #
 NAME:   slaughterhouse
-DEPTH:  Lair:5-, D:10-
+DEPTH:  Lair:4-, D:10-
 TAGS:   no_monster_gen
 ORIENT: float
 WEIGHT: 5
@@ -2992,7 +2992,7 @@ cc'nn-...-nnnnnc...cncnc...cnnnnn-...-nn'cc
 ENDMAP
 
 NAME: cheibrodos_magma_flow
-DEPTH: D:10-, !D:$, Lair:3-, !Lair:$
+DEPTH: D:10-, !D:$, Lair:2-, !Lair:$
 ORIENT: float
 TAGS: no_item_gen no_monster_gen
 KMONS: ' = lava snake
@@ -4366,7 +4366,7 @@ ENDMAP
 
 NAME:   nzn_motion_control
 TAGS:   no_pool_fixup no_monster_gen
-DEPTH:  D:10-, Lair:4-, Shoals:2-, !Shoals:$
+DEPTH:  D:10-, Lair:3-, Shoals:2-, !Shoals:$
 ORIENT: float
 SHUFFLE: HY / 12, $%, eE / rR
 SUBST:  ER = ., r = x, e = + .
@@ -4399,7 +4399,7 @@ ENDMAP
 
 NAME:  gammafunk_mikee_crab_dinner
 TAGS:  no_monster_gen no_trap_gen patrolling
-DEPTH: D:10-, Depths, Lair:3-, Swamp, Zot
+DEPTH: D:10-, Depths, Lair:2-, Swamp, Zot
 ORIENT: float
 KMONS: F = apocalypse crab
 KITEM: F = |
