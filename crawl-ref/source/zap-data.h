@@ -1377,4 +1377,6 @@ _mon_hex_zap(ZAP_DRAIN_MAGIC, BEAM_DRAIN_MAGIC),
     6
 },
 
+_mon_hex_zap(ZAP_LIGNIFICATION, BEAM_LIGNIFICATION),
+
 };

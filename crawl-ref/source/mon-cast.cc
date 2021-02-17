@@ -50,6 +50,7 @@
 #include "mon-speak.h"
 #include "mon-tentacle.h"
 #include "mutation.h"
+#include "player.h"
 #include "player-stats.h"
 #include "random.h"
 #include "religion.h"
@@ -117,6 +118,7 @@ static bool _caster_sees_foe(const monster &caster);
 static bool _foe_can_sleep(const monster &caster);
 static bool _foe_not_teleporting(const monster &caster);
 static bool _foe_not_mr_vulnerable(const monster &caster);
+static bool _foe_can_lignify(const monster &caster);
 static bool _should_still_winds(const monster &caster);
 static void _mons_vampiric_drain(monster &mons, mon_spell_slot, bolt&);
 static void _cast_cantrip(monster &mons, mon_spell_slot, bolt&);
@@ -454,6 +456,7 @@ static const map<spell_type, mons_spell_logic> spell_to_logic = {
         [] (const monster &caster, mon_spell_slot /*slot*/, bolt& /*beem*/) {
             _monster_abjuration(caster, true);
         }, nullptr, MSPELL_LOGIC_NONE, 20, } },
+    { SPELL_LIGNIFY, _hex_logic(SPELL_LIGNIFY, _foe_can_lignify) },
 };
 
 /// Is the 'monster' actually a proxy for the player?
@@ -557,6 +560,16 @@ static bool _foe_not_mr_vulnerable(const monster &caster)
     if (foe->is_player())
         return !you.duration[DUR_LOWERED_MR];
     return !foe->as_monster()->has_ench(ENCH_LOWERED_MR);
+}
+
+static bool _foe_can_lignify(const monster &caster)
+{
+    const actor* foe = caster.get_foe();
+    ASSERT(foe);
+    if (foe->is_player())
+        return !you.is_lifeless_undead();
+    return foe->as_monster()->can_polymorph()
+            && foe->as_monster()->type != MONS_PLANT;
 }
 
 /**

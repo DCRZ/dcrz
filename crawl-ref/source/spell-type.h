@@ -480,5 +480,6 @@ enum spell_type : int
     SPELL_SHACKLE,
     SPELL_FALSE_IMAGE,
     SPELL_DAZZLING_BOLT,
+    SPELL_LIGNIFY,
     NUM_SPELLS
 };

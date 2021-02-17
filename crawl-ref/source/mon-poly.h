@@ -30,7 +30,8 @@ void change_monster_type(monster* mons, monster_type targetc);
 void init_poly_set(monster *mons);
 bool monster_polymorph(monster* mons, monster_type targetc,
                        poly_power_type power = PPT_SAME,
-                       bool force_beh = false);
+                       bool force_beh = false,
+                       bool allow_harmless_plant = false);
 
 void slimify_monster(monster* mons);
 bool mon_can_be_slimified(const monster* mons);

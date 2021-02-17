@@ -891,6 +891,14 @@ Fires a mighty bolt of lightning. It inflicts less damage than other similar
 bolts, but its damage partially bypasses armour and it can be bounced off walls
 to hit targets twice.
 %%%%
+Lignify spell
+
+Transforms the target into an animated tree with branches
+capable of holding weapons. Such a tree has minimal evasion but increased
+health and natural armour, and is resistant to poison and immune to negative
+energy. However, it is rooted in place while the transformation lasts, and
+cannot teleport. The caster's demise will cause the transformation to end.
+%%%%
 Magic Dart spell
 
 Fires a small bolt of magical energy which never misses.

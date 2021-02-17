@@ -3630,6 +3630,8 @@ void mons_pacify(monster& mon, mon_attitude_type att, bool no_xp)
         elven_twins_pacify(&mon);
     if (mons_is_mons_class(&mon, MONS_KIRKE))
         hogs_to_humans();
+    if (mons_is_mons_class(&mon, MONS_THE_ENCHANTRESS))
+        plants_to_people();
     if (mon.type == MONS_VAULT_WARDEN)
         timeout_terrain_changes(0, true);
 

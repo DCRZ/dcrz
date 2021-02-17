@@ -26,6 +26,7 @@
 #include "view.h"
 
 static void _daction_hog_to_human(monster *mon, bool in_transit);
+static void _daction_plant_to_person(monster *mon, bool in_transit);
 
 #ifdef DEBUG_DIAGNOSTICS
 static const char *daction_names[] =
@@ -127,6 +128,10 @@ bool mons_matches_daction(const monster* mon, daction_type act)
                // *or* another monster that got porkalated
                && (mon->props.exists("kirke_band")
                    || mon->props.exists(ORIG_MONSTER_KEY));
+
+    case DACT_ENCHANTRESS_PLANTS:
+        return (mon->type == MONS_PLANT
+               && mon->props.exists(ORIG_MONSTER_KEY));
 
     case DACT_BRIBE_TIMEOUT:
         return mon->has_ench(ENCH_NEUTRAL_BRIBED)
@@ -245,6 +250,10 @@ void apply_daction_to_mons(monster* mon, daction_type act, bool local,
             _daction_hog_to_human(mon, in_transit);
             break;
 
+        case DACT_ENCHANTRESS_PLANTS:
+            _daction_plant_to_person(mon, in_transit);
+            break;
+
         case DACT_BRIBE_TIMEOUT:
             if (mon->del_ench(ENCH_NEUTRAL_BRIBED))
             {
@@ -286,6 +295,7 @@ static void _apply_daction(daction_type act)
     case DACT_SLIME_NEW_ATTEMPT:
     case DACT_PIKEL_SLAVES:
     case DACT_KIRKE_HOGS:
+    case DACT_ENCHANTRESS_PLANTS:
     case DACT_BRIBE_TIMEOUT:
     case DACT_SET_BRIBES:
         for (monster_iterator mi; mi; ++mi)
@@ -442,6 +452,62 @@ static void _daction_hog_to_human(monster *mon, bool in_transit)
 
     if (could_see && !can_see)
         mpr("The hog vanishes!");
+    else if (!could_see && can_see)
+        mprf("%s appears from out of thin air!", mon->name(DESC_A).c_str());
+}
+
+static void _daction_plant_to_person(monster *mon, bool in_transit)
+{
+    ASSERT(mon); // XXX: change to monster &mon
+    // Plants to people
+    monster orig;
+    const bool could_see = you.can_see(*mon);
+
+    // Was it a converted monster?
+    if (mon->props.exists(ORIG_MONSTER_KEY))
+    {
+        // It was transformed into a plant. Copy it, since the instance in props
+        // will get deleted as soon as **mi is assigned to.
+        orig = mon->props[ORIG_MONSTER_KEY].get_monster();
+        orig.mid = mon->mid;
+    }
+    // Keep at same spot. This position is irrelevant if the plant is in transit.
+    // See below.
+    const coord_def pos = mon->pos();
+    // Preserve relative HP.
+    const float hp
+        = (float) mon->hit_points / (float) mon->max_hit_points;
+    // Preserve some flags.
+    const monster_flags_t preserve_flags =
+        mon->flags & ~(MF_JUST_SUMMONED | MF_WAS_IN_VIEW);
+    // Preserve enchantments.
+    mon_enchant_list enchantments = mon->enchantments;
+    FixedBitVector<NUM_ENCHANTMENTS> ench_cache = mon->ench_cache;
+
+    // Restore original monster.
+    *mon = orig;
+
+    // If the plant is in transit, then it is NOT stored in the normal
+    // monster list (env.mons or menv for short). We cannot call move_to_pos
+    // on such a plant, because move_to_pos will attempt to update the
+    // monster grid (env.mgrid or mgrd for short). Since the plant is not
+    // stored in the monster list, this will corrupt the grid. The transit code
+    // will update the grid properly once the transiting plant has been placed.
+    if (!in_transit)
+        mon->move_to_pos(pos);
+    // "else {mon->position = pos}" is unnecessary because the transit code will
+    // ignore the old position anyway.
+    mon->enchantments = enchantments;
+    mon->ench_cache = ench_cache;
+    mon->hit_points   = max(1, (int) (mon->max_hit_points * hp));
+    mon->flags        = mon->flags | preserve_flags;
+
+    const bool can_see = you.can_see(*mon);
+
+    behaviour_event(mon, ME_EVAL);
+
+    if (could_see && !can_see)
+        mpr("The plant vanishes!");
     else if (!could_see && can_see)
         mprf("%s appears from out of thin air!", mon->name(DESC_A).c_str());
 }

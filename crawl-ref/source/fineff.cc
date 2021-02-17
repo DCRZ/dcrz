@@ -506,6 +506,15 @@ void kirke_death_fineff::fire()
         untransform();
 }
 
+void enchantress_death_fineff::fire()
+{
+    delayed_action_fineff::fire();
+
+    // Revert the player last
+    if (you.form == transformation::tree)
+        untransform();
+}
+
 void rakshasa_clone_fineff::fire()
 {
     actor *defend = defender();

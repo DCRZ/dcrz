@@ -99,7 +99,7 @@ void monster_drop_things(monster* mons,
     }
 }
 
-static bool _valid_type_morph(const monster* mons, monster_type new_mclass)
+static bool _valid_type_morph(const monster* mons, monster_type new_mclass, bool allow_harmless_plant = false)
 {
     // Shapeshifters cannot polymorph into glowing shapeshifters or
     // vice versa.
@@ -110,6 +110,10 @@ static bool _valid_type_morph(const monster* mons, monster_type new_mclass)
     {
         return false;
     }
+
+    // Exception for the lignify spell
+    if (new_mclass == MONS_PLANT && allow_harmless_plant)
+        return true;
 
     // Various inappropriate polymorph targets.
     if ( !(mons_class_holiness(new_mclass) & mons_class_holiness(mons->type))
@@ -122,7 +126,7 @@ static bool _valid_type_morph(const monster* mons, monster_type new_mclass)
         || mons_class_flag(new_mclass, M_UNIQUE)      // no uniques
         || !mons_class_gives_xp(new_mclass)           // no tentacle parts or
                                                       // harmless things
-        || !mons_class_is_threatening(new_mclass)
+        || (!mons_class_is_threatening(new_mclass) && !allow_harmless_plant)
         || new_mclass == MONS_PROGRAM_BUG
 
         // 'morph targets are _always_ "base" classes, not derived ones.
@@ -153,9 +157,9 @@ static bool _valid_type_morph(const monster* mons, monster_type new_mclass)
 
 
 
-static bool _valid_morph(monster* mons, monster_type new_mclass)
+static bool _valid_morph(monster* mons, monster_type new_mclass, bool allow_harmless_plant = false)
 {
-    if (!_valid_type_morph(mons, new_mclass))
+    if (!_valid_type_morph(mons, new_mclass, allow_harmless_plant))
         return false;
 
     // [hm] Lower base draconian chances since there are nine of them,
@@ -531,7 +535,8 @@ static monster_type _poly_from_set(monster *mons)
 // says.
 bool monster_polymorph(monster* mons, monster_type targetc,
                        poly_power_type power,
-                       bool force_beh)
+                       bool force_beh,
+                       bool allow_harmless_plant)
 {
     // Don't attempt to polymorph a monster that is busy using the stairs.
     if (mons->flags & MF_TAKING_STAIRS)
@@ -610,7 +615,7 @@ bool monster_polymorph(monster* mons, monster_type targetc,
         targetc = target_types[random2(target_types.size())];
     }
 
-    if (!_valid_morph(mons, targetc))
+    if (!_valid_morph(mons, targetc, allow_harmless_plant))
         return simple_monster_message(*mons, " looks momentarily different.");
 
     change_monster_type(mons, targetc);

@@ -8364,6 +8364,7 @@ bool player::immune_to_hex(const spell_type hex) const
     case SPELL_PETRIFY:
         return res_petrify();
     case SPELL_PORKALATOR:
+    case SPELL_LIGNIFY:
         return is_lifeless_undead();
     case SPELL_VIRULENCE:
         return res_poison() == 3;

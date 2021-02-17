@@ -73,6 +73,7 @@ void elven_twins_pacify(monster* twin);
 void elven_twins_unpacify(monster* twin);
 
 void hogs_to_humans();
+void plants_to_people();
 
 bool mons_felid_can_revive(const monster* mons);
 void mons_felid_revive(monster* mons);

@@ -195,6 +195,7 @@ grasping_roots GRASPING_ROOTS
 haste_other HASTE_OTHER
 ink_cloud INK_CLOUD
 iron_elementals IRON_ELEMENTALS
+lignify LIGNIFY
 malmutate MALMUTATE
 metal_splinters METAL_SPLINTERS
 miasma_breath MIASMA_BREATH

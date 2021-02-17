@@ -2058,8 +2058,11 @@ int make_mons_armour(monster_type type, int level)
         break;
 
     case MONS_THE_ENCHANTRESS:
+        force_item     = true;
         item.base_type = OBJ_ARMOUR;
         item.sub_type  = ARM_FAERIE_DRAGON_ARMOUR;
+        item.plus      = random2(9);
+        make_item_randart(item);
         break;
 
     case MONS_TIAMAT:

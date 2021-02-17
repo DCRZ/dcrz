@@ -279,6 +279,22 @@ protected:
     }
 };
 
+class enchantress_death_fineff : public delayed_action_fineff
+{
+public:
+    void fire() override;
+
+    static void schedule(const string &final_msg)
+    {
+        final_effect::schedule(new enchantress_death_fineff(final_msg));
+    }
+protected:
+    enchantress_death_fineff(const string & _final_msg)
+        : delayed_action_fineff(DACT_ENCHANTRESS_PLANTS, _final_msg)
+    {
+    }
+};
+
 class rakshasa_clone_fineff : public final_effect
 {
 public:

@@ -2400,6 +2400,12 @@ item_def* monster_die(monster& mons, killer_type killer,
         {
             hogs_to_humans();
         }
+        else if (mons_is_mons_class(&mons, MONS_THE_ENCHANTRESS)
+                 && !in_transit
+                 && !testbits(mons.flags, MF_WAS_NEUTRAL))
+        {
+            plants_to_people();
+        }
         else if ((mons_is_mons_class(&mons, MONS_NATASHA)
                   || mons_genus(mons.type) == MONS_FELID)
                  && !in_transit && !mons.pacified()
@@ -3111,6 +3117,41 @@ void hogs_to_humans()
                                  any > 1 ? "forms" : "form");
     }
     kirke_death_fineff::schedule(final_msg);
+}
+
+/**
+ * Revert lignified trees.
+ *
+ * Called upon the Enchantress' death. All trees/plants should be 
+ * reverted to their original form. This takes place as a daction to 
+ * preserve behaviour across levels; this function simply checks if 
+ * any are visible and raises a fineff containing an appropriate 
+ * message. The fineff raises the actual daction.
+ */
+void plants_to_people()
+{
+    int any = 0;
+
+    for (monster_iterator mi; mi; ++mi)
+    {
+        if (mons_genus(mi->type) != MONS_PLANT)
+            continue;
+
+        const bool could_see = you.can_see(**mi);
+
+        if (could_see) any++;
+    }
+
+    string final_msg;
+    if (any > 0)
+    {
+        final_msg = make_stringf("No longer under the Enchantress' spell, the %s %s %s!",
+                                 any > 1 ? "plants return to their"
+                                         : "plant returns to its",
+                                           "original",
+                                 any > 1 ? "forms" : "form");
+    }
+    enchantress_death_fineff::schedule(final_msg);
 }
 
 /**

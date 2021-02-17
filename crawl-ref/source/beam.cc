@@ -209,6 +209,7 @@ static void _ench_animation(int flavour, const monster* mon, bool force)
         break;
     case BEAM_POLYMORPH:
     case BEAM_MALMUTATE:
+    case BEAM_LIGNIFICATION:
         elem = ETC_MUTAGENIC;
         break;
     case BEAM_CHAOS:
@@ -3348,6 +3349,17 @@ void bolt::affect_player_enchantment(bool resistible)
         obvious_effect = true;
         break;
 
+    case BEAM_LIGNIFICATION:
+        if (!transform(ench_power, transformation::tree, true))
+        {
+            mpr("You feel woody for a moment.");
+            break;
+        }
+
+        you.transform_uncancellable = true;
+        obvious_effect = true;
+        break;
+
     case BEAM_BERSERK:
         you.go_berserk(blame_player);
         obvious_effect = true;
@@ -5125,6 +5137,10 @@ bool ench_flavour_affects_monster(beam_type flavour, const monster* mon,
         rc = !(mons_is_slime(*mon) || mon->is_insubstantial());
         break;
 
+    case BEAM_LIGNIFICATION:
+        rc = (mon->can_polymorph() && mon->type != MONS_PLANT);
+        break;
+
     default:
         break;
     }
@@ -5523,6 +5539,31 @@ mon_resist_type bolt::apply_enchantment_to_monster(monster* mon)
 
             // For monster reverting to original form.
             mon->props[ORIG_MONSTER_KEY] = orig_mon;
+        }
+
+        return MON_AFFECTED;
+    }
+
+    case BEAM_LIGNIFICATION:
+    {
+        monster orig_mon(*mon);
+        if (monster_polymorph(mon, MONS_PLANT, PPT_SAME, false, true))
+        {
+            obvious_effect = true;
+
+            // Don't restore items to monster if it reverts.
+            orig_mon.inv = mon->inv;
+
+            // monsters can't cast spells in plant form either -doy
+            mon->spells.clear();
+
+            // For monster reverting to original form.
+            mon->props[ORIG_MONSTER_KEY] = orig_mon;
+        }
+        if (YOU_KILL(thrower)) // better safe than sorry
+        {
+            const int level = 2 + random2(3);
+            did_god_conduct(DID_DELIBERATE_MUTATING, level, god_cares());
         }
 
         return MON_AFFECTED;
@@ -6204,6 +6245,7 @@ bool bolt::nasty_to(const monster* mon) const
         case BEAM_PARALYSIS:
         case BEAM_PETRIFY:
         case BEAM_POLYMORPH:
+        case BEAM_LIGNIFICATION:
         case BEAM_DISPEL_UNDEAD:
         case BEAM_PAIN:
         case BEAM_AGONY:
@@ -6483,6 +6525,7 @@ static string _beam_type_name(beam_type type)
     case BEAM_INFESTATION:           return "infestation";
     case BEAM_VILE_CLUTCH:           return "vile clutch";
     case BEAM_SHACKLE:               return "shackles";
+    case BEAM_LIGNIFICATION:         return "lignification";
 
     case NUM_BEAMS:                  die("invalid beam type");
     }
