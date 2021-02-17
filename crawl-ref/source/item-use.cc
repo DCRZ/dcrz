@@ -3192,6 +3192,13 @@ void read_scroll(item_def& scroll)
             mpr("It would have no effect in this place.");
             break;
         }
+        else if (is_mapping_rotting())
+            if (!yesno("You map of this branch will not be permanent"
+                        " - continue?", false, 0))
+            {
+                cancel_scroll = true;
+                break;
+            }
         mpr(pre_succ_msg);
         magic_mapping(500, 100, false);
         break;

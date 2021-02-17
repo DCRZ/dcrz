@@ -474,12 +474,8 @@ void handle_time()
     }
 
     // Abyss/Forest maprot
-    if (player_in_branch(BRANCH_ABYSS)
-        || (player_in_branch(BRANCH_FOREST) 
-            && !you.runes[RUNE_FOREST]))
-    {
+    if (is_mapping_rotting())
         forget_map(true);
-    }
 
     // Magic contamination from spells and Orb.
     if (!crawl_state.game_is_arena())
