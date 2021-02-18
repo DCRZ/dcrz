@@ -409,6 +409,51 @@ static void _evolve(int /*time_delta*/)
         }
 }
 
+/// Yewborn attack players who linger too long in the Forest.
+static void _awaken_yewborn(int /*time_delta*/)
+{
+    if (!player_in_branch(BRANCH_FOREST) || you.runes[RUNE_FOREST])
+        return;
+
+    bool tree_animated = false;
+    int max_trees_to_animate = random2(3) + 1;
+    int skip = 0;
+
+    for (distance_iterator di(you.pos(), true, true, LOS_RADIUS); di; ++di)
+    {
+        if (max_trees_to_animate == 0)
+            break;
+        
+        const coord_def where = *di;
+        if (!you.see_cell_no_trans(where))
+            continue;
+
+        // skip a few trees after creating a yewborn to reduce clustering
+        if (skip > 0)
+        {
+            skip--;
+            continue;
+        }
+
+        dungeon_feature_type feat = grd(where);
+        if (feat_is_tree(feat))
+        {
+            destroy_wall(where);
+            mgen_data yew(MONS_YEWBORN, BEH_HOSTILE, where, MHITYOU,
+                            MG_FORCE_PLACE | MG_AUTOFOE);
+            if (create_monster(yew))
+            {
+                tree_animated = true;
+                max_trees_to_animate -= 1;
+                skip = random2avg(6, 2) + 6;
+            }
+        }
+    }
+    
+    if (tree_animated)
+        mpr("The forest comes to life.");
+}
+
 // Get around C++ dividing integers towards 0.
 static int _div(int num, int denom)
 {
@@ -452,6 +497,7 @@ static struct timed_effect timed_effects[] =
 #if TAG_MAJOR_VERSION == 34
     { nullptr,                         0,     0, false },
 #endif
+    { _awaken_yewborn,              1000,  2000, false },
 };
 
 // Do various time related actions...

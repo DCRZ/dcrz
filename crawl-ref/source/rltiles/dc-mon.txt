@@ -849,6 +849,7 @@ oklob_plant MONS_OKLOB_PLANT
 thorn_hunter MONS_THORN_HUNTER
 treant MONS_TREANT
 briar_patch MONS_BRIAR_PATCH
+yewborn MONS_YEWBORN
 %rim 1
 vine_stalker MONS_VINE_STALKER
 

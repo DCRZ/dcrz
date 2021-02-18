@@ -2690,6 +2690,14 @@ yellow draconian
 
 A muscular yellow-scaled humanoid with a reptilian tail and small wings.
 %%%%
+yewborn
+
+A sapient tree, indistinguishable from its immobile peers save for two
+eye-shaped knots and a cantankerous disposition, yewborn are senescent spriggans
+reborn as trees via a magical ritual. While they are slow to move and 
+react, yewborn are quite capable of crushing adventurers who linger too long in
+their forest home.
+%%%%
 ynoxinul
 
 A winged demon covered in shiny metallic scales. It has a legion of minor

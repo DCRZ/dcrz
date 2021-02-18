@@ -1859,7 +1859,11 @@ static void _get_rune(const item_def& it, bool quiet)
              rune_type_name(it.sub_type));
         // collecting the mossy rune prevents Forest map rot
         if (it.sub_type == RUNE_FOREST)
-            mprf(MSGCH_ORB, "The curse on the forest is lifted.");
+        {
+            mprf(MSGCH_ORB, "The enchantment on the forest breaks.");
+            mpr("The trees stop moving.");
+            mpr("Your memory returns.");
+        }
         int nrunes = runes_in_pack();
         if (nrunes >= you.obtainable_runes)
             mpr("You have collected all the runes! Now go and win!");

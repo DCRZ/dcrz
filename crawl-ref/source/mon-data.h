@@ -987,6 +987,20 @@ static monsterentry mondata[] =
     {TILEP_MONS_VINE_STALKER}, TILE_ERROR
 },
 
+{
+    MONS_YEWBORN, 'f', RED, "yewborn",
+    M_NO_FLAGS,
+    MR_RES_POISON | MR_VUL_FIRE,
+    10, MONS_YEWBORN, MONS_YEWBORN, MH_PLANT, 60,
+    { {AT_HIT, AF_REACH, 28}, {AT_CONSTRICT, AF_CRUSH, 7}, AT_NO_ATK, 
+        AT_NO_ATK },
+    12, 740,
+    13, 2, MST_NO_SPELLS, false, S_SILENT,
+    I_HUMAN, HT_LAND, 6, DEFAULT_ENERGY,
+    MONUSE_NOTHING, SIZE_GIANT, MON_SHAPE_PLANT,
+    {TILEP_MONS_YEWBORN}, TILE_ERROR
+},
+
 // goblins and other small humanoids ('g')
 {
     MONS_GOBLIN, 'g', LIGHTGREY, "goblin",
