@@ -2239,7 +2239,7 @@ int player_shield_class()
     }
 
     // Fairies get bonus SH from shimmering scales
-    if (you.species == SP_FAIRY)
+    if (you.species == SP_FAIRY && !player_is_shapechanged())
         shield += 600 + 200 * you.experience_level / 3;
 
     return (shield + 50) / 100;
@@ -3098,11 +3098,7 @@ int player_stealth()
             stealth += STEALTH_PIP;
 
     //Fairies' bright wings reduce stealth.
-    if (you.species == SP_FAIRY
-        && (you.form == transformation::none
-            || you.form == transformation::appendage
-            || you.form == transformation::blade_hands
-            || you.form == transformation::dragon))
+    if (you.species == SP_FAIRY && !player_is_shapechanged())
     {
         stealth -= STEALTH_PIP;
     }
@@ -5281,7 +5277,8 @@ bool player::airborne() const
 
     if (duration[DUR_FLIGHT]
         || you.props[EMERGENCY_FLIGHT_KEY].get_bool()
-        || attribute[ATTR_PERM_FLIGHT]
+        || (attribute[ATTR_PERM_FLIGHT]
+            && !player_is_shapechanged())
         || get_form()->enables_flight())
     {
         return true;
@@ -5534,7 +5531,7 @@ int player::shield_block_penalty() const
 bool player::shielded() const
 {
     return shield()
-           || you.species == SP_FAIRY
+           || (you.species == SP_FAIRY && !player_is_shapechanged())
            || duration[DUR_DIVINE_SHIELD]
            || get_mutation_level(MUT_LARGE_BONE_PLATES) > 0
            || qazlal_sh_boost() > 0
@@ -6511,15 +6508,15 @@ bool player::racial_permanent_flight() const
         || get_mutation_level(MUT_FAIRY_FLIGHT);
 }
 
- // Only Tengu and Fairies get perks for flying.
+ // Only Tengu and Fairies in their original form get perks for flying.
 bool player::tengu_flight() const
 {
-    return species == SP_TENGU && airborne();
+    return get_mutation_level(MUT_TENGU_FLIGHT) && airborne();
 }
 
 bool player::fairy_flight() const
 {
-    return species == SP_FAIRY && airborne();
+    return get_mutation_level(MUT_FAIRY_FLIGHT) && airborne();
 }
 
 /**

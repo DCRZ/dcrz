@@ -930,7 +930,7 @@ static void _equip_armour_effect(item_def& arm, bool unmeld,
  * The player lost a source of permafly. End their flight if there was
  * no other source, evoking a ring of flight "for free" if possible.
  */
-void lose_permafly_source()
+void lose_permafly_source(bool temp)
 {
     const bool had_perm_flight = you.attribute[ATTR_PERM_FLIGHT];
 
@@ -938,7 +938,9 @@ void lose_permafly_source()
         && !you.wearing_ego(EQ_ALL_ARMOUR, SPARM_FLYING)
         && !you.racial_permanent_flight())
     {
-        you.attribute[ATTR_PERM_FLIGHT] = 0;
+        // keep ATTR_PERM_FLIGHT for temporary suppression from forms
+        if (!temp)
+            you.attribute[ATTR_PERM_FLIGHT] = 0;
         if (you.evokable_flight())
         {
             fly_player(

@@ -626,7 +626,11 @@ string describe_mutations(bool drop_title)
                          "incoming attacks. (AC +%d, SH +%d)",
                          you.racial_ac(false)/100,
                          3 + you.experience_level/3),
-            player_is_shapechanged());
+                         player_is_shapechanged());
+        // Fairies' wings make them less stealthly
+        result += _annotate_form_based("Your bright wings attract "
+                         "enemies. (Stealth-)", !player_is_shapechanged());
+
     }
     else if (you.racial_ac(false) > 0)
     {

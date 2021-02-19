@@ -48,8 +48,6 @@ mutations:
 fake_mutations:
   - long: Your spells' MP costs are reduced by 1.
     short: magic attunement
-  - long: Your bright wings attract enemies. (Stealth-)
-    short: unstealthy
   - long: You cannot fit into any form of body armour.
   - short: unfitting armour
 recommended_jobs:

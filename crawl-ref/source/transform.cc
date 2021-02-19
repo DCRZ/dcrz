@@ -1839,6 +1839,10 @@ bool transform(int pow, transformation which_trans, bool involuntary,
     if (!form_keeps_mutations(which_trans))
         you.stop_directly_constricting_all(false);
 
+    // Species with racial permanent flight lose this in some forms
+    if (!form_keeps_mutations(which_trans))
+        lose_permafly_source(true);
+
     // Stop being constricted if we are now too large.
     if (you.is_directly_constricted())
     {

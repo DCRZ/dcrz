@@ -2233,7 +2233,7 @@ static spret _do_ability(const ability_def& abil, bool fail)
             you.attribute[ATTR_PERM_FLIGHT] = 1;
             float_player();
         }
-        if (you.species == SP_TENGU)
+        if (you.species == SP_TENGU || you.species == SP_FAIRY)
             mpr("You feel very comfortable in the air.");
         break;
 
@@ -3581,8 +3581,10 @@ vector<talent> your_talents(bool check_confused, bool include_unusable)
             _add_talent(talents, ABIL_TRAN_BAT, check_confused);
     }
 
-    if (you.racial_permanent_flight() && !you.attribute[ATTR_PERM_FLIGHT])
+    if (you.racial_permanent_flight() && !you.attribute[ATTR_PERM_FLIGHT] 
+                                      && !player_is_shapechanged())
     {
+        // Fairies can fly starting at XL 1
         // Tengu can fly starting at XL 5
         // Black draconians and gargoyles get permaflight at XL 14, but they
         // don't get the tengu movement/evasion bonuses
