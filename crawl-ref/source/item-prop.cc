@@ -101,7 +101,7 @@ static const armour_def Armour_prop[] =
         EQ_BODY_ARMOUR, SIZE_SMALL,  SIZE_MEDIUM, true, ARMF_NO_FLAGS, 1000 },
     { ARM_PLATE_ARMOUR,         "plate armour",          10, -180,   230,
         EQ_BODY_ARMOUR, SIZE_SMALL, SIZE_MEDIUM, true, ARMF_NO_FLAGS, 1000 },
-    { ARM_CRYSTAL_PLATE_ARMOUR, "crystal plate armour",  14, -230,   800,
+    { ARM_CRYSTAL_PLATE_ARMOUR, "crystal plate armour",  14, -200,   800,
         EQ_BODY_ARMOUR, SIZE_SMALL, SIZE_MEDIUM, false, ARMF_NO_FLAGS, 500 },
 
 #if TAG_MAJOR_VERSION == 34
