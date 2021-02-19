@@ -698,6 +698,7 @@ void get_cleave_targets(const actor &attacker, const coord_def& def,
     const item_def* weap = attacker.weapon(which_attack);
 
     if (weap && item_attack_skill(*weap) == SK_AXES
+            || weap && weap->sub_type == WPN_SCYTHE
             || attacker.is_player()
                && (you.form == transformation::hydra && you.heads() > 1
                    || you.duration[DUR_CLEAVE]))
@@ -706,13 +707,35 @@ void get_cleave_targets(const actor &attacker, const coord_def& def,
         coord_def atk_vector = def - atk;
         const int dir = random_choose(-1, 1);
 
-        for (int i = 0; i < 7; ++i)
+        for (int i = 0; i < 8; ++i)
         {
             atk_vector = rotate_adjacent(atk_vector, dir);
 
             actor *target = actor_at(atk + atk_vector);
-            if (target && !_dont_harm(attacker, *target))
+            if (target && !_dont_harm(attacker, *target) && def != atk + atk_vector)
                 targets.push_back(target);
+        }
+
+        if (weap && weap->sub_type == WPN_SCYTHE
+                || attacker.is_player() 
+                    && weap && item_attack_skill(*weap) == SK_POLEARMS
+                    && you.duration[DUR_CLEAVE])
+        {
+            int radius = 2;
+            atk_vector = (def - atk);
+            for (int i = 0; i < radius - 1; i++)
+            {
+                atk_vector += (def - atk);
+            }
+
+            for (int i = 0; i < 16; ++i)
+            {
+                atk_vector = rotate_adjacent(atk_vector, dir, radius);
+
+                actor *target = actor_at(atk + atk_vector);
+                if (target && !_dont_harm(attacker, *target) && def != atk + atk_vector)
+                    targets.push_back(target);
+            }
         }
     }
 
@@ -759,7 +782,7 @@ void attack_cleave_targets(actor &attacker, list<actor*> &targets,
     {
         actor* def = targets.front();
 
-        if (def && def->alive() && !_dont_harm(attacker, *def) && adjacent(attacker.pos(), def->pos()))
+        if (def && def->alive() && !_dont_harm(attacker, *def))
         {
             melee_attack attck(&attacker, def, attack_number,
                                ++effective_attack_number, true);

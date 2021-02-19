@@ -994,7 +994,8 @@ magic.
 %%%%
 scythe
 
-A farm implement, usually only used by untrained mobs in combat.
+An improvised weapon designed to reap in the widest arc. While its intended
+use is harvesting crops, it has no difficulties cutting through flesh and bone.
 %%%%
 shortbow
 
