@@ -1269,7 +1269,6 @@ PLUS:    7
 BRAND:   SPWPN_PROTECTION
 FB_BRAND: SPWPN_VORPAL
 
-# start TAG_MAJOR_VERSION == 34
 ENUM:    ETHERIC_CAGE
 NAME:    Maxwell's etheric cage
 OBJ:     OBJ_ARMOUR/ARM_HELMET
@@ -1279,11 +1278,9 @@ TILE_EQ: etheric_cage
 INSCRIP: RegenMP+
 PLUS:    +0
 MP:      +4
-BOOL:    mutate, elec, chaotic, nogen
+BOOL:    mutate, elec, chaotic
 VALUE:   400
-# end TAG_MAJOR_VERSION
 
-# start TAG_MAJOR_VERSION == 34
 ENUM:    ETERNAL_TORMENT
 NAME:    crown of Eternal Torment
 OBJ:     OBJ_ARMOUR/ARM_HAT
@@ -1293,8 +1290,7 @@ TILE:    urand_eternal_torment
 TILE_EQ: eternal_torment
 INSCRIP: rTorment HP--
 LIFE:    3
-BOOL:    evil, seeinv, nogen, curse
-# end TAG_MAJOR_VERSION
+BOOL:    evil, seeinv, drain
 
 ENUM:    VINES
 NAME:    robe of Vines
@@ -1330,7 +1326,6 @@ BRAND:   SPWPN_FREEZING
 COLD:    1
 BOOL:    skip_ego, fly, noises
 
-# start TAG_MAJOR_VERSION == 34
 ENUM:     TALOS
 NAME:     armour of Talos
 OBJ:      OBJ_ARMOUR/ARM_PLATE_ARMOUR
@@ -1340,8 +1335,6 @@ TILE_EQ:  talos
 COLOUR:   ETC_FIRE
 BRAND:    SPARM_PONDEROUSNESS
 FIRE:     1
-BOOL:     nogen
-# end TAG_MAJOR_VERSION
 
 ENUM:     WARLOCK_MIRROR
 NAME:     warlock's mirror

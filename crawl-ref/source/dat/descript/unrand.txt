@@ -624,7 +624,6 @@ pair of quick blades "Gyre" and "Gimble"
 Two quick blades joined by a chain. Swinging one compels the wielder to swing
 the other, as if they have minds of their own.
 %%%%
-# TAG_MAJOR_VERSION == 34
 Maxwell's etheric cage
 
 A fine mesh cage designed to capture magical energy. Experimental notes suggest
@@ -633,7 +632,6 @@ contamination almost as effectively. Anyone reckless enough to place it on
 their head would find their magic regeneration dramatically increased, at the
 cost of multiplying any magical contamination received.
 %%%%
-# TAG_MAJOR_VERSION == 34
 crown of Eternal Torment
 
 A gold crown set with jet-black gems. It permanently afflicts its wearer with
@@ -660,7 +658,6 @@ A massive axe that looks like it was carved from a glacier, or possibly calved
 from one. It leaves ice crystals in its wake as it swings through the air, and
 grants its wielder immunity to freezing vapours.
 %%%%
-# TAG_MAJOR_VERSION == 34
 armour of Talos
 
 A huge and weighty suit of bronze plate armour. Only one with a correspondingly
