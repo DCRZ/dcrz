@@ -1767,3 +1767,4 @@ icy_wall_overlay3
 
 %sdir dngn/vaults
 brick_dark_leak WALL_BRICK_DARK_LEAK
+wall_gingerbread WALL_GINGERBREAD

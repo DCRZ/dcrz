@@ -1003,6 +1003,11 @@ A ruined idol
 A monument to the glory of a dead god. The statue has been methodically
 defaced; not a single distinguishing feature remains.
 %%%%
+# manman_forest_hansel_and_gretel
+A gingerbread house
+
+A house made entirely from baked goods. Yum!
+%%%%
 ########################################################################
 ### Sprint
 ########################################################################

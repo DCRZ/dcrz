@@ -383,9 +383,9 @@ ttt.tx..1xt
     ttttttt
 ENDMAP
 
-NAME: kb_forest_witch_hut
+NAME: kb_forest_spriggan_hut
 DEPTH: Forest
-MONS:  greenwood witch
+MONS:  spriggan
 SUBST: T = t / .
 MAP
 tt@tttt
@@ -818,9 +818,11 @@ ENDMAP
 
 ###############################################################################
 ## Yred has gained a foothold in the enchanted forest
+#
 #  This vault should be merged with its crypt variant
 #  gammafunk_crypt_yreds_forest in float.des, but it's too 
 #  much of a pain
+#
 NAME:    gammafunk_forest_yreds_foothold
 DEPTH:   Forest
 ORIENT:  float
@@ -869,6 +871,60 @@ Ettttte.etttTTTT.....TTTTtttttttt...
 @..tttt..ttttttttttttttttttttttttt..
 ....tttt...tttttttttttttt...tttttttE
 ..@..EEEE.@.EEEEEEEEEEEE.@..@.EEEEEE
+ENDMAP
+
+###############################################################################
+## A camper cannibalizes his companions to survive and turns into a wendigo
+#
+NAME:  manman_forest_wendigo_camp
+DEPTH: Forest
+MONS:  wendigo
+: dgn.delayed_decay(_G, 'd', 'human skeleton ')
+MARKER: L = lua:fog_machine { cloud_type = "flame", \
+             pow_min = 1000, pow_max = 1000, delay = 1, \
+             size = 1, walk_dist = 0, start_clouds = 1, excl_rad = 0 }
+MAP
+        tttttt
+      tttttttttt
+    tttttt.dtttttt
+  ttttttt....ttttttt
+ tttttttd.....ttttttt
+ttttttt...LL1..tttttt
+ttttttt...LLd..tttttt
+ ttttttt......ttttt
+  tttttttd..ttttt
+    tttttt.tttttt
+      tttt.ttttt
+       ttt.ttt
+        ttdtt
+        tt@tt
+ENDMAP
+
+## A classic fairy tale takes a dark turn...
+#
+NAME:  manman_forest_hansel_and_gretel
+DEPTH: Forest
+MONS:  greenwood witch
+: dgn.delayed_decay(_G, 'h', 'Hansel skeleton')
+: dgn.delayed_decay(_G, 'g', 'Gretel skeleton')
+MARKER: L = lua:fog_machine { cloud_type = "flame", \
+             pow_min = 1000, pow_max = 1000, delay = 1, \
+             size = 1, walk_dist = 0, start_clouds = 1, excl_rad = 0 }
+TILE:   x = wall_gingerbread
+: set_feature_name("rock_wall", "gingerbread house")
+MAP
+tt@ttttttt
+ttt.tttttttt
+ttt.ttttttttt
+tttt.ttttttttt
+ttt.........tt
+tt..........tt
+tt..xx+xxx..tt
+tt..x....x.ttt
+tt..x.1.hxttt
+ttt.xg.xLxttt
+ttttxxxxxxttt
+ttttttttttttt
 ENDMAP
 
 ##############################################################################

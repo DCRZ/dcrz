@@ -1081,6 +1081,8 @@ enum monster_type                      // menv[].type
     MONS_WENDIGO,
     MONS_SASQUATCH,
     MONS_YEWBORN,
+    MONS_HANSEL,
+    MONS_GRETEL,
 #endif
 
     NUM_MONSTERS,               // used for polymorph
