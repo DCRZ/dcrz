@@ -2939,6 +2939,7 @@ string feature_description_at(const coord_def& where, bool covering,
         return thing_do_grammar(dtype, "UNAMED PORTAL VAULT ENTRY");
 #endif
 
+    case DNGN_TREE_ANCIENT:
     case DNGN_TREE:
     {
         string desc = "";

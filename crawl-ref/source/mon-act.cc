@@ -2895,7 +2895,7 @@ bool mon_can_move_to_pos(const monster* mons, const coord_def& delta,
         || mons->type == MONS_SPATIAL_MAELSTROM
            && feat_is_solid(target_grid) && !feat_is_permarock(target_grid)
            && !feat_is_critical(target_grid)
-        || feat_is_tree(target_grid) && mons_flattens_trees(*mons)
+        || feat_is_mundane_tree(target_grid) && mons_flattens_trees(*mons)
         || target_grid == DNGN_GRATE && digs)
     {
     }
@@ -3556,7 +3556,7 @@ static bool _monster_move(monster* mons)
         }
         else if ((((feat == DNGN_ROCK_WALL || feat == DNGN_CLEAR_ROCK_WALL)
                   && burrows)
-                  || (flattens_trees && feat_is_tree(feat)))
+                  || (flattens_trees && feat_is_mundane_tree(feat)))
                  && good_move[mmov.x + 1][mmov.y + 1] == true)
         {
             const coord_def target(mons->pos() + mmov);

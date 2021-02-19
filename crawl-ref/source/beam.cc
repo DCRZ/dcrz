@@ -873,8 +873,8 @@ void bolt::digging_wall_effect()
 void bolt::burn_wall_effect()
 {
     dungeon_feature_type feat = grd(pos());
-    // Fire only affects trees.
-    if (!feat_is_tree(feat)
+    // Fire only affects mundane trees.
+    if (!feat_is_mundane_tree(feat)
         || env.markers.property_at(pos(), MAT_ANY, "veto_fire") == "veto"
         || !can_burn_trees()) // sanity
     {
@@ -952,7 +952,7 @@ void bolt::affect_wall()
         const bool vetoed = env.markers.property_at(pos(), MAT_ANY, "veto_fire")
                             == "veto";
         // XXX: should check env knowledge for feat_is_tree()
-        if (god_relevant && feat_is_tree(grd(pos())) && !vetoed
+        if (god_relevant && feat_is_mundane_tree(grd(pos())) && !vetoed
             && !is_targeting && YOU_KILL(thrower) && !dont_stop_trees)
         {
             const string prompt =
@@ -2236,7 +2236,7 @@ bool bolt::is_bouncy(dungeon_feature_type feat) const
         return false;
 
     if (flavour == BEAM_ELECTRICITY && !feat_is_metal(feat)
-        && !feat_is_tree(feat))
+        && !feat_is_mundane_tree(feat))
     {
         return true;
     }
@@ -2546,7 +2546,7 @@ bool bolt::can_affect_wall(const coord_def& p, bool map_knowledge) const
         return true;
 
     if (can_burn_trees())
-        return feat_is_tree(wall);
+        return feat_is_mundane_tree(wall);
 
     // Lee's Rapid Deconstruction
     if (flavour == BEAM_FRAG)

@@ -602,6 +602,13 @@ bool feat_is_player_altar(dungeon_feature_type grid)
  */
 bool feat_is_tree(dungeon_feature_type feat)
 {
+    return feat == DNGN_TREE || feat == DNGN_TREE_ANCIENT;
+}
+
+/** Is this feature a non-magical tree?
+ */
+bool feat_is_mundane_tree(dungeon_feature_type feat)
+{
     return feat == DNGN_TREE;
 }
 

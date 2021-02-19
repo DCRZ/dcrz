@@ -7573,7 +7573,7 @@ static bool _ms_waste_of_time(monster* mon, mon_spell_slot slot)
         bool touch_wood = false;
         for (adjacent_iterator ai(mon->pos()); ai; ai++)
         {
-            if (env.grid(*ai) == DNGN_TREE)
+            if (feat_is_tree(env.grid(*ai)))
             {
                 touch_wood = true;
                 break;

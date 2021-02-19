@@ -23,6 +23,7 @@ enum dungeon_feature_type
     DNGN_SEALED_DOOR,
 #if TAG_MAJOR_VERSION > 34
     DNGN_SEALED_CLEAR_DOOR,
+    DNGN_TREE_ANCIENT,
 #endif
     DNGN_TREE,
 
@@ -305,6 +306,7 @@ enum dungeon_feature_type
     DNGN_RUNED_CLEAR_DOOR,
     DNGN_SEALED_CLEAR_DOOR,
     DNGN_TOXIC_BOG,
+    DNGN_TREE_ANCIENT,
 #endif
 
 #if TAG_MAJOR_VERSION == 34

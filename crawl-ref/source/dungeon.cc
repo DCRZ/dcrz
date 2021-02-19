@@ -4257,7 +4257,7 @@ static const vault_placement *_build_vault_impl(const map_def *vault,
     }
 
     if (!build_only && (placed_vault_orientation != MAP_ENCOMPASS || is_layout)
-        && player_in_branch(BRANCH_SWAMP))
+        && (player_in_branch(BRANCH_SWAMP) || player_in_branch(BRANCH_FOREST)))
     {
         _process_disconnected_zones(0, 0, GXM-1, GYM-1, true, DNGN_TREE);
         // do a second pass to remove tele closets consisting of deep water
@@ -5025,6 +5025,7 @@ static dungeon_feature_type _glyph_to_feat(int glyph)
            (glyph == 'U') ? DNGN_FOUNTAIN_SPARKLING :
            (glyph == 'V') ? DNGN_DRY_FOUNTAIN :
            (glyph == 'Y') ? DNGN_FOUNTAIN_BLOOD :
+           (glyph == 'Z') ? DNGN_TREE_ANCIENT :
            (glyph == '\0')? DNGN_ROCK_WALL
                           : DNGN_FLOOR; // includes everything else
 }
@@ -5871,7 +5872,7 @@ static bool _spotty_seed_ok(const coord_def& p)
 static bool _feat_is_wall_floor_liquid(dungeon_feature_type feat)
 {
     return feat_is_water(feat)
-           || feat == DNGN_TREE
+           || feat_is_tree(feat)
            || feat_is_lava(feat)
            || feat_is_wall(feat)
            || feat == DNGN_FLOOR;

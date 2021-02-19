@@ -185,6 +185,8 @@ tileidx_t tileidx_feature_base(dungeon_feature_type feat)
         return TILE_DNGN_CRYSTAL_WALL;
     case DNGN_ORCISH_IDOL:
         return TILE_DNGN_ORCISH_IDOL;
+    case DNGN_TREE_ANCIENT:
+        return TILE_DNGN_TREE_ANCIENT;
     case DNGN_TREE:
         return player_in_branch(BRANCH_SWAMP) ? TILE_DNGN_MANGROVE : TILE_DNGN_TREE;
     case DNGN_GRANITE_STATUE:

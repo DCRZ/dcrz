@@ -436,7 +436,8 @@ static bool _is_seen_wall(coord_def gc, crawl_view_buffer& vbuf)
 {
     const auto feat = _safe_feat(gc, vbuf);
     return (feat_is_opaque(feat) || feat_is_wall(feat))
-           && feat != DNGN_TREE && feat != DNGN_UNSEEN;
+           && feat != DNGN_TREE && feat != DNGN_TREE_ANCIENT
+           && feat != DNGN_UNSEEN;
 }
 
 static void _pack_wall_shadows(const coord_def &gc, crawl_view_buffer& vbuf,

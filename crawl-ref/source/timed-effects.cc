@@ -436,7 +436,7 @@ static void _awaken_yewborn(int /*time_delta*/)
         }
 
         dungeon_feature_type feat = grd(where);
-        if (feat_is_tree(feat))
+        if (feat_is_mundane_tree(feat))
         {
             destroy_wall(where);
             mgen_data yew(MONS_YEWBORN, BEH_HOSTILE, where, MHITYOU,

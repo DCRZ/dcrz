@@ -87,6 +87,13 @@ static feature_def feat_defs[] =
 },
 
 {
+    DNGN_TREE_ANCIENT, "ancient tree", "ancient_tree",
+    DCHAR_PERMAWALL, DCHAR_WALL_MAGIC,
+    COLOUR_IS(ETC_TREE),
+    FFT_OPAQUE | FFT_SOLID, MF_WALL,
+},
+
+{
     DNGN_METAL_WALL, "metal wall", "metal_wall",
     DCHAR_WALL, DCHAR_WALL_MAGIC,
     COLOUR_IS(CYAN),

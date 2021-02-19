@@ -64,6 +64,8 @@ mangrove2
 %weight 5
 mangrove3
 
+mangrove1_ancient DNGN_TREE_ANCIENT
+mangrove3_ancient
 
 ## doors
 %sdir dngn/doors
