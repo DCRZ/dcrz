@@ -40,6 +40,7 @@ enum armour_flag
     ARMF_RES_CORR           = 1 << 20,
     ARMF_RES_STEAM          = 1 << 21,
     ARMF_SHIELDING          = 1 << 22,
+    ARMF_SLOW_MOVE          = 1 << 23,
     // vulnerabilities
     ARMF_VUL_FIRE           = ard(ARMF_RES_FIRE, -1),
     ARMF_VUL_COLD           = ard(ARMF_RES_COLD, -1),

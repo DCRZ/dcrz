@@ -1838,6 +1838,11 @@ int player_movement_speed()
 
     mv += you.wearing_ego(EQ_ALL_ARMOUR, SPARM_PONDEROUSNESS);
 
+   // Iron dragon scales
+    const item_def *body_armour = you.slot_item(EQ_BODY_ARMOUR);
+    if (body_armour)
+        mv += armour_type_prop(body_armour->sub_type, ARMF_SLOW_MOVE);
+
     // Cheibriados
     if (have_passive(passive_t::slowed))
         mv += 2 + min(div_rand_round(you.piety, 20), 8);

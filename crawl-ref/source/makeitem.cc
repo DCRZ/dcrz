@@ -1090,7 +1090,8 @@ static armour_type _get_random_armour_type(int item_level)
                                 ARM_PEARL_DRAGON_ARMOUR,
                                 ARM_SHADOW_DRAGON_ARMOUR,
                                 ARM_QUICKSILVER_DRAGON_ARMOUR,
-                                ARM_FAERIE_DRAGON_ARMOUR);
+                                ARM_FAERIE_DRAGON_ARMOUR,
+                                ARM_IRON_DRAGON_ARMOUR);
     }
     else if (x_chance_in_y(11 + item_level, 8000))
     {

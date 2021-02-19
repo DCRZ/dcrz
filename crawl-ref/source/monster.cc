@@ -5749,6 +5749,13 @@ int monster::action_energy(energy_use_type et) const
     if (wearing_ego(EQ_ALL_ARMOUR, SPARM_PONDEROUSNESS))
         move_cost += 1;
 
+    // Iron dragon scales
+    const item_def *armour = mslot_item(MSLOT_ARMOUR);
+    if (armour)
+    {
+        move_cost += armour_type_prop(armour->sub_type, ARMF_SLOW_MOVE);
+    }
+
     if (run())
         move_cost -= 1;
 
