@@ -25,7 +25,6 @@ function abyss_entry(e, glyph)
   e.tags("extra luniq_enter_abyss chance_enter_abyss")
   e.depth_chance("Vaults:1-3", 3333)
   e.depth_chance("Vaults:4",   10000)
-  e.depth_chance("Vaults:5-",  3333)
 -- start TAG_MAJOR_VERSION == 34
   e.depth_chance("D:21-24", 3333)
   e.depth_chance("D:25",    10000)
@@ -40,7 +39,7 @@ end
 # 1/3 chance to appear on Vaults floors and guaranteed on Vaults:4.
 ###############################################################################
 
-default-depth: Vaults
+default-depth: Vaults, !Vaults:$
 
 # This one is the backup and the one used in encompass vaults.
 NAME: abyss_entry
@@ -561,7 +560,7 @@ ENDMAP
 
 NAME:    hangedman_glass_garden
 TAGS:    no_monster_gen no_pool_fixup
-DEPTH:   D, Vaults, Abyss
+DEPTH:   D, Vaults, !Vaults:$, Abyss
 MONS:    butterfly, plant, unseen horror, shadow wraith, wind drake
 SHUFFLE: 34GT, GTt
 : if you.in_branch("Abyss") then
@@ -754,7 +753,7 @@ ENDMAP
 
 NAME:   hangedman_abyss_or_decor_stabs
 TAGS:   transparent no_pool_fixup decor
-DEPTH:  D, Vaults, Abyss
+DEPTH:  D, Vaults, !Vaults:$, Abyss
 : if you.in_branch("Abyss") then
 SUBST:  xc = xxxxcccb, ' = %0, " = wl...
 : else
@@ -777,7 +776,7 @@ ENDMAP
 
 NAME:   hangedman_abyss_or_decor_jellyfish_corner
 TAGS:   transparent decor
-DEPTH:  D:4-, Vaults, Abyss
+DEPTH:  D:4-, Vaults, !Vaults:$, Abyss
 WEIGHT: 5 (D), 10
 : if you.in_branch("Abyss") then
 SUBST:  x : XXCB, c : CB, X = xxxxcb, C = xccccb, B = xcbbbb
@@ -806,7 +805,7 @@ ENDMAP
 
 NAME:    hangedman_abyss_or_decor_lesser_grid
 TAGS:    transparent no_pool_fixup decor
-DEPTH:   D, Vaults, Abyss
+DEPTH:   D, Vaults, !Vaults:$, Abyss
 : if you.in_branch("Abyss") then
 SHUFFLE: ABCDEF, "'
 SUBST:   A : cbx.., B : cbx., C : cbx.., D : cbx., E : cbx.., F : cbx.
@@ -834,7 +833,7 @@ ENDMAP
 
 NAME:    hangedman_abyss_or_decor_clamps
 TAGS:    transparent no_pool_fixup decor
-DEPTH:   D:8-, Vaults, Abyss
+DEPTH:   D:8-, Vaults, !Vaults:$, Abyss
 KFEAT:   @ = +
 SHUFFLE: ABCDEFGH, '"
 : if you.in_branch("Abyss") then
@@ -866,7 +865,7 @@ ENDMAP
 
 NAME:    hangedman_abyss_or_decor_passed
 TAGS:    transparent no_pool_fixup decor
-DEPTH:   D:4-, Vaults, Abyss
+DEPTH:   D:4-, Vaults, !Vaults:$, Abyss
 : if you.in_branch("Abyss") then
 SUBST:   ' = 00., " = %%*..
 SUBST:   x = xxxxcb, XY = ww...
@@ -891,7 +890,7 @@ ENDMAP
 
 NAME:    hangedman_abyss_or_decor_stagger
 TAGS:    transparent no_pool_fixup decor
-DEPTH:   D:4-, Vaults, Abyss
+DEPTH:   D:4-, Vaults, !Vaults:$, Abyss
 : if you.in_branch("Abyss") then
 SUBST:   ' = 00., " = %%., X = xxcccb, x = xxxxxcccb
 SUBST:   yY = ...xxxcbw, zZ = ...xxxcbl
@@ -920,7 +919,7 @@ ENDMAP
 
 NAME:    hangedman_abyss_or_decor_slice
 TAGS:    transparent no_pool_fixup decor
-DEPTH:   D:4-, Vaults, Abyss
+DEPTH:   D:4-, Vaults, !Vaults:$, Abyss
 WEIGHT:  5 (D), 10
 : if you.in_branch("Abyss") then
 SUBST:   ' = 00., " = %%., x = xxxxxcccb, cX = xxccb

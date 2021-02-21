@@ -190,7 +190,7 @@ function pan_entry_feature(e, glyph)
     e.depth_chance("D:24", 10000)
 -- end TAG_MAJOR_VERSION
 -- start TAG_MAJOR_VERSION == 35
---     e.depth("Vaults")
+--     e.depth_chance("Vaults:1-4", 10000)
 -- end TAG_MAJOR_VERSION
     e.chance(2500)
     e.kfeat(glyph .. " = enter_pandemonium")
@@ -254,7 +254,7 @@ end
 # Entry portals to Pan
 ##############################################################################
 
-default-depth: Vaults
+default-depth: Vaults, !Vaults:$
 
 # The generic entry; this is the one that should place in encompass vaults.
 # Has a higher weight than everything else.
