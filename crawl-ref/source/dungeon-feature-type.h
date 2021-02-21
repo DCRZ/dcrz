@@ -158,10 +158,10 @@ enum dungeon_feature_type
     DNGN_ENTER_SWAMP,
     DNGN_ENTER_SHOALS,
     DNGN_ENTER_SPIDER,
-#if TAG_MAJOR_VERSION == 34
     DNGN_ENTER_FOREST,
-#endif
+#if TAG_MAJOR_VERSION == 34
     DNGN_ENTER_DEPTHS,
+#endif
 
     // Exits from various branches
     // Order must be the same as above
@@ -184,10 +184,10 @@ enum dungeon_feature_type
     DNGN_EXIT_SWAMP,
     DNGN_EXIT_SHOALS,
     DNGN_EXIT_SPIDER,
-#if TAG_MAJOR_VERSION == 34
     DNGN_EXIT_FOREST,
-#endif
+#if TAG_MAJOR_VERSION == 34
     DNGN_EXIT_DEPTHS,
+#endif
 
     DNGN_ALTAR_ZIN,
     DNGN_ALTAR_SHINING_ONE,

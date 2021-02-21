@@ -96,15 +96,16 @@ void tile_default_flv(branch_type br, tile_flavour &flv)
         flv.wall  = TILE_WALL_NORMAL;
         flv.floor = TILE_FLOOR_NORMAL;
         return;
-
+#if TAG_MAJOR_VERSION == 34
     case BRANCH_DEPTHS:
         flv.wall  = TILE_WALL_NORMAL;
         flv.floor = TILE_FLOOR_GREY_DIRT_B;
         return;
+#endif
 
     case BRANCH_VAULTS:
-        flv.wall  = TILE_WALL_VAULT;
-        flv.floor = TILE_FLOOR_VAULT;
+        flv.wall  = TILE_WALL_NORMAL;
+        flv.floor = TILE_FLOOR_GREY_DIRT_B;
         return;
 
     case BRANCH_TEMPLE:
@@ -375,7 +376,7 @@ static void _get_depths_wall_tiles_by_depth(int depth, vector<tileidx_t>& t)
         t.push_back(TILE_WALL_BRICK_DARK_5);
     if (depth > 3)
         t.push_back(TILE_WALL_BRICK_DARK_6);
-    if (depth == brdepth[BRANCH_DEPTHS])
+    if (depth == brdepth[BRANCH_VAULTS])
         t.push_back(TILE_WALL_BRICK_DARK_6_TORCH);  // ...and on Depths:$
 }
 
@@ -504,11 +505,11 @@ void tile_init_flavour(const coord_def &gc, const int domino)
 
     if (!env.tile_flv(gc).wall)
     {
-        if ((player_in_branch(BRANCH_DUNGEON) || player_in_branch(BRANCH_DEPTHS))
+        if ((player_in_branch(BRANCH_DUNGEON) || player_in_branch(BRANCH_VAULTS))
             && env.tile_default.wall == TILE_WALL_NORMAL)
         {
             vector<tileidx_t> tile_candidates;
-            if (player_in_branch(BRANCH_DEPTHS))
+            if (player_in_branch(BRANCH_VAULTS))
                 _get_depths_wall_tiles_by_depth(you.depth, tile_candidates);
             else
                 _get_dungeon_wall_tiles_by_depth(you.depth, tile_candidates);

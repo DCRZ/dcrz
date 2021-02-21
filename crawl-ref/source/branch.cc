@@ -35,7 +35,9 @@ static const branch_type logical_branch_order[] = {
 #endif
     BRANCH_CRYPT,
     BRANCH_TOMB,
+#if TAG_MAJOR_VERSION == 34
     BRANCH_DEPTHS,
+#endif
     BRANCH_VESTIBULE,
     BRANCH_DIS,
     BRANCH_GEHENNA,
@@ -87,7 +89,6 @@ static const branch_type danger_branch_order[] = {
     BRANCH_WIZLAB,
     BRANCH_SLIME,
     BRANCH_FOREST,
-    BRANCH_DEPTHS,
     BRANCH_VESTIBULE,
     BRANCH_ZOT,
     BRANCH_PANDEMONIUM,
@@ -101,6 +102,7 @@ static const branch_type danger_branch_order[] = {
     BRANCH_DWARF,
     BRANCH_BLADE,
     BRANCH_LABYRINTH,
+    BRANCH_DEPTHS,
 #endif
 };
 COMPILE_CHECK(ARRAYSZ(danger_branch_order) == NUM_BRANCHES);
@@ -273,7 +275,8 @@ bool branch_is_unfinished(branch_type branch)
 #if TAG_MAJOR_VERSION == 34
     if (branch == BRANCH_DWARF
         || branch == BRANCH_BLADE
-        || branch == BRANCH_LABYRINTH)
+        || branch == BRANCH_LABYRINTH
+        || branch == BRANCH_DEPTHS)
     {
         return true;
     }

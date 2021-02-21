@@ -252,7 +252,7 @@ namespace arena
     static uint32_t cycle_random_pos = 0;
 
     static FILE *file = nullptr;
-    static level_id place(BRANCH_DEPTHS, 1);
+    static level_id place(BRANCH_VAULTS, 1);
     static string arena_log;
 
     static void adjust_spells(monster* mons, bool no_summons, bool no_animate)
@@ -980,7 +980,7 @@ namespace arena
         uniques_list.clear();
         memset(banned_glyphs, 0, sizeof(banned_glyphs));
         arena_type = "";
-        place = level_id(BRANCH_DEPTHS, 1);
+        place = level_id(BRANCH_VAULTS, 1);
         arena_log = "";
 
         // [ds] Turning off view_lock crashes arena.

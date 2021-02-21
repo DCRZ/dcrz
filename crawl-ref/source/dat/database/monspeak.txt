@@ -2813,7 +2813,7 @@ w:50
 
 @The_monster@ says, "Don't bother, there's only junk at the bottom."
 
-@The_monster@ says, "I asked the warden where the rune was. She slammed the door in my face."
+@The_monster@ says, "I asked the warden where Realm of Zot was. She slammed the door in my face."
 
 @The_monster@ says, "I don't remember getting an invitation to a convocation."
 

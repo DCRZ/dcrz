@@ -611,13 +611,13 @@ void debug_mons_scan()
  *
  * This checks the loaded map to make sure all dungeon features and shops are
  * valid, all branch exits are generated, and all portals generated at fixed
- * levels in the Depths are actually present.
+ * levels in the Vaults are actually present.
  */
 void check_map_validity()
 {
 #ifdef ASSERTS
     dungeon_feature_type portal = DNGN_UNSEEN;
-    if (player_in_branch(BRANCH_DEPTHS))
+    if (player_in_branch(BRANCH_VAULTS))
     {
         if (you.depth == 3)
             portal = DNGN_ENTER_PANDEMONIUM;

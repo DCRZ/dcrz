@@ -78,21 +78,21 @@ syn keyword desOrientation southwest southeast encompass float centre
 " DEPTH | PLACE
 "Note: `Zot` totally highlights in e.g. the items `rune of Zot` and `Orb of
 "Zot`. Not worth fixing.
-syn keyword desOrientation Abyss Bailey Bazaar Coc Crypt D Depths Desolation Dis
-syn keyword desOrientation Elf Geh Hell IceCv Lair Gauntlet Orc Ossuary Pan Sewer
+syn keyword desOrientation Abyss Bailey Bazaar Coc Crypt D Desolation Dis Elf
+syn keyword desOrientation Forest Geh Hell IceCv Lair Gauntlet Orc Ossuary Pan Sewer
 syn keyword desOrientation Shoals Slime Snake Spider Swamp Tar Temple Tomb Trove
 syn keyword desOrientation Vaults Volcano Wizlab Zot Zig
 
 "Note: This is the list above, but lower-cased
-syn match desBranch contained /abyss\|bailey\|bazaar\|coc\|crypt\|d\|depths/
-syn match desBranch contained /desolation\|dis\|elf\|geh\|hell\|icecv\|lab/
+syn match desBranch contained /abyss\|bailey\|bazaar\|coc\|crypt\|d\|desolation/
+syn match desBranch contained /dis\|elf\|forest\|geh\|hell\|icecv\|lab/
 syn match desBranch contained /lair\|orc\|ossuary\|pan\|sewer\|shoals\|slime/
 syn match desBranch contained /snake\|spider\|swamp\|tar\|temple\|tomb\|trove/
 syn match desBranch contained /vaults\|volcano\|wizlab\|zig\|zot/
 
 syn match desBranchname contained /abyss\|bailey\|bazaar\|cocytus\|crypt/
-syn match desBranchname contained /depths\|desolation\|dis\|dungeon/
-syn match desBranchname contained /elven_halls\|forest\|gehenna\|hell/
+syn match desBranchname contained /desolation\|dis\|dungeon\|elven_halls/
+syn match desBranchname contained /forest\|forest\|gehenna\|hell/
 syn match desBranchname contained /ice_cave\|labyrinth\|lair\|orcish_mines/
 syn match desBranchname contained /ossuary\|pandemonium\|sewer\|shoals/
 syn match desBranchname contained /slime_pits\|snake_pit\|spider_nest\|swamp/

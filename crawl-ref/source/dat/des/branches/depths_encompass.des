@@ -1,5 +1,6 @@
 ###############################################################################
-# depths_encompass.des: Full level (encompassing) vaults for the Depths go here.
+# depths_encompass.des: Full level (encompassing) vaults for the Vaults taken
+# from the former Depths branch go here.
 ###############################################################################
 
 # Setups for the below.
@@ -87,7 +88,7 @@
     end
 }}
 
-default-depth: Depths:2-, !Depths:$
+default-depth: Vaults:2-, !Vaults:$
 
 ###############################################################################
 # The River Lethe
@@ -308,9 +309,7 @@ default-depth:
 
 NAME: grunt_profane_halls
 TAGS: no_monster_gen uniq_d_encompass
-PLACE: Depths:$
-DEPTH: Depths:2-
-WEIGHT: 1 (Depths:$), 10
+DEPTH: Vaults:2-, !Vaults:$
 ORIENT: encompass
 SHUFFLE: {[(<
 : if you.where() == dgn.level_name(dgn.br_entrance("Zot")) then
@@ -626,7 +625,7 @@ ccJ.1.Jcc
   cc+cc
 ENDMAP
 
-default-depth: Depths:2-, !Depths:$
+default-depth: Vaults:2-, !Vaults:$
 
 ################################################################################
 # An imposing crystal structure, luring in and altering many to feast
@@ -850,10 +849,8 @@ ENDMAP
 NAME:    hangedman_pleasuredromes
 TAGS:    no_monster_gen no_item_gen uniq_d_encompass
 ORIENT:  encompass
-PLACE:   Depths:$
-DEPTH:   Depths:2-
-WEIGHT:  1 (Depths:$), 10
-# everything here (bar the very top) spawns regularly in depths,
+DEPTH:   Vaults:2-, !Vaults:$
+# everything here (bar the very top) spawns regularly in Vaults,
 # if possibly as part of a band.
 MONS:    boggart / wizard w:8 / necromancer w:8 / centaur warrior / \
          ogre mage / yaktaur w:8 / spriggan rider w:4

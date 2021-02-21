@@ -1412,12 +1412,15 @@ static void _fixup_walls()
 
     case BRANCH_VAULTS:
     {
-        // Everything but the branch end is handled in Lua.
+        // Everything but the branch end and some vaults 
+        // imported from Depths are handled in Lua.
         if (you.depth == branches[BRANCH_VAULTS].numlevels)
         {
             wall_type = random_choose_weighted(1, DNGN_CRYSTAL_WALL,
                                                9, DNGN_METAL_WALL);
         }
+        else
+            wall_type = DNGN_STONE_WALL;
         break;
     }
 

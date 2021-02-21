@@ -18,6 +18,6 @@ local function test_branch_stair_places(nlevels, level_stairs)
 end
 
 test_branch_stair_places(niters,
-                 { { "Depths:$", "enter_zot" },
-                   { "Depths:3", "enter_pandemonium" },
-                   { "Depths:2", "enter_hell" } })
+                 { { "Vaults:$", "enter_zot" },
+                   { "Vaults:3", "enter_pandemonium" },
+                   { "Vaults:2", "enter_hell" } })

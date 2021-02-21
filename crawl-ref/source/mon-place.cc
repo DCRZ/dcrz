@@ -1593,7 +1593,7 @@ monster_type pick_local_zombifiable_monster(level_id place,
     {
         // Get Zigs something reasonable to work with, if there's no place
         // explicitly defined.
-        place = level_id(BRANCH_DEPTHS, 14 - (27 - place.depth) / 3);
+        place = level_id(BRANCH_VAULTS, 14 - (27 - place.depth) / 3);
     }
     else
     {
@@ -1768,7 +1768,7 @@ static const band_set classy_drac_set = { {0, 21, drac_branch},
 
 // javelineer & impaler
 static const band_conditions mf_band_condition = { 0, 0, []() {
-    return !player_in_branch(BRANCH_DEPTHS) &&
+    return !player_in_branch(BRANCH_VAULTS) &&
           (!player_in_branch(BRANCH_SHOALS) || x_chance_in_y(you.depth, 5));
 }};
 
@@ -1927,7 +1927,7 @@ static const map<monster_type, band_set> bands_by_leader = {
     { MONS_SERAPH,          { {}, {{ BAND_HOLIES, {1, 4}, true }}}},
     { MONS_IRON_GIANT,      { {}, {{ BAND_ANCIENT_CHAMPIONS, {2, 3}, true }}}},
     { MONS_SPARK_WASP,      { {0, 0, []() {
-        return you.where_are_you == BRANCH_DEPTHS;
+        return you.where_are_you == BRANCH_FOREST;
     }},                           {{ BAND_SPARK_WASPS, {1, 4} }}}},
     { MONS_HOWLER_MONKEY,   { {2, 6}, {{ BAND_HOWLER_MONKEY, {1, 3} }}}},
     { MONS_FLOATING_EYE,   { {0, 0, []() {
@@ -1996,7 +1996,7 @@ static band_type _choose_band(monster_type mon_type, int *band_size_p,
             { BRANCH_SPIDER, { { { BAND_REDBACK,       2, 4 },  1 },
                                { { BAND_RANDOM_SINGLE, 1, 1 },  1 },
                              } },
-            { BRANCH_DEPTHS, { { { BAND_RANDOM_SINGLE, 1, 1 },  1 },
+            { BRANCH_VAULTS, { { { BAND_RANDOM_SINGLE, 1, 1 },  1 },
                              } },
         };
 
@@ -3120,7 +3120,9 @@ void replace_boris()
     // TODO: kind of ad hoc, maybe read from uniq_boris vault?
     switch (you.where_are_you)
     {
+#if TAG_MAJOR_VERSION == 34
     case BRANCH_DEPTHS:
+#endif
     case BRANCH_VAULTS:
     case BRANCH_TOMB:
     case BRANCH_CRYPT:

@@ -1668,11 +1668,14 @@ static const vector<branch_type> branch_generation_order =
     BRANCH_SWAMP,
     BRANCH_VAULTS,
     BRANCH_CRYPT,
+#if TAG_MAJOR_VERSION == 34
     BRANCH_DEPTHS,
+#endif
     BRANCH_VESTIBULE,
     BRANCH_ELF,
     BRANCH_ZOT,
     BRANCH_SLIME,
+    BRANCH_FOREST,
     BRANCH_TOMB,
     BRANCH_TARTARUS,
     BRANCH_COCYTUS,

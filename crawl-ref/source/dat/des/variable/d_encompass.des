@@ -8,15 +8,14 @@
 NAME:    hangedman_slaughterboxes
 TAGS:    no_pool_fixup no_monster_gen no_item_gen patrolling uniq_d_encompass
 ORIENT:  encompass
-DEPTH:   Depths:2-
-PLACE:   D:$, Depths:$
-WEIGHT:  1 (D:$), 2 (Depths:$), 10
+DEPTH:   Vaults:2-, !Vaults:$, D:$
+WEIGHT:  1 (D:$), 10
 MONS:    fungus, plant
 KMONS:   S = 0 band
 KMONS:   # = 9 band
 KMONS:   = = draconian annihilator / draconian knight / draconian monk
 KFEAT:   ^ = stone_arch
-KFEAT:   - = enter_depths
+KFEAT:   - = enter_vaults
 KFEAT:   = = enter_zot
 SHUFFLE: :;, `~, 34, 67, !?, XZ / yz
 SUBST:   % = %:40 $:20 ., * = *:30 %, | = |:30 *
@@ -34,7 +33,7 @@ SUBST:   7? = ., 36! = 0, Y : 09, 5 = 09, 4 = 9
 SUBST:   " : WW', _  = C, @ = G
 NSUBST:  ' = 7:S / 2:# / 6 = S:3 .:2 / *:.
 : if you.absdepth() > 20 then
-: kmons('9 = place:Depths:' .. you.depth() - 1 .. ' 9')
+: kmons('9 = place:Vaults:' .. you.depth() - 1 .. ' 9')
 SUBST:   & : a:45 c:8 vb x:2, a : c:15 vb
 MARKER:  ^ = lua:props_marker { portal=1 }
 :    if you.where() == dgn.level_name(dgn.br_entrance("Zot")) then
@@ -42,7 +41,7 @@ SUBST:   ) = =, >]} = .
 :    end
 : else
 SUBST:   & : a:80 x:15 c:3 v:1 b:1, a : c:38 v:2 b:2
-:    if you.where() == dgn.level_name(dgn.br_entrance("Depths")) then
+:    if you.where() == dgn.level_name(dgn.br_entrance("Vaults")) then
 SUBST:   }] = ., ) = -, > = <
 :    end
 : end
@@ -118,9 +117,8 @@ ENDMAP
 NAME:    hangedman_spin_cycle
 TAGS:    no_monster_gen no_item_gen no_trap_gen patrolling uniq_d_encompass
 ORIENT:  encompass
-DEPTH:   Depths:2-
-PLACE:   D:$, Depths:$
-WEIGHT:  1 (D:$), 2 (Depths:$), 10
+DEPTH:   Vaults:2-, !Vaults:$, D:$
+WEIGHT:  1 (D:$), 10
 KMONS:   - = plant
 KMONS:   _ = demonic plant
 KMONS:   no = vault guard
@@ -169,7 +167,7 @@ KFEAT:   aD = stone_arch
 KFEAT:   A = enter_hell
 KFEAT:   & = enter_pandemonium
 KFEAT:   @ = enter_abyss
-KFEAT:   B = enter_depths
+KFEAT:   B = enter_vaults
 KFEAT:   C : C / any shop
 KFEAT:   Z = enter_zot
 SHUFFLE: <d` / {e1 / (f2 / [g3, >h4 / }i5 / )j6 / ]k7, (f2 / )j6, 15
@@ -188,7 +186,7 @@ SUBST:   f = ', 2 = t
 :     end
 : else
 SUBST:   A&@ = a, _ = -, l = W
-:     if you.where() == dgn.level_name(dgn.br_entrance("Depths")) then
+:     if you.where() == dgn.level_name(dgn.br_entrance("Vaults")) then
 NSUBST:  ( = 1:B / *:T
 SUBST:   f = ', 2 = r
 :     end
@@ -279,24 +277,17 @@ default-depth:
 
 NAME: grunt_runaround
 TAGS: no_monster_gen uniq_d_encompass
-PLACE: Depths:$
-DEPTH: D:$, Depths:2-
-WEIGHT: 1 (D:$), 2 (Depths:$), 10
+DEPTH: D:$, Vaults:2-, !Vaults:$
+WEIGHT: 1 (D:$), 10
 ORIENT: encompass
 SUBVAULT: B : grunt_runaround_doors_1
 SUBVAULT: C : grunt_runaround_doors_2
 SUBVAULT: D : grunt_runaround_doors_3
 SUBVAULT: E : grunt_runaround_doors_4
-: if you.where() == dgn.level_name(dgn.br_entrance("Zot")) then
-KFEAT:  Z = stone_wall
-TILE:   Z = wall_zot_magenta
-COLOUR: Z = lightmagenta
-SUBVAULT: F : grunt_runaround_zot
-NSUBST: < = 1:{ / 1:[ / 1:( / 2:< / *=A
-: elseif you.where() == dgn.level_name(dgn.br_entrance("Depths")) then
+: if you.where() == dgn.level_name(dgn.br_entrance("Vaults")) then
 KFEAT:  Z = metal_wall
 SUBST:  9 = 0
-SUBVAULT: F : grunt_runaround_depths
+SUBVAULT: F : grunt_runaround_vaults
 NSUBST: < = 1:{ / 1:[ / 1:( / 2:< / *=A
 : else
 KFEAT: Z = metal_wall
@@ -564,12 +555,12 @@ MAP
   ......
 ENDMAP
 
-NAME: grunt_runaround_depths
-TAGS: grunt_runaround_depths allow_dup unrand
+NAME: grunt_runaround_vaults
+TAGS: grunt_runaround_vaults allow_dup unrand
 SHUFFLE: O3hi
 SUBST: hi = .
 NSUBST: 1 = 1:2 / *=1
-KFEAT: O = enter_depths
+KFEAT: O = enter_vaults
 MONS: tengu warrior band w:5 / tengu conjurer band w:5 / \
       ogre mage band / centaur warrior band / yaktaur band / cyclops band / \
       deep elf knight band

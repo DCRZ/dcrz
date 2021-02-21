@@ -9,9 +9,9 @@
 
 ### Entry vaults to ziggurats ##########################################
 #
-# There is one Ziggurat in Depths.
+# There is one Ziggurat in Vaults.
 
-default-depth: Depths
+default-depth: Vaults
 
 # In case there is an encompass vault on the level.
 NAME:   ziggurat_fallback

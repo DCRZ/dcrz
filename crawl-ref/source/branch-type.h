@@ -22,9 +22,6 @@ enum branch_type                // you.where_are_you
 #endif
     BRANCH_CRYPT,
     BRANCH_TOMB,
-#if TAG_MAJOR_VERSION > 34
-    BRANCH_DEPTHS,
-#endif
     BRANCH_VESTIBULE,
     BRANCH_DIS,
     BRANCH_GEHENNA,

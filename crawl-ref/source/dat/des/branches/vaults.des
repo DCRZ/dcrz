@@ -16,14 +16,7 @@ end
 -- exist yet) or a good item. Note that this assumes that only one "prize"
 -- subvault is ever picked, and that it is the first subvault of the four.
 function vaults_end_rune(e)
-    if dgn.map_by_tag("vaults_end_rune")
-       and (e.has_tag("vaults_end_quadrant_prize") and crawl.one_chance_in(4)
-            or e.has_tag("vaults_end_quadrant"))
-    then
-        e.subvault("O : vaults_end_rune")
-    else
-        e.subvault("O : vaults_end_norune")
-    end
+    e.subvault("O : vaults_end_norune")
 end
 }}
 
@@ -414,7 +407,9 @@ SUBVAULT: C : vaults_end_quadrant
 SUBVAULT: D : vaults_end_quadrant
 :end
 SUBST:    ABCD = .
-MONS: vault guard
+MONS:     vault guard
+NSUBST:   O = 1:F / 1:.
+KFEAT:    F = enter_zot
 {{
   set_feature_name("metal_wall", "heavily etched metal wall")
   set_feature_name("crystal_wall", "heavily etched crystal wall")
@@ -448,7 +443,7 @@ xx..AAAAAAAAAAAAAAAAAAAAAAAAAAA.11.BBBBBBBBBBBBBBBBBBBBBBBBBBB..xx
 xx...AAAAAAAAAAAAAAAAAAAAAAAA..1111..BBBBBBBBBBBBBBBBBBBBBBBB...xx
 xx....AAAAAAAAAAAAAAAAAAAAAAA.1....1.BBBBBBBBBBBBBBBBBBBBBBB....xx
 xx...........................1..(<..1...........................xx
-xx0.........................11.[..{.11..........................xx
+xx0.........................11.[OO{.11..........................xx
 xx...........................1..<<..1..........................0xx
 xx............................1....1............................xx
 xx....CCCCCCCCCCCCCCCCCCCCCCC..1111..DDDDDDDDDDDDDDDDDDDDDDD....xx
@@ -481,21 +476,8 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ENDMAP
 
 ############################################################
-# Vaults:$ - the subvault used to place the rune.
-#
-# Used by the 'vaults_end_rune()' function in the prelude.
-#
-NAME:  vaults_end_rune
-TAGS:  vaults_end_rune
-KMONS: O = 8 / 9
-KITEM: O = silver rune of Zot
-MAP
-O
-ENDMAP
-
-############################################################
-# Vaults:$ - the subvault used for potential rune locations that do not
-# contain the real rune.
+# Vaults:$ - the subvault formerly used for potential rune locations
+# that do not contain the real rune (now it replaces the rune).
 #
 # Used by the 'vaults_end_rune()' function in the prelude.
 #
@@ -507,20 +489,6 @@ KFEAT:   o = any shop
 : else
 KITEM:   o = any good_item
 : end
-MAP
-o
-ENDMAP
-
-############################################################
-# Vaults:$ - the subvault used for potential rune locations that do not
-# contain the rune, but rather a mimic of it!
-#
-# Used by the 'vaults_end_rune()' function in the prelude.
-#
-NAME:    vaults_end_rune_mimic
-TAGS:    vaults_end_norune unrand
-WEIGHT:  1
-KITEM:   o = silver rune of Zot mimic
 MAP
 o
 ENDMAP

@@ -277,7 +277,7 @@ static void _update_travel_cache(const level_id& old_level,
         // to Hell as shortcuts between dungeon levels, which won't work,
         // and will confuse the dickens out of the player (well, it confused
         // the dickens out of me when it happened).
-        if ((new_level_id == BRANCH_DUNGEON || new_level_id == BRANCH_DEPTHS)
+        if ((new_level_id == BRANCH_DUNGEON || new_level_id == BRANCH_VAULTS)
             && old_level == BRANCH_VESTIBULE)
         {
             old_level_info.clear_stairs(DNGN_EXIT_HELL);

@@ -334,8 +334,10 @@ tileidx_t tileidx_feature_base(dungeon_feature_type feat)
         return TILE_DNGN_ENTER_FOREST;
     case DNGN_ENTER_SLIME:
         return TILE_DNGN_ENTER_SLIME;
+#if TAG_MAJOR_VERSION == 34
     case DNGN_ENTER_DEPTHS:
         return TILE_DNGN_ENTER_DEPTHS;
+#endif
     case DNGN_ENTER_VAULTS:
         return you.level_visited(level_id(BRANCH_VAULTS, 1)) ? TILE_DNGN_ENTER_VAULTS_OPEN
                               : TILE_DNGN_ENTER_VAULTS_CLOSED;
@@ -393,8 +395,10 @@ tileidx_t tileidx_feature_base(dungeon_feature_type feat)
         return TILE_DNGN_EXIT_FOREST;
     case DNGN_EXIT_SLIME:
         return TILE_DNGN_EXIT_SLIME;
+#if TAG_MAJOR_VERSION == 34
     case DNGN_EXIT_DEPTHS:
         return TILE_DNGN_RETURN_DEPTHS;
+#endif
     case DNGN_EXIT_VAULTS:
         return TILE_DNGN_EXIT_VAULTS;
     case DNGN_EXIT_CRYPT:
@@ -3767,8 +3771,10 @@ tileidx_t tileidx_branch(const branch_type br)
         return TILE_DNGN_ENTER_CRYPT;
     case BRANCH_TOMB:
         return TILE_DNGN_ENTER_TOMB;
+#if TAG_MAJOR_VERSION == 34
     case BRANCH_DEPTHS:
         return TILE_DNGN_ENTER_DEPTHS;
+#endif
     case BRANCH_VESTIBULE:
         return TILE_DNGN_ENTER_HELL;
     case BRANCH_DIS:
