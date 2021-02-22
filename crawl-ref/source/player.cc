@@ -7154,8 +7154,7 @@ bool player::can_safely_mutate(bool temp) const
     if (!can_mutate())
         return false;
 
-    return undead_state(temp) == US_ALIVE
-           || undead_state(temp) == US_SEMI_UNDEAD;
+    return undead_state(temp) == US_ALIVE;
 }
 
 // Is the player too undead to bleed, rage, or polymorph?
