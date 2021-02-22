@@ -1,3 +1,258 @@
+ManCrawl 0.1 (20210221)
+------------------------
+
+Highlights
+----------
+* Chunks, spell hunger and melee hunger have been removed (rations remain)
+* New species: Fairy
+* Ghouls, Vampires and Kobolds have been significantly reworked
+* Arcane Marksman and Warper have been significantly reworked
+* New rune branch: the Enchanted Forest
+* Depths and Vaults have been merged, and the silver rune removed
+* Most branches have been shortened
+* The cost of high level skills has been reduced
+
+Branches, Environment
+---------------------
+* New/re-imagined branch: the Enchanted Forest
+  - Inspired by the version that never made it into a stable release
+  - Entrance appears in Lair at the same depth as Slime
+  - Contains the mossy rune of Zot and a large treasure vault guarded 
+    by the Enchantress
+  - Monster set including 6 new monsters and a new Forest unique (see 
+    Monsters below)
+  - Severl monster have immigrated to Forest from other branches
+  - Unique maze-like layout made from a tightly-knit "swiss cheese" 
+    of trees
+  - Time pressure: trees come alive and the player forgets the map 
+    (these effects stop once the player collects the rune)
+  - Many vaults, including two new vaults, several vaults revived 
+    from the original Forest branch, and several more existing vaults 
+    that have been reworked for the Forest
+* New feature: Ancient trees 
+  - Indestructible trees appearing in the Forest.
+* Vaults has replaced the Depths as the branch below the Dungeon
+  - Abyss/Hell/Pan/Zigg portals appear in Vaults at the levels they 
+    appeared in Depths
+  - The silver rune has been removed
+  - The entrance to Zot appears in the middle of the Vaults:5 ambush
+  - Most monsters appearing in Depths but not Vaults have been 
+    added to Vaults
+  - Tiles: the Vaults retain their wall tiles but gain the dark floor 
+    tiles of the Depths
+* Most branches have been shortened
+  - Dungeon: 15->12 floors
+  - Lair: 6->4
+  - S branches: 4->3
+  - Orc: 2->1
+  - Elf: 3->2
+  - Crypt: 3->1
+  - Hell: 7->5, and the frequency of Hell effects has been 
+    increased by 33% in compensation
+* Severl unfair vaults have been removed, reworked and/or had their 
+  depth increased
+* Shaft exploration traps can no longer trigger on D:1-3
+
+Monsters
+--------
+* New Forest monster: Faerie dragon
+  - Has innate +5 SH, a confusing breath weapon and drops faerie 
+    dragon scales (see Items below)
+* New Forest monster: Pixie
+  - Priests of Xom
+  - Low damage, chaos-branded melee
+  - Spells: teleport other, invisibility, mass confusion
+  - New divine ability: rearrange the pieces (see Spells below)
+* New Forest monster: Wendigo
+  - Fast, high damage undead
+  - Bite inflicts Wendigo psychosis, a temporary effect that causes
+    the player to be mesmerised by the closest monster (like the 
+    Obsidian Axe's special property)
+* New Forest monster: Greenwood witch
+  - Spells: Polymorph, sleep, bolt of draining
+* New Forest monster: Yewborn
+  - Moderate damage reaching branch attack and constricting root 
+    attack
+  - Slow
+  - 1-3 spawn from trees in the Forest every 100-200 turns
+* Revived Forest Monster: Ancient bear
+  - rF+, high damage melee, berserk when low on HP and when the player 
+    starts a forest fire
+* New Forest unique: the Sasquatch (good luck finding it though...)
+* The Enchantress
+  - Guards the mossy rune and treasure in her Forest palace
+  - Gains randart faerie dragon scales in place of the (removed) 
+    Faerie Dragon Scales unrandart
+  - New spell: Lignify, replacing dimensional anchor (see Spells below)
+  - Her invisibility loses the emergency flag and she longer casts slow
+  - Gains +10 HP
+* Several monsters have immigrated to the Forest from other branches
+  - Caustic shrikes, spark wasps and spriggan packs move from the 
+    Depths to Forest
+  - Fauns and satyrs move from the Shoals to Forest
+  - Thorn hunters move from the Swamp to Forest, and shambling 
+    mangroves appear in both branches
+* Caustic shrikes no longer appear in packs
+* Hornets no longer cause paralysis (only slow)
+* New Swamp monsters: (PleasingFungus)
+  - Will-o-the-wisps, unearthly gases that launches powerful Foxfires
+  - Goliath frogs, licking foes from afar with their acidic tongues
+  - Eleionomae, swamp nymphs that travel through and heal from trees
+  - Bloated husks, filled to explosively bursting with putrescent gas
+  - Bunyips, fast-moving, hard-hitting, screaming mysteries
+  - Fenstrider witches, terrifying hex-hurling toxic sorceresses
+* Spiny Frogs are renamed Cane Toads, for a more authentic Australian
+  experience (ByrelMitchell)
+* Most plants, fungi, and other plant like things that don't attack now 
+  wither in 3-5 turns after they're hit. The exceptions are bushes and 
+  briars (PleasingFungus)
+
+Character
+---------
+* Spell hunger and melee hunger have been removed
+* Collecting a rune identifies items for the player (NormalPerson7)
+* Player paralysis duration is reduced to 2-4 turns (down from 2-7)
+* Skill costs of high level skills have been reduced
+  - Equivalent to a +1 bonus to aptitudes by skill level 23
+  - New cost of level 20 is approximately the same as the old cost of 
+    level 19
+  - New cost of level 27 is approximately the same as the old cost of 
+    level 25 
+* New species: Fairy (Realz)
+  - A beginner's magic based species with several features designed to
+    make playing as a mage easier:
+    - Very high magic aptitudes: +2 to spellcasting and all
+      conjurations-magic schools, +1 to summonings/necromancy.
+    - MP cost of spells is reduced by 1, making level 1 spells free.
+    - Intelligence almost as high as DE.
+    - Good defensive aptitudes (+3 dodging, +2 shields)
+  - Small size, to make melee weapons poor, give them bonus EV.
+  - -10% HP, +2 MP, 4 MR/XL
+  - Inability to use body armour.
+  - Innate "shimmering scales" that give +3 to +12 AC and SH scaling 
+    with character level, but give a stealth penalty.
+  - Poor melee and ranged aptitudes
+* Reimagined species: Vampire
+  - Reduce vampires to a single state, bloodless
+  - -20% HP, rC+, rN+++, torment immunity, rot instead of mutate
+  - No regeneration (like deep dwarves) but have several racial abilities 
+    to restore HP
+  - Damage shaving
+  - New ability: Draw out blood heals the play (like deep dwarf's self 
+    healing), but costs 1 point of damage to all stats instead of permanent
+    MP reduction
+  - Mutation: Powered by death - as the demonspawn mutation, increasing at 
+    levels 11 and 22
+  - New mutation: Enhanced by death - on kills, gives the players a chance 
+    at gaining up to +1 str/int/dex per mutation level for a long duration,
+    with lower stat bonuses lasting significantly longer
+  - Increased melee weapon and armour aptitudes, reduced transmutations 
+    aptitude
+  - Reduce the armour penalty to stealth by 50%
+* Reimagined species: Ghoul
+  - Lose chunk eating but retain rotting
+  - Gain a reworked hydra form devour, healing HP and rot proportional to the
+    number of chunks that would have been dropped by the monster
+  - Can eat corpses off the floor for the same effect
+* Reimagined species: Kobold
+  - New mutation: Redirection - Kobolds have a chance to redirect all dodged 
+    melee attacks back at the attacker in a given turn.
+  - Mutation: Fangs 3
+  - Adjusted aptitudes, including a penalty to all ranged skills and most 
+    magical skills, a larger gap between dodging and armour, and an increased 
+    long blades aptitude.
+* Tengu gain +3 crossbows
+* Deep elves gain +3 bows (hellmonk)
+* Ogres gain +1 maces and flails
+* Mummies gain clarity (bhauth)
+* Felids and octopodes can wear scarves (NormalPerson7)
+* Trolls can devour corpses off the floor for sustenance (without ghouls' healing
+  effect)
+* Reimagined background: Arcane Marksman (Doesnty)
+  - New spells: shackle and false image (see Spells below)
+  - Metabolic englaction replaces Leda's liquefaction in the starter book
+* Reimagined background: Warper (Doesnty)
+  - Warper becomes a ranged start, beginning with the same equipment and skills as 
+    Arcane Marksman
+  - New spell: blink other
+  - Warper loses its scroll of blinking and tomahawks of dispersal
+
+Spells
+------
+* New Spell: Blink other
+  - Level 1 Translocations spell
+  - Appears in the Warper starter book
+  - Randomly blinks targeted monster with a successful MR check
+* New Spell: Shackle
+  - Level 2 Hexes spell
+  - Appears in the Arcane Marksman starter book
+  - Temporarily prevents a monster from moving with a successful MR check
+* New Spell: False image
+  - Level 2 Hexes/Summoning spell
+  - Appears in the Arcane Marksman starter book
+  - Summons an immobile image of the player at a postion of the player's choosing
+  - Does not attack, but blocks hexes and projectiles can be fired through it
+* Charms spells cause magical contamination (equivalent to the irradiate spell)
+  when  cast successfully
+* Animate skeleton and animate dead:
+  - Animate skeleton and animate dead are permanent again
+  - Animate Skeleton and Animate Dead creations now have strength scaling with
+    spellpower; Animate Skeleton has a power cap. Both creations have a shorter
+    lifespan. Additionally, these spells can't be cast if corpses are not nearby. 
+    (ebering)
+  - Animate Skeleton now animates the nearest skeleton, and does not require you
+    to stand on the corpse. (ebering)
+  - Animate skeleton is increased to level 2
+* Leda's liquefaction is removed
+* Metabolic englaciation is reduced to level 4
+* Ozocubu's refrigeration is increased to level 7 (ebering)
+* Absolute zero becomes a range 1 targeted spell (like freeze)
+* Infusion and corona's effects are significantly stronger (bhauth)
+* Agony and dispel undead have their old ranges restored, and dispel undead is 
+  level 5 again
+* Regeneration returns
+* Ozocubu's armour melts over time instead of breaking when the player moves
+* Ozocubu's works in all armours but the bonus decreases with ER (ebering)
+* Invisibility becomes a level 5 charms/hexes spell
+* Eringya's Toxic Bog now places bogs in all squares within a range of 4 where
+  there is no adjacent solid feature. (hellmonk, ebering)
+* Revived monster spell: Rearrange the pieces 
+  - Randomly swaps monsters and the player (like the Xom effect)
+  - Bypasses MR
+  - Only cast by pixies
+* New monster spell: Lignify
+  - Hex that turns the player into tree form and monsters into plants
+  - Only cast by the Enchantress
+
+Gods
+----
+* Fedhas gains Leda's liquefaction as a 1* ability
+* Gozag no longer gives a free potion petition on worship. (PleasingFungus)
+
+Items
+-----
+* Chunks have been removed
+* Scythes cleave in a 2-tile radius
+* Faerie dragons drop faerie dragon scales
+  - 5 AC, 4 ER and an intrinsict +5 to SH
+* Iron dragons drop iron dragon scales
+  - 17 AC, 27 ER and an intrinsict penalty to move speed
+* Crystal plate armour's ER is reduced to 20
+* Revived unrandarts: Maxwell's Etheric Cage, the Armour of Talos, the 
+  Crown of Eternal Torment
+* The Enchantress's Faerie Dragon Scales unrandart is replaced by randart 
+  faerie dragon scales
+* Staves of earth deal higher damage, but with the shrapnel effect of being
+  affected 3 times by AC (Semitonal)
+* Staves of conjuration deal bonus irresistable damage that checks AC. (Semitonal)
+* New scarf ego: Shadows. Scarves of shadows reduce line of sight by 1; this
+  stacks with other LOS altering effects (ebering)
+* Wands of polymorph now show what monsters might become when targeted. (Gammafunk)
+* New misc evocable: Condenser Vane. A condenser vane is an XP-charged evoker
+  that creates clouds around hostile monsters (skipping allies). The cloud
+  quality scales with evocations (ebering)
+* Phantom mirrors and boxes of beasts now recharge with XP (ebering)
+
 Stone Soup 0.25.1 (20200717)
 ----------------------------
 
