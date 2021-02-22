@@ -1284,11 +1284,18 @@ static bool _can_take_stairs(dungeon_feature_type ftype, bool down,
             min_runes = runes_for_branch(it->id);
             if (runes_in_pack() < min_runes)
             {
-                if (min_runes == 1)
-                    mpr("You need a rune to enter this place.");
+                if (it->id == BRANCH_SLIME && you.religion == GOD_JIYVA)
+                {
+                    return true;
+                }
+                else if (min_runes == 1)
+                    mprf("You need a rune%s to enter this place.",
+                         it->id == BRANCH_SLIME ? " or Jiyva's divine aid"
+                                                : "");
                 else
-                    mprf("You need at least %d runes to enter this place.",
-                         min_runes);
+                    mprf("You need at least %d runes%s to enter this place.",
+                         min_runes, it->id == BRANCH_SLIME ? 
+                                     " or Jiyva's divine aid": "");
                 return false;
             }
         }

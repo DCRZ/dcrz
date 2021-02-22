@@ -52,6 +52,7 @@
 #define PARALYSED_BY_KEY "paralysed_by"
 #define PETRIFIED_BY_KEY "petrified_by"
 #define FROZEN_RAMPARTS_KEY "frozen_ramparts_position"
+#define SLIME_GOD_ENTRY_KEY "runeless_jiyva_slime_entry"
 
 // display/messaging breakpoints for penalties from Ru's MUT_HORROR
 #define HORROR_LVL_EXTREME  3

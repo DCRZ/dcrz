@@ -298,6 +298,8 @@ int runes_for_branch(branch_type branch)
 {
     switch (branch)
     {
+    case BRANCH_SLIME:    return SLIME_ENTRY_RUNES;
+    case BRANCH_FOREST:   return FOREST_ENTRY_RUNES;
     case BRANCH_VAULTS:   return VAULTS_ENTRY_RUNES;
     case BRANCH_ZIGGURAT: return ZIG_ENTRY_RUNES;
     case BRANCH_ZOT:      return ZOT_ENTRY_RUNES;

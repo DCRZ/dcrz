@@ -559,12 +559,28 @@ static level_id _travel_destination(const dungeon_feature_type how,
         if (how != it->entry_stairs)
             continue;
 
-        if (!you.level_visited(level_id(it->id, 1))
-            && runes_for_branch(it->id) > 0)
+        int num_runes = 0;
+        for (int i = 0; i < NUM_RUNE_TYPES; i++)
+            if (you.runes[i])
+                num_runes++;
+
+        if ((!you.level_visited(level_id(it->id, 1))
+                || you.props.exists(SLIME_GOD_ENTRY_KEY))
+            && runes_for_branch(it->id) > 0
+            && num_runes >= 1)
         {
             _rune_effect(how);
+            you.props.erase(SLIME_GOD_ENTRY_KEY);
         }
-
+        else if (you.religion == GOD_JIYVA && how == DNGN_ENTER_SLIME)
+        {
+            if (num_runes >= runes_for_branch(it->id))
+                break;
+            flash_view(UA_BRANCH_ENTRY, rune_colour(RUNE_SLIME));
+            god_speaks(GOD_JIYVA, "Jiyva alters your form.");
+            mpr("You turn into an amorphous slime and slide under the gate.");
+            you.props[SLIME_GOD_ENTRY_KEY] = 1;
+        }
         break;
     }
 
