@@ -3765,6 +3765,8 @@ tileidx_t tileidx_branch(const branch_type br)
         return TILE_DNGN_ENTER_SPIDER;
     case BRANCH_SLIME:
         return TILE_DNGN_ENTER_SLIME;
+    case BRANCH_FOREST:
+        return TILE_DNGN_ENTER_FOREST;
     case BRANCH_VAULTS:
         return TILE_DNGN_ENTER_VAULTS_OPEN;
     case BRANCH_CRYPT:
