@@ -52,6 +52,8 @@ Branches, Environment
 * Severl unfair vaults have been removed, reworked and/or had their 
   depth increased
 * Shaft exploration traps can no longer trigger on D:1-3
+* Slime and Forest gain rune lock. Slime's rune lock can be bypassed by 
+  worshippers of Jiyva
 
 Monsters
 --------
@@ -180,7 +182,7 @@ Character
 Spells
 ------
 * New Spell: Blink other
-  - Level 1 Translocations spell
+  - Level 1 Hexes/Translocations spell
   - Appears in the Warper starter book
   - Randomly blinks targeted monster with a successful MR check
 * New Spell: Shackle
@@ -228,6 +230,7 @@ Gods
 ----
 * Fedhas gains Leda's liquefaction as a 1* ability
 * Gozag no longer gives a free potion petition on worship. (PleasingFungus)
+* A Jiyva altar is guaranteed to appear by the Slime entrance in Lair (bhauth)
 
 Items
 -----
