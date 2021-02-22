@@ -3193,7 +3193,7 @@ void read_scroll(item_def& scroll)
             break;
         }
         else if (is_mapping_rotting())
-            if (!yesno("You map of this branch will not be permanent"
+            if (!yesno("Your map of this branch will not be permanent"
                         " - continue?", false, 0))
             {
                 cancel_scroll = true;
