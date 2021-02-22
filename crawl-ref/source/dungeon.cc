@@ -5028,7 +5028,6 @@ static dungeon_feature_type _glyph_to_feat(int glyph)
            (glyph == 'U') ? DNGN_FOUNTAIN_SPARKLING :
            (glyph == 'V') ? DNGN_DRY_FOUNTAIN :
            (glyph == 'Y') ? DNGN_FOUNTAIN_BLOOD :
-           (glyph == 'Z') ? DNGN_TREE_ANCIENT :
            (glyph == '\0')? DNGN_ROCK_WALL
                           : DNGN_FLOOR; // includes everything else
 }
