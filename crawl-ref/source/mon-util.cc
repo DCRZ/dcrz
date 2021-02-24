@@ -930,7 +930,8 @@ bool mons_is_native_in_branch(const monster& mons,
                || mons.type == MONS_HARPY;
 
     case BRANCH_SLIME:
-        return mons_is_slime(mons);
+        return mons_is_slime(mons)
+               || mons_genus(mons.type) == MONS_DWARF;
 
     case BRANCH_SNAKE:
         return mons_genus(mons.type) == MONS_NAGA
@@ -957,6 +958,11 @@ bool mons_is_native_in_branch(const monster& mons,
 
     case BRANCH_SPIDER:
         return mons_genus(mons.type) == MONS_SPIDER;
+
+    case BRANCH_FOREST:
+        return mons_genus(mons.type) == MONS_SPRIGGAN
+              || mons.type == MONS_FAUN
+              || mons.type == MONS_SATYR;
 
     case BRANCH_ABYSS:
         return mons_is_abyssal_only(mons.type)
