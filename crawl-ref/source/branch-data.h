@@ -97,7 +97,7 @@ const Branch branches[NUM_BRANCHES] =
     { BRANCH_SLIME, BRANCH_LAIR, 3, 4, 5, 17,
       brflag::no_items | brflag::dangerous_end,
       DNGN_ENTER_SLIME, DNGN_EXIT_SLIME, NUM_FEATURES,
-      "Slime Pits", "the Pits of Slime", "Slime",
+      "Slime Mines", "the Slime Mines", "Slime",
       nullptr,
       GREEN, BROWN,
       'M', { RUNE_SLIME }, branch_noise::quiet },

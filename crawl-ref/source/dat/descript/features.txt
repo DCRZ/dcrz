@@ -509,9 +509,9 @@ A staircase to the Shoals
 
 A staircase leading to the Shoals.
 %%%%
-A staircase to the Slime Pits
+A staircase to the Slime Mines
 
-A staircase leading to the Slime Pits.
+A staircase leading to the Slime Mines.
 %%%%
 A staircase to the Snake Pit
 
@@ -913,14 +913,12 @@ A wall made of pure silver.
 # Slime:$
 A rune-carved stone wall
 
-A strangely slime-free stone wall, carved all over with countless protective
-runes.
+A slime-free stone wall, carved all over with countless protective runes.
 %%%%
 A rune-carved clear stone wall
 
-A strangely slime-free stone wall, with strange lights twinkling within its
-airy confines. Mystical runes are scattered across its surface, seemingly
-referring to a 'Royal Jelly'.
+A slime-free stone wall, with strange lights twinkling within its airy confines. Mystical 
+runes are scattered across its surface, seemingly referring to the king of this domain.
 %%%%
 # Tomb:1
 A sarcophagus

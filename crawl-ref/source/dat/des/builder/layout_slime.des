@@ -47,7 +47,7 @@ TAGS:   no_rotate no_vmirror no_hmirror
   local extra_corridor_fraction = 0.6 + depth_fraction * 0.2
   -- fraction of stone rooms that can be fancy
   local fancy_room_fraction = 0.3
-  -- fraction of rooms that are stone (decrease by 0.3 per floor)
+  -- fraction of rooms that are stone
   local stone_room_fraction = 0.9 - depth_fraction
 
   -- create the arrays

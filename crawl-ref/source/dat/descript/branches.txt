@@ -43,7 +43,7 @@ And indeed, there is something to be said about getting gored, mauled and eaten
 rather than sliced, burnt or stabbed.
 
 The Lair contains the entrances to one of the Swamp or the Shoals, one of the
-Snake Pit or the Spider Nest, and to the Pits of Slime.
+Snake Pit or the Spider Nest, and to the Slime Mines.
 %%%%
 Swamp
 
@@ -74,12 +74,12 @@ arthropods and assorted creepy-crawlies.
 
 A dungeon features only one of the Spider Nest and Snake Pit branches.
 %%%%
-Slime Pits
+Slime Mines
 
-The Slime Pits are the amorphous realm of acids, jellies and slimes. Even the
-walls drip with painful acid. Any trace of intelligent beings has long been
-dissolved. Still, there are rumours of great treasures deep down, hidden safely
-away in secret chambers without any entrance.
+The Slime Mines used to be a thriving civilization of dwarves. Now few dwarves
+remain, and the mines are populated by jellies and slimes. Even the walls 
+drip with painful acid. Still, there are rumours of great treasures deep down, 
+hidden safely away in secret chambers without any entrance.
 %%%%
 Vaults
 
