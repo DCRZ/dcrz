@@ -202,9 +202,9 @@ trident of the Octopus King
 A trident stolen many years ago from the Octopus King's garden. Luckily, he
 seems to be in no hurry to get it back.
 %%%%
-mithril axe "Arga"
+mithral axe "Arga"
 
-A beautiful mithril axe, probably lost by some dwarven hero.
+A beautiful mithral axe, probably lost by some dwarven hero.
 %%%%
 Elemental Staff
 
