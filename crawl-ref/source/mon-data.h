@@ -1084,7 +1084,7 @@ static monsterentry mondata[] =
     MONS_PIXIE, 'g', LIGHTRED, "pixie",
     M_WARM_BLOOD | M_SEE_INVIS | M_FLIES,
     MR_NO_FLAGS,
-    10, MONS_SPRIGGAN, MONS_PIXIE, MH_NATURAL, 120,
+    10, MONS_PIXIE, MONS_PIXIE, MH_NATURAL, 120,
     { {AT_HIT, AF_CHAOTIC, 20}, AT_NO_ATK, AT_NO_ATK, AT_NO_ATK },
     14, 440,
     1, 22, MST_PIXIE, false, S_SHOUT,
