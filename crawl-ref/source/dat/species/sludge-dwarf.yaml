@@ -1,0 +1,68 @@
+enum: SP_SLUDGE_DWARF
+monster: MONS_DWARF
+name: "Sludge Dwarf"
+short_name: "SD"
+adjective: "Dwarven"
+genus: "Dwarf"
+difficulty: Simple
+difficulty_priority: 20
+aptitudes:
+  xp: -1
+  hp: 1
+  mp_mod: 0
+  mr: 3
+  fighting: 1
+  short_blades: -1
+  axes: 1
+  polearms: -1
+  staves: -1
+  slings: -1
+  bows: -3
+  crossbows: 1
+  throwing: -1
+  armour: 3
+  dodging: -1
+  stealth: -2
+  shields: 2
+  spellcasting: -3
+  conjurations: -1
+  hexes: -2
+  charms: -2
+  summoning: -2
+  necromancy: -3
+  translocations: -2
+  transmutations: 1
+  ice_magic: -2
+  air_magic: -3
+  earth_magic: 2
+  poison_magic: -2
+  invocations: 1
+  evocations: 2
+str: 11
+int: 8
+dex: 6
+levelup_stat_frequency: 4
+levelup_stats:
+  - str
+  - int
+mutations:
+  1:
+    MUT_ACID_RESISTANCE: 1
+    MUT_EVOLUTION: 2
+    MUT_STURDY_FRAME: 1
+    MUT_PASSIVE_MAPPING: 1
+  7:
+    MUT_STURDY_FRAME: 1
+  9: 
+    MUT_PASSIVE_MAPPING: 1
+  14:
+    MUT_STURDY_FRAME: 1
+  18:
+    MUT_PASSIVE_MAPPING: 1
+recommended_jobs:
+  - JOB_FIGHTER
+  - JOB_HUNTER
+  - JOB_ARTIFICER
+  - JOB_BERSERKER
+  - JOB_TRANSMUTER
+  - JOB_EARTH_ELEMENTALIST

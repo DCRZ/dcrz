@@ -632,6 +632,25 @@ static const map<species_type, species_def> species_data =
 } },
 
 
+{ SP_SLUDGE_DWARF, {
+    "SD",
+    "Sludge Dwarf", "Dwarven", "Dwarf",
+    SPF_NONE,
+    -1, 1, 0, 3,
+    MONS_DWARF,
+    HT_LAND, US_ALIVE, SIZE_MEDIUM,
+    11, 8, 6,
+    { STAT_STR, STAT_INT }, 4,
+    { { MUT_ACID_RESISTANCE, 1, 1 }, { MUT_EVOLUTION, 2, 1 }, { MUT_PASSIVE_MAPPING, 1, 1 }, { MUT_STURDY_FRAME, 1, 1 }, { MUT_STURDY_FRAME, 1, 7 }, { MUT_PASSIVE_MAPPING, 1, 9 }, { MUT_STURDY_FRAME, 1, 14 }, { MUT_PASSIVE_MAPPING, 1, 18 } },
+    {},
+    {},
+    { JOB_FIGHTER, JOB_HUNTER, JOB_ARTIFICER, JOB_BERSERKER, JOB_TRANSMUTER, JOB_EARTH_ELEMENTALIST },
+    { SK_LONG_BLADES, SK_AXES, SK_MACES_FLAILS, SK_POLEARMS, SK_STAVES, SK_SLINGS, SK_BOWS, SK_CROSSBOWS },
+    nullptr,
+    nullptr,
+} },
+
+
 { SP_SPRIGGAN, {
     "Sp",
     "Spriggan", nullptr, nullptr,

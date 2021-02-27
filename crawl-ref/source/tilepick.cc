@@ -3951,6 +3951,8 @@ static tileidx_t _tileidx_player_species_base(const species_type species)
             return TILEG_SP_VAMPIRE;
         case SP_DEEP_DWARF:
             return TILEG_SP_DEEP_DWARF;
+        case SP_SLUDGE_DWARF:
+            return TILEG_SP_SLUDGE_DWARF;
         case SP_FELID:
             return TILEG_SP_FELID;
         case SP_OCTOPODE:
