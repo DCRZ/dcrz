@@ -85,6 +85,12 @@ Gives some limited motility to nearby trees, allowing them to sway their
 branches and shift their roots. Such enchanted trees will lash at any adjacent
 enemy.
 %%%%
+Awaken Slime Mould spell
+
+Causes a tentacle to surge from a slime mould in a slimy wall. The tentacle 
+will reach out and grab interlopers, dragging them towards any nearby slimy 
+walls.
+%%%%
 Awaken Vines spell
 
 Causes vines to grow from the ground. The vines will reach out and grab
@@ -1085,7 +1091,7 @@ otherwise almost indistinguishable from the original.
 Plane Rend spell
 
 Summons some of the greater threats from one of the Snake Pit, the Spider Nest,
-the Swamp, the Shoals, the Pits of Slime, the Elven Halls, the Vaults, the
+the Swamp, the Shoals, the Slime Mines, the Elven Halls, the Vaults, the
 Crypt, the Tomb of Ancients, or the Realm of Zot; the specific branch varies
 with each cast of the spell.
 %%%%
@@ -1286,6 +1292,11 @@ Sleep spell
 
 Puts a targeted creature to sleep. Taking damage will typically wake the
 target, and loud sounds can potentially do so as well.
+%%%%
+Slimify spell
+
+Transforms the target into a slime. The target gains the physical attacks and
+resistances of their new form but cannot cast spells.
 %%%%
 Slow spell
 

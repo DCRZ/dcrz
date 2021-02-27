@@ -288,6 +288,14 @@ static const mon_spellbook mspell_list[] =
       }
     },
 
+    {  MST_SLIME_PRIEST,
+      {
+       { SPELL_SLIMIFY, 22, MON_SPELL_PRIEST },
+       { SPELL_CORROSIVE_BOLT, 22, MON_SPELL_PRIEST },
+       { SPELL_AWAKEN_SLIME_MOULD, 33, MON_SPELL_PRIEST },
+      }
+    },
+
     // ('h') Carnivorous quadrupeds.
     { MST_HOWLER_MONKEY,
       {

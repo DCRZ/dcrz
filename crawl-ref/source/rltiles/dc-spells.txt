@@ -180,6 +180,7 @@ bolt_energy ENERGY_BOLT
 generic GENERIC_MONSTER_SPELL
 air_elementals AIR_ELEMENTALS
 awaken_vines AWAKEN_VINES
+awaken_vines AWAKEN_SLIME_MOULD
 brain_feed BRAIN_FEED
 call_down_damnation CALL_DOWN_DAMNATION
 cantrip CANTRIP
@@ -212,6 +213,7 @@ seal_doors SEAL_DOORS
 sentinel_mark SENTINEL_MARK
 sleep SLEEP
 spectral_cloud SPECTRAL_CLOUD
+spell_slimify SPELL_SLIMIFY
 spit_acid SPIT_ACID
 spit_poison SPIT_POISON
 sporulate SPORULATE

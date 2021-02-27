@@ -181,7 +181,8 @@ struct mgen_data
                || summon_type == SPELL_FULMINANT_PRISM
                || summon_type == SPELL_INFESTATION
                || summon_type == SPELL_FOXFIRE
-               || summon_type == SPELL_MARSHLIGHT);
+               || summon_type == SPELL_MARSHLIGHT
+               || summon_type == SPELL_AWAKEN_SLIME_MOULD);
         return *this;
     }
 

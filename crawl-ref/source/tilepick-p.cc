@@ -478,9 +478,7 @@ tileidx_t tileidx_player()
     // non-animals
     case transformation::ice_beast: ch = TILEP_TRAN_ICE_BEAST; break;
     case transformation::wisp:      ch = TILEP_MONS_INSUBSTANTIAL_WISP; break;
-#if TAG_MAJOR_VERSION == 34
     case transformation::jelly:     ch = TILEP_MONS_JELLY;     break;
-#endif
     case transformation::fungus:    ch = TILEP_TRAN_MUSHROOM;  break;
     case transformation::shadow:    ch = TILEP_TRAN_SHADOW;    break;
     case transformation::hydra:     ch = tileidx_mon_clamp(TILEP_MONS_HYDRA,

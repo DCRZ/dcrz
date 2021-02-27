@@ -7217,6 +7217,7 @@ bool player::polymorph(int pow, bool allow_immobile)
         transformation::bat,
         transformation::wisp,
         transformation::pig,
+        transformation::jelly,
     };
     if (allow_immobile)
     {
@@ -7804,7 +7805,7 @@ bool player::form_uses_xl() const
     // unintentional form while others can just run or die. I believe this
     // should apply to more forms, too.  [1KB]
     return form == transformation::wisp || form == transformation::fungus
-        || form == transformation::pig
+        || form == transformation::pig  || form == transformation::jelly
         || form == transformation::bat && you.species != SP_VAMPIRE;
 }
 
@@ -8366,6 +8367,7 @@ bool player::immune_to_hex(const spell_type hex) const
         return res_petrify();
     case SPELL_PORKALATOR:
     case SPELL_LIGNIFY:
+    case SPELL_SLIMIFY:
         return is_lifeless_undead();
     case SPELL_VIRULENCE:
         return res_poison() == 3;

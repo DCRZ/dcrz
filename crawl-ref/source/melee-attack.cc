@@ -2050,8 +2050,11 @@ void melee_attack::attacker_sustain_passive_damage()
     if (!defender->alive())
         return;
 
-    if (!mons_class_flag(defender->type, M_ACID_SPLASH))
+    if (!mons_class_flag(defender->type, M_ACID_SPLASH)
+        && !(defender->is_player() && you.form == transformation::jelly))
+    {
         return;
+    }
 
     if (attacker->res_acid() >= 3)
         return;

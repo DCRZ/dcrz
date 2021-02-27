@@ -3535,6 +3535,29 @@ static const struct spell_desc spelldata[] =
 },
 
 {
+    SPELL_SLIMIFY, "Slimify",
+    spschool::transmutation | spschool::hexes,
+    spflag::dir_or_target | spflag::chaotic | spflag::monster
+        | spflag::needs_tracer | spflag::MR_check,
+    4,
+    200,
+    LOS_RADIUS, LOS_RADIUS,
+    3, 0,
+    TILEG_SPELL_SLIMIFY,
+},
+
+{
+    SPELL_AWAKEN_SLIME_MOULD, "Awaken Slime Mould",
+    spschool::summoning,
+    spflag::target | spflag::monster,
+    6,
+    200,
+    LOS_RADIUS, LOS_RADIUS,
+    5, 0,
+    TILEG_AWAKEN_SLIME_MOULD,
+},
+
+{
     SPELL_NO_SPELL, "nonexistent spell",
     spschool::none,
     spflag::testing,

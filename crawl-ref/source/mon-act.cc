@@ -1405,6 +1405,18 @@ static void _pre_monster_move(monster& mons)
         }
     }
 
+    if (mons.type == MONS_GELATINOUS_SNATCHER
+        && mons.props.exists("slime_mould_awakener"))
+    {
+        monster* awakener = monster_by_mid(mons.props["slime_mould_awakener"].get_int());
+        if (awakener && !awakener->can_see(mons))
+        {
+            simple_monster_message(mons, " retracts back into the wall.");
+            monster_die(mons, KILL_RESET, NON_MONSTER);
+            return;
+        }
+    }
+
     // Dissipate player ball lightnings and foxfires
     // that have left the player's sight
     // (monsters are allowed to 'cheat', as with orb of destruction)

@@ -330,6 +330,7 @@ void change_monster_type(monster* mons, monster_type targetc)
     mon_enchant summon    = mons->get_ench(ENCH_SUMMON);
     mon_enchant tp        = mons->get_ench(ENCH_TP);
     mon_enchant vines     = mons->get_ench(ENCH_AWAKEN_VINES);
+    mon_enchant mould     = mons->get_ench(ENCH_AWAKEN_SLIME_MOULD);
     mon_enchant forest    = mons->get_ench(ENCH_AWAKEN_FOREST);
     mon_enchant hexed     = mons->get_ench(ENCH_HEXED);
     mon_enchant insanity  = mons->get_ench(ENCH_INSANE);
@@ -372,6 +373,7 @@ void change_monster_type(monster* mons, monster_type targetc)
     mons->add_ench(summon);
     mons->add_ench(tp);
     mons->add_ench(vines);
+    mons->add_ench(mould);
     mons->add_ench(forest);
     mons->add_ench(hexed);
     mons->add_ench(insanity);
@@ -728,15 +730,19 @@ void slimify_monster(monster* mon)
 
     monster_polymorph(mon, target);
 
-    mon->attitude = ATT_STRICT_NEUTRAL;
-
-    mons_make_god_gift(*mon, GOD_JIYVA);
-
     // Don't want shape-shifters to shift into non-slimes.
     mon->del_ench(ENCH_GLOWING_SHAPESHIFTER);
     mon->del_ench(ENCH_SHAPESHIFTER);
 
-    mons_att_changed(mon);
+    // slime priests won't make Jiyva god gifts unless you also worship Jiyva
+    if (you.religion == GOD_JIYVA)
+    {
+        mon->attitude = ATT_STRICT_NEUTRAL;
+
+        mons_make_god_gift(*mon, GOD_JIYVA);
+
+        mons_att_changed(mon);
+    }
 }
 
 void seen_monster(monster* mons)

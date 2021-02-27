@@ -1043,6 +1043,9 @@ static monster* _place_monster_aux(const mgen_data &mg, const monster *leader,
         // Pixies belong to Xom
         else if (mg.cls == MONS_PIXIE)
             mon->god = GOD_XOM;
+        // Slime priests belong to Jiyva
+        else if (mg.cls == MONS_DWARF_SLIME_PRIEST)
+            mon->god = GOD_JIYVA;
         else
         {
             switch (mons_genus(mg.cls))

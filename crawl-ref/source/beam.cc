@@ -210,6 +210,7 @@ static void _ench_animation(int flavour, const monster* mon, bool force)
     case BEAM_POLYMORPH:
     case BEAM_MALMUTATE:
     case BEAM_LIGNIFICATION:
+    case BEAM_SLIMIFICATION:
         elem = ETC_MUTAGENIC;
         break;
     case BEAM_CHAOS:
@@ -3359,6 +3360,17 @@ void bolt::affect_player_enchantment(bool resistible)
         you.transform_uncancellable = true;
         obvious_effect = true;
         break;
+       
+    case BEAM_SLIMIFICATION:
+        if (!transform(ench_power, transformation::jelly, true))
+        {
+            mpr("You feel slimy for a moment.");
+            break;
+        }
+
+        you.transform_uncancellable = true;
+        obvious_effect = true;
+        break;
 
     case BEAM_BERSERK:
         you.go_berserk(blame_player);
@@ -5141,6 +5153,10 @@ bool ench_flavour_affects_monster(beam_type flavour, const monster* mon,
         rc = (mon->can_polymorph() && mon->type != MONS_PLANT);
         break;
 
+    case BEAM_SLIMIFICATION:
+        rc = mon_can_be_slimified(mon);
+        break;
+
     default:
         break;
     }
@@ -5560,6 +5576,19 @@ mon_resist_type bolt::apply_enchantment_to_monster(monster* mon)
             // For monster reverting to original form.
             mon->props[ORIG_MONSTER_KEY] = orig_mon;
         }
+        if (YOU_KILL(thrower)) // better safe than sorry
+        {
+            const int level = 2 + random2(3);
+            did_god_conduct(DID_DELIBERATE_MUTATING, level, god_cares());
+        }
+
+        return MON_AFFECTED;
+    }
+
+    case BEAM_SLIMIFICATION:
+    {
+        slimify_monster(mon);
+
         if (YOU_KILL(thrower)) // better safe than sorry
         {
             const int level = 2 + random2(3);
@@ -6246,6 +6275,7 @@ bool bolt::nasty_to(const monster* mon) const
         case BEAM_PETRIFY:
         case BEAM_POLYMORPH:
         case BEAM_LIGNIFICATION:
+        case BEAM_SLIMIFICATION:
         case BEAM_DISPEL_UNDEAD:
         case BEAM_PAIN:
         case BEAM_AGONY:
@@ -6526,6 +6556,7 @@ static string _beam_type_name(beam_type type)
     case BEAM_VILE_CLUTCH:           return "vile clutch";
     case BEAM_SHACKLE:               return "shackles";
     case BEAM_LIGNIFICATION:         return "lignification";
+    case BEAM_SLIMIFICATION:         return "slimification";
 
     case NUM_BEAMS:                  die("invalid beam type");
     }

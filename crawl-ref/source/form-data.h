@@ -197,18 +197,16 @@ static const form_entry formdata[] =
     "whoosh", -8, "misty tendril", "strand", "swirl around", "vapour"
 },
 
-#if TAG_MAJOR_VERSION == 34
 {
     transformation::jelly, MONS_JELLY, "Jelly", "jelly-form", "jelly",
     "a lump of jelly.",
-    EQF_PHYSICAL | EQF_RINGS, MR_NO_FLAGS,
-    BAD_DURATION, 0, 0, SIZE_CHARACTER, 10,
+    EQF_PHYSICAL | EQF_RINGS, MR_RES_ACID,
+    BAD_DURATION, 0, 0, SIZE_SMALL, 10,
     0, 0, 0, false, 0, 0, 3,
-    SPWPN_NORMAL, LIGHTGREY, "", DEFAULT_VERBS,
-    FC_DEFAULT, FC_FORBID, FC_FORBID, false, false,
+    SPWPN_ACID, LIGHTGREEN, "pseudopods", DEFAULT_VERBS,
+    FC_DEFAULT, FC_ENABLE, FC_FORBID, false, false,
     "", 0, "", "", "", ""
 },
-#endif
 
 {
     transformation::fungus, MONS_WANDERING_MUSHROOM, "Fungus", "fungus-form", "fungus",

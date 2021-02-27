@@ -183,6 +183,7 @@ enum enchant_type
     ENCH_VILE_CLUTCH,
     ENCH_WATERLOGGED,
     ENCH_SHACKLE,
+    ENCH_AWAKEN_SLIME_MOULD, // Is presently animating gelatinous snatchers
     // Update enchant_names[] in mon-ench.cc when adding or removing
     // enchantments.
     NUM_ENCHANTMENTS

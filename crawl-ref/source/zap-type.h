@@ -91,5 +91,6 @@ enum zap_type
     ZAP_SHACKLE,
     ZAP_DAZZLING_BOLT,
     ZAP_LIGNIFICATION,
+    ZAP_SLIMIFICATION,
     NUM_ZAPS
 };

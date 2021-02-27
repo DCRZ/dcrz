@@ -696,6 +696,20 @@ tileidx_t tileidx_tentacle(const monster_info& mon)
             }
         }
     }
+    else if (no_head_connect && (mon.type == MONS_GELATINOUS_SNATCHER
+                            || mon.type == MONS_GELATINOUS_SNATCHER_SEGMENT))
+    {
+        // Find an adjacent slimy wall to pretend we're connected to.
+        for (adjacent_iterator ai(t_pos); ai; ++ai)
+        {
+            if (grd(*ai) == DNGN_SLIMY_WALL)
+            {
+                h_pos = *ai;
+                no_head_connect = false;
+                break;
+            }
+        }
+    }
 
     // Is there a connection to the given direction?
     // (either through head or next)
@@ -748,6 +762,7 @@ tileidx_t tileidx_tentacle(const monster_info& mon)
                 case MONS_STARSPAWN_TENTACLE: tile = TILEP_MONS_STARSPAWN_TENTACLE_S; break;
                 case MONS_ELDRITCH_TENTACLE: tile = TILEP_MONS_ELDRITCH_TENTACLE_PORTAL; break;
                 case MONS_SNAPLASHER_VINE: tile = TILEP_MONS_VINE_S; break;
+                case MONS_GELATINOUS_SNATCHER: tile = TILEP_MONS_VINE_S; break;
                 default: die("bad tentacle type");
             }
 
@@ -1543,6 +1558,7 @@ enum class tentacle_type
     zombie_kraken = 4,
     simulacrum_kraken = 5,
     spectral_kraken = 6,
+    gelatinous = 7,
 };
 
 #ifdef USE_TILE
@@ -1593,6 +1609,7 @@ static void _add_tentacle_overlay(const coord_def pos,
         case tentacle_type::eldritch: flag = TILE_FLAG_TENTACLE_ELDRITCH; break;
         case tentacle_type::starspawn: flag = TILE_FLAG_TENTACLE_STARSPAWN; break;
         case tentacle_type::vine: flag = TILE_FLAG_TENTACLE_VINE; break;
+        case tentacle_type::gelatinous: flag = TILE_FLAG_TENTACLE_VINE; break;
         case tentacle_type::zombie_kraken: flag = TILE_FLAG_TENTACLE_ZOMBIE_KRAKEN; break;
         case tentacle_type::simulacrum_kraken: flag = TILE_FLAG_TENTACLE_SIMULACRUM_KRAKEN; break;
         case tentacle_type::spectral_kraken: flag = TILE_FLAG_TENTACLE_SPECTRAL_KRAKEN; break;
@@ -1686,6 +1703,9 @@ static tentacle_type _get_tentacle_type(const monster_info& mon)
         case MONS_SNAPLASHER_VINE:
         case MONS_SNAPLASHER_VINE_SEGMENT:
             return tentacle_type::vine;
+        case MONS_GELATINOUS_SNATCHER:
+        case MONS_GELATINOUS_SNATCHER_SEGMENT:
+            return tentacle_type::gelatinous;
 
         default:
             die("Invalid tentacle type!");
@@ -1845,6 +1865,8 @@ static tileidx_t _tileidx_monster_no_props(const monster_info& mon)
         case MONS_STARSPAWN_TENTACLE_SEGMENT:
         case MONS_SNAPLASHER_VINE:
         case MONS_SNAPLASHER_VINE_SEGMENT:
+        case MONS_GELATINOUS_SNATCHER:
+        case MONS_GELATINOUS_SNATCHER_SEGMENT:
         {
             tileidx_t tile = tileidx_tentacle(mon);
             _handle_tentacle_overlay(mon.pos, tile, _get_tentacle_type(mon));
@@ -1853,7 +1875,8 @@ static tileidx_t _tileidx_monster_no_props(const monster_info& mon)
                 && tile >= TILEP_MONS_KRAKEN_TENTACLE_SEGMENT_N
                 && (tile <= TILEP_MONS_KRAKEN_TENTACLE_SEGMENT_W_SE
                     || tile <= TILEP_MONS_KRAKEN_TENTACLE_SEGMENT_W_NW &&
-                       mon.type == MONS_SNAPLASHER_VINE_SEGMENT))
+                       (mon.type == MONS_SNAPLASHER_VINE_SEGMENT
+                        || mon.type == MONS_GELATINOUS_SNATCHER_SEGMENT)))
             {
                 tile += TILEP_MONS_ELDRITCH_TENTACLE_PORTAL_N;
                 tile -= TILEP_MONS_KRAKEN_TENTACLE_SEGMENT_N;
@@ -1866,6 +1889,12 @@ static tileidx_t _tileidx_monster_no_props(const monster_info& mon)
                 }
                 else if (mon.type == MONS_SNAPLASHER_VINE
                          || mon.type == MONS_SNAPLASHER_VINE_SEGMENT)
+                {
+                    tile += TILEP_MONS_VINE_N;
+                    tile -= TILEP_MONS_ELDRITCH_TENTACLE_N;
+                }
+                else if (mon.type == MONS_GELATINOUS_SNATCHER
+                         || mon.type == MONS_GELATINOUS_SNATCHER_SEGMENT)
                 {
                     tile += TILEP_MONS_VINE_N;
                     tile -= TILEP_MONS_ELDRITCH_TENTACLE_N;

@@ -853,7 +853,6 @@ public:
     static const FormWisp &instance() { static FormWisp inst; return inst; }
 };
 
-#if TAG_MAJOR_VERSION == 34
 class FormJelly : public Form
 {
 private:
@@ -862,7 +861,6 @@ private:
 public:
     static const FormJelly &instance() { static FormJelly inst; return inst; }
 };
-#endif
 
 class FormFungus : public Form
 {

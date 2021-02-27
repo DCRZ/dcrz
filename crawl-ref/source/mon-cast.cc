@@ -46,6 +46,7 @@
 #include "mon-pathfind.h"
 #include "mon-pick.h"
 #include "mon-place.h"
+#include "mon-poly.h"
 #include "mon-project.h"
 #include "mon-speak.h"
 #include "mon-tentacle.h"
@@ -119,6 +120,7 @@ static bool _foe_can_sleep(const monster &caster);
 static bool _foe_not_teleporting(const monster &caster);
 static bool _foe_not_mr_vulnerable(const monster &caster);
 static bool _foe_can_lignify(const monster &caster);
+static bool _foe_can_slimify(const monster &caster);
 static bool _should_still_winds(const monster &caster);
 static void _mons_vampiric_drain(monster &mons, mon_spell_slot, bolt&);
 static void _cast_cantrip(monster &mons, mon_spell_slot, bolt&);
@@ -457,6 +459,7 @@ static const map<spell_type, mons_spell_logic> spell_to_logic = {
             _monster_abjuration(caster, true);
         }, nullptr, MSPELL_LOGIC_NONE, 20, } },
     { SPELL_LIGNIFY, _hex_logic(SPELL_LIGNIFY, _foe_can_lignify) },
+    { SPELL_SLIMIFY, _hex_logic(SPELL_SLIMIFY, _foe_can_slimify) },
 };
 
 /// Is the 'monster' actually a proxy for the player?
@@ -570,6 +573,15 @@ static bool _foe_can_lignify(const monster &caster)
         return !you.is_lifeless_undead();
     return foe->as_monster()->can_polymorph()
             && foe->as_monster()->type != MONS_PLANT;
+}
+
+static bool _foe_can_slimify(const monster &caster)
+{
+    const actor* foe = caster.get_foe();
+    ASSERT(foe);
+    if (foe->is_player())
+        return !you.is_lifeless_undead();
+    return mon_can_be_slimified(foe->as_monster());
 }
 
 /**
@@ -1815,6 +1827,7 @@ bool setup_mons_cast(const monster* mons, bolt &pbolt, spell_type spell_cast,
     case SPELL_MASS_CONFUSION:
     case SPELL_ENGLACIATION:
     case SPELL_AWAKEN_VINES:
+    case SPELL_AWAKEN_SLIME_MOULD:
     case SPELL_WALL_OF_BRAMBLES:
     case SPELL_WIND_BLAST:
     case SPELL_SUMMON_VERMIN:
@@ -2867,6 +2880,114 @@ static bool _awaken_vines(monster* mon, bool test_only = false)
     {
         if (seen)
             mpr("Vines fly forth from the trees!");
+        return true;
+    }
+}
+
+static bool _valid_slime_mould_spot(coord_def p)
+{
+    if (actor_at(p) || !monster_habitable_grid(MONS_SLIME_CREATURE, grd(p)))
+        return false;
+
+    int num_slimy_walls = 0;
+    bool valid_slimy_walls = false;
+    for (adjacent_iterator ai(p); ai; ++ai)
+    {
+        if (grd(*ai) == DNGN_SLIMY_WALL)
+        {
+            // Make sure this spot is not on a diagonal to its only adjacent
+            // wall (so that the tentacles can pull back against the wall properly)
+            if (num_slimy_walls || !((*ai-p).sgn().x != 0 && (*ai-p).sgn().y != 0))
+            {
+                valid_slimy_walls = true;
+                break;
+            }
+            else
+                ++num_slimy_walls;
+        }
+    }
+
+    if (!valid_slimy_walls)
+        return false;
+
+    // Now the connectivity check
+    return !plant_forbidden_at(p, true);
+}
+
+static bool _awaken_slime_mould(monster* mon, bool test_only = false)
+{
+    if (_is_wiz_cast())
+    {
+        mprf("Sorry, this spell isn't supported for dummies!"); //mons dummy
+        return false;
+    }
+
+    vector<coord_def> spots;
+    for (radius_iterator ri(mon->pos(), LOS_NO_TRANS); ri; ++ri)
+    {
+        if (_valid_slime_mould_spot(*ri))
+            spots.push_back(*ri);
+    }
+
+    shuffle_array(spots);
+
+    actor* foe = mon->get_foe();
+    ASSERT(foe);
+
+    int num_slime_moulds = 1 + random2(3);
+    if (mon->props.exists("slime_moulds_awakened"))
+        num_slime_moulds = min(num_slime_moulds, 3 - mon->props["slime_moulds_awakened"].get_int());
+    bool seen = false;
+
+    for (coord_def spot : spots)
+    {
+        // Don't place vines where they can't see our target
+        if (!cell_see_cell(spot, foe->pos(), LOS_NO_TRANS))
+            continue;
+
+        // Don't place a vine too near to another existing one
+        bool too_close = false;
+        for (distance_iterator di(spot, false, true, 3); di; ++di)
+        {
+            monster* m = monster_at(*di);
+            if (m && m->type == MONS_GELATINOUS_SNATCHER)
+            {
+                too_close = true;
+                break;
+            }
+        }
+        if (too_close)
+            continue;
+
+        // We've found at least one valid spot, so the spell should be castable
+        if (test_only)
+            return true;
+
+        // Actually place the slime mould and update properties
+        if (monster* slime_mould = create_monster(
+            mgen_data(MONS_GELATINOUS_SNATCHER, SAME_ATTITUDE(mon), spot, mon->foe,
+                        MG_FORCE_PLACE)
+            .set_summoned(mon, 0, SPELL_AWAKEN_SLIME_MOULD, mon->god)))
+        {
+            slime_mould->props["slime_mould_awakener"].get_int() = mon->mid;
+            mon->props["slime_moulds_awakened"].get_int()++;
+            mon->add_ench(mon_enchant(ENCH_AWAKEN_SLIME_MOULD, 1, nullptr, 200));
+            --num_slime_moulds;
+            if (you.can_see(*slime_mould))
+                seen = true;
+        }
+
+        // We've finished placing all our vines
+        if (num_slime_moulds == 0)
+            break;
+    }
+
+    if (test_only)
+        return false;
+    else
+    {
+        if (seen)
+            mpr("Slime moulds fly forth from the walls!");
         return true;
     }
 }
@@ -6380,6 +6501,10 @@ void mons_cast(monster* mons, bolt pbolt, spell_type spell_cast,
     case SPELL_AWAKEN_VINES:
         _awaken_vines(mons);
         return;
+    
+    case SPELL_AWAKEN_SLIME_MOULD:
+        _awaken_slime_mould(mons);
+        return;
 
     case SPELL_WALL_OF_BRAMBLES:
         // If we can't cast this for some reason (can be expensive to determine
@@ -7663,6 +7788,12 @@ static bool _ms_waste_of_time(monster* mon, mon_spell_slot slot)
                || mon->has_ench(ENCH_AWAKEN_VINES)
                    && mon->props["vines_awakened"].get_int() >= 3
                || !_awaken_vines(mon, true);
+        
+    case SPELL_AWAKEN_SLIME_MOULD:
+        return !foe
+               || mon->has_ench(ENCH_AWAKEN_SLIME_MOULD)
+                   && mon->props["slime_moulds_awakened"].get_int() >= 3
+               || !_awaken_slime_mould(mon, true);
 
     case SPELL_WATERSTRIKE:
         return !foe || !feat_is_watery(grd(foe->pos()));

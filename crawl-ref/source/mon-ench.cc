@@ -861,6 +861,10 @@ void monster::remove_enchantment_effect(const mon_enchant &me, bool quiet)
         unawaken_vines(this, quiet);
         break;
 
+    case ENCH_AWAKEN_SLIME_MOULD:
+        unawaken_slime_mould(this, quiet);
+        break;
+
     case ENCH_TOXIC_RADIANCE:
         if (!quiet && you.can_see(*this))
             mprf("%s toxic aura wanes.", name(DESC_ITS).c_str());
@@ -1381,6 +1385,7 @@ void monster::apply_enchantment(const mon_enchant &me)
     case ENCH_SCREAMED:
     case ENCH_WEAK:
     case ENCH_AWAKEN_VINES:
+    case ENCH_AWAKEN_SLIME_MOULD:
     case ENCH_FIRE_VULN:
     case ENCH_BARBS:
     case ENCH_POISON_VULN:
@@ -2054,6 +2059,7 @@ static const char *enchant_names[] =
     "pinned_by_whirlwind",
 #endif
     "vortex", "vortex_cooldown", "vile_clutch", "waterlogged", "shackled",
+    "awaken slime mould",
     "buggy",
 };
 

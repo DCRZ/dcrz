@@ -2458,7 +2458,8 @@ item_def* monster_die(monster& mons, killer_type killer,
     else if (mons_is_tentacle_or_tentacle_segment(mons.type)
              && killer != KILL_MISC
                  || mons.type == MONS_ELDRITCH_TENTACLE
-                 || mons.type == MONS_SNAPLASHER_VINE)
+                 || mons.type == MONS_SNAPLASHER_VINE
+                 || mons.type == MONS_GELATINOUS_SNATCHER)
     {
         if (mons.type == MONS_SNAPLASHER_VINE)
         {
@@ -2468,6 +2469,16 @@ item_def* monster_die(monster& mons, killer_type killer,
                         monster_by_mid(mons.props["vine_awakener"].get_int());
                 if (awakener)
                     awakener->props["vines_awakened"].get_int()--;
+            }
+        }
+        else if (mons.type == MONS_GELATINOUS_SNATCHER)
+        {
+            if (mons.props.exists("slime_mould_awakener"))
+            {
+                monster* awakener =
+                        monster_by_mid(mons.props["slime_mould_awakener"].get_int());
+                if (awakener)
+                    awakener->props["slime_moulds_awakened"].get_int()--;
             }
         }
         destroy_tentacle(&mons);
@@ -2704,6 +2715,28 @@ void unawaken_vines(const monster* mons, bool quiet)
     }
 }
 
+void unawaken_slime_mould(const monster* mons, bool quiet)
+{
+    int slime_moulds_seen = 0;
+    for (monster_iterator mi; mi; ++mi)
+    {
+        if (mi->type == MONS_GELATINOUS_SNATCHER
+            && mi->props.exists("slime_mould_awakener")
+            && monster_by_mid(mi->props["slime_mould_awakener"].get_int()) == mons)
+        {
+            if (you.can_see(**mi))
+                ++slime_moulds_seen;
+            monster_die(**mi, KILL_RESET, NON_MONSTER);
+        }
+    }
+
+    if (!quiet && slime_moulds_seen)
+    {
+        mprf("The slime mould%s retract%s back into the wall.",
+              (slime_moulds_seen > 1 ? "s" : ""), (slime_moulds_seen == 1 ? "s" : ""));
+    }
+}
+
 void heal_flayed_effect(actor* act, bool quiet, bool blood_only)
 {
     ASSERT(act); // XXX: change to actor &act
@@ -2754,6 +2787,9 @@ void monster_cleanup(monster* mons)
 
     if (mons->has_ench(ENCH_AWAKEN_VINES))
         unawaken_vines(mons, false);
+
+    if (mons->has_ench(ENCH_AWAKEN_SLIME_MOULD))
+        unawaken_slime_mould(mons, false);
 
     // Monsters haloes should be removed when they die.
     if (mons->halo_radius()

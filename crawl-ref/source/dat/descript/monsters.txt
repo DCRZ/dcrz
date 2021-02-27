@@ -1033,6 +1033,11 @@ dwarf
 
 A member of a short, sturdy mountain-dwelling folk.
 %%%%
+dwarf slime priest
+
+A dwarf who converted to the Slime God when its city was overtaken by its current 
+residents. Its form is strangely amorphous.
+%%%%
 earth elemental
 
 A spirit drawn from the elemental plane of earth, which exists in this world by
@@ -1240,6 +1245,18 @@ ghoul
 A decayed cadaver, reanimated and accursed with a terrible hunger. It desires
 nothing but to feed on the flesh of the living, and will fell its victims with
 its vicious claws.
+%%%%
+gelatinous snatcher
+
+A corrosive strand of slime mould brought alive by a slime priest's magic. It 
+can quickly bind and entangle the slime priest's foes, dragging them back to 
+the walls from which it surges.
+%%%%
+gelatinous snatcher segment
+
+Part of a corrosive strand of slime mould brought alive by a slime priest's 
+magic. It can quickly bind and entangle the slime priest's foes, dragging them 
+back to the walls from which it surges.
 %%%%
 gelid demonspawn
 

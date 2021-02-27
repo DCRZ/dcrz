@@ -38,6 +38,7 @@ static monster_type _solo_tentacle_to_segment[][2] =
 {
     { MONS_ELDRITCH_TENTACLE, MONS_ELDRITCH_TENTACLE_SEGMENT },
     { MONS_SNAPLASHER_VINE,   MONS_SNAPLASHER_VINE_SEGMENT },
+    { MONS_GELATINOUS_SNATCHER,   MONS_GELATINOUS_SNATCHER_SEGMENT },
 };
 
 static mgen_data _segment_data(const monster& head, coord_def pos,
@@ -830,6 +831,42 @@ void move_solo_tentacle(monster* tentacle)
                             for (adjacent_iterator ai2(*ai); ai2; ++ai2)
                             {
                                 if (feat_is_tree(grd(*ai2)))
+                                {
+                                    pull_constrictee = true;
+                                    shift_constrictee = true;
+                                    shift_pos = *ai;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if (tentacle->type == MONS_SNAPLASHER_VINE)
+            {
+                // Don't shift our victim if they're already next to a slimy wall
+                // (To avoid shaking players back and forth constantly)
+                bool near_slimy_wall = false;
+                for (adjacent_iterator ai(constrictee->pos()); ai; ++ai)
+                {
+                    if (grd(*ai) == DNGN_SLIMY_WALL)
+                    {
+                        near_slimy_wall = true;
+                        break;
+                    }
+                }
+
+                if (!near_slimy_wall)
+                {
+                    for (adjacent_iterator ai(tentacle->pos()); ai; ++ai)
+                    {
+                        if (adjacent(*ai, constrictee->pos())
+                            && constrictee->is_habitable(*ai)
+                            && !actor_at(*ai))
+                        {
+                            for (adjacent_iterator ai2(*ai); ai2; ++ai2)
+                            {
+                                if (grd(*ai2) == DNGN_SLIMY_WALL)
                                 {
                                     pull_constrictee = true;
                                     shift_constrictee = true;

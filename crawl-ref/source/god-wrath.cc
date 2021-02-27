@@ -1234,7 +1234,8 @@ static void _jiyva_transform()
                                               transformation::fungus,
                                               transformation::pig,
                                               transformation::tree,
-                                              transformation::wisp);
+                                              transformation::wisp,
+                                              transformation::jelly);
 
     if (transform(random2(you.penance[god]) * 2, form, true))
         you.transform_uncancellable = true;
