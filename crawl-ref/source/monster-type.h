@@ -1087,6 +1087,7 @@ enum monster_type                      // menv[].type
     MONS_GELATINOUS_SNATCHER,
     MONS_GELATINOUS_SNATCHER_SEGMENT,
     MONS_DWARVEN_AUTOMATON,
+    MONS_SLUDGE_DWARF,
 #endif
 
     NUM_MONSTERS,               // used for polymorph

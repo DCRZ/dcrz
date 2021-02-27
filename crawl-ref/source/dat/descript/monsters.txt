@@ -2242,6 +2242,11 @@ An icky glob of slime that slithers along the ground. It can merge with other
 slime creatures to become dramatically more dangerous, and is especially likely
 to do so in confined spaces.
 %%%%
+sludge dwarf
+
+A member of a short, sturdy mountain-dwelling folk that has been corrupted by
+the slime mould infesting its homeland.
+%%%%
 small abomination
 
 A hideous mass of body parts. Each varies in speed and durability by the nature
