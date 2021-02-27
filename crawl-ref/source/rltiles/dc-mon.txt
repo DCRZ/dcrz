@@ -1070,7 +1070,7 @@ will_o_the_wisp MONS_WILL_O_THE_WISP
 ## Dwarves ('q')
 %sdir mon/humanoids
 dwarf MONS_DWARF
-deep_dwarf MONS_DEEP_DWARF
+deep_dwarf MONS_SLUDGE_DWARF
 %sdir mon/unique
 jorgrun MONS_JORGRUN
 

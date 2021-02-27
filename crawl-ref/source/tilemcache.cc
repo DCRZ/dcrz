@@ -425,7 +425,7 @@ bool mcache_monster::get_weapon_offset(tileidx_t mon_tile,
     // Shift downwards.
     case TILEP_MONS_DEEP_ELF_KNIGHT:
     case TILEP_MONS_GUARDIAN_SERPENT:
-    case TILEP_MONS_DEEP_DWARF:
+    case TILEP_MONS_SLUDGE_DWARF:
     case TILEP_MONS_RUST_DEVIL:
         *ofs_x = 0;
         *ofs_y = 1;

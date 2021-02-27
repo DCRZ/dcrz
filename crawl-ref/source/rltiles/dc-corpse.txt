@@ -219,7 +219,7 @@ glowing_shapeshifter CORPSE_GLOWING_SHAPESHIFTER
 %back blood_puddle_red blood_puddle_red1 blood_puddle_red2 blood_puddle_red3 blood_puddle_red4
 %sdir mon/humanoids
 dwarf CORPSE_DWARF
-deep_dwarf CORPSE_DEEP_DWARF
+deep_dwarf CORPSE_SLUDGE_DWARF
 
 ## Ugly things ('u')
 %sdir mon/aberrations

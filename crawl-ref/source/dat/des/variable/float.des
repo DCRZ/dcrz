@@ -4428,7 +4428,7 @@ SUBST: D = 1., E = 2.
 NSUBST: 3 = 2:3 / 3.
 {{
 dgn.delayed_decay(_G, '-', 'troll skeleton / minotaur skeleton ' ..
-                           '/ deep dwarf skeleton / centaur skeleton')
+                           '/ sludge dwarf skeleton / centaur skeleton')
 }}
 MAP
 ccccccccccc

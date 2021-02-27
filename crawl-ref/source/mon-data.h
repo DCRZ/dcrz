@@ -183,6 +183,7 @@ static monsterentry mondata[] =
     AXED_MON(MONS_DEEP_ELF_SOLDIER, "deep elf soldier")
     AXED_MON(MONS_PAN, "pan")
     AXED_MON(MONS_LAMIA, "lamia")
+    AXED_MON(MONS_DEEP_DWARF, "deep dwarf")
     AXED_MON(MONS_DEEP_DWARF_SCION, "deep dwarf scion")
     AXED_MON(MONS_DEEP_DWARF_ARTIFICER, "deep dwarf artificer")
     AXED_MON(MONS_DEEP_DWARF_NECROMANCER, "deep dwarf necromancer")
@@ -1107,19 +1108,6 @@ static monsterentry mondata[] =
 },
 
 {
-    MONS_DEEP_DWARF, 'g', LIGHTBLUE, "deep dwarf",
-    M_WARM_BLOOD | M_SPEAKS | M_NO_REGEN | M_NO_POLY_TO,
-    MR_NO_FLAGS,
-    10, MONS_DWARF, MONS_DEEP_DWARF, MH_NATURAL, 40,
-    { {AT_HIT, AF_PLAIN, 10}, AT_NO_ATK, AT_NO_ATK, AT_NO_ATK },
-    5, 275,
-    2, 12, MST_NO_SPELLS, true, S_SHOUT,
-    I_HUMAN, HT_LAND, 10, DEFAULT_ENERGY,
-    MONUSE_WEAPONS_ARMOUR, SIZE_MEDIUM, MON_SHAPE_HUMANOID,
-    {TILEP_MONS_DEEP_DWARF}, TILE_CORPSE_DEEP_DWARF
-},
-
-{
     MONS_SLUDGE_DWARF, 'g', GREEN, "sludge dwarf",
     M_WARM_BLOOD | M_SPEAKS,
     mrd(MR_RES_ACID, 3),
@@ -1129,7 +1117,7 @@ static monsterentry mondata[] =
     2, 12, MST_NO_SPELLS, true, S_SHOUT,
     I_HUMAN, HT_LAND, 10, DEFAULT_ENERGY,
     MONUSE_WEAPONS_ARMOUR, SIZE_MEDIUM, MON_SHAPE_HUMANOID,
-    {TILEP_MONS_DEEP_DWARF}, TILE_CORPSE_DEEP_DWARF
+    {TILEP_MONS_SLUDGE_DWARF}, TILE_CORPSE_SLUDGE_DWARF
 },
 
 {

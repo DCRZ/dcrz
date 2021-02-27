@@ -748,14 +748,6 @@ static void _spirit_shield_message(bool unmeld)
     {
         dec_mp(you.magic_points);
         mpr("You feel your power drawn to a protective spirit.");
-#if TAG_MAJOR_VERSION == 34
-        if (you.species == SP_DEEP_DWARF
-            && !(have_passive(passive_t::no_mp_regen)
-                 || player_under_penance(GOD_PAKELLAS)))
-        {
-            mpr("Now linked to your health, your magic stops regenerating.");
-        }
-#endif
     }
     else if (!unmeld && you.get_mutation_level(MUT_MANA_SHIELD))
         mpr("You feel the presence of a powerless spirit.");
@@ -1049,8 +1041,6 @@ static void _unequip_armour_effect(item_def& item, bool meld,
         if (!you.spirit_shield())
         {
             mpr("You feel strangely alone.");
-            if (you.species == SP_DEEP_DWARF)
-                mpr("Your magic begins regenerating once more.");
         }
         break;
 
@@ -1366,6 +1356,7 @@ static void _unequip_jewellery_effect(item_def &item, bool mesg, bool meld,
     case RING_STEALTH:
     case RING_TELEPORTATION:
     case RING_WIZARDRY:
+    case AMU_GUARDIAN_SPIRIT:
         break;
 
     case AMU_REGENERATION:
@@ -1422,11 +1413,6 @@ static void _unequip_jewellery_effect(item_def &item, bool mesg, bool meld,
     case AMU_FAITH:
         if (!meld)
             _remove_amulet_of_faith(item);
-        break;
-
-    case AMU_GUARDIAN_SPIRIT:
-        if (you.species == SP_DEEP_DWARF && player_regenerates_mp())
-            mpr("Your magic begins regenerating once more.");
         break;
     }
 

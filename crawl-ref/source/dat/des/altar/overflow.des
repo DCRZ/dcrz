@@ -120,8 +120,8 @@ function species_mock(e)
     return "hell beast"
   elseif you.race():find("Draconian") then
     return "wyvern"
-  elseif you.race() == "Deep Dwarf" then
-    return "deep dwarf zombie"
+  elseif you.race() == "Sludge Dwarf" then
+    return "sludge dwarf zombie"
   elseif you.race() == "Deep Elf" then
     return "will-o-the-wisp"
   elseif you.race() == "Gnoll" then

@@ -9,11 +9,6 @@ Centaur
 Swift, strong and bulky, Centaurs are particularly skilled with ranged
 weaponry.
 %%%%
-Deep Dwarf
-
-Deep Dwarves live underground and cannot regenerate health naturally, but they
-are very resilient to damage, and have a limited ability to heal at will.
-%%%%
 Deep Elf
 
 Deep Elves have a strong affinity for all kinds of magic, but are very fragile.

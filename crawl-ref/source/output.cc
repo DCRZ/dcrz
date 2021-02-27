@@ -735,14 +735,6 @@ static void _print_stats_mp(int x, int y)
     int col = _count_digits(you.magic_points)
               + _count_digits(you.max_magic_points) + 1;
 
-    int real_mp = get_real_mp(false);
-    if (you.species == SP_DEEP_DWARF
-        && real_mp != you.max_magic_points)
-    {
-        CPRINTF(" (%d)", real_mp);
-        col += _count_digits(real_mp) + 3;
-    }
-
     if (boosted)
         textcolour(HUD_VALUE_COLOUR);
 
@@ -2225,11 +2217,6 @@ static vector<formatted_string> _get_overview_stats()
         entry.textcolour(HUD_VALUE_COLOUR);
 
     entry.cprintf("%d/%d", you.magic_points, you.max_magic_points);
-    if (you.species == SP_DEEP_DWARF
-        && get_real_mp(false) != you.max_magic_points)
-    {
-        entry.cprintf(" (%d)", get_real_mp(false));
-    }
 
     cols.add_formatted(0, entry.to_colour_string(), false);
     entry.clear();

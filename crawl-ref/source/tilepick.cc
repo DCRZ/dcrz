@@ -3472,9 +3472,6 @@ tileidx_t tileidx_ability(const ability_type ability)
         return TILEG_ABILITY_BAT_FORM;
     case ABIL_DRAW_OUT_BLOOD:
         return TILEG_ABILITY_DRAW_OUT_BLOOD;
-    // Deep Dwarves
-    case ABIL_HEAL_WOUNDS:
-        return TILEG_ABILITY_HEAL_WOUNDS;
     // Formicids
     case ABIL_DIG:
         return TILEG_ABILITY_DIG;
@@ -3949,8 +3946,6 @@ static tileidx_t _tileidx_player_species_base(const species_type species)
             return TILEG_SP_MERFOLK;
         case SP_VAMPIRE:
             return TILEG_SP_VAMPIRE;
-        case SP_DEEP_DWARF:
-            return TILEG_SP_DEEP_DWARF;
         case SP_SLUDGE_DWARF:
             return TILEG_SP_SLUDGE_DWARF;
         case SP_FELID:

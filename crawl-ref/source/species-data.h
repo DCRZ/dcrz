@@ -62,25 +62,6 @@ static const map<species_type, species_def> species_data =
 } },
 
 
-{ SP_DEEP_DWARF, {
-    "DD",
-    "Deep Dwarf", "Dwarven", "Dwarf",
-    SPF_NONE,
-    -1, 2, 0, 6,
-    MONS_DEEP_DWARF,
-    HT_LAND, US_ALIVE, SIZE_MEDIUM,
-    11, 8, 8,
-    { STAT_STR, STAT_INT }, 4,
-    { { MUT_NO_REGENERATION, 1, 1 }, { MUT_PASSIVE_MAPPING, 1, 1 }, { MUT_PASSIVE_MAPPING, 1, 9 }, { MUT_NEGATIVE_ENERGY_RESISTANCE, 1, 14 }, { MUT_PASSIVE_MAPPING, 1, 18 } },
-    { "You are resistant to damage.", "You can heal yourself by infusing magical energy." },
-    { "damage resistance", "heal wounds" },
-    { JOB_FIGHTER, JOB_HUNTER, JOB_BERSERKER, JOB_NECROMANCER, JOB_EARTH_ELEMENTALIST },
-    { SK_MACES_FLAILS, SK_AXES, SK_LONG_BLADES, SK_CROSSBOWS, SK_SLINGS },
-    nullptr,
-    nullptr,
-} },
-
-
 { SP_DEEP_ELF, {
     "DE",
     "Deep Elf", "Elven", "Elf",
