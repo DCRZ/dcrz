@@ -1035,8 +1035,14 @@ A member of a short, sturdy mountain-dwelling folk.
 %%%%
 dwarf slime priest
 
-A dwarf who converted to the Slime God when its city was overtaken by its current 
-residents. Its form is strangely amorphous.
+A dwarf who converted to the Slime God when its city was overtaken by its 
+current residents. Its form is strangely amorphous.
+%%%%
+dwarven automaton
+
+A towering steam-powered humanoid construct, patrolling its creators' forlorn
+homeland for intruders. When an intruder is found, it alerts monsters of the 
+intruder's presence and displaces the intruder with unrelenting force.
 %%%%
 earth elemental
 

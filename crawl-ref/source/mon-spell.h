@@ -1700,6 +1700,14 @@ static const mon_spellbook mspell_list[] =
       }
     },
 
+    {  MST_DWARVEN_AUTOMATON,
+      {
+        { SPELL_STEAM_BALL, 22, MON_SPELL_NATURAL | MON_SPELL_BREATH
+                                | MON_SPELL_NOISY },
+        { SPELL_SENTINEL_MARK, 22, MON_SPELL_NATURAL },
+      }
+    },
+
     {  MST_ICE_STATUE,
       {
        { SPELL_BOLT_OF_COLD, 20, MON_SPELL_MAGICAL },
