@@ -975,7 +975,7 @@ gnoll MONS_GNOLL
 gnoll_shaman MONS_GNOLL_SHAMAN
 gnoll_sergeant MONS_GNOLL_SERGEANT
 boggart MONS_BOGGART
-dwarf_slime_priest MONS_DWARF_SLIME_PRIEST
+sludge_dwarf_slime_priest MONS_SLUDGE_DWARF_SLIME_PRIEST
 %sdir mon/demihumanoids
 pixie MONS_PIXIE
 

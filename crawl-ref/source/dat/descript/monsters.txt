@@ -246,7 +246,7 @@ secluded place where she could study the darker arts without being disturbed.
 %%%%
 Jorgrun
 
-A dwarven magician, particularly well-attuned to the dungeon around him. He
+A sludge dwarf magician, particularly well-attuned to the dungeon around him. He
 wields powerful earth magic in combat.
 %%%%
 Jory
@@ -1028,7 +1028,7 @@ dwarf
 
 A member of a short, sturdy mountain-dwelling folk.
 %%%%
-dwarf slime priest
+sludge dwarf slime priest
 
 A dwarf who converted to the Slime God when its city was overtaken by its 
 current residents. Its form is strangely amorphous.

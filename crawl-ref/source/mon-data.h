@@ -1121,7 +1121,7 @@ static monsterentry mondata[] =
 },
 
 {
-    MONS_DWARF_SLIME_PRIEST, 'g', LIGHTGREEN, "dwarf slime priest",
+    MONS_SLUDGE_DWARF_SLIME_PRIEST, 'g', LIGHTGREEN, "sludge dwarf slime priest",
     M_WARM_BLOOD | M_SPEAKS,
     mrd(MR_RES_ACID, 3),
     13, MONS_DWARF, MONS_SLUDGE_DWARF, MH_NATURAL, 100,
@@ -1130,7 +1130,7 @@ static monsterentry mondata[] =
     2, 15, MST_SLIME_PRIEST, true, S_SHOUT,
     I_HUMAN, HT_LAND, 10, DEFAULT_ENERGY,
     MONUSE_WEAPONS_ARMOUR, SIZE_MEDIUM, MON_SHAPE_HUMANOID,
-    {TILEP_MONS_DWARF_SLIME_PRIEST}, TILE_ERROR
+    {TILEP_MONS_SLUDGE_DWARF_SLIME_PRIEST}, TILE_ERROR
 },
 
 {
