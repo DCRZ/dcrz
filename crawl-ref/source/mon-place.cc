@@ -1044,7 +1044,8 @@ static monster* _place_monster_aux(const mgen_data &mg, const monster *leader,
         else if (mg.cls == MONS_PIXIE)
             mon->god = GOD_XOM;
         // Slime priests belong to Jiyva
-        else if (mg.cls == MONS_SLUDGE_DWARF_SLIME_PRIEST)
+        else if (mg.cls == MONS_SLUDGE_DWARF_SLIME_PRIEST
+                || mg.cls == MONS_DISSOLUTION)
             mon->god = GOD_JIYVA;
         else
         {

@@ -598,7 +598,7 @@ void dec_penance(god_type god, int val)
             god);
 
         if (dead_jiyva)
-            add_daction(DACT_REMOVE_JIYVA_ALTARS);
+            add_daction(DACT_REMOVE_JIYVAS_PRESENCE);
 
         take_note(Note(NOTE_MOLLIFY_GOD, god));
 
