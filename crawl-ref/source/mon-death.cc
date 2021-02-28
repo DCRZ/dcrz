@@ -896,7 +896,7 @@ static void _jiyva_died()
     if (you_worship(GOD_JIYVA))
         return;
 
-    add_daction(DACT_REMOVE_JIYVA_ALTARS);
+    add_daction(DACT_REMOVE_JIYVAS_PRESENCE);
 
     if (!player_in_branch(BRANCH_SLIME))
         return;

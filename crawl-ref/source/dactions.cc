@@ -20,6 +20,7 @@
 #include "message.h"
 #include "mon-behv.h"
 #include "mon-death.h"
+#include "mon-place.h"
 #include "mon-transit.h"
 #include "religion.h"
 #include "state.h"
@@ -27,6 +28,7 @@
 
 static void _daction_hog_to_human(monster *mon, bool in_transit);
 static void _daction_plant_to_person(monster *mon, bool in_transit);
+static void _daction_remove_jiyva_divine_abilities(monster *mon, bool in_transit);
 
 #ifdef DEBUG_DIAGNOSTICS
 static const char *daction_names[] =
@@ -54,7 +56,7 @@ static const char *daction_names[] =
     "reclaim decks",
 #endif
     "reapply passive mapping",
-    "remove Jiyva altars",
+    "remove Jiyva's presence",
     "Pikel's slaves go good-neutral",
     "corpses rot",
 #if TAG_MAJOR_VERSION == 34
@@ -132,6 +134,9 @@ bool mons_matches_daction(const monster* mon, daction_type act)
     case DACT_ENCHANTRESS_PLANTS:
         return (mon->type == MONS_PLANT
                && mon->props.exists(ORIG_MONSTER_KEY));
+
+    case DACT_REMOVE_JIYVAS_PRESENCE:
+        return (mon->god == GOD_JIYVA);
 
     case DACT_BRIBE_TIMEOUT:
         return mon->has_ench(ENCH_NEUTRAL_BRIBED)
@@ -254,6 +259,10 @@ void apply_daction_to_mons(monster* mon, daction_type act, bool local,
             _daction_plant_to_person(mon, in_transit);
             break;
 
+        case DACT_REMOVE_JIYVAS_PRESENCE:
+            _daction_remove_jiyva_divine_abilities(mon, in_transit);
+            break;
+
         case DACT_BRIBE_TIMEOUT:
             if (mon->del_ench(ENCH_NEUTRAL_BRIBED))
             {
@@ -313,11 +322,18 @@ static void _apply_daction(daction_type act)
     case DACT_REAUTOMAP:
         reautomap_level();
         break;
-    case DACT_REMOVE_JIYVA_ALTARS:
+    case DACT_REMOVE_JIYVAS_PRESENCE:
+        for (monster_iterator mi; mi; ++mi)
+        {
+            if (mons_matches_daction(*mi, act))
+                apply_daction_to_mons(*mi, act, true, false);
+        }
         for (rectangle_iterator ri(1); ri; ++ri)
         {
             if (grd(*ri) == DNGN_ALTAR_JIYVA)
                 grd(*ri) = DNGN_FLOOR;
+            if (grd(*ri) == DNGN_SLIMY_WALL)
+                grd(*ri) = DNGN_STONE_WALL;
         }
         break;
     case DACT_ROT_CORPSES:
@@ -510,4 +526,55 @@ static void _daction_plant_to_person(monster *mon, bool in_transit)
         mpr("The plant vanishes!");
     else if (!could_see && can_see)
         mprf("%s appears from out of thin air!", mon->name(DESC_A).c_str());
+}
+
+static void _daction_remove_jiyva_divine_abilities(monster *mon, bool in_transit)
+{
+    ASSERT(mon); // XXX: change to monster &mon
+    // Dissolution is a special case
+    bool was_dissolution = mon->type == MONS_DISSOLUTION;
+    // Set up the monster with its divine abilites removed.
+    monster base;
+    base.type = was_dissolution ? MONS_SLUDGE_DWARF : mons_species(mon->type);
+    base.attitude = mon->attitude;
+    base.mid      = mon->mid;
+    define_monster(base);
+
+    // Keep at same spot. This position is irrelevant if the monster is in transit.
+    // See below.
+    const coord_def pos = mon->pos();
+    // Preserve relative HP.
+    const float hp
+        = (float) mon->hit_points / (float) mon->max_hit_points;
+    // Preserve some flags.
+    auto preserve_flags =
+        mon->flags & ~(MF_JUST_SUMMONED | MF_WAS_IN_VIEW);
+    if (was_dissolution)
+        preserve_flags |= MF_NAME_REPLACE;
+    // Preserve enchantments.
+    mon_enchant_list enchantments = mon->enchantments;
+    FixedBitVector<NUM_ENCHANTMENTS> ench_cache = mon->ench_cache;
+
+    // Turn the monster into a its base type.
+    *mon = base;
+
+    // If the monster is in transit, then it is NOT stored in the normal
+    // monster list (env.mons or menv for short). We cannot call move_to_pos
+    // on such a monster, because move_to_pos will attempt to update the
+    // monster grid (env.mgrid or mgrd for short). Since the monster is not
+    // stored in the monster list, this will corrupt the grid. The transit code
+    // will update the grid properly once the transiting monster has been placed.
+    if (!in_transit)
+        mon->move_to_pos(pos);
+    // "else {mon->position = pos}" is unnecessary because the transit code will
+    // ignore the old position anyway.
+    mon->enchantments = enchantments;
+    mon->ench_cache   = ench_cache;
+    mon->hit_points   = max(1, (int) (mon->max_hit_points * hp));
+    mon->flags        = mon->flags | preserve_flags;
+    if (was_dissolution)
+    {
+        mon->mname           = "Dissolution";
+        mon->props["dbname"] = "Dissolution original form";
+    }
 }
