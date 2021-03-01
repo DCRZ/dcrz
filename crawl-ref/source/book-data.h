@@ -173,6 +173,7 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Book of Maledictions
     SPELL_CORONA,
+    SPELL_SLOW,
     SPELL_HIBERNATION,
     SPELL_CONFUSING_TOUCH,
     SPELL_TUKIMAS_DANCE,
