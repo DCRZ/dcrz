@@ -330,10 +330,7 @@ exploding.
 %%%%
 Conjure Flame spell
 
-Create a cloud of magically sustained fire at the caster's feet. The fire takes
-a moment to begin burning with vigor and in its fragile initial state is easily
-smothered by either the caster or a wandering monster. Re-casting the spell
-will bring the fire fully to life, but will burn the caster.
+Creates a blazing column of flame in a targeted empty location.
 %%%%
 Controlled Blink spell
 

@@ -80,10 +80,10 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_CONJURE_FLAME, "Conjure Flame",
     spschool::conjuration | spschool::fire,
-    spflag::neutral | spflag::no_ghost,
+    spflag::target | spflag::neutral | spflag::not_self,
     3,
     100,
-    -1, -1,
+    3, 3,
     3, 2,
     TILEG_CONJURE_FLAME,
 },
