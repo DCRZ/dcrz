@@ -2223,7 +2223,7 @@ static const struct spell_desc spelldata[] =
 
 {
     SPELL_DAZZLING_FLASH, "Dazzling Flash",
-    spschool::conjuration | spschool::hexes,
+    spschool::hexes,
     spflag::area | spflag::no_ghost,
     3,
     50,
