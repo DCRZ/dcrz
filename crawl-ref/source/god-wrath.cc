@@ -795,9 +795,7 @@ static bool _trog_retribution()
             if (!you.duration[DUR_PARALYSIS])
             {
                 mprf(MSGCH_WARN, "You suddenly pass out!");
-                const int turns = 2 + random2(6);
-                take_note(Note(NOTE_PARALYSIS, min(turns, 13), 0, "Trog"));
-                you.increase_duration(DUR_PARALYSIS, turns, 13);
+                you.put_to_sleep(nullptr, 30 + random2(20));
             }
             return false;
 
