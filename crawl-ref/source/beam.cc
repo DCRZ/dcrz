@@ -284,11 +284,13 @@ bool player_tracer(zap_type ztype, int power, bolt &pbolt, int range)
     zappy(ztype, power, false, pbolt);
 
     pbolt.is_tracer     = true;
-    pbolt.source        = you.pos();
     pbolt.source_id     = MID_PLAYER;
     pbolt.attitude      = ATT_FRIENDLY;
     pbolt.thrower       = KILL_YOU_MISSILE;
 
+    // Set source to player position unless already set
+    if (!pbolt.source.x && !pbolt.source.y)
+        pbolt.source    = you.pos();
 
     // Init tracer variables.
     pbolt.friend_info.reset();
@@ -2617,9 +2619,6 @@ void bolt::affect_place_clouds()
 
     if (name == "blast of choking fumes")
         place_cloud(CLOUD_MEPHITIC, p, random2(4) + 3, agent());
-
-    if (name == "trail of fire")
-        place_cloud(CLOUD_FIRE, p, random2(ench_power) + ench_power, agent());
 
     if (origin_spell == SPELL_PETRIFYING_CLOUD)
         place_cloud(CLOUD_PETRIFY, p, random2(4) + 4, agent());

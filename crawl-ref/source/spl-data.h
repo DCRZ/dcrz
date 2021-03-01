@@ -3558,6 +3558,17 @@ static const struct spell_desc spelldata[] =
 },
 
 {
+    SPELL_FLAME_DANCE, "Flame Dance",
+    spschool::conjuration | spschool::fire,
+    spflag::dir_or_target | spflag::needs_tracer,
+    2,
+    50,
+    LOS_RADIUS, LOS_RADIUS,
+    2, 0,
+    TILEG_THROW_FLAME,
+},
+
+{
     SPELL_NO_SPELL, "nonexistent spell",
     spschool::none,
     spflag::testing,

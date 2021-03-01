@@ -1,5 +1,5 @@
 enum: SP_SLUDGE_DWARF
-monster: MONS_DWARF
+monster: MONS_SLUDGE_DWARF
 name: "Sludge Dwarf"
 short_name: "SD"
 adjective: "Dwarven"

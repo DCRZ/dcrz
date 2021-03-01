@@ -3681,22 +3681,17 @@ spret fedhas_grow_oklob(bool fail)
 spret cast_foxfire(actor &agent, int pow, god_type god, bool fail)
 {
     fail_check();
-    int created = 0;
+    bool created = false;
 
-    for (fair_adjacent_iterator ai(agent.pos()); ai; ++ai)
+    for (int i = 0; i < 2; i++)
     {
-        const auto att = agent.is_player() ? BEH_FRIENDLY
-                                           : SAME_ATTITUDE(agent.as_monster());
-        mgen_data fox(MONS_FOXFIRE, att,
-                      *ai, MHITNOT, MG_FORCE_PLACE | MG_AUTOFOE);
-        fox.set_summoned(&agent, 0, SPELL_FOXFIRE, god);
+        mgen_data fox = _pal_data(MONS_FOXFIRE, 0, god, SPELL_FOXFIRE);
         fox.hd = pow;
         monster *foxfire;
-
-        if (!cell_is_solid(*ai) && !monster_at(*ai)
-            && (foxfire = create_monster(fox)))
+        
+        if (foxfire = create_monster(fox))
         {
-            ++created;
+            created = true;
             foxfire->add_ench(ENCH_SHORT_LIVED);
             foxfire->steps_remaining = you.current_vision + 2;
 
@@ -3707,9 +3702,6 @@ spret cast_foxfire(actor &agent, int pow, god_type god, bool fail)
                 set_random_target(foxfire);
             }
         }
-
-        if (created == 2)
-            break;
     }
 
     if (created)
@@ -3719,7 +3711,10 @@ spret cast_foxfire(actor &agent, int pow, god_type god, bool fail)
              agent.is_monster() ? "s" : "");
     }
     else if (agent.is_player())
-        canned_msg(MSG_NOTHING_HAPPENS);
+    {
+        mpr("There is not enough space to conjure foxfire!");
+        return spret::abort;
+    }
 
     return spret::success;
 }
