@@ -32,6 +32,7 @@ function wad_woods_setup(e, uniq, weight, mist, delaynum, sizenum, spreadnum)
         e.mons("spriggan defender / w:3 spriggan rider / w:2 spriggan druid"
                 .. " / w:3 spriggan air mage / w:3 spriggan berserker")
         e.mons("apis / w:4 ancient bear / w:2 shambling mangrove ")
+        e.subst("%*| = .")
     else
         if you.absdepth() >= 12 then
             e.mons("centaur warrior / two-headed ogre")
@@ -1011,7 +1012,9 @@ ENDMAP
 NAME:   wad_woods_road_05
 DEPTH:  Lair, Forest
 KMONS:  * = 9
+: if not you.in_branch("Forest") then
 KITEM:  * = *
+: end
 : wad_woods_setup(_G, "small", 2, false, 0, 0, 0)
 FTILE:  @'*+T = floor_dirt
 MAP
@@ -1052,7 +1055,9 @@ DEPTH:  D:8-, Lair, Forest
 ORIENT: float
 MONS:   killer bee, queen bee
 KMONS:  8 = meliai
+: if not you.in_branch("Forest") then
 KITEM:  8 = %
+: end
 KFEAT:  a = x
 : wad_woods_setup(_G, "med", 5, false, 0, 0, 0)
 : if (you.branch() == "Lair" and you.absdepth() < 14)

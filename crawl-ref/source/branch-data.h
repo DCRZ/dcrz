@@ -186,7 +186,7 @@ const Branch branches[NUM_BRANCHES] =
       'Z', {}, branch_noise::normal },
 
     { BRANCH_FOREST, BRANCH_LAIR, 3, 4, 5, 19,
-      brflag::spotty | brflag::dangerous_end,
+      brflag::no_items | brflag::spotty | brflag::dangerous_end,
       DNGN_ENTER_FOREST, DNGN_EXIT_FOREST, NUM_FEATURES,
       "Forest", "the Enchanted Forest", "Forest",
       nullptr,

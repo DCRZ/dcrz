@@ -92,14 +92,13 @@ ENDMAP
 ##############################################################################
 # Forest minivaults
 ##############################################################################
-NAME: grunt_forest_small_clearing_fruit
+NAME: grunt_forest_small_clearing
 TAGS: transparent extra
 DEPTH: Forest
 SUBST: t = t..
 SUBST: . = O.........
 FTILE: . = floor_grass / floor_dirt
 KMONS: O = plant / bush
-KITEM: . = ration / w:90 nothing
 MAP
  tt...tt
 t.......t
@@ -146,7 +145,7 @@ MAP
 t.......t
 t.1...1.t
 ...ttt...
-...t*t...
+...ttt...
 ...ttt...
 t.1...1.t
 t.......t
@@ -160,7 +159,6 @@ SUBST: t = t..
 SUBST: . = O.........
 FTILE: . = floor_grass / floor_dirt
 KMONS: O = plant / bush
-KITEM: . = ration / w:90 nothing
 MAP
  tt...tt
 t.......t
@@ -187,21 +185,20 @@ MAP
 t.......t
 t.G.7.G.t
 .........
-..7.*.7..
+..7...7..
 .........
 t.G.7.G.t
 t.......t
  tt...tt
 ENDMAP
 
-NAME: grunt_forest_large_clearing_fruit
+NAME: grunt_forest_large_clearing
 TAGS: transparent extra
 DEPTH: Forest
 SUBST: t = t..
 SUBST: . = O.........
 FTILE: . = floor_grass / floor_dirt
 KMONS: O = plant / bush
-KITEM: . = ration / w:90 nothing
 MAP
       tt...tt
     ttt.....ttt
@@ -241,9 +238,9 @@ MAP
  t...............t
 tt...............tt
 t.......P.P.......t
-.......P%.%P.......
+.......P...P.......
 .........G.........
-.......P*.%P.......
+.......P...P.......
 t.......P.P.......t
 tt...............tt
  t...............t
@@ -260,8 +257,7 @@ DEPTH: Forest
 SUBST: t = t..
 SUBST: . = O.........
 KMONS: O = plant / bush
-KMONS: * = satyr / spriggan berserker
-KITEM: . = ration / w:90 nothing
+MONS:  satyr / spriggan berserker
 MAP
       tt...tt
     ttt.....ttt
@@ -272,7 +268,7 @@ MAP
 tt....G.....G....tt
 t.................t
 ...................
-.....G...*...G.....
+.....G...1...G.....
 ...................
 t.................t
 tt....G.....G....tt
@@ -292,7 +288,6 @@ SUBST: . = O.........
 SUBST: w = wwW
 SUBST: W = WW.
 KMONS: O = plant / bush
-KITEM: . = ration / w:90 nothing
 MAP
       tt...tt
     ttt.....ttt
@@ -321,8 +316,8 @@ DEPTH: Forest
 SUBST: t = t..
 SUBST: . = O.........
 KMONS: O = plant / bush
-COLOUR: -*c = lightgrey
-FTILE:  -* = floor_normal
+COLOUR: -c = lightgrey
+FTILE:  - = floor_normal
 MAP
       tt...tt
     ttt.....ttt
@@ -332,9 +327,9 @@ MAP
  t...............t
 tt...............tt
 t......ccccc......t
-.......c--*c.......
-.......+-9*c.......
-.......c--*c.......
+.......c---c.......
+.......+-9-c.......
+.......c---c.......
 t......ccccc......t
 tt...............tt
  t...............t
@@ -355,7 +350,7 @@ MAP
    tttttt
 ttttPP.Tt
 tccccT..@
-tc%1c...T
+tc.1c...T
 tc..+..Tt
 tc.1c...T
 tcccct.Tt
@@ -392,7 +387,7 @@ tt@tttt
 t.ttttt
 t.xxxxt
 t.+.1xt
-tTx.%xt
+tTx..xt
 ttcccct
 ttttttt
 ENDMAP
@@ -403,11 +398,10 @@ SUBST: T = t / t / P / .
 COLOUR: "MN = green
 KMONS: P = plant
 MONS:  apis, spriggan ; robe . quarterstaff
-ITEM:  ration q:3
 MAP
 ttttttt@t
 txxxtt.tttttttt
-txd+"""""""tt.@
+tx.+"""""""tt.@
 txxx""""""""".tt
 ttt""2"""""""TTt
 ttT""11"11"TTTtt
@@ -492,8 +486,7 @@ DEPTH:  Forest
 MONS:   ancient bear
 KFEAT:  " = W
 KMONS:  " = water elemental w:40 / elemental wellspring
-KITEM:  % = ration
-SUBST:  % = %., * = *:40 |, B = 1., E = tE
+SUBST:  B = 1., E = tE
 CLEAR:  E
 MAP
 EEEEEEEEEEEEEEEEEEEEEEEEE
@@ -501,40 +494,39 @@ EtttttxxtttxxxxxxttxxtttE
 EttxxxxxxxxxxxxxxxxxxxxxE
 Etxxxxxxxxxxx..xxxxxxxxtE
 Etxxxxx"Wxx......x.xxxttE
-Exxx%...1.....x....xxxxtE
-Exxx%B.1...xxxxx.....xxtE
-Exxxx%%%*xxxxxxxxxxx..xtE
-Etxxx*xxxxxxxtxxxxxxx...@
+Exxx....1.....x....xxxxtE
+Exxx.B.1...xxxxx.....xxtE
+Exxxx....xxxxxxxxxxx..xtE
+Etxxx.xxxxxxxtxxxxxxx...@
 Etxxxxxxxxxxtttttttxxx..@
 EttxxxxxttttttttttttttttE
 EEEEEEEEEEEEEEEEEEEEEEEEE
 ENDMAP
 
 NAME:   nicolae_forest_garden
-TAGS:   no_monster_gen no_item_gen no_trap_gen transparent
+TAGS:   no_monster_gen no_trap_gen transparent
 DEPTH:  Forest
 KMONS:  Y = faun
 KMONS:  D = satyr
 KMONS:  C = dryad
 KMONS:  P = plant
-KITEM:  f = ration
-SUBST:  P = P., f = f...
+SUBST:  P = P.
 NSUBST: D = 1:D / *:.
 MAP
         .@@@.
       .........
     tt...P.P....tt
    tttttPPPPPPPtttt.
-  .ttDfPP.Y....tDtt...
- .PPttP..P.P.PP.ftP...
+  .ttD.PP.Y....tDtt...
+ .PPttP..P.P.PP..tP...
  .P....PPP...PPP.PP..@
 ..PP..PPPwwwC.P..PPP.@
 ......Y.wwwwww.Y.ttP.@
-.@.PP..Pwwwwww...fttt.
+.@.PP..Pwwwwww....ttt.
  @..P..PP.wwwPP.ttttt
   @.PP.PPP..PP..PPttt
   ...Ptt.P.PPPPPP....
-  ...ttfDttPP.......
+  ...tt.DttPP.......
     .tttttt......@
      ..tt.......
         .....
@@ -591,13 +583,11 @@ SUBST: . = ...b
 KPROP: bp = bloody
 SUBST: b = .
 {{
-dgn.delayed_decay_extra(_G, 'o', 'orc corpse', 'hand axe / broad axe, ' ..
-   'leather armour / pair of gloves, mundane quarterstaff')
-dgn.delayed_decay_extra(_G, 'p', 'orc corpse', 'hand axe / broad axe, ' ..
-   'leather armour / pair of gloves')
+dgn.delayed_decay_extra(_G, 'o', 'orc corpse', 'mundane hand axe, ' ..
+   'mundane quarterstaff')
+dgn.delayed_decay_extra(_G, 'p', 'orc corpse', 'mundane hand axe, ')
 }}
 KITEM: w = mundane quarterstaff
-KITEM: s = ration
 KFEAT: 'o = W
 CLEAR:  _
 MAP
@@ -610,9 +600,9 @@ MAP
  Ttt.p........p.ttttT
 TTt..xxxx........tptT
 Tttp.xwwx...xxmx...tT
-Tt...xww+...xpsx...tT
-Tt.p.xwwxp..+.sm.p.tT
-Tt...xxxx...x.sx..ttT
+Tt...xww+...xp.x...tT
+Tt.p.xwwxp..+..m.p.tT
+Tt...xxxx...x..x..ttT
 Tt..p.......xxmx..tTT
 Ttt.....p......p.ttT
 TTtttt..........ttTT
@@ -641,38 +631,6 @@ ti...t...tH.t
 tiI..t.F.thht
 ti...tffftttt
 tttttttttt
-ENDMAP
-
-NAME: nicolae_forest_oklob_treasure_island
-TAGS: no_pool_fixup
-DEPTH: Forest, !Forest:$
-SHUFFLE: Aa/Bb/Cc/Dd/Ee/Ff/Gg/Hh/Ii, %*$
-NSUBST: ' = 1:^ / 1:o / *:'
-SUBST: abcde = w, fghi = t, ABCDE = .wW, FGHI = .t, ' = ':100 $$$%%, \
-       _ = .._, . = ......W
-KFEAT: ^ = permanent teleport trap
-KMONS: o = oklob plant
-CLEAR: _
-MAP
-       _____
-     __.....__
-    _........._
-   _...GGFFF..._
-  _...GggfffF..._
- _...GggGFFffF..._
- _..GggG'''FeeE.._
-_..AaaA'''''EeeE.._
-_..AaA'''''''EeE.._
-_..AaA'''''''EeE.._
-_..AaA'''''''DdD.._
-_..BbbB'''''DddD.._
- _..BbbB'''DddD.._
- _...BbbCCCcdD..._
-  _...BbccccC..._
-   _...BCCCC..._
-    _........._
-     __.....__
-       _____
 ENDMAP
 
 NAME:  nicolae_forest_game_of_thorns

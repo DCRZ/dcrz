@@ -2184,12 +2184,16 @@ ENDMAP
 
 NAME:  grunt_witch_cave
 DEPTH: Swamp, Forest
-: if you.in_branch("Swamp") then
-MONS:  fenstrider witch
-MONS:  hydra
-: else
+: if you.in_branch("Forest") then
 MONS:  greenwood witch
 MONS:  wendigo
+SUBST: %*| = .
+SUBST: K = W
+: else
+MONS:  fenstrider witch
+MONS:  hydra
+KITEM: K = potion of degeneration w:20 / potion of mutation
+KFEAT: K = shallow_water
 : end
 {{
   dgn.delayed_decay(_G, 'd',
@@ -2198,8 +2202,6 @@ MONS:  wendigo
 }}
 NSUBST: : = 5:W / *:.
 SUBST: w = w:10 t:10
-KFEAT: K = shallow_water
-KITEM: K = potion of degeneration w:20 / potion of mutation
 KPROP: w = no_tele_into
 MARKER: K = lua:fog_machine { cloud_type="black smoke", \
                               pow_min = 10, pow_max = 30, delay = 50, \
@@ -2230,13 +2232,14 @@ NAME:  cheibrodos_witchery
 TAGS:  no_item_gen no_monster_gen
 DEPTH: Swamp, !Swamp:$, Forest, !Forest:$
 WEIGHT: 2
-: if you.in_branch("Swamp") then
-MONS:  fenstrider witch
-: else
+: if you.in_branch("Forest") then
 MONS:  greenwood witch
-: end
+SUBST: ' = .
+: else
+MONS:  fenstrider witch
 ITEM:  book of callings, book of summonings
 SUBST: ' = %:20 d:1 e:1
+: end
 NSUBST: 1 = 1:1 / 1:.
 MAP
         WWW
@@ -2256,16 +2259,19 @@ ENDMAP
 NAME:   nzn_weyward_sisters
 DEPTH:  Swamp:2-
 TAGS:   no_pool_fixup
+: if you.in_branch("Forest") then
+MONS:   patrolling greenwood witch
+SUBST:  e = ddee.
+SUBST:  2 = 222.
+NSUBST: 3 = 3 / .
+: else
+MONS:   patrolling fenstrider witch
 SUBST:  e = ddee. *:5
 SUBST:  2 = 222. *:1
 NSUBST: 3 = 3 / f / .
-: if you.in_branch("Swamp") then
-MONS:   patrolling fenstrider witch
-: else
-MONS:   patrolling greenwood witch
+KITEM:  f = any good_item no_pickup
 : end
 MONS:   fungus, human att:good_neutral
-KITEM:  f = any good_item no_pickup
 KFEAT:  n = iron_grate
 MARKER: O = lua:fog_machine {   cloud_type = "flame", pow_min = 10, \
                                 pow_max = 10, delay = 10, size = 1, \
