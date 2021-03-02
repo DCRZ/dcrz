@@ -1105,7 +1105,7 @@ static const struct spell_desc spelldata[] =
     SPELL_CONFUSING_TOUCH, "Confusing Touch",
     spschool::hexes,
     spflag::none,
-    3,
+    2,
     100,
     -1, -1,
     2, 0,
