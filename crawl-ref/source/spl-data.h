@@ -2279,7 +2279,7 @@ static const struct spell_desc spelldata[] =
 
 {
     SPELL_SPECTRAL_CLOUD, "Spectral Cloud",
-    spschool::conjuration | spschool::necromancy | splschool::air,
+    spschool::conjuration | spschool::necromancy | spschool::air,
     spflag::dir_or_target | spflag::monster | spflag::cloud,
     5,
     200,
@@ -2871,7 +2871,7 @@ static const struct spell_desc spelldata[] =
 
 {
     SPELL_FLAMING_CLOUD, "Flaming Cloud",
-    spschool::conjuration | spschool::fire | splschool::air,
+    spschool::conjuration | spschool::fire | spschool::air,
     spflag::target | spflag::area | spflag::monster | spflag::needs_tracer
         | spflag::cloud,
     5,
