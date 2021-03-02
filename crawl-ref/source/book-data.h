@@ -14,9 +14,9 @@ static const vector<spell_type> spellbook_templates[] =
 {   // Book of Conjurations
     SPELL_MAGIC_DART,
     SPELL_SEARING_RAY,
-    SPELL_DAZZLING_FLASH,
     SPELL_FULMINANT_PRISM,
     SPELL_ISKENDERUNS_MYSTIC_BLAST,
+    SPELL_BATTLESPHERE,
 },
 
 {   // Book of Flames
