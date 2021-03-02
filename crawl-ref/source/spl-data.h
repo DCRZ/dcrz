@@ -79,7 +79,7 @@ static const struct spell_desc spelldata[] =
 
 {
     SPELL_CONJURE_FLAME, "Conjure Flame",
-    spschool::conjuration | spschool::fire,
+    spschool::air | spschool::fire,
     spflag::target | spflag::neutral | spflag::not_self,
     3,
     100,
@@ -272,7 +272,7 @@ static const struct spell_desc spelldata[] =
 
 {
     SPELL_FREEZING_CLOUD, "Freezing Cloud",
-    spschool::conjuration | spschool::ice | spschool::air,
+    spschool::ice | spschool::air,
     spflag::target | spflag::area | spflag::needs_tracer
         | spflag::cloud,
     6,
@@ -284,7 +284,7 @@ static const struct spell_desc spelldata[] =
 
 {
     SPELL_MEPHITIC_CLOUD, "Mephitic Cloud",
-    spschool::conjuration | spschool::poison | spschool::air,
+    spschool::hexes | spschool::poison | spschool::air,
     spflag::dir_or_target | spflag::area
         | spflag::needs_tracer | spflag::cloud,
     3,
@@ -466,7 +466,7 @@ static const struct spell_desc spelldata[] =
 
 {
     SPELL_POISONOUS_CLOUD, "Poisonous Cloud",
-    spschool::conjuration | spschool::poison | spschool::air,
+    spschool::poison | spschool::air,
     spflag::target | spflag::area | spflag::needs_tracer | spflag::cloud,
     5,
     200,
@@ -1464,7 +1464,7 @@ static const struct spell_desc spelldata[] =
 
 {
     SPELL_NOXIOUS_CLOUD, "Noxious Cloud",
-    spschool::conjuration | spschool::poison | spschool::air,
+    spschool::poison | spschool::air | spschool::hexes,
     spflag::target | spflag::area | spflag::monster | spflag::needs_tracer
         | spflag::cloud,
     5,
@@ -1587,7 +1587,7 @@ static const struct spell_desc spelldata[] =
 
 {
     SPELL_MIASMA_BREATH, "Miasma Breath",
-    spschool::conjuration,
+    spschool::conjuration | spschool::air | spschool::necromancy,
     spflag::dir_or_target | spflag::unclean | spflag::monster
         | spflag::needs_tracer | spflag::cloud,
     6,
@@ -1703,7 +1703,7 @@ static const struct spell_desc spelldata[] =
 
 {
     SPELL_CHAOS_BREATH, "Chaos Breath",
-    spschool::conjuration | spschool::random,
+    spschool::conjuration | spschool::random | spschool::air,
     spflag::dir_or_target | spflag::monster | spflag::noisy
         | spflag::needs_tracer | spflag::cloud,
     5,
@@ -2030,7 +2030,7 @@ static const struct spell_desc spelldata[] =
 
 {
     SPELL_HOLY_BREATH, "Holy Breath",
-    spschool::conjuration,
+    spschool::conjuration | spschool::air,
     spflag::dir_or_target | spflag::area | spflag::needs_tracer | spflag::cloud
         | spflag::holy,
     5,
@@ -2279,7 +2279,7 @@ static const struct spell_desc spelldata[] =
 
 {
     SPELL_SPECTRAL_CLOUD, "Spectral Cloud",
-    spschool::conjuration | spschool::necromancy,
+    spschool::conjuration | spschool::necromancy | splschool::air,
     spflag::dir_or_target | spflag::monster | spflag::cloud,
     5,
     200,
@@ -2871,7 +2871,7 @@ static const struct spell_desc spelldata[] =
 
 {
     SPELL_FLAMING_CLOUD, "Flaming Cloud",
-    spschool::conjuration | spschool::fire,
+    spschool::conjuration | spschool::fire | splschool::air,
     spflag::target | spflag::area | spflag::monster | spflag::needs_tracer
         | spflag::cloud,
     5,
