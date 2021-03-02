@@ -178,6 +178,7 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_CONFUSING_TOUCH,
     SPELL_TUKIMAS_DANCE,
     SPELL_DAZZLING_FLASH,
+    SPELL_MEPHITIC_CLOUD,
 },
 
 {   // Book of Air
