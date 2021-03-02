@@ -864,6 +864,7 @@ i-heal-wounds POT_HEAL_WOUNDS
 i-haste POT_HASTE
 i-might POT_MIGHT
 i-brilliance POT_BRILLIANCE
+i-agility POT_AGILITY
 i-stabbing POT_STABBING
 # start TAG_MAJOR_VERSION == 34
 i-gain-strength POT_REMOVEME2

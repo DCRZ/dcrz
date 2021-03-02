@@ -472,6 +472,7 @@ unsigned int item_value(item_def item, bool ident)
                 break;
 
             case POT_MIGHT:
+            case POT_AGILITY:
             case POT_STABBING:
             case POT_BRILLIANCE:
                 valued += 40;

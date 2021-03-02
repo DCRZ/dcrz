@@ -660,6 +660,7 @@ const char* potion_type_name(int potiontype)
     case POT_HEAL_WOUNDS:       return "heal wounds";
     case POT_HASTE:             return "haste";
     case POT_MIGHT:             return "might";
+    case POT_AGILITY:           return "agility";
     case POT_STABBING:          return "stabbing";
     case POT_BRILLIANCE:        return "brilliance";
     case POT_FLIGHT:            return "flight";

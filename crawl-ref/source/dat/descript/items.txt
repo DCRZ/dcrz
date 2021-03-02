@@ -635,6 +635,11 @@ plate armour
 A full suit of solid metal plate: cuirass, pauldrons, vambraces, waist plate
 and greaves. It provides excellent protection.
 %%%%
+potion of agility
+
+A potion which greatly increases evasiveness of melee and missiles 
+of one who drinks it.
+%%%%
 potion of ambrosia
 
 A strange substance, produced by ghost moths. Consuming it causes regeneration
@@ -652,7 +657,8 @@ A potion containing the essence of life.
 %%%%
 potion of brilliance
 
-A potion which increases the power of the drinker's spells.
+A potion which increases the power of the drinker's spells and halves their
+mana cost (rounding up).
 %%%%
 potion of cancellation
 

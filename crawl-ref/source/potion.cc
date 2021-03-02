@@ -296,6 +296,29 @@ public:
     }
 };
 
+class PotionAgility : public PotionEffect
+{
+private:
+    PotionAgility() : PotionEffect(POT_AGILITY) { }
+    DISALLOW_COPY_AND_ASSIGN(PotionAgility);
+public:
+    static const PotionAgility &instance()
+    {
+        static PotionAgility inst; return inst;        
+    }
+
+    bool effect(bool=true, int pow = 40, bool=true) const override
+    {
+        const bool were_agile = you.duration[DUR_AGILITY] > 0;
+
+        mprf(MSGCH_DURATION, "You feel %sagile all of a sudden.",
+            were_agile ? "more " : "");
+        you.increase_duration(DUR_AGILITY, 35 + random2(pow), 80);        
+        you.redraw_evasion = true;
+        return true;
+    }
+};
+
 class PotionStabbing : public PotionEffect
 {
 private:
@@ -788,6 +811,7 @@ static const unordered_map<potion_type, const PotionEffect*, std::hash<int>> pot
     { POT_HASTE, &PotionHaste::instance(), },
     { POT_MIGHT, &PotionMight::instance(), },
     { POT_BRILLIANCE, &PotionBrilliance::instance(), },
+    { POT_AGILITY, &PotionAgility::instance(), },
     { POT_STABBING, &PotionStabbing::instance(), },
     { POT_FLIGHT, &PotionFlight::instance(), },
     { POT_CANCELLATION, &PotionCancellation::instance(), },

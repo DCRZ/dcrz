@@ -7,6 +7,7 @@ enum potion_type
     POT_HASTE,
     POT_MIGHT,
     POT_BRILLIANCE,
+    POT_AGILITY,
     POT_STABBING,
 #if TAG_MAJOR_VERSION == 34
     POT_GAIN_STRENGTH,
