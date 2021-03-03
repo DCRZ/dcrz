@@ -153,7 +153,7 @@ function trove.get_trove_item(e, value, base_item)
     end
 
     if you.race() ~= "Formicid" then
-      table.insert(pots, {base="potion", type="haste", quant=2+d(2)})
+      table.insert(pots, {base="potion", type="haste", quant=3+d(3)})
     end
 
     for _, toll in ipairs(pots) do
