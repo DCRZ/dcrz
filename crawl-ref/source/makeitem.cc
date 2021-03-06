@@ -115,6 +115,8 @@ static bool _is_boring_item(int type, int sub_type)
 {
     switch (type)
     {
+    case OBJ_POTIONS:
+        return sub_type == POT_CURE_MUTATION;
     case OBJ_SCROLLS:
         // These scrolls increase knowledge and thus reduce risk.
         switch (sub_type)
@@ -1389,6 +1391,7 @@ static void _generate_potion_item(item_def& item, int force_type,
                                             35, POT_BERSERK_RAGE,
                                             35, POT_CANCELLATION,
                                             35, POT_AMBROSIA,
+                                            29, POT_CURE_MUTATION,
                                              2, POT_EXPERIENCE);
         }
         while (agent == GOD_XOM

@@ -894,9 +894,7 @@ i-restore-abilities POT_REMOVEME6
 i-strong-poison POT_REMOVEME7
 # end TAG_MAJOR_VERSION
 i-berserk-rage POT_BERSERK_RAGE
-# start TAG_MAJOR_VERSION == 34
-i-cure-mutation POT_REMOVEME8
-# end TAG_MAJOR_VERSION
+i-cure-mutation POT_CURE_MUTATION
 i-mutation POT_MUTATION
 i-resistance POT_RESISTANCE
 # start TAG_MAJOR_VERSION == 34

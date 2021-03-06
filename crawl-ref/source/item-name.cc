@@ -674,6 +674,7 @@ const char* potion_type_name(int potiontype)
     case POT_MUTATION:          return "mutation";
     case POT_RESISTANCE:        return "resistance";
     case POT_LIGNIFY:           return "lignification";
+    case POT_CURE_MUTATION:     return "cure mutation";
 
     // FIXME: Remove this once known-items no longer uses this as a sentinel.
     default:
@@ -2661,6 +2662,8 @@ bool is_good_item(const item_def &item)
         switch (item.sub_type)
         {
         case POT_EXPERIENCE:
+            return true;
+        case POT_CURE_MUTATION:
             return true;
         default:
             return false;

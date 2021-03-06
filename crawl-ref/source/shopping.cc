@@ -453,6 +453,10 @@ unsigned int item_value(item_def item, bool ident)
                 valued += 500;
                 break;
 
+            case POT_CURE_MUTATION:
+                valued += 350;
+                break;
+
             case POT_RESISTANCE:
             case POT_HASTE:
                 valued += 100;
