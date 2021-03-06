@@ -72,6 +72,11 @@ Human
 
 Humans advance quickly in levels and have equal abilities in most skills.
 %%%%
+Lava Orc
+
+Lava Orcs are masters of earth and fire magic who come from deep below 
+the Dungeon. Their abilities change with their temperature.
+%%%%
 Tengu
 
 Tengu are bird-people who love to fight, both with weapons and spells. They are

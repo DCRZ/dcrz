@@ -232,7 +232,8 @@ const vector<god_power> god_powers[NUM_GODS] =
     },
 
     // Beogh
-    { { 2, ABIL_BEOGH_SMITING, "smite your foes" },
+    { { 0, "Beogh protects your orcish followers from your radiant heat." },
+      { 2, ABIL_BEOGH_SMITING, "smite your foes" },
       { 3, "gain orcish followers" },
       { 4, ABIL_BEOGH_RECALL_ORCISH_FOLLOWERS, "recall your orcish followers" },
       { 5, "walk on water" },

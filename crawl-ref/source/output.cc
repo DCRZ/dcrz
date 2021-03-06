@@ -35,6 +35,7 @@
 #include "mutation.h"
 #include "notes.h"
 #include "player-equip.h"
+#include "player.h" // lava orc temperature
 #include "player-stats.h"
 #include "prompt.h"
 #include "religion.h"
@@ -324,7 +325,7 @@ public:
                && you.num_turns >= m_request_redraw_after;
     }
 
-    void draw(int ox, int oy, int val, int max_val, int sub_val = 0)
+    void draw(int ox, int oy, int val, int max_val, int sub_val = 0, bool temp = false)
     {
         ASSERT(val <= max_val);
         if (max_val <= 0)
@@ -332,6 +333,10 @@ public:
             m_old_disp = -1;
             return;
         }
+
+        int temp_colour;
+        temp_colour = temperature_colour(temperature());
+
         const int width = (horiz_bar_width != -1) ?
                                   horiz_bar_width :
                                   crawl_view.hudsz.x - (ox - 1);
@@ -354,7 +359,7 @@ public:
             textcolour(BLACK + m_empty * 16);
 
             if (cx < disp)
-                textcolour(BLACK + m_default * 16);
+                textcolour(BLACK + temp ? temp_colour * 16 : m_default * 16);
             else if (cx < sub_disp)
                 textcolour(BLACK + YELLOW * 16);
             else if (old_disp >= sub_disp && cx < old_disp)
@@ -363,7 +368,7 @@ public:
 #else
             if (cx < disp && cx < old_disp)
             {
-                textcolour(m_default);
+                textcolour(temp ? temp_colour : m_default);
                 putwch('=');
             }
             else if (cx < disp)
@@ -473,11 +478,14 @@ static colour_bar Noise_Bar(WHITE, LIGHTGREY, LIGHTGREY, DARKGREY);
 static colour_bar Noise_Bar(LIGHTGREY, LIGHTGREY, MAGENTA, DARKGREY);
 #endif
 
+colour_bar Temp_Bar(RED, LIGHTRED, LIGHTBLUE, DARKGREY);
+
 void reset_hud()
 {
     HP_Bar.reset();
     MP_Bar.reset();
     Noise_Bar.reset();
+    Temp_Bar.reset();
 }
 
 // ----------------------------------------------------------------------
@@ -541,7 +549,10 @@ void update_turn_count()
         return;
     }
 
-    CGOTOXY(19+6, 9, GOTO_STAT);
+    int temp = (you.species == SP_LAVA_ORC) ? 1 : 0;
+    int turn_pos = 9 + temp;
+
+    CGOTOXY(19+6, turn_pos, GOTO_STAT);
 
     // Show the turn count starting from 1. You can still quit on turn 0.
     textcolour(HUD_VALUE_COLOUR);
@@ -566,6 +577,16 @@ static int _count_digits(int val)
     else if (val > 9)
         return 2;
     return 1;
+}
+
+static void _print_stats_temperature(int x, int y)
+{
+
+    CGOTOXY(x, y, GOTO_STAT);
+    textcolour(HUD_CAPTION_COLOUR);
+    cprintf("Temperature: ");
+
+    Temp_Bar.draw(19, y, temperature(), TEMP_MAX, true);
 }
 
 static const equipment_type e_order[] =
@@ -602,7 +623,7 @@ static void _print_stats_equip(int x, int y)
 }
 
 /*
- * Print the noise bar to the HUD with appropriate coloring.
+ * Print the noise bar to the HUD with appropriate colouring.
  * if in wizmode, also print the numeric noise value.
  */
 static void _print_stats_noise(int x, int y)
@@ -624,7 +645,7 @@ static void _print_stats_noise(int x, int y)
     // and this isn't represented.
     // See player::get_noise_perception for the mapping from internal noise
     // values to this 0-1000 scale.
-    // NOTE: This color scheme is duplicated in player.js.
+    // NOTE: This colour scheme is duplicated in player.js.
     if (level <= 333)
         noisecolour = LIGHTGREY;
     else if (level <= 666)
@@ -677,7 +698,7 @@ static void _print_stats_noise(int x, int y)
             CPRINTF(" "); // clean up after the extra wide bar
         }
 #ifndef USE_TILE_LOCAL
-        // use the previous color for negative change in console; there's a
+        // use the previous colour for negative change in console; there's a
         // visual difference in bar width. Negative change doesn't get shown
         // in local tiles.
         Noise_Bar.m_change_neg = Noise_Bar.m_default;
@@ -1155,6 +1176,7 @@ static bool _need_stats_printed()
     return you.redraw_title
            || you.redraw_hit_points
            || you.redraw_magic_points
+           || you.redraw_temperature
            || you.redraw_armour_class
            || you.redraw_evasion
            || you.redraw_stats[STAT_STR]
@@ -1275,8 +1297,10 @@ static void _redraw_title()
 
 void print_stats()
 {
-    int ac_pos = 5;
-    int ev_pos = ac_pos + 1;
+    int temp = (you.species == SP_LAVA_ORC) ? 1 : 0;
+    int temp_pos = 5;
+    int ac_pos = temp_pos + temp;
+    int ev_pos = temp_pos + temp + 1;
 
     cursor_control coff(false);
     textcolour(LIGHTGREY);
@@ -1292,6 +1316,8 @@ void print_stats()
         you.redraw_hit_points = true;
     if (MP_Bar.wants_redraw())
         you.redraw_magic_points = true;
+    if (Temp_Bar.wants_redraw() && you.species == SP_LAVA_ORC)
+        you.redraw_temperature = true;
 
     // Poison display depends on regen rate, so should be redrawn every turn.
     if (you.duration[DUR_POISONING])
@@ -1320,6 +1346,12 @@ void print_stats()
         _print_stats_mp(1, 4);
     }
 
+    if (you.redraw_temperature)  
+    { 
+        you.redraw_temperature = false;  
+        _print_stats_temperature(1, temp_pos); 
+    }
+
     if (you.redraw_armour_class)
     {
         you.redraw_armour_class = false;
@@ -1333,12 +1365,12 @@ void print_stats()
 
     for (int i = 0; i < NUM_STATS; ++i)
         if (you.redraw_stats[i])
-            _print_stat(static_cast<stat_type>(i), 19, 5 + i);
+            _print_stat(static_cast<stat_type>(i), 19, 5 + i + temp);
     you.redraw_stats.init(false);
 
     if (you.redraw_experience)
     {
-        CGOTOXY(1, 8, GOTO_STAT);
+        CGOTOXY(1, 8 + temp, GOTO_STAT);
         textcolour(Options.status_caption_colour);
         CPRINTF("XL: ");
         textcolour(HUD_VALUE_COLOUR);
@@ -1355,7 +1387,7 @@ void print_stats()
         you.redraw_experience = false;
     }
 
-    int yhack = 0;
+    int yhack = temp;
 
     // Line 9 is Noise and Turns
 #ifdef USE_TILE_LOCAL
@@ -1364,9 +1396,9 @@ void print_stats()
     {
         yhack++;
         if (Options.equip_bar)
-            _print_stats_equip(1, 8+yhack);
+            _print_stats_equip(1, 8 + yhack);
         else
-            _print_stats_noise(1, 8+yhack);
+            _print_stats_noise(1, 8 + yhack);
     }
 
     if (you.wield_change)
@@ -1431,7 +1463,9 @@ static string _level_description_string_hud()
 void print_stats_level()
 {
     int ypos = 8;
-    cgotoxy(19, ypos, GOTO_STAT);
+    if (you.species == SP_LAVA_ORC)
+        ypos++;
+    CGOTOXY(19, ypos, GOTO_STAT);
     textcolour(HUD_CAPTION_COLOUR);
     CPRINTF("Place: ");
 
@@ -1449,15 +1483,17 @@ void draw_border()
     clrscr();
 
     textcolour(Options.status_caption_colour);
-
+    
+    int temp = (you.species == SP_LAVA_ORC) ? 1 : 0;
 //    int hp_pos = 3;
     int mp_pos = 4;
-    int ac_pos = 5;
-    int ev_pos = 6;
-    int sh_pos = 7;
+    int ac_pos = 5 + temp;
+    int ev_pos = 6 + temp;
+    int sh_pos = 7 + temp;
     int str_pos = ac_pos;
     int int_pos = ev_pos;
     int dex_pos = sh_pos;
+    int turn_pos = 9 + temp;
 
     //CGOTOXY(1, 3, GOTO_STAT); CPRINTF("Hp:");
     CGOTOXY(1, mp_pos, GOTO_STAT);
@@ -1469,7 +1505,7 @@ void draw_border()
     CGOTOXY(19, int_pos, GOTO_STAT); CPRINTF("Int:");
     CGOTOXY(19, dex_pos, GOTO_STAT); CPRINTF("Dex:");
 
-    CGOTOXY(19, 9, GOTO_STAT);
+    CGOTOXY(19, turn_pos, GOTO_STAT);
     CPRINTF(Options.show_game_time ? "Time:" : "Turn:");
     // Line 8 is exp pool, Level
 }
@@ -1493,6 +1529,8 @@ void redraw_console_sidebar()
 
     you.redraw_title        = true;
     you.redraw_hit_points   = true;
+    if (you.species == SP_LAVA_ORC)
+        you.redraw_temperature = true;
     you.redraw_magic_points = true;
     you.redraw_stats.init(true);
     you.redraw_armour_class  = true;
@@ -1546,6 +1584,8 @@ void redraw_screen(bool show_updates)
 
     you.redraw_title        = true;
     you.redraw_hit_points   = true;
+    if (you.species == SP_LAVA_ORC)
+        you.redraw_temperature = true;
     you.redraw_magic_points = true;
     you.redraw_stats.init(true);
     you.redraw_armour_class  = true;
@@ -2365,6 +2405,18 @@ static vector<formatted_string> _get_overview_stats()
 
         entry.textcolour(HUD_VALUE_COLOUR);
         entry.cprintf("%d", you.deaths);
+
+        cols.add_formatted(3, entry.to_colour_string(), false);
+        entry.clear();
+    }
+
+    if (you.species == SP_LAVA_ORC)
+    {
+        entry.textcolour(HUD_CAPTION_COLOUR);
+        entry.cprintf("Temperature:  ");
+
+        entry.textcolour(HUD_VALUE_COLOUR);
+        entry.cprintf("%d", (int) you.temperature);
 
         cols.add_formatted(3, entry.to_colour_string(), false);
         entry.clear();

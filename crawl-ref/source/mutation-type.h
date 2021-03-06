@@ -233,3 +233,31 @@ enum mutation_type
     RANDOM_QAZLAL_MUTATION,
     MUT_NON_MUTATION,
 };
+
+// lava orc
+enum temperature_level
+{
+    TEMP_MIN = 1, // Minimum (and starting) temperature. Not any warmer than bare rock.
+    TEMP_COLD = 3,
+    TEMP_COOL = 5,
+    TEMP_ROOM = 7,
+    TEMP_WARM = 9, // Warmer than most creatures.
+    TEMP_HOT = 11,
+    TEMP_FIRE = 13, // Hot enough to ignite paper around you.
+    TEMP_MAX = 15, // Maximum temperature. As hot as lava!
+};
+
+enum temperature_effect
+{
+    LORC_EARTH_BOOST,
+    LORC_FIRE_BOOST,
+    LORC_STONESKIN,
+    LORC_SLOW_MOVE,
+    LORC_COLD_VULN,
+    LORC_PASSIVE_HEAT,
+    LORC_HEAT_AURA,
+    LORC_NO_SCROLLS,
+    LORC_FIRE_RES_I,
+    LORC_FIRE_RES_II,
+    LORC_FIRE_RES_III,
+};

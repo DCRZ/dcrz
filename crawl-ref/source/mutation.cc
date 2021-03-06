@@ -33,6 +33,7 @@
 #include "mon-death.h"
 #include "notes.h"
 #include "output.h"
+#include "player.h"       // lava orc
 #include "player-equip.h" // lose_permafly_source
 #include "player-stats.h"
 #include "player.h"
@@ -707,6 +708,55 @@ string describe_mutations(bool drop_title)
         }
     }
 
+    // Next add lava orc temperature-based mutations
+    if (you.species == SP_LAVA_ORC)
+    {
+        string col = "darkgrey";
+
+        col = (temperature_effect(LORC_EARTH_BOOST)) ? "brown" : "darkgrey";
+        result += "<" + col + ">Your earth spells are more powerful.<" + col + ">\n";
+
+        const int lo_ac = player_lava_orc_stoneskin_ac();
+        col = (temperature_effect(LORC_STONESKIN)) ? "brown" : "darkgrey";
+        result += "<" + col + ">You have stony skin. (AC+" + to_string(lo_ac) 
+                      + ")</" + col + ">\n";
+
+        // ensure consistency with MUT_SLOW
+        ostringstream slow_move_ostr;
+        col = (temperature_effect(LORC_SLOW_MOVE)) ? "brown" : "darkgrey";
+        slow_move_ostr << "<" << col << ">" << _get_mutation_def(MUT_SLOW).have[0] 
+                       << "<" << col << ">\n";
+        result += slow_move_ostr.str();
+
+        col = (player_likes_lava()) ? "lightred" : "darkgrey";
+        result += "<" + col + ">You can swim through lava.<" + col + ">\n";
+
+        // ensure consistency with MUT_HEAT_RESISTANCE
+        ostringstream res_fire_ostr;
+        col = temperature_effect(LORC_FIRE_RES_I) ? "lightred" : "darkgrey";
+        const int level = temperature_effect(LORC_FIRE_RES_III)  ? 3
+                          : temperature_effect(LORC_FIRE_RES_II) ? 2
+                          : 1;
+        res_fire_ostr << "<" << col << ">" << _get_mutation_def(MUT_HEAT_RESISTANCE).have[level-1] 
+                      << "</" << col << ">\n";
+        result += res_fire_ostr.str();
+
+        col = temperature_effect(LORC_FIRE_BOOST) ? "lightred" : "darkgrey";
+        result += "<" + col + ">Your fire spells are more powerful.<" + col + ">\n";
+
+        col = (temperature_effect(LORC_PASSIVE_HEAT)) ? "lightred" : "darkgrey";
+        result += "<" + col + ">Your heat harms attackers.</" + col + ">\n";
+
+        col = (temperature_effect(LORC_HEAT_AURA)) ? "lightred" : "darkgrey";
+        result += "<" + col + ">You bathe your surroundings in blazing heat.</" + col + ">\n";
+
+        col = (temperature_effect(LORC_COLD_VULN)) ? "red" : "darkgrey";
+        result += "<" + col + ">You are vulnerable to cold.</" + col + ">\n";
+
+        col = (temperature_effect(LORC_NO_SCROLLS)) ? "red" : "darkgrey";
+        result += "<" + col + ">You are too hot to use scrolls.</" + col + ">\n";
+    }
+
     if (have_passive(passive_t::water_walk))
         result += "<green>You can walk on water.</green>\n";
     else if (you.can_water_walk())
@@ -751,6 +801,87 @@ string describe_mutations(bool drop_title)
     return result;
 }
 
+static formatted_string _lava_orc_Ascreen_footer(bool first_page)
+{
+        const char *text = first_page ? "<w>Mutations</w>|Temperature properties"
+                                  : "Mutations|<w>Temperature properties</w>";
+        const string fmt = make_stringf("[<w>!</w>/<w>^</w>"
+#ifdef USE_TILE_LOCAL
+            "|<w>Right-click</w>"
+#endif
+            "]: %s", text);
+    return formatted_string::parse_string(fmt);
+}
+
+static string _display_temperature()
+{
+    ASSERT(you.species == SP_LAVA_ORC);
+
+    clrscr();
+    cgotoxy(1,1);
+
+    string result;
+
+    string title = "Temperature Effects";
+
+    // center title
+    int offset = 39 - strwidth(title) / 2;
+    if (offset < 0) offset = 0;
+
+    result += string(offset, ' ');
+
+    result += "<white>";
+    result += title;
+    result += "</white>\n\n";
+
+    const int lines = TEMP_MAX + 1; // 15 lines plus one for off-by-one.
+    string column[lines];
+
+    for (int t = 1; t <= TEMP_MAX; t++)  // lines
+    {
+        string text;
+        ostringstream ostr;
+
+        std::string colourname = temperature_string(t);
+        if (t == TEMP_MAX)
+            text = "  ╔═MAX══╗";
+        else if (t == TEMP_MIN)
+            text = "  ╚══MIN═╝";
+        else if (temperature() < t)
+            text = "  ║      ║";
+        else if (temperature() == t)
+            text = "  ║~~~~~~║";
+        else
+            text = "  ║######║";
+        text += "    ";
+
+        ostr << '<' << colourname << '>' << text
+             << "</" << colourname << '>';
+
+        colourname = (temperature() >= t) ? "lightred" : "darkgrey";
+        text = temperature_text(t);
+        ostr << '<' << colourname << '>' << text
+             << "</" << colourname << '>';
+
+       column[t] = ostr.str();
+    }
+
+    for (int y = TEMP_MAX; y >= TEMP_MIN; y--)  // lines
+    {
+        result += column[y];
+        result += "\n";
+    }
+
+    result += "\n";
+
+    result += "You get hot in tense situations, when berserking, or when you enter lava. You \ncool down when your rage ends or when you enter water.";
+    result += "\n";
+    result += "\n";
+
+    trim_string_right(result);
+    return result;
+}
+
 void display_mutations()
 {
     string mutation_s = describe_mutations(true);
@@ -782,7 +913,8 @@ void display_mutations()
 
     auto switcher = make_shared<Switcher>();
 
-    const string descs[3] =  { mutation_s, "N/A" };
+    const string lava_orc_s = you.species == SP_LAVA_ORC ? _display_temperature() : "N/A";
+    const string descs[3] =  { mutation_s, lava_orc_s };
     for (int i = 0; i < 2; i++)
     {
         auto scroller = make_shared<Scroller>();
@@ -803,13 +935,33 @@ void display_mutations()
 #endif
     vbox->add_child(switcher);
 
+    auto bottom = make_shared<Text>(_lava_orc_Ascreen_footer(true));
+    bottom->set_margin_for_sdl(20, 0, 0, 0);
+    bottom->set_margin_for_crt(1, 0, 0, 0);
+    if (you.species == SP_LAVA_ORC)
+        vbox->add_child(bottom);
+
     auto popup = make_shared<ui::Popup>(vbox);
 
     bool done = false;
     int lastch;
     popup->on_keydown_event([&](const KeyEvent& ev) {
         lastch = ev.key();
-        done = !switcher->current_widget()->on_event(ev);
+        if (you.species == SP_LAVA_ORC && (lastch == '!' || lastch == CK_MOUSE_CMD || lastch == '^'))
+        {
+            int& c = switcher->current();
+
+            bottom->set_text(_lava_orc_Ascreen_footer(c));
+
+            c = 1 - c;
+#ifdef USE_TILE_WEB
+            tiles.json_open_object();
+            tiles.json_write_int("pane", c);
+            tiles.ui_state_change("mutations", 0);
+#endif
+        }
+        else
+            done = !switcher->current_widget()->on_event(ev);
         return true;
     });
 

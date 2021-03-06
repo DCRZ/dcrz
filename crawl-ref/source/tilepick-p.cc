@@ -650,6 +650,8 @@ tileidx_t tilep_species_to_base_tile(int sp, int level)
         return TILEP_BASE_GNOLL;
     case SP_FAIRY:
         return TILEP_BASE_FAERIE_DRAGON;
+    case SP_LAVA_ORC:
+        return TILEP_BASE_LAVA_ORC;
     default:
         return TILEP_BASE_HUMAN;
     }
@@ -745,6 +747,32 @@ void tilep_race_default(int sp, int level, dolls_data *doll)
         case SP_FAIRY:
             hair = 0;
             break;
+        case SP_LAVA_ORC:
+            // This should respect the player's choice of base tile, if possible.
+            switch (temperature_colour(you.temperature))
+            {
+                case LIGHTRED:
+                    result = TILEP_BASE_LAVA_ORC_HEAT + 5;
+                    break;
+                case RED:
+                    result = TILEP_BASE_LAVA_ORC_HEAT + 4;
+                    break;
+                case YELLOW:
+                    result = TILEP_BASE_LAVA_ORC_HEAT + 3;
+                    break;
+                case WHITE:
+                    result = TILEP_BASE_LAVA_ORC_HEAT + 2;
+                    break;
+                case LIGHTCYAN:
+                    result = TILEP_BASE_LAVA_ORC_HEAT + 1;
+                    break;
+                case LIGHTBLUE:
+                    result = TILEP_BASE_LAVA_ORC_HEAT;
+                    break;
+                default:
+                    result = TILEP_BASE_LAVA_ORC;
+                    break;
+            }
         default:
             // nothing to do
             break;

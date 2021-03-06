@@ -72,6 +72,7 @@
 
 static bool _handle_pickup(monster* mons);
 static void _mons_in_cloud(monster& mons);
+static void _heated_area(monster& mons);
 static bool _monster_move(monster* mons);
 
 // [dshaligram] Doesn't need to be extern.
@@ -1475,6 +1476,7 @@ static void _pre_monster_move(monster& mons)
     if (mons.speed == 0)
     {
         _mons_in_cloud(mons);
+        _heated_area(mons);
 
         // Update constriction durations
         mons.accum_has_constricted();
@@ -1643,6 +1645,7 @@ void handle_monster_move(monster* mons)
     mons->shield_blocks = 0;
 
     _mons_in_cloud(*mons);
+    _heated_area(*mons);
     actor_apply_toxic_bog(mons);
 
     if (!mons->alive())
@@ -3711,4 +3714,49 @@ static void _mons_in_cloud(monster& mons)
         return;
 
     actor_apply_cloud(&mons);
+}
+
+static void _heated_area(monster& mons)
+{
+    if (!heated(mons.pos()))
+        return;
+
+    if (mons.is_fiery())
+        return;
+           
+    // HACK: Currently this prevents even auras not caused by lava orcs... 
+    if (is_orcish_follower(mons))
+        return;
+
+    const int base_damage = random2(4 + div_rand_round(you.experience_level, 5));
+
+    // Timescale, like with clouds:
+    const int timescaled_damage = timescale_damage(&mons, base_damage);
+
+    // rF protects:
+    const int res_adjusted_damage = resist_adjust_damage(&mons,
+                                        BEAM_FIRE, timescaled_damage);
+    // So does AC:
+    const int final_damage = mons.apply_ac(res_adjusted_damage);
+
+    if (final_damage > 0)
+    {
+        if (mons.observable())
+            mprf("%s is burned by your radiant heat.",
+                 mons.name(DESC_THE).c_str());
+
+        behaviour_event(&mons, ME_DISTURB, 0, mons.pos());
+
+#ifdef DEBUG_DIAGNOSTICS
+        mprf(MSGCH_DIAGNOSTICS, "%s %s %d damage from heat.",
+             mons.name(DESC_THE).c_str(),
+             mons.conj_verb("take").c_str(),
+             final_damage);
+#endif
+
+        mons.hurt(&you, final_damage, BEAM_MISSILE);
+
+        if (mons.alive() && mons.observable())
+            print_wounds(mons);
+    }
 }

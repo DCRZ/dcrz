@@ -11,9 +11,7 @@ enum class area_centre_type
     umbra,
     quad,
     disjunction,
-#if TAG_MAJOR_VERSION == 34
     hot,
-#endif
 };
 
 void invalidate_agrid(bool recheck_new = false);
@@ -49,7 +47,5 @@ bool disjunction_haloed(const coord_def& p);
 // ...or endarkened by an umbra?
 bool umbraed(const coord_def& p);
 
-#if TAG_MAJOR_VERSION == 34
 // ...or is the area hot?
 bool heated(const coord_def& p);
-#endif

@@ -268,6 +268,10 @@ bool feat_is_traversable_now(dungeon_feature_type grid, bool try_fallback)
             return true;
         }
 
+        // Likewise for lava
+        if (grid == DNGN_LAVA && player_likes_lava(true))
+            return true;
+
         // The player can safely walk over shafts.
         if (grid == DNGN_TRAP_SHAFT)
             return true;

@@ -352,6 +352,10 @@ base/octopode1 SP_RECOMMENDED_OCTOPODE
 %compose base/vine_stalker_f
 %compose body/animal_skin
 %finish SP_RECOMMENDED_VINE_STALKER
+%start
+%compose base/lorc_m0
+%compose body/animal_skin
+%finish SP_RECOMMENDED_LAVA_ORC
 %syn LAST_RECOMMENDED_SPECIES
 
 %sdir gui/backgrounds
@@ -384,4 +388,5 @@ enum:SP_RECOMMENDED_TENGU SP_TENGU
 enum:SP_RECOMMENDED_TROLL SP_TROLL
 enum:SP_RECOMMENDED_VAMPIRE SP_VAMPIRE
 enum:SP_RECOMMENDED_VINE_STALKER SP_VINE_STALKER
+enum:SP_RECOMMENDED_LAVA_ORC SP_LAVA_ORC
 %syn LAST_SPECIES

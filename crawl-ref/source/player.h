@@ -207,6 +207,9 @@ public:
     int lives;
     int deaths;
 
+    float temperature; // For lava orcs.
+    float temperature_last;
+
     FixedVector<uint8_t, NUM_SKILLS> skills; ///< skill level
     FixedVector<training_status, NUM_SKILLS> train; ///< see enum def
     FixedVector<training_status, NUM_SKILLS> train_alt; ///< config of other mode
@@ -423,6 +426,7 @@ public:
     bool redraw_title;
     bool redraw_hit_points;
     bool redraw_magic_points;
+    bool redraw_temperature;
     FixedVector<bool, NUM_STATS> redraw_stats;
     bool redraw_experience;
     bool redraw_armour_class;
@@ -802,6 +806,7 @@ public:
     int silence_radius() const override;
     int liquefying_radius() const override;
     int umbra_radius() const override;
+    int heat_radius() const override;
     bool petrifying() const override;
     bool petrified() const override;
     bool liquefied_ground() const override;
@@ -1009,6 +1014,7 @@ bool player_kiku_res_torment();
 
 bool player_eats_corpses();
 bool player_likes_water(bool permanently = false);
+bool player_likes_lava(bool permanently = false);
 
 int player_res_electricity(bool calc_unid = true, bool temp = true,
                            bool items = true);
@@ -1109,6 +1115,8 @@ string describe_contamination(int level);
 bool sanguine_armour_valid();
 void activate_sanguine_armour();
 
+int player_lava_orc_stoneskin_ac();
+
 void refresh_weapon_protection();
 
 void set_mp(int new_amount);
@@ -1174,3 +1182,11 @@ bool need_expiration_warning(coord_def p = you.pos());
 
 bool player_has_orb();
 bool player_on_orb_run();
+
+// Lava Orc
+int temperature();
+void temperature_check();
+bool temperature_effect(int which);
+int temperature_colour(int temp);
+string temperature_string(int temp);
+string temperature_text(int temp);

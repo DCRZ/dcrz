@@ -499,6 +499,25 @@ static const map<species_type, species_def> species_data =
 } },
 
 
+{ SP_LAVA_ORC, {
+    "LO",
+    "Lava Orc", nullptr, nullptr,
+    SPF_ORCISH | SPF_NO_HAIR,
+    0, 1, 0, 3,
+    MONS_ORC,
+    HT_LAND, US_ALIVE, SIZE_MEDIUM,
+    10, 8, 6,
+    { STAT_STR }, 5,
+    {},
+    {},
+    {},
+    { JOB_FIGHTER, JOB_MONK, JOB_BERSERKER, JOB_ABYSSAL_KNIGHT, JOB_FIRE_ELEMENTALIST, JOB_EARTH_ELEMENTALIST },
+    { SK_MACES_FLAILS, SK_LONG_BLADES, SK_AXES, SK_POLEARMS },
+    nullptr,
+    nullptr,
+} },
+
+
 { SP_MERFOLK, {
     "Mf",
     "Merfolk", "Merfolkian", nullptr,
@@ -736,24 +755,6 @@ static const map<species_type, species_def> species_data =
     HT_LAND, US_ALIVE, SIZE_MEDIUM,
     8, 8, 8, // 24
     { STAT_INT, STAT_DEX }, 4,
-    {},
-    {},
-    {},
-    {}, // not a starting race
-    {}, // not a starting race
-    nullptr,
-    nullptr
-} },
-
-{ SP_LAVA_ORC, {
-    "LO",
-    "Lava Orc", "Orcish", "Orc",
-    SPF_ORCISH | SPF_NO_HAIR,
-    -1, 1, 0, 3,
-    MONS_LAVA_ORC,
-    HT_AMPHIBIOUS_LAVA, US_ALIVE, SIZE_MEDIUM,
-    10, 8, 6, // 24
-    { STAT_INT, STAT_DEX }, 5,
     {},
     {},
     {},

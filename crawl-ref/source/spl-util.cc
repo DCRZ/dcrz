@@ -28,6 +28,7 @@
 #include "options.h"
 #include "orb.h"
 #include "output.h"
+#include "player.h"  // lava orc (Ozo's armour)
 #include "prompt.h"
 #include "religion.h"
 #include "spl-book.h"
@@ -1192,8 +1193,14 @@ string spell_uselessness_reason(spell_type spell, bool temp, bool prevent,
         break;
 
     case SPELL_OZOCUBUS_ARMOUR:
-        if (temp && you.form == transformation::statue)
+        if (temp && you.form == transformation::statue 
+            || you.species == SP_LAVA_ORC
+               && temperature_effect(LORC_STONESKIN))
+        {
             return "the film of ice won't work on stone.";
+        }
+        else if (you.species == SP_LAVA_ORC)
+            return "your heat would instantly melt the ice.";
         if (temp && you.duration[DUR_FIRE_SHIELD])
             return "your ring of steam would instantly melt the ice.";
         break;

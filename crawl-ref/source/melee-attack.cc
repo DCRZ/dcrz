@@ -36,6 +36,7 @@
 #include "mon-behv.h"
 #include "mon-poly.h"
 #include "mon-tentacle.h"
+#include "player.h"      // lava orc
 #include "religion.h"
 #include "shout.h"
 #include "spl-damage.h"
@@ -534,6 +535,7 @@ bool melee_attack::handle_phase_hit()
         // the player is hit, each of them will verify their own required
         // parameters.
         do_passive_freeze();
+        do_passive_heat();
         emit_foul_stench();
     }
 
@@ -3040,6 +3042,40 @@ void melee_attack::do_passive_freeze()
         if (mon->alive())
         {
             mon->expose_to_element(BEAM_COLD, orig_hurted);
+            print_wounds(*mon);
+        }
+    }
+}
+
+void melee_attack::do_passive_heat()
+{
+    if (you.species == SP_LAVA_ORC && temperature_effect(LORC_PASSIVE_HEAT)
+        && attacker->alive()
+        && adjacent(you.pos(), attacker->as_monster()->pos()))
+    {
+        bolt beam;
+        beam.flavour = BEAM_FIRE;
+        beam.thrower = KILL_YOU;
+
+        monster* mon = attacker->as_monster();
+
+        const int orig_hurted = random2(4 + div_rand_round(you.experience_level, 5));
+        int hurted = mons_adjust_flavoured(mon, beam, orig_hurted);
+
+        if (!hurted)
+            return;
+
+        simple_monster_message(*mon, " is singed by your heat.");
+
+#ifndef USE_TILE_LOCAL
+        flash_monster_colour(mon, LIGHTRED, 200);
+#endif
+
+        mon->hurt(&you, hurted);
+
+        if (mon->alive())
+        {
+            mon->expose_to_element(BEAM_FIRE, orig_hurted);
             print_wounds(*mon);
         }
     }

@@ -142,6 +142,12 @@ function ($, comm, enums, map_knowledge, messages, options) {
         else
             $("#stats_noise_bar_decrease").css("width", 0);
     }
+ 
+    function update_bar_heat()
+    {
+        player.heat_max = 15; // Value of TEMP_MAX
+        update_bar("heat");
+    }
 
     function repeat_string(s, n)
     {
@@ -334,6 +340,8 @@ function ($, comm, enums, map_knowledge, messages, options) {
         if ($("#stats").attr("data-species") != player.species)
             $("#stats").attr("data-species", player.species);
 
+        var do_temperature = (player.species == "Lava Orc");
+
         var species_god = player.species;
         if (player.god != "")
             species_god += " of " + player.god;
@@ -392,6 +400,8 @@ function ($, comm, enums, map_knowledge, messages, options) {
         percentage_color("mp");
         update_bar("hp");
         update_bar("mp");
+        if (do_temperature)
+            update_bar_heat();
 
         update_defense("ac");
         update_defense("ev");
@@ -520,6 +530,7 @@ function ($, comm, enums, map_knowledge, messages, options) {
                 contam: 0,
                 noise: 0,
                 adjusted_noise: 0
+                heat: 0
             });
             delete player["old_hp"];
             delete player["old_mp"];

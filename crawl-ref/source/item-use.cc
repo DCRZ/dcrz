@@ -46,6 +46,7 @@
 #include "nearby-danger.h"
 #include "orb.h"
 #include "output.h"
+#include "player.h"  // lava orc
 #include "player-equip.h"
 #include "player-stats.h"
 #include "potion.h"
@@ -2810,6 +2811,13 @@ bool player_can_read()
     if (you.confused())
     {
         canned_msg(MSG_TOO_CONFUSED);
+        return false;
+    }
+
+    // Prevent hot lava orcs reading scrolls
+    if (you.species == SP_LAVA_ORC && temperature_effect(LORC_NO_SCROLLS))
+    {
+        mpr("You would burn any scroll you tried to read!");
         return false;
     }
 

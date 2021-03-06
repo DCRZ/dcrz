@@ -750,6 +750,12 @@ bool player::go_berserk(bool intentional, bool potion)
             if (mi->friendly())
                 mi->go_berserk(false);
 
+    if (you.species == SP_LAVA_ORC)
+    {
+        mpr("You burn with rage!");
+        you.temperature = TEMP_MAX;
+    }
+
     return true;
 }
 

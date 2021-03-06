@@ -1084,6 +1084,13 @@ bool form_likes_water(transformation form)
     return form_can_swim(form);
 }
 
+bool form_likes_lava(transformation form)
+{
+    // Lava orcs can only swim in non-phys-change forms.
+    return species_likes_lava(you.species)
+            && !form_changed_physiology(form);
+}
+
 // Used to mark transformations which override species intrinsics.
 bool form_changed_physiology(transformation form)
 {
