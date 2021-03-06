@@ -732,19 +732,15 @@ public:
         else
             mpr("You feel extremely strange.");
         bool mutated = false;
-        int remove_mutations = random_range(MIN_REMOVED, MAX_REMOVED);
-        int add_mutations = random_range(MIN_ADDED, MAX_ADDED);
 
-        // Remove mutations.
-        for (int i = 0; i < remove_mutations; i++)
-            mutated |= delete_mutation(RANDOM_MUTATION, "potion of mutation", false);
+        // Remove a single mutation (Zin only)
         if (have_passive(passive_t::cleanse_mut_potions))
+        {
+            mutated |= delete_mutation(RANDOM_MUTATION, "potion of mutation", false);
             return mutated;
-        // Add mutations.
-        for (int i = 0; i < add_mutations; i++)
-            mutated |= mutate(RANDOM_MUTATION, "potion of mutation", false);
-        // Always one good mutation.
-        mutated |= mutate(RANDOM_GOOD_MUTATION, "potion of mutation", false);
+        }
+        // Add a single mutation
+        mutated |= mutate(RANDOM_MUTATION, "potion of mutation", false);
 
         learned_something_new(HINT_YOU_MUTATED);
         return mutated;

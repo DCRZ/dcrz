@@ -466,7 +466,6 @@ unsigned int item_value(item_def item, bool ident)
             case POT_INVISIBILITY:
             case POT_CANCELLATION:
             case POT_AMBROSIA:
-            case POT_MUTATION:
                 valued += 80;
                 break;
 
@@ -482,6 +481,7 @@ unsigned int item_value(item_def item, bool ident)
                 valued += 40;
                 break;
 
+            case POT_MUTATION:
             case POT_CURING:
             case POT_LIGNIFY:
             case POT_FLIGHT:
