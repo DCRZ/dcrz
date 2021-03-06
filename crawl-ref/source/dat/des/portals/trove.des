@@ -99,8 +99,8 @@ function trove.get_trove_item(e, value, base_item)
   -- currently 20% armour, 15% weapon, 50% consumable, 15% miscellaneous
   local prices = {
        {base="scroll", type="acquirement", quant=2},
-       {base="scroll", type="fear", quant=2+d(3)+d(3)},
-       {base="scroll", type="fog", quant=2+d(3)+d(3)},
+       {base="scroll", type="fear", quant=2+d(2)+d(3)},
+       {base="scroll", type="fog", quant=2+d(2)+d(3)},
        {base="miscellaneous", type="rune of Zot", quant=3, name="slimy rune of Zot"},
        {base="miscellaneous", type="rune of Zot", quant=11, name="abyssal rune of Zot"},
        {base="miscellaneous", type="horn of Geryon"} }
@@ -133,8 +133,17 @@ function trove.get_trove_item(e, value, base_item)
        {base="potion", type="resistance", quant=2+d(3)} }
 
   local heal_pots = {
-       {base="potion", type="curing", quant=12+d(4)+d(4)},
-       {base="potion", type="heal wounds", quant=8+d(3)+d(3)} }
+       {base="potion", type="curing", quant=10+d(3)+d(4)},
+       {base="potion", type="heal wounds", quant=6+d(2)+d(3)} }
+
+  local mut_pots = {
+       {base="potion", type="mutation", quant=3+d(4)} }
+
+  if you.race() ~= "Mummy" and you.race () ~= "Ghoul" and you.race () ~= "Vampire" then
+    for _, toll in ipairs(mut_pots) do
+      table.insert(pots, toll)
+    end
+  end
 
   if you.race() ~= "Mummy" then
     if you.race() ~= "Vine Stalker" then
@@ -142,8 +151,9 @@ function trove.get_trove_item(e, value, base_item)
         table.insert(pots, toll)
       end
     end
+
     if you.race() ~= "Formicid" then
-      table.insert(pots, {base="potion", type="haste", quant=4+d(3)+d(2)})
+      table.insert(pots, {base="potion", type="haste", quant=3+d(3)})
     end
 
     for _, toll in ipairs(pots) do
@@ -152,8 +162,8 @@ function trove.get_trove_item(e, value, base_item)
   end
 
   local stasis_tolls = {
-       {base="scroll", type="blinking", quant=2+d(3)+d(3)},
-       {base="scroll", type="teleportation", quant=10+d(4)+d(4)} }
+       {base="scroll", type="blinking", quant=2+d(3)},
+       {base="scroll", type="teleportation", quant=9+d(3)+d(3)} }
 
   if you.race() ~= "Formicid" then
     for _, toll in ipairs(stasis_tolls) do
