@@ -6860,9 +6860,7 @@ _hostile_orc_beogh_believer_speech_common_
 @The_monster@ @_orc_says_to_foe_@, "The messiah will be a true Orc!"
 
 @The_monster@ @_orc_says_to_foe_@, "{{
-    if you.race() == "Hill Orc" then
-        return "Turn back to the hills"
-    elseif you.race() == "Lava Orc" then
+    if you.race() == "Lava Orc" then
         return "Go swim in a volcano"
     else -- shouldn't happen
         return "Go to hell"

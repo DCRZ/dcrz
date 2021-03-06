@@ -1068,7 +1068,7 @@ dgn.delayed_decay_extra(_G, "H", "merfolk skeleton",
     "    / " .. dgn.good_aux_armour .. " / any wand w:20 / any misc / gold" ..
     "    / any scroll / any potion / nothing w:480")
 
- -- Hill orc fighter. 3 guaranteed items, 3.25 on-average.
+ -- Orc fighter. 3 guaranteed items, 3.25 on-average.
 dgn.delayed_decay_extra(_G, "J", "orc skeleton",
     "long sword good_item / double sword w:5 / demon blade w:5" ..
     "    / flail good_item / morningstar good_item / eveningstar" ..

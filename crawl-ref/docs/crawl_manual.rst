@@ -1477,21 +1477,6 @@ the player to set aside many aspects of the game while still developing a
 strong character.
 
 
-Hill Orcs (HO)
-  Hill Orcs are Orcs from the upper world who, jealous of the riches which their
-  cousins (the Cave Orcs) possess below the ground, descend in search of plunder
-  and adventure.
-
-  Hill Orcs are more robust than Humans. Their forte is brute-force fighting,
-  and they are skilled at using most hand weapons (particularly axes, with which
-  they are experts), though they are not particularly good at using missile
-  weapons. Hill Orcs are passable users of most types of magic and are
-  particularly skilled with Fire.
-
-  Many Orcs feel superior to all other species and beings, and they have formed
-  a religion around that idea. Only Orcs can worship Beogh, the Orc god. They
-  can join Beogh even without an altar whenever an orc priest is in sight.
-
 Minotaurs (Mi)
   The Minotaurs are yet another species of hybrids - Human bodies with bovine
   heads. They delve into the Dungeon because of their instinctive love of

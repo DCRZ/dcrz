@@ -37,12 +37,6 @@ Halfling
 Maži bet atsparūs, jie pranoksta visus kitus naudodami laidynes. Jie turi
 padidintą atsparumą mutageniniams efektams.
 %%%%
-Hill Orc
-
-Orkai yra įgudę artimoje kovoje ir dažniausiai šiek tiek gaudosi puolamojoje
-magijoje. Daugumos nekenčiami, orkai yra labai išdidūs ir dauguma jų jaučiasi
-pranašesni už kitus.
-%%%%
 Human
 
 Paprastas ir vidutiniškas.

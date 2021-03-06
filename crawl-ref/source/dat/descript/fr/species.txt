@@ -51,12 +51,6 @@ Halfling
 Petit mais robuste, ils sont excellents avec une fronde. Ils ont une résistance
 supplémentaire aux effets mutagènes.
 %%%%
-Hill Orc
-
-Les Orcs sont doué en combat rapproché et s'essaient souvent à la magie
-offensive. Haïs de tous, les Orcs sont très fiers et la plupart d'entre eux se
-sentent supérieurs aux autres.
-%%%%
 Human
 
 Ordinaire et moyen.

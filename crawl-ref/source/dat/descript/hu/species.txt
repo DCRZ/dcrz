@@ -37,12 +37,6 @@ Halfling
 Kicsi de kemény, a félszerzet kiválóan bánik a parittyával. Enyhén ellenállóak
 mutációkkal szemben.
 %%%%
-Hill Orc
-
-Az orkok a közelharc mesterei, gyakran belekóstolnak a támadó mágiába is.
-Közutálatnak örvendve az orkok büszkék,  és elteltek a felsőbbrendűség
-érzésével.
-%%%%
 Human
 
 Evilágiak és átlagosak.

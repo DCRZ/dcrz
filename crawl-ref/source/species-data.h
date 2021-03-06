@@ -442,25 +442,6 @@ static const map<species_type, species_def> species_data =
 } },
 
 
-{ SP_HILL_ORC, {
-    "HO",
-    "Hill Orc", nullptr, nullptr,
-    SPF_ORCISH,
-    0, 1, 0, 3,
-    MONS_ORC,
-    HT_LAND, US_ALIVE, SIZE_MEDIUM,
-    10, 8, 6,
-    { STAT_STR }, 5,
-    {},
-    {},
-    {},
-    { JOB_FIGHTER, JOB_MONK, JOB_BERSERKER, JOB_ABYSSAL_KNIGHT, JOB_NECROMANCER, JOB_FIRE_ELEMENTALIST },
-    { SK_MACES_FLAILS, SK_LONG_BLADES, SK_AXES, SK_POLEARMS },
-    nullptr,
-    nullptr,
-} },
-
-
 { SP_HUMAN, {
     "Hu",
     "Human", nullptr, nullptr,

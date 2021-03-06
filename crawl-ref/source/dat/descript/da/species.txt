@@ -42,12 +42,6 @@ Halfling
 De er små, men hårdføre, og fremragende til at bruge slynger. De har begrænset
 modstandskraft over for mutagene virkninger.
 %%%%
-Hill Orc
-
-Orker er dygtige i nærkamp, og de forsøger sig ofte med angrebsmagi. De er
-hadet af de fleste, men orker er meget stolte, og mange af dem føler sig
-overlegne.
-%%%%
 Human
 
 Prosaiske og gennemsnitlige.

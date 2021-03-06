@@ -43,12 +43,6 @@ Halfling
 Malí, zato však houževnatí. Půlčíci jsou výbornymi střelci z praku a mají
 zvýšnou odolnost vůči mutagenním vlivům.
 %%%%
-Hill Orc
-
-Orkové jsou zruční v boji zblízka a často také fušují do útočné magie. Jsou
-také velmi hrdí a mnozí z nich mají pocit nadřazenosti nad ostatními rasami.
-Téměř pro všechny Jsou terčem nenávisti.
-%%%%
 Human
 
 Všední a průměrní.

@@ -488,7 +488,7 @@ The following variables are hardcoded:
 @player_species@: Player base species, with Draconian rather than the
                   actual subtype.
 @player_genus@  : Player genus, i.e. "Elf" rather than the exact type,
-                  or "Orc" instead of "Hill Orc".
+                  or "Orc" instead of "Lava Orc".
 @player_genus_plural@ : pluralised genus form.
 @player_god@    : Player's god name, or "you" if non-religious.
 @god_is@        : replaced with "<god name> is" or "you are", if

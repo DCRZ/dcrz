@@ -42,12 +42,6 @@ Halfling
 Pequeños pero duros, son excelentes con la honda. Tienen una cierta resistencia
 a los efectos mutagénicos.
 %%%%
-Hill Orc
-
-Los orcos tienen talento en el combate cuerpo a cuerpo, y a menudo tantean algo
-con la magia de ataque. Odiados por la mayoría, los orcos son muy orgullosos y
-muchos se sienten superiores.
-%%%%
 Human
 
 Mundanos y en la media.

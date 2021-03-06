@@ -37,11 +37,6 @@ Halfling
 
 Małe lecz odważne, niziołki są zabójcze z procą w ręku.
 %%%%
-Hill Orc
-
-Orki są stworzone do walki wręcz, lecz potrafią sobie radzić z bardziej
-agresywnymi typami magii.
-%%%%
 Human
 
 Zwykli i przeciętni.

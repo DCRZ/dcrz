@@ -44,12 +44,6 @@ Halfling
 Gli halfling sono piccoli ma resistenti e sono molto bravi a usare le fionde.
 Hanno una notevole resistenza contro gli effetti mutagenici.
 %%%%
-Hill Orc
-
-Gli orchi delle colline sono abili nella mischia e spesso possono usare alcuni
-incantesimi offensivi. Odiati dalla maggior parte delle altre specie, gli orchi
-sono molto orgogliosi e molti di essi si credono superiori alle altre razze.
-%%%%
 Human
 
 Gli umani sono diffusi e le loro abilità sono nella media.

@@ -107,7 +107,7 @@ local function test_random_mutations_slime(species, tries, iterations, chance_te
 end
 
 
-species = {"hill orc", "minotaur", "merfolk", "gargoyle", "draconian", "halfling", "troll", "ghoul",
+species = {"lava orc", "minotaur", "merfolk", "gargoyle", "draconian", "halfling", "troll", "ghoul",
             "human", "kobold", "centaur", "spriggan", "tengu", "deep elf", "ogre", "sludge dwarf",
             "vine stalker", "vampire", "demigod", "formicid", "naga", "octopode", "felid", "barachi",
             "mummy", "gnoll", "fairy"}

@@ -2612,7 +2612,7 @@ use_fake_player_cursor = true
 
 show_player_species = false
         Displays your character as a member of its species. For example, if
-        you're a Hill Orc, you will be shown as an 'o' rather than '@'. Has
+        you're a Lava Orc, you will be shown as an 'o' rather than '@'. Has
         no effect in Tiles.
 
 use_modifier_prefix_keys = true

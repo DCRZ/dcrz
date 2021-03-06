@@ -18,7 +18,6 @@ enum species_type
     SP_DEEP_ELF,
     SP_SLUDGE_ELF,
     SP_HALFLING,
-    SP_HILL_ORC,
     SP_KOBOLD,
     SP_MUMMY,
     SP_NAGA,
