@@ -3938,7 +3938,7 @@ KITEM:  O = demonic rune of Zot
 ITEM:   w:5 any / potion of curing
 ITEM:   any / potion of heal wounds
 ITEM:   any good_item
-ITEM:   potion of cancellation
+ITEM:   potion of cure mutation
 ITEM:   potion of might / potion of brilliance / potion of agility
 ITEM:   any
 NSUBST: i = 2=ghh / 3=ghhiii / *:i

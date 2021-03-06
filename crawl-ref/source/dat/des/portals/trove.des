@@ -137,7 +137,8 @@ function trove.get_trove_item(e, value, base_item)
        {base="potion", type="heal wounds", quant=6+d(2)+d(3)} }
 
   local mut_pots = {
-       {base="potion", type="mutation", quant=3+d(4)} }
+       {base="potion", type="mutation", quant=3+d(4)},
+       {base="potion", type="cure mutation", quant=1+d(3)} }
 
   if you.race() ~= "Mummy" and you.race () ~= "Ghoul" and you.race () ~= "Vampire" then
     for _, toll in ipairs(mut_pots) do
@@ -588,7 +589,8 @@ KITEM:   F = acquire weapon w:5 / any useful weapon good_item / any weapon w:2
 KITEM:   B = acquire book / acquire:sif_muna book / any book
 KITEM:   g = potion of curing / potion of heal wounds / potion of experience / \
              potion of might / potion of stabbing / potion of brilliance / \
-             potion of resistance / potion of magic / potion of haste
+             potion of resistance / potion of magic / potion of haste / \
+             potion of cure mutation
 KFEAT:   w = W
 : trove.setup_features(_G)
 : trove.place_fog(_G, "blue smoke", 30)
@@ -878,7 +880,7 @@ KMONS:  1 = generate_awake shining eye
 ITEM:   any useful good_item / any
 ITEM:   any useful jewellery good_item / any useful good_item
 ITEM:   acquire weapon / acquire armour / any useful good_item
-ITEM:   potion of mutation q:3 ident:type
+ITEM:   potion of cure mutation ident:type / potion of mutation q:3 ident:type
 : trove.setup_features(_G)
 : set_border_fill_type("open_sea")
 MAP
@@ -962,7 +964,7 @@ ITEM:    potion of might / potion of resistance / \
          potion of magic / potion of haste / \
          potion of might q:2 / potion of resistance q:2 / \
          potion of magic q:2 / potion of haste q:2
-ITEM:    potion of mutation
+ITEM:    potion of mutation / potion of cure mutation
 SHUFFLE: df
 SHUFFLE: eg
 : trove.setup_features(_G)
