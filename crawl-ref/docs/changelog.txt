@@ -1,3 +1,130 @@
+ManCrawl 0.2 (20210307)
+------------------------
+
+Highlights
+----------
+* Slime is rethemed, gaining a new layout and two new monsters.
+* New species: Sludge Dwarves, a hardy subterranean species
+  corrupted by Jiyva.
+* New species: Lava Orcs, cousins of Cave Orcs whose mutations
+  depend on their temperature.
+* Deep Dwarves and Hill Orcs are removed.
+* Potions of Cure Mutation and Agility return.
+* Potions of Mutation, Agility and Brilliance are reworked.
+* The Enchanter, Wizard, Necromancer and Fire Elementalist starter
+  books are reworked.
+
+Branches, Environment
+---------------------
+* Reimagined branch: Slime.
+  - Slime is rethemed as the former Sludge Dwarf Mines, overtaken by its
+    current residents when the dwarves dug too greedily and deeply for
+    mithral, uncovering a slime mould buried deep beneath the Dungeon.
+  - New name: The Slime Pits are now called the Slime Mines.
+  - New layout: A geometric pattern, based on the Elf layout generator,
+    that gradually degrades into the old layout with increasing depth.
+  - New monsters: Sludge Dwarf Slime Priests and Dwarven Automatons
+    (see Monsters below).
+* Most consumable entry costs for Troves are reduced, and Troves can
+  now ask for potions of Mutation or Cure Mutation. (shummie)
+* Forest no longer generates items outside of the end vault and one 
+  Yred-themed vault.
+* minmay_shallow_snake_nest can no longer place an adder on D:1.
+
+Monsters
+--------
+* New Slime monster: Sludge Dwarf Slime Priest.
+  - Themed as dwarves who turned to Jiyva when their homeland was
+    overtaken by slimes.
+  - Immune to acid and moderately resistant to magic.
+  - Cast Corrosive Bolt and two new spells, Slimify and Awaken Slime 
+    Mould, as Divine Abilities (see Spells below).
+* New Slime monster: Dwarven Automaton.
+  - Themed as constructs tasked with defending their dwarven creators'
+    former homeland.
+  - Immune to all hostile enchantments and elements, including acid.
+  - Fast speed with 4 trampling melee attacks.
+  - Cast Steam Ball and Sentinel Mark as Natural/Magical Abilities.
+* New tentacle: Gelatinous Snatcher.
+  - Summoned by Sludge Dwarf Slime Priests.
+  - Function like the Snaplasher Vines summoned by Dyrads, but appear
+    adjacent to slimy walls, and have higher HD and a corrosive attack.
+* Jorgrun becomes a sludge dwarf, gains immunity to acid and can appear
+  in the Slime Mines.
+
+Character
+---------
+* New species: Sludge Dwarf.
+  - Lore based on the Slime retheming.
+  - Aptitudes inspired by the former Mountain Dwarf species, including
+    +2 to Shields and +3 to Armour.
+  - Mutations: Acid Resistance 1 and Evolution 2.
+* New/reimagined species: Lava Orc.
+  - Mutations depend on their temperature (a function of tension).
+    - "Min" temperature:  rF+, swim through lava, earth magic boost,
+                          slow movement (1.2 base move delay),
+                          stone skin (AC:+2+XL/5);
+    - "Cold" temperature: Earth magic boost fades;
+    - "Warm" temperature: rF++, normal movement speed, stone skin melts;
+    - "Hot" temperature:  rF+++, rC-, fire magic boost;
+    - "Fire" temperature: Passive heat (like Ds's passive freeze, but
+                          reduced damage that scales with XL)
+    - "Max" temperature:  Cannot read scrolls, burn surroundings (adjacent 
+                          monsters take unavoidable fire damage - currently 
+                          the same damage as passive heat).
+* Deep Dwarf and Hill Orc are removed.
+* Humans have their non-zero aptitudes flattened to 0.
+* New bad form: Jelly.
+  - Grants resistance to acid.
+  - Corrosive unarmed attacks, splashes attackers with acid.
+  - Prevents casting spells.
+  - Melds all equipment other than amulets.
+
+Spells
+------
+* Foxfire has its spawn radius increased to 2 and warns the player if there 
+  is not enough space to conjure foxfire.
+* New spell: Flame Dance.
+  - Level 2 conjurations/fire spell.
+  - Appears in the book of Flames (Fire Elementalist starter book).
+  - Penetrating bolt of fire with damage and accuracy like the former Flame 
+    Tongue spell.
+  - The beam bends in a random direction, but fires in a straight line in corridors
+    (similar to the former Lamp of Fire beam).
+* Conjure Flame regains its smite targeter.
+* The book of Necromancy (Necromancer starter book) gains Corpse Rot.
+* Shackle replaces Slow in the book of Minor Magic (Wizard starter book).
+* Cloud spells lose their Conjurations school components and all gain an Air component.
+* Mephetic Cloud becomes a Hexes/Air/Poison spell and appears in the book of Maledictions
+  (Enchanter starter book).
+* Confusing Touch becomes level 2.
+* Dazzling Flash becomes Hexes only and is removed from the book of Conjurations (Conjurer
+  starter book).
+* The book of Maledictions (Enchanter starter book) gains Slow.
+* Ring of Flames is replaced by Ring of Steam. (bhauth)
+  - Level 6 Charms/Fire/Air spell.
+  - Conjures steam clouds in a ring around the player for its duration.
+  - Grants the player rF+, rC- and reduces spell power.
+* New monster spell: Slimify
+  - Forces the player into Jelly Form.
+  - Turns monsters into slimes, as per Jiyva's Slimify ability.
+* New monster spell: Awaken Slime Mould.
+  - Summons several Gelatinous Snatchers to pull the player adjacent to nearby slimy walls.
+
+Gods
+----
+* Trog's penance puts players to sleep rather than paralyzing them. (shummie)
+* Cheibriados no longer forbids the use of quickblades. (Hellmonk)
+
+Items
+-----
+* Potions of Cure Mutation and Agility return.
+* Potions of Agility grant rMsl in addition to bonus evasion. (shummie)
+* Potions of Brilliance grant their former wizardry bonus and reduce the MP costs of spells
+  by half. (shummie, PleasingFungus)
+* Potions of Mutation have their effect simplified: they now grant a single random mutation, 
+  and have their drop rate doubled.
+
 ManCrawl 0.1 (20210221)
 ------------------------
 
@@ -14,7 +141,7 @@ Highlights
 
 Branches, Environment
 ---------------------
-* New/re-imagined branch: the Enchanted Forest
+* New/reimagined branch: the Enchanted Forest
   - Inspired by the version that never made it into a stable release
   - Entrance appears in Lair at the same depth as Slime
   - Contains the mossy rune of Zot and a large treasure vault guarded 
@@ -231,6 +358,7 @@ Gods
 * Fedhas gains Leda's liquefaction as a 1* ability
 * Gozag no longer gives a free potion petition on worship. (PleasingFungus)
 * A Jiyva altar is guaranteed to appear by the Slime entrance in Lair (bhauth)
+* Sif Muna piety gain is based off of exploration rather than killing
 
 Items
 -----
