@@ -1620,7 +1620,7 @@ gameplay.
 Humans (Hu)
   Humans tend to be hardworking and industrious, and learn new things quickly.
   The Human species is the most versatile of all the species available to
-  players. Humans advance quickly in levels and have equal abilities in most
+  players. Humans advance quickly in levels and have equal abilities in all
   skills.
 
 Kobolds (Ko)
