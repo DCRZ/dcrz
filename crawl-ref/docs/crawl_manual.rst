@@ -1776,7 +1776,7 @@ Vampires (Vp)
   metabolism, granting the vampire temporary health regeneration and increased
   attributes.
 
-  Although vampires depend on living creatures for heatlh, they can never starve. 
+  Although vampires depend on living creatures for health, they can never starve. 
   Upon growing, they learn to transform into quick bats. They are passively able 
   to reduce all incoming damage, and the amount of damage reduced increases as 
   they gain experience levels.
