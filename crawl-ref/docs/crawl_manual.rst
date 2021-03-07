@@ -1434,11 +1434,10 @@ learn how to play, into three categories: *Simple*, *Intermediate*, and
 *Advanced*. These categories do not necessarily align with difficulty for an
 experienced Crawl player, but rather are intended as an indication of to what
 degree a species has unusual or complex mechanics, or requires deeper/wider
-knowledge of how the game works. (For example, Deep Dwarves have one of the
+knowledge of how the game works. (For example, Gnolls have one of the
 higher win rates of all species, but are classified as "Intermediate" because
-their no-healing mechanic takes some adapting to, and has non-trivial
-interactions with background and god choice.) Despite being the outcome of a
-discussion among many players, these categorizations definitely have a
+their skill training mechanic takes some adapting to.) Despite being the outcome 
+of a discussion among many players, these categorizations definitely have a
 subjective element to them, and you shouldn't take them to be limiting!
 
 The order within categories is also, roughly, determined by our best judgment
@@ -1486,6 +1485,21 @@ Minotaurs (Mi)
   using any type of magic. They can wear all armour except for some headgear.
   When in close combat, Minotaurs tend to reflexively headbutt those who dare
   attack them.
+
+Fairies (Fa)
+  Fairies are a small, magically-attuned species believed to be distant relatives
+  of the fabled faerie dragons. They are incredibly intelligent, so much so that
+  they have learned how to cast spells with less of a cost than other species.
+  Their shimmering scales and bright wings are attractive, but have proven to
+  be more bane than boon by drawing the attention of the Dungeon's denizens.
+
+  Most Fairies welcome confrontation and favour the use of destructive
+  spells to dispatch those who would challenge them. They have learned over
+  time how to reduce the MP cost of spells and how to avoid becoming hungry
+  from spells. Their scales shimmer with energy that repels incoming attacks.
+  They are capable of continuous flight and gain a bonus to evasion while
+  doing so. Their small size furthers their ability to be evasive, but they
+  are frail and cannot wear any form of body armour.
 
 Merfolk (Mf)
   The Merfolk are a hybrid species of half-human, half-fish that typically live
@@ -1568,7 +1582,8 @@ Ghouls (Gh)
   sleep in their graves for years on end, when they rise to walk among the
   living, they must eat flesh to survive. Raw flesh is preferred, and Ghouls
   heal and reverse the effects of their eternal rotting by consuming it, but
-  they can never become truly full.
+  they can never become truly full. Ghouls immediately devour the corpse of
+  any monster they slay in melee.
 
   They aren't very good at doing most things, although they make decent unarmed
   fighters with their claws and, due to their contact with the grave, can use
@@ -1577,6 +1592,22 @@ Ghouls (Gh)
   Like other undead, ghouls are naturally immune to poisons, negative energy
   and torment; have little warmth left to be affected by cold; and are not
   susceptible to mutations.
+
+Sludge Dwarves (SD)
+  Sludge Dwarves are a short, hardy subterranean people. Most Sludge Dwarves
+  perished when their civilization dug too deeply and greedily for mithral, 
+  exposing a slime mould buried deep beneath the Dungeon that overtook their 
+  homeland. While some Sludge Dwarves survived, they did not escape untouched, 
+  leaving their flesh resistant to acid and their genetic code in a perpetual 
+  state of flux.
+
+  Sludge Dwarves are more robust than humans. They rely on power more than finesse in 
+  melee, and so favour axes and maces over other hand weapons. They are skilled smiths, 
+  and as such are excellent at using armour and shields. They love complex machinery, 
+  making them skilled at using magical devices and firing crossbows, but they are poor 
+  at other forms of missile combat. Their time in their corrupted subterranean homeland
+  makes them skilled with Transmutations and Earth, but they are not particularly
+  competent at most other forms of magic.
 
 Intermediate Species
 ====================
@@ -1597,13 +1628,13 @@ Kobolds (Ko)
   the sort of people you would want to spend much time with, unless you happened
   to be a Kobold yourself.
 
-  They tend to be more agile and weaker than Halflings, and are slightly more
-  talented at using most types of magic, particularly necromancy. They are
-  competent in combat, especially with short blades, maces or crossbows, and are
-  also very adept at using magical devices. They often live as scavengers,
-  surviving on carrion (which they can eat even when not hungry), but are
-  carnivorous and can only eat meat. Kobolds advance in levels as quickly as
-  Humans. Like Halflings, Kobolds cannot wield large weapons.
+  Kobolds are exceptionally agile, and can use clever positioning to make a 
+  dodged blow strike their attacker. They tend to be weaker than Halflings, and 
+  are slightly more talented at using most types of magic, particularly hexes and 
+  necromancy. They are competent in combat, especially with short blades and 
+  long blades, and are also very adept at using magical devices. Kobolds advance 
+  in levels as quickly as Humans. Like Halflings, Kobolds cannot wield large 
+  weapons.
 
 Demonspawn (Ds)
   Demonspawn are horrible half-mortal, half-infernal creatures - the flip side
@@ -1657,6 +1688,20 @@ Tengu (Te)
   Tengu do not appreciate any form of servitude, and so are poor at using
   invocations. Their light avian bodies cannot sustain a great deal of injury.
 
+Lava Orcs (LO)
+  Lava Orcs are Orcs from deep underground. Living there for generations caused 
+  their flesh to become infused with magma. Their temperature increases from stone 
+  cold to flaming hot in tense situations, melting their initially rocky flesh and 
+  thereby causing significant changes to their physiology.
+
+  Lava Orcs are more robust than Humans. They are skilled at using axes, but they 
+  are not particularly good at using missile weapons. They are passable users of 
+  most types of magic and are particularly skilled with Fire and Earth.
+
+  Many Orcs feel superior to all other species and beings, and they have formed a 
+  religion around that idea. Only Orcs can worship Beogh, the Orc god. They can 
+  join Beogh even without an altar whenever an orc priest is in sight.
+
 Deep Elves (DE)
    This is an Elven species who long ago fled the overworld to live in darkness
    underground. There, they developed their mental powers, evolving a natural
@@ -1674,25 +1719,6 @@ Ogres (Og)
   accommodate their large frames. Ogres are proficient at using all types of
   melee weapons, yet all sophisticated forms of missile combat are too awkward
   for them. They are, however, good at throwing things, in particular boulders.
-
-Deep Dwarves (DD)
-  Deep Dwarves are short, hardy people who, unlike their extinct surface
-  relatives, never left the underground homelands. Living there for countless
-  generations made them turn pale and lose all ability to regenerate health
-  over time, or to have their rate of regeneration hastened by any effects.
-  Deep Dwarves can instead draw on their magical essence to heal, but doing so
-  will gradually deplete their maximum reserves of magic. They are passively
-  able to reduce all incoming damage, and their empathy with the earth allows
-  them to sense their surroundings; these abilities increase in power as they
-  gain experience levels.
-
-  Naturally, Deep Dwarves are quite adept with all arts of avoiding blows and
-  damage. Offensively, they are skilled users of axes, crossbows, and slings.
-  Deep Dwarves are highly spiritual beings, often portrayed as actual spirits
-  by outsiders; because of this, their skill with invocations is great, and
-  they often rely on divine assistance for healing. They are most at home with
-  the magic of earth and death, eventually gaining some resistance to the dark
-  powers of necromancy.
 
 Gnolls (Gn)
   Gnolls are a race of caniform humanoids originally hailing from the arid
@@ -1744,14 +1770,20 @@ Vine Stalkers (VS)
   spells' fuel with each voracious bite.
 
 Vampires (Vp)
-  Vampires are another form of undead, but with a peculiarity they may become
-  alive. A bloodless Vampire has the traits of an undead (immunity to poisons,
-  negative energy and torment, resistant to damage from the cold), but cannot
-  physically regenerate when monsters are in sight and are less resilient. On
-  the other hand, a Vampire full with blood will regenerate very quickly, but
-  will lose all undead powers. Vampires can never starve. Upon growing, they
-  learn to transform into quick bats. Unlike other undead species, they may be
-  mutated normally at all times.
+  Vampires are depraved undead creatues. Their bodies do not regenerate health 
+  naturally, forcing them to rely on the life force of living creatures. When a 
+  living creature is slain near a vampire, the life force restarts the vampire's
+  metabolism, granting the vampire temporary health regeneration and increased
+  attributes.
+
+  Although vampires depend on living creatures for heatlh, they can never starve. 
+  Upon growing, they learn to transform into quick bats. They are passively able 
+  to reduce all incoming damage, and the amount of damage reduced increases as 
+  they gain experience levels.
+
+  Like other undead, vampires are naturally immune to poisons, negative energy
+  and torment; have little warmth left to be affected by cold; and are not
+  susceptible to mutations.
 
 Demigods (Dg)
   Demigods are mortals with some divine or angelic ancestry, however distant.
@@ -1846,7 +1878,7 @@ Barachim (Ba)
   major disadvantage, but they can master almost any skill.
 
 Mummies (Mu)
-  These are undead creatures who travel into the depths in search of revenge,
+  Mummies are undead creatures who travel into the depths in search of revenge,
   redemption, or just because they want to.
 
   Mummies progress slowly in levels, half again as slowly as Humans in all
