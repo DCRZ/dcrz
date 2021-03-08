@@ -100,7 +100,7 @@ TAGS:   overwritable layout allow_dup unrand layout_type_forest
     -- Pools
     if rand1 > 0.9 and not streams then outer_feature,inner_feature,plant_feature = 'W','w',crawl.coinflip() and '1' or tree_feature
     -- If trees, maybe carve out a semi-random checker pattern
-    elseif (x + y) % 2 == 0 and rand2 < 0.6 and fjitter2(x,y) < 0.6 then return '.' 
+    elseif (x + y) % 2 == 0 and rand2 < 0.6 and fjitter2(x,y) < 0.6 then return '.'
     elseif fjitter1(x,y) < 0.2 then return 'Z' end
 
     -- Decide clump size
@@ -135,7 +135,7 @@ TAGS:   overwritable layout allow_dup unrand layout_type_forest
 #
 # The unmodified original forest layout
 #
-# A significantly less twisty turny forest maze for the Forest 
+# A significantly less twisty turny forest maze for the Forest
 # branch end to make finding the end vault less tedious.
 #
 NAME:   layout_forest_end
@@ -224,7 +224,7 @@ TAGS:   overwritable layout allow_dup unrand layout_type_forest
     -- Rock
     elseif rand1 > 0.9 then outer_feature,plant_feature = fill, crawl.coinflip() and 'W' or '.'
     -- Pools
-    elseif rand1 > 0.8 then outer_feature,inner_feature,plant_feature = 'W','w',crawl.coinflip() and '1' or '.' 
+    elseif rand1 > 0.8 then outer_feature,inner_feature,plant_feature = 'W','w',crawl.coinflip() and '1' or '.'
     elseif fjitter1(x,y) < 0.2 then return 'Z' end
 
     -- Decide clump size

@@ -13,7 +13,7 @@ Randomly translocates the user a short distance.
 %%%%
 Breathe Dazzling Energy ability
 
-Breathes a bolt of scintillating energy at a targeted creature. Any living 
+Breathes a bolt of scintillating energy at a targeted creature. Any living
 creature hit by the bolt may be dazzled and left stumbling blindly. The range
 of the bolt is decreased by one for every creature it strikes.
 %%%%
@@ -488,7 +488,7 @@ Liquefaction ability
 
 Liquefies the ground around you, making it difficult to move through.
 Any movement through liquefied ground will be slowed, and creatures stuck in
-the liquefied ground will be unable to fly. Attempts to attack you in melee 
+the liquefied ground will be unable to fly. Attempts to attack you in melee
 may fail.
 
 The effect starts out with a radius depending on invocations, which will then

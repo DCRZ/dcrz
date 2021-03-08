@@ -2571,7 +2571,7 @@ item_def* monster_die(monster& mons, killer_type killer,
                  pbd_str + pbd_inc);
         }
     }
-    
+
     // Player Enhanced by Death
     if (gives_player_xp && you.get_mutation_level(MUT_ENHANCED_BY_DEATH)
         && (killer == KILL_YOU
@@ -3158,10 +3158,10 @@ void hogs_to_humans()
 /**
  * Revert lignified trees.
  *
- * Called upon the Enchantress' death. All trees/plants should be 
- * reverted to their original form. This takes place as a daction to 
- * preserve behaviour across levels; this function simply checks if 
- * any are visible and raises a fineff containing an appropriate 
+ * Called upon the Enchantress' death. All trees/plants should be
+ * reverted to their original form. This takes place as a daction to
+ * preserve behaviour across levels; this function simply checks if
+ * any are visible and raises a fineff containing an appropriate
  * message. The fineff raises the actual daction.
  */
 void plants_to_people()

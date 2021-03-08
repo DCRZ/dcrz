@@ -288,7 +288,7 @@ spret cast_ring_of_steam(int power, bool fail)
     you.increase_duration(DUR_FIRE_SHIELD,
                           6 + (power / 10) + (random2(power) / 5), 50,
                           "You begin emitting steam!");
-    
+
     manage_fire_shield();
     return spret::success;
 }

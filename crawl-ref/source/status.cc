@@ -889,13 +889,9 @@ static void _describe_airborne(status_info& inf)
     string desc          = "";
 
     if (you.tengu_flight())
-    {
         desc = " quickly and evasively";
-    }
     else if (you.fairy_flight())
-    {
         desc = " evasively";
-    }
 
     inf.light_colour = perm ? WHITE : emergency ? LIGHTRED : BLUE;
     inf.light_text   = "Fly";

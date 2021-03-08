@@ -626,7 +626,7 @@ bool is_map_persistent()
 bool is_mapping_rotting()
 {
     return player_in_branch(BRANCH_ABYSS)
-            || (player_in_branch(BRANCH_FOREST) 
+            || (player_in_branch(BRANCH_FOREST)
                 && !you.runes[RUNE_FOREST]);
 }
 
@@ -1163,7 +1163,7 @@ static int _player_bonus_regen()
 
     // Fast heal mutation.
     rr += you.get_mutation_level(MUT_REGENERATION) * REGEN_PIP;
-    
+
     return rr;
 }
 
@@ -1345,7 +1345,7 @@ int player_res_fire(bool calc_unid, bool temp, bool items)
     {
         rf += temperature_effect(LORC_FIRE_RES_III)  ? 3
               : temperature_effect(LORC_FIRE_RES_II) ? 2
-              : temperature_effect(LORC_FIRE_RES_I)  ? 1 
+              : temperature_effect(LORC_FIRE_RES_I)  ? 1
               : 0;
     }
 
@@ -2302,7 +2302,7 @@ int player_shield_class()
     const item_def *body_armour = you.slot_item(EQ_BODY_ARMOUR);
     if (body_armour)
     {
-        shield += armour_type_prop(body_armour->sub_type, ARMF_SHIELDING) 
+        shield += armour_type_prop(body_armour->sub_type, ARMF_SHIELDING)
                     * ARMF_SHIELDING_SH * 100;
     }
 
@@ -2867,9 +2867,7 @@ void level_change(bool skip_attribute_increase)
 
             case SP_FAIRY:
                 if (!(you.experience_level % 3))
-                {
                     mprf(MSGCH_INTRINSIC_GAIN, "Your scales feel stronger.");
-                }
                 break;
 
             case SP_BASE_DRACONIAN:
@@ -3167,9 +3165,7 @@ int player_stealth()
 
     //Fairies' bright wings reduce stealth.
     if (you.species == SP_FAIRY && !player_is_shapechanged())
-    {
         stealth -= STEALTH_PIP;
-    }
 
     if (!you.airborne())
     {
@@ -4610,9 +4606,11 @@ void dec_disease_player(int delay)
 
         // Trog's Hand.
         if (you.duration[DUR_TROGS_HAND])
+        {
             rr += 100;
-        
+
         // Powered by death mutation
+        }
         if (you.duration[DUR_POWERED_BY_DEATH])
             rr += you.props[POWERED_BY_DEATH_KEY].get_int() * 100;
 
@@ -4819,16 +4817,18 @@ void float_player()
 
     if (you.species == SP_TENGU || you.species == SP_FAIRY)
 
+    {
+
         you.redraw_evasion = true;
+
+    }
 }
 
 // Fairies start the game flying.
 void float_once()
 {
     if (you.species != SP_FAIRY)
-    {
         return;
-    }
 
     you.attribute[ATTR_PERM_FLIGHT] = 1;
     float_player();
@@ -5753,7 +5753,7 @@ int player_icemail_armour_class()
 int player_lava_orc_stoneskin_ac()
 {
     ASSERT(you.species == SP_LAVA_ORC);
-        
+
     return 2 + you.experience_level / 5;
 }
 
@@ -5833,7 +5833,7 @@ int player::racial_ac(bool temp) const
                        + 100 * max(0, experience_level - 7) * 2 / 5;
         }
         else if (species == SP_FAIRY)
-	        return 300 + 100 * experience_level / 3;
+                return 300 + 100 * experience_level / 3;
     }
 
     return 0;
@@ -6079,7 +6079,7 @@ int player::armour_class_with_specific_items(vector<const item_def *> items) con
 
     if (duration[DUR_ICY_ARMOUR])
     {
-        int net_ac_bonus = you.props[ICY_ARMOUR_KEY].get_int() 
+        int net_ac_bonus = you.props[ICY_ARMOUR_KEY].get_int()
                             - you.unadjusted_body_armour_penalty() * 50;
         if (net_ac_bonus / 100 <= 0)
             remove_ice_armour();
@@ -8531,9 +8531,7 @@ void _temperature_changed(float change)
 
     // For DECREMENTS (reverse order):
     if (change < neg_threshold && _temperature_tier(TEMP_MAX))
-    {
         mprf(MSGCH_DURATION, "The intensity of your heat diminishes.");
-    }
 
     if (change < neg_threshold && _temperature_tier(TEMP_FIRE))
         mprf(MSGCH_DURATION, "You are cooling off.");
@@ -8643,25 +8641,25 @@ bool temperature_effect(int which)
         case LORC_FIRE_RES_I:
             return true;
         case LORC_EARTH_BOOST:
-            return (temperature() < TEMP_COLD); // 1-2
+            return temperature() < TEMP_COLD; // 1-2
         case LORC_SLOW_MOVE:
         case LORC_STONESKIN:
-            return (temperature() < TEMP_WARM); // 1-8
+            return temperature() < TEMP_WARM; // 1-8
 //      case nothing, right now:
 //            return (you.temperature >= TEMP_COOL && you.temperature < TEMP_WARM); // 5-8
 //      case nothing, right now:
 //            return (temperature() >= TEMP_WARM && temperature() < TEMP_HOT); // 9-10
         case LORC_FIRE_RES_II:
-            return (temperature() >= TEMP_WARM); // 9-15
+            return temperature() >= TEMP_WARM; // 9-15
         case LORC_FIRE_RES_III:
         case LORC_FIRE_BOOST:
         case LORC_COLD_VULN:
-            return (temperature() >= TEMP_HOT); // 11-15
+            return temperature() >= TEMP_HOT; // 11-15
         case LORC_PASSIVE_HEAT:
-            return (temperature() >= TEMP_FIRE); // 13-15
+            return temperature() >= TEMP_FIRE; // 13-15
         case LORC_HEAT_AURA:
         case LORC_NO_SCROLLS:
-            return (temperature() >= TEMP_MAX); // 15
+            return temperature() >= TEMP_MAX; // 15
 
         default:
             return false;

@@ -3226,7 +3226,7 @@ static string _get_monster_desc(const monster_info& mi)
         text += pronoun + " " + conjugate_verb("are", mi.pronoun_plurality())
                 + " filled with an inner flame.\n";
     }
-    
+
     if (mi.is(MB_SHACKLED))
         text += pronoun + " is shackled in place.\n";
 

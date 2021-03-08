@@ -142,7 +142,7 @@ function ($, comm, enums, map_knowledge, messages, options) {
         else
             $("#stats_noise_bar_decrease").css("width", 0);
     }
- 
+
     function update_bar_heat()
     {
         player.heat_max = 15; // Value of TEMP_MAX

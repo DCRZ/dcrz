@@ -1039,9 +1039,7 @@ static void _unequip_armour_effect(item_def& item, bool meld,
 
     case SPARM_SPIRIT_SHIELD:
         if (!you.spirit_shield())
-        {
             mpr("You feel strangely alone.");
-        }
         break;
 
     case SPARM_ARCHERY:

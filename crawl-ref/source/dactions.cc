@@ -132,11 +132,11 @@ bool mons_matches_daction(const monster* mon, daction_type act)
                    || mon->props.exists(ORIG_MONSTER_KEY));
 
     case DACT_ENCHANTRESS_PLANTS:
-        return (mon->type == MONS_PLANT
-               && mon->props.exists(ORIG_MONSTER_KEY));
+        return mon->type == MONS_PLANT
+              && mon->props.exists(ORIG_MONSTER_KEY);
 
     case DACT_REMOVE_JIYVAS_PRESENCE:
-        return (mon->god == GOD_JIYVA);
+        return mon->god == GOD_JIYVA;
 
     case DACT_BRIBE_TIMEOUT:
         return mon->has_ench(ENCH_NEUTRAL_BRIBED)

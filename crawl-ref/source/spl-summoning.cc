@@ -986,9 +986,7 @@ spret cast_false_image(int pow, const coord_def& where, god_type god, bool fail)
     image.hd = max(1, div_rand_round(pow, 10));
 
     if (create_monster(image))
-    {
         mpr("You stand beside yourself.");
-    }
     else
         canned_msg(MSG_NOTHING_HAPPENS);
 
@@ -3688,7 +3686,7 @@ spret cast_foxfire(actor &agent, int pow, god_type god, bool fail)
         mgen_data fox = _pal_data(MONS_FOXFIRE, 0, god, SPELL_FOXFIRE);
         fox.hd = pow;
         monster *foxfire;
-        
+
         if (foxfire = create_monster(fox))
         {
             created = true;

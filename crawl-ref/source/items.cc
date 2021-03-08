@@ -1674,7 +1674,7 @@ int find_free_slot(const item_def &i)
 }
 
 static void _got_item(item_def& item)
-{    
+{
     shopping_list.cull_identical_items(item);
     item.flags |= ISFLAG_HANDLED;
 
@@ -1725,11 +1725,13 @@ static bool _put_item_in_inv(item_def& it, int quant_got, bool quiet, bool& put_
 
     // sanity
     if (quant_got > it.quantity || quant_got <= 0)
+    {
         quant_got = it.quantity;
-    
+
     // moved this here from later; used to happen on successful pickup only
+    }
     seen_item(it);
-    
+
     // attempt to put the item into your inventory.
     int inv_slot;
     if (_merge_items_into_inv(it, quant_got, inv_slot, quiet))
@@ -2185,7 +2187,7 @@ static bool _merge_items_into_inv(item_def &it, int quant_got,
         quant_got = 1;
         return true;
     }
-        
+
     int nrunes = runes_in_pack();
     if (nrunes >= 1 && !fully_identified(it))
     {

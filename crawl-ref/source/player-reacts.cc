@@ -595,7 +595,7 @@ static void _decrement_durations()
         you.props[POWERED_BY_DEATH_KEY] = pbd_str - 1;
         reset_powered_by_death_duration();
     }
-    
+
     // Decrement Enhanced By Death strength
     int ebd_str = you.props[ENHANCED_BY_DEATH_KEY].get_int();
     if (ebd_str > 0 && _decrement_a_duration(DUR_ENHANCED_BY_DEATH, delay))
@@ -1042,10 +1042,12 @@ void player_reacts()
         maybe_melt_player_enchantments(BEAM_FIRE, you.time_taken);
 
     if (you.duration[DUR_WENDIGO])
+    {
         you.get_wendigo_beholder();
-        
+
 
     // Handle starvation before subtracting hunger for this turn (including
+    }
     // hunger from the berserk duration) and before monsters react, so you
     // always get a turn (though it may be a delay or macro!) between getting
     // the Fainting light and actually fainting.

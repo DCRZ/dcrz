@@ -768,7 +768,7 @@ const string make_cost_description(ability_type ability)
         ret += make_stringf(", Stat Drain (%d each)",
                             VAMPIRE_BAT_FORM_STAT_DRAIN);
     }
-    
+
     if (ability == ABIL_DRAW_OUT_BLOOD)
     {
         ret += make_stringf(", Stat Drain (%d each)",
@@ -1555,7 +1555,7 @@ static bool _check_ability_possible(const ability_def& abil, bool quiet = false)
             return false;
         }
         return true;
-        
+
     case ABIL_DRAW_OUT_BLOOD:
         if (you.hp == you.hp_max)
         {
@@ -1860,7 +1860,7 @@ static string _vampire_draw_out_blood_prompt(bool str_affected, bool dex_affecte
     string prompt = "";
 
     if (str_affected && intel_affected && dex_affected)
-    	prompt += _vampire_stat_info_blurb("strength, intelligence and dexterity");
+        prompt += _vampire_stat_info_blurb("strength, intelligence and dexterity");
     else if (str_affected && intel_affected)
         prompt += _vampire_stat_info_blurb("strength and intelligence");
     else if (str_affected && dex_affected)
@@ -1872,7 +1872,7 @@ static string _vampire_draw_out_blood_prompt(bool str_affected, bool dex_affecte
     else if (intel_affected)
         prompt += _vampire_stat_info_blurb("intelligence");
     else if (dex_affected)
-    	prompt += _vampire_stat_info_blurb("dexterity");
+        prompt += _vampire_stat_info_blurb("dexterity");
 
     prompt += "Continue?";
 
@@ -2926,7 +2926,7 @@ static spret _do_ability(const ability_def& abil, bool fail)
 
         break;
     }
-    
+
     case ABIL_DRAW_OUT_BLOOD:
     {
         if (_player_cancels_vampire_draw_out_blood())
@@ -3541,7 +3541,7 @@ vector<talent> your_talents(bool check_confused, bool include_unusable)
             _add_talent(talents, ABIL_TRAN_BAT, check_confused);
     }
 
-    if (you.racial_permanent_flight() && !you.attribute[ATTR_PERM_FLIGHT] 
+    if (you.racial_permanent_flight() && !you.attribute[ATTR_PERM_FLIGHT]
                                       && !player_is_shapechanged())
     {
         // Fairies can fly starting at XL 1

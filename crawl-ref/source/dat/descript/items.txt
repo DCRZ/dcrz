@@ -400,7 +400,7 @@ faerie dragon scales
 
 The scales of a faerie dragon. Although it does not provide its wearer with as
 much protection as the armour made from the scales of some larger dragons, it is
-somewhat lighter and less encumbering. Its shimmering scales are excellent at 
+somewhat lighter and less encumbering. Its shimmering scales are excellent at
 repelling attacks.
 %%%%
 falchion
@@ -637,7 +637,7 @@ and greaves. It provides excellent protection.
 %%%%
 potion of agility
 
-A potion which greatly increases evasiveness of melee and missiles 
+A potion which greatly increases evasiveness of melee and missiles
 of one who drinks it.
 %%%%
 potion of ambrosia
