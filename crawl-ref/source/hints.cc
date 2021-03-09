@@ -3391,7 +3391,7 @@ string hints_describe_item(const item_def &item)
                         "largely useless.";
                 break;
             }
-            
+
             if (player_eats_corpses())
             {
                 ostr << "Ghouls and trolls can <w>%</w>at intact corpses.";

@@ -626,7 +626,7 @@ bool is_map_persistent()
 bool is_mapping_rotting()
 {
     return player_in_branch(BRANCH_ABYSS)
-            || (player_in_branch(BRANCH_FOREST) 
+            || (player_in_branch(BRANCH_FOREST)
                 && !you.runes[RUNE_FOREST]);
 }
 
@@ -1163,7 +1163,7 @@ static int _player_bonus_regen()
 
     // Fast heal mutation.
     rr += you.get_mutation_level(MUT_REGENERATION) * REGEN_PIP;
-    
+
     return rr;
 }
 
@@ -1345,7 +1345,7 @@ int player_res_fire(bool calc_unid, bool temp, bool items)
     {
         rf += temperature_effect(LORC_FIRE_RES_III)  ? 3
               : temperature_effect(LORC_FIRE_RES_II) ? 2
-              : temperature_effect(LORC_FIRE_RES_I)  ? 1 
+              : temperature_effect(LORC_FIRE_RES_I)  ? 1
               : 0;
     }
 
@@ -2302,7 +2302,7 @@ int player_shield_class()
     const item_def *body_armour = you.slot_item(EQ_BODY_ARMOUR);
     if (body_armour)
     {
-        shield += armour_type_prop(body_armour->sub_type, ARMF_SHIELDING) 
+        shield += armour_type_prop(body_armour->sub_type, ARMF_SHIELDING)
                     * ARMF_SHIELDING_SH * 100;
     }
 
@@ -4611,7 +4611,7 @@ void dec_disease_player(int delay)
         // Trog's Hand.
         if (you.duration[DUR_TROGS_HAND])
             rr += 100;
-        
+
         // Powered by death mutation
         if (you.duration[DUR_POWERED_BY_DEATH])
             rr += you.props[POWERED_BY_DEATH_KEY].get_int() * 100;
@@ -5753,7 +5753,7 @@ int player_icemail_armour_class()
 int player_lava_orc_stoneskin_ac()
 {
     ASSERT(you.species == SP_LAVA_ORC);
-        
+
     return 2 + you.experience_level / 5;
 }
 
@@ -5833,7 +5833,7 @@ int player::racial_ac(bool temp) const
                        + 100 * max(0, experience_level - 7) * 2 / 5;
         }
         else if (species == SP_FAIRY)
-	        return 300 + 100 * experience_level / 3;
+                return 300 + 100 * experience_level / 3;
     }
 
     return 0;
@@ -6079,7 +6079,7 @@ int player::armour_class_with_specific_items(vector<const item_def *> items) con
 
     if (duration[DUR_ICY_ARMOUR])
     {
-        int net_ac_bonus = you.props[ICY_ARMOUR_KEY].get_int() 
+        int net_ac_bonus = you.props[ICY_ARMOUR_KEY].get_int()
                             - you.unadjusted_body_armour_penalty() * 50;
         if (net_ac_bonus / 100 <= 0)
             remove_ice_armour();

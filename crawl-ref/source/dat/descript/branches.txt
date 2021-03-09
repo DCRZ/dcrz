@@ -31,9 +31,9 @@ Enchanted Forest
 
 Amongst these dark and sinister woods lie the lairs of spriggans, fauns, and
 other creatures capable of bending the minds of unwilling intruders to their
-will. Deep within the forest lies the Enchantress' palace, where she has 
-amassed great riches. Many a helpless adventurer has lost their way in these 
-twisted woods, as the magic of the forest makes memorizing its 
+will. Deep within the forest lies the Enchantress' palace, where she has
+amassed great riches. Many a helpless adventurer has lost their way in these
+twisted woods, as the magic of the forest makes memorizing its
 maze-like structure impossible.
 %%%%
 Lair
@@ -77,14 +77,14 @@ A dungeon features only one of the Spider Nest and Snake Pit branches.
 Slime Mines
 
 The Slime Mines used to be a thriving civilization of dwarves. Now few dwarves
-remain, and the mines are populated by jellies and slimes. Even the walls 
-drip with painful acid. Still, there are rumours of great treasures deep down, 
+remain, and the mines are populated by jellies and slimes. Even the walls
+drip with painful acid. Still, there are rumours of great treasures deep down,
 hidden safely away in secret chambers without any entrance.
 %%%%
 Vaults
 
-The Vaults are said to be home to Zot's greatest treasures and the entrance to 
-his realm. The blood spattered liberally around the entrance suggests that there 
+The Vaults are said to be home to Zot's greatest treasures and the entrance to
+his realm. The blood spattered liberally around the entrance suggests that there
 is a certain amount of violence, too.
 %%%%
 Crypt

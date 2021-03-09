@@ -52,7 +52,7 @@ void finish_butchering(item_def& corpse)
 {
     ASSERT(corpse.base_type == OBJ_CORPSES);
     ASSERT(corpse.sub_type == CORPSE_BODY);
-    
+
     if (!player_wants_devour_corpse())
         return;
 
@@ -61,7 +61,7 @@ void finish_butchering(item_def& corpse)
     const int equiv_chunks = 1 + random2(max_corpse_chunks(corpse.mon_type));
 
     lessen_hunger(CHUNK_BASE_NUTRITION * equiv_chunks, false, HS_ENGORGED);
-        
+
     if (you.species == SP_GHOUL)
         heal_from_devouring(equiv_chunks);
 
@@ -77,7 +77,7 @@ static int _corpse_quality(const item_def &item)
 /**
  * Heal from eating a corpse (ghouls and players in hydra form).
  *
- * @param equiv_chunks The number of chunks that would have been 
+ * @param equiv_chunks The number of chunks that would have been
  *                     obtained by butchering the corpse.
  */
 void heal_from_devouring(const int equiv_chunks)
@@ -101,10 +101,10 @@ void heal_from_devouring(const int equiv_chunks)
 }
 
 /**
- * 
+ *
  * @param silent Whether this function should print messages.
  * @returns whether the player would benefit from devouring a corpse.
- *          
+ *
  */
 bool player_wants_devour_corpse(bool silent)
 {
@@ -135,7 +135,7 @@ bool player_wants_devour_corpse(bool silent)
  *                        never).
  * @param only_auto Whether this function was called automatically.
  * @returns whether the player successfully devoured a corpse.
- *          
+ *
  */
 bool devour_corpse(item_def* specific_corpse, bool only_auto)
 {
@@ -155,7 +155,7 @@ bool devour_corpse(item_def* specific_corpse, bool only_auto)
 
     if (all_corpses.empty())
         return false;
-    
+
     if (!player_wants_devour_corpse(only_auto))
         return false;
 

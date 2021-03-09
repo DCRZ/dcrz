@@ -896,7 +896,7 @@ void bolt::burn_wall_effect()
     }
     else if (you.can_smell())
         emit_message("You smell burning wood.");
-    
+
     bool player_caused = false;
     if (whose_kill() == KC_YOU)
     {
@@ -925,7 +925,7 @@ void bolt::burn_wall_effect()
                 mon->go_berserk(true);
         }
     }
-    
+
     obvious_effect = true;
 
     finish_beam();
@@ -3359,7 +3359,7 @@ void bolt::affect_player_enchantment(bool resistible)
         you.transform_uncancellable = true;
         obvious_effect = true;
         break;
-       
+
     case BEAM_SLIMIFICATION:
         if (!transform(ench_power, transformation::jelly, true))
         {
@@ -4421,7 +4421,7 @@ void bolt::monster_post_hit(monster* mon, int dmg)
         beogh_follower_convert(mon, true);
 
     knockback_actor(mon, dmg);
-    
+
     if (origin_spell == SPELL_DAZZLING_BOLT)
         _dazzle_monster(mon, agent());
 

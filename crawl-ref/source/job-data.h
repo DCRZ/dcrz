@@ -115,7 +115,7 @@ static const map<job_type, job_def> job_data =
 { JOB_EARTH_ELEMENTALIST, {
     "EE", "Earth Elementalist",
     0, 7, 5,
-    { SP_DEEP_ELF, SP_SPRIGGAN, SP_GARGOYLE, SP_DEMIGOD, SP_GHOUL, 
+    { SP_DEEP_ELF, SP_SPRIGGAN, SP_GARGOYLE, SP_DEMIGOD, SP_GHOUL,
       SP_OCTOPODE, SP_FAIRY, SP_SLUDGE_DWARF, SP_LAVA_ORC, },
     { "book of Geomancy", "stone q:30", "robe", },
     WCHOICE_NONE,
@@ -169,7 +169,7 @@ static const map<job_type, job_def> job_data =
 { JOB_HUNTER, {
     "Hu", "Hunter",
     4, 3, 5,
-    { SP_HALFLING, SP_KOBOLD, SP_OGRE, SP_TROLL, SP_CENTAUR, 
+    { SP_HALFLING, SP_KOBOLD, SP_OGRE, SP_TROLL, SP_CENTAUR,
       SP_SLUDGE_DWARF, },
     { "short sword", "leather armour" },
     WCHOICE_RANGED,

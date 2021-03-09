@@ -3124,7 +3124,7 @@ bool monster::shielded() const
     const item_def *armour = mslot_item(MSLOT_ARMOUR);
     if (armour && armour_type_prop(armour->sub_type, ARMF_SHIELDING))
         return true;
-        
+
 
     return shield() || wearing(EQ_AMULET, AMU_REFLECTION)
                     || type == MONS_FAERIE_DRAGON;
@@ -3153,7 +3153,7 @@ int monster::shield_bonus() const
     const item_def *armour = mslot_item(MSLOT_ARMOUR);
     if (armour)
     {
-        sh += armour_type_prop(armour->sub_type, ARMF_SHIELDING) 
+        sh += armour_type_prop(armour->sub_type, ARMF_SHIELDING)
                     * ARMF_SHIELDING_SH;
     }
     // faerie dragon innate bonus

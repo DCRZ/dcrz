@@ -393,7 +393,7 @@ static int _strength_modifier(bool innate_only)
     {
         if (you.duration[DUR_DIVINE_STAMINA])
             result += you.attribute[ATTR_DIVINE_STAMINA];
-        
+
         if (you.duration[DUR_ENHANCED_BY_DEATH])
             result += you.props[ENHANCED_BY_DEATH_KEY].get_int();
 
@@ -431,7 +431,7 @@ static int _int_modifier(bool innate_only)
     {
         if (you.duration[DUR_DIVINE_STAMINA])
             result += you.attribute[ATTR_DIVINE_STAMINA];
-       
+
         if (you.duration[DUR_ENHANCED_BY_DEATH])
             result += you.props[ENHANCED_BY_DEATH_KEY].get_int();
 
@@ -462,7 +462,7 @@ static int _dex_modifier(bool innate_only)
     {
         if (you.duration[DUR_DIVINE_STAMINA])
             result += you.attribute[ATTR_DIVINE_STAMINA];
-        
+
         if (you.duration[DUR_ENHANCED_BY_DEATH])
             result += you.props[ENHANCED_BY_DEATH_KEY].get_int();
 

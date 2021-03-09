@@ -237,7 +237,7 @@ static area_centre_type _get_first_area(const coord_def& f)
     // of this. If we find the first, we don't care about
     // the second.
     if (a & areaprop::liquid)
-        return area_centre_type::liquid; 
+        return area_centre_type::liquid;
 
     return area_centre_type::none;
 }

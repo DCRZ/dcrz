@@ -3723,8 +3723,8 @@ static void _heated_area(monster& mons)
 
     if (mons.is_fiery())
         return;
-           
-    // HACK: Currently this prevents even auras not caused by lava orcs... 
+
+    // HACK: Currently this prevents even auras not caused by lava orcs...
     if (is_orcish_follower(mons))
         return;
 

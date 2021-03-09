@@ -717,7 +717,7 @@ void get_cleave_targets(const actor &attacker, const coord_def& def,
         }
 
         if (weap && weap->sub_type == WPN_SCYTHE
-                || attacker.is_player() 
+                || attacker.is_player()
                     && weap && item_attack_skill(*weap) == SK_POLEARMS
                     && you.duration[DUR_CLEAVE])
         {

@@ -3688,7 +3688,7 @@ spret cast_foxfire(actor &agent, int pow, god_type god, bool fail)
         mgen_data fox = _pal_data(MONS_FOXFIRE, 0, god, SPELL_FOXFIRE);
         fox.hd = pow;
         monster *foxfire;
-        
+
         if (foxfire = create_monster(fox))
         {
             created = true;
