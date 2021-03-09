@@ -644,18 +644,24 @@ Taps into your inner power to restore health and magic, as well as freeing your
 body and mind from external constraints, including nets, webs, constriction,
 petrification, slowness, and confusion. The amount of health and magic restored
 increases with piety.
+
+You will be exhausted for 120-160 auts.
 %%%%
 Power Leap ability
 
 Performs an incredibly fast leap to a targeted location, causing an explosion
 upon landing which damages all adjacent foes. The amount of damage done
 increases with your piety and experience level.
+
+You will be exhausted for 180-250 auts.
 %%%%
 Apocalypse ability
 
 Reveals Ru's truth to your enemies, dealing severe damage to all enemies in
 your line of sight. Affected creatures may be paralysed, slowed or have their
 magic drained. The damage dealt increases with your piety and experience level.
+
+You will be exhausted for 300-490 auts.
 %%%%
 Sacrifice Purity ability
 
