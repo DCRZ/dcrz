@@ -58,7 +58,11 @@ Character
   - Lore based on the Slime retheming.
   - Aptitudes inspired by the former Mountain Dwarf species, including
     +2 to Shields and +3 to Armour.
-  - Mutations: Acid Resistance 1 and Evolution 2.
+  - Mutations: 
+    - Acid Resistance 1;
+    - Evolution 2;
+    - Sturdy Frame 1, improving at XLs 7 and 14;
+    - Passive Mapping 1, improving at XLs 9 and 18.
 * New/reimagined species: Lava Orc.
   - Mutations depend on their temperature (a function of tension).
     - "Min" temperature:  rF+, swim through lava, earth magic boost,
