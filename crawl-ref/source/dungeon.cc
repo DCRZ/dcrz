@@ -5469,6 +5469,10 @@ static dungeon_feature_type _pick_an_altar()
             god = GOD_JIYVA;
             break;
 
+        case BRANCH_FOREST: // nature / memory gods (latter represents map rot)
+            god = random_choose(GOD_FEDHAS, GOD_QAZLAL, GOD_HEPLIAKLQANA);
+            break;
+
         case BRANCH_TOMB:
             god = GOD_KIKUBAAQUDGHA;
             break;
