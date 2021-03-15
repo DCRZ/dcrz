@@ -423,7 +423,7 @@ static void _awaken_yewborn(int /*time_delta*/)
     {
         if (max_trees_to_animate == 0)
             break;
-
+        
         const coord_def where = *di;
         if (!you.see_cell_no_trans(where))
             continue;
@@ -449,7 +449,7 @@ static void _awaken_yewborn(int /*time_delta*/)
             }
         }
     }
-
+    
     if (tree_animated)
         mpr("The forest comes to life.");
 }

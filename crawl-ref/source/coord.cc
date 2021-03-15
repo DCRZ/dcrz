@@ -82,7 +82,7 @@ coord_def rotate_adjacent(coord_def vector, int direction, int radius /* = 1 */)
 {
     int xn, yn;
 
-    xn = vector.x - sgn(direction) * (vector.y / radius);
+    xn = vector.x - sgn(direction) * (vector.y / radius); 
     yn = sgn(direction) * (vector.x / radius) + vector.y;
     // The above formula fails for corners, which we correct here
     vector.x = min(max(xn, -radius), radius);

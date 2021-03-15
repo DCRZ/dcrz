@@ -15,3 +15,4 @@ bool turn_corpse_into_skeleton(item_def &item);
 void butcher_corpse(item_def &item, bool skeleton = true);
 void heal_from_devouring(const int equiv_chunks);
 bool player_wants_devour_corpse(bool silent = true);
+

@@ -1007,7 +1007,7 @@ ENDMAP
 
 ## Yred has crafted an undead forest in mockery of Fedhas.
 #  This vault should be merged with its forest variant
-#  gammafunk_forest_yreds_foothold in float.des, but it's too
+#  gammafunk_forest_yreds_foothold in float.des, but it's too 
 #  much of a pain
 NAME:    gammafunk_crypt_yreds_forest
 DEPTH:   Crypt

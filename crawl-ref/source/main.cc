@@ -1294,7 +1294,7 @@ static bool _can_take_stairs(dungeon_feature_type ftype, bool down,
                                                 : "");
                 else
                     mprf("You need at least %d runes%s to enter this place.",
-                         min_runes, it->id == BRANCH_SLIME ?
+                         min_runes, it->id == BRANCH_SLIME ? 
                                      " or Jiyva's divine aid": "");
                 return false;
             }

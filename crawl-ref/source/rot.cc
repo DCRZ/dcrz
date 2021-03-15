@@ -44,7 +44,7 @@ static void _rot_corpse(item_def &it, int mitm_index, int rot_time)
 {
     ASSERT(it.base_type == OBJ_CORPSES);
     ASSERT(!it.props.exists(CORPSE_NEVER_DECAYS));
-
+    
     it.freshness -= rot_time;
     if (it.freshness > 0 || is_being_butchered(it))
         return;

@@ -2369,7 +2369,7 @@ spret cast_thunderbolt(actor *caster, int pow, coord_def aim, bool fail)
     fail_check();
 
     const int juice
-        = (spell_mana(SPELL_THUNDERBOLT, false) + charges)
+        = (spell_mana(SPELL_THUNDERBOLT, false) + charges) 
             * LIGHTNING_CHARGE_MULT;
 
     dprf("juice: %d", juice);
@@ -3567,14 +3567,14 @@ spret cast_flame_dance(const actor *caster, int pow, bolt& base_beam, bool fail)
     fail_check();
 
     vector<bolt> beams;
-
+    
     _get_jitter_path(caster->pos(), base_beam.target, beams);
 
     for (bolt &beam : beams)
     {
         zap_type zap = ZAP_FLAME_DANCE;
         const spret ret = beam.name == "trail of fire 1"
-                            ? zapping(zap, pow, beam, true, "The flames dance!", fail)
+                            ? zapping(zap, pow, beam, true, "The flames dance!", fail) 
                             : (beam.source != beam.target
                                 ? zapping(zap, pow, beam, true, nullptr, fail)
                                 : spret::success);

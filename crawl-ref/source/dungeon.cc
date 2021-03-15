@@ -1412,7 +1412,7 @@ static void _fixup_walls()
 
     case BRANCH_VAULTS:
     {
-        // Everything but the branch end and some vaults
+        // Everything but the branch end and some vaults 
         // imported from Depths are handled in Lua.
         if (you.depth == branches[BRANCH_VAULTS].numlevels)
         {

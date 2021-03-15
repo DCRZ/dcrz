@@ -304,7 +304,7 @@ private:
 public:
     static const PotionAgility &instance()
     {
-        static PotionAgility inst; return inst;
+        static PotionAgility inst; return inst;        
     }
 
     bool effect(bool=true, int pow = 40, bool=true) const override
@@ -313,7 +313,7 @@ public:
 
         mprf(MSGCH_DURATION, "You feel %sagile all of a sudden.",
             were_agile ? "more " : "");
-        you.increase_duration(DUR_AGILITY, 35 + random2(pow), 80);
+        you.increase_duration(DUR_AGILITY, 35 + random2(pow), 80);        
         you.redraw_evasion = true;
         return true;
     }

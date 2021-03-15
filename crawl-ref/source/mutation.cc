@@ -718,13 +718,13 @@ string describe_mutations(bool drop_title)
 
         const int lo_ac = player_lava_orc_stoneskin_ac();
         col = (temperature_effect(LORC_STONESKIN)) ? "brown" : "darkgrey";
-        result += "<" + col + ">You have stony skin. (AC+" + to_string(lo_ac)
+        result += "<" + col + ">You have stony skin. (AC+" + to_string(lo_ac) 
                       + ")</" + col + ">\n";
 
         // ensure consistency with MUT_SLOW
         ostringstream slow_move_ostr;
         col = (temperature_effect(LORC_SLOW_MOVE)) ? "brown" : "darkgrey";
-        slow_move_ostr << "<" << col << ">" << _get_mutation_def(MUT_SLOW).have[0]
+        slow_move_ostr << "<" << col << ">" << _get_mutation_def(MUT_SLOW).have[0] 
                        << "<" << col << ">\n";
         result += slow_move_ostr.str();
 
@@ -737,7 +737,7 @@ string describe_mutations(bool drop_title)
         const int level = temperature_effect(LORC_FIRE_RES_III)  ? 3
                           : temperature_effect(LORC_FIRE_RES_II) ? 2
                           : 1;
-        res_fire_ostr << "<" << col << ">" << _get_mutation_def(MUT_HEAT_RESISTANCE).have[level-1]
+        res_fire_ostr << "<" << col << ">" << _get_mutation_def(MUT_HEAT_RESISTANCE).have[level-1] 
                       << "</" << col << ">\n";
         result += res_fire_ostr.str();
 
@@ -2872,3 +2872,7 @@ void reset_enhanced_by_death_duration()
     const int ebd_dur =  ebd_dur_mult * random_range(2, 5);
     you.set_duration(DUR_ENHANCED_BY_DEATH, ebd_dur);
 }
+
+
+
+

@@ -1346,10 +1346,10 @@ void print_stats()
         _print_stats_mp(1, 4);
     }
 
-    if (you.redraw_temperature)
-    {
-        you.redraw_temperature = false;
-        _print_stats_temperature(1, temp_pos);
+    if (you.redraw_temperature)  
+    { 
+        you.redraw_temperature = false;  
+        _print_stats_temperature(1, temp_pos); 
     }
 
     if (you.redraw_armour_class)
@@ -1483,7 +1483,7 @@ void draw_border()
     clrscr();
 
     textcolour(Options.status_caption_colour);
-
+    
     int temp = (you.species == SP_LAVA_ORC) ? 1 : 0;
 //    int hp_pos = 3;
     int mp_pos = 4;

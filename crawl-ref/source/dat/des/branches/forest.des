@@ -778,7 +778,7 @@ ENDMAP
 ## Yred has gained a foothold in the enchanted forest
 #
 #  This vault should be merged with its crypt variant
-#  gammafunk_crypt_yreds_forest in float.des, but it's too
+#  gammafunk_crypt_yreds_forest in float.des, but it's too 
 #  much of a pain
 #
 NAME:    gammafunk_forest_yreds_foothold
@@ -888,12 +888,12 @@ ENDMAP
 ##############################################################################
 # Forest ends
 #
-# IMPORTANT: If you intend to contribute a Forest end vault, please follow
+# IMPORTANT: If you intend to contribute a Forest end vault, please follow 
 # these guidelines:
 #  * Ensure that your vault includes the Enchantress in a palace or
 #    similar building;
 #  * Place approximately 20 superb items (|) and 30 good items (*) to ensure
-#    that the Forest end vault loot is consistently comparable to (but
+#    that the Forest end vault loot is consistently comparable to (but  
 #    noticeably worse than) Slime.
 #     - ManMan
 ##############################################################################
@@ -1092,7 +1092,7 @@ KITEM:  A = mossy rune of Zot
 MONS:   the Enchantress band
 MONS:   wendigo / shambling mangrove
 MONS:   spriggan / spriggan air mage / spriggan druid / \
-        spriggan berserker / spriggan rider w:5 / spriggan defender w:5 / \
+        spriggan berserker / spriggan rider w:5 / spriggan defender w:5 / \ 
         thorn hunter w:5 / shambling mangrove w:5 / ancient bear w:5
 KMONS:  4 = pixie
 KFEAT:  _ = altar_xom
@@ -1143,7 +1143,7 @@ SUBVAULT: R : gammafunk_forest_water_palace_column
 SUBVAULT: S : gammafunk_forest_water_palace_pool
 SUBVAULT: P : gammafunk_forest_water_palace_pool
 KITEM:    O = mossy rune of Zot
-MONS:     nothing w:20 / spriggan / spriggan air mage / spriggan druid
+MONS:     nothing w:20 / spriggan / spriggan air mage / spriggan druid 
 MONS:     w:20 faun / satyr, spriggan berserker
 KMONS:    4 = caustic shrike
 KMONS:    5 = spriggan defender

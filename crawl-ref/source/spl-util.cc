@@ -419,10 +419,10 @@ int spell_mana(spell_type which_spell, bool real_spell)
     int level = _seekspell(which_spell)->level;
     if (you.species == SP_FAIRY)
         level = level - 1;
-
+    
     if (real_spell && you.duration[DUR_BRILLIANCE])
         return level / 2 + level % 2; // Round up
-
+    
     return level;
 }
 
@@ -1193,7 +1193,7 @@ string spell_uselessness_reason(spell_type spell, bool temp, bool prevent,
         break;
 
     case SPELL_OZOCUBUS_ARMOUR:
-        if (temp && you.form == transformation::statue
+        if (temp && you.form == transformation::statue 
             || you.species == SP_LAVA_ORC
                && temperature_effect(LORC_STONESKIN))
         {
