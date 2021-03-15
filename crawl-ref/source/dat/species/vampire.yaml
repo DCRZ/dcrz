@@ -59,7 +59,7 @@ mutations:
     MUT_ENHANCED_BY_DEATH: 1
   22:
     MUT_POWERED_BY_DEATH: 1
-    MUT_ENHANCED_BY_DEATH: 1
+    MUT_ENHANCED_BY_DEATH: 1  
 fake_mutations:
   - long: You do not eat.
     short: no food

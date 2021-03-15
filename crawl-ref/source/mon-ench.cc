@@ -994,7 +994,7 @@ void monster::remove_enchantment_effect(const mon_enchant &me, bool quiet)
         if (!quiet)
             simple_monster_message(*this, " is no longer waterlogged.");
         break;
-
+ 
     case ENCH_SHACKLE:
         if (!quiet)
             simple_monster_message(*this, "'s shackles fade away.");

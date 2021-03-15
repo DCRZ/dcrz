@@ -69,7 +69,7 @@
 
 void melt_ice_armour(int amount)
 {
-    you.props[ICY_ARMOUR_KEY]
+    you.props[ICY_ARMOUR_KEY] 
         = max(0, you.props[ICY_ARMOUR_KEY].get_int() - 100 * amount);
 
     int net_ac_bonus = you.props[ICY_ARMOUR_KEY].get_int()

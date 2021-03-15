@@ -353,7 +353,7 @@ bool melee_attack::handle_phase_dodged()
         if (defender->is_player() && you.species == SP_KOBOLD)
         {
             do_kobold_redirection();
-
+            
             // Retaliations can kill!
             if (!attacker->alive())
                 return false;
@@ -697,7 +697,7 @@ static void _consider_devouring_monster(monster &defender)
  */
 bool melee_attack::handle_phase_killed()
 {
-    if (attacker->is_player() &&
+    if (attacker->is_player() && 
         (you.form == transformation::hydra || you.species == SP_GHOUL)
         && defender->is_monster() // better safe than sorry
         && defender->type != MONS_NO_MONSTER) // already reset
@@ -3005,7 +3005,7 @@ void melee_attack::mons_apply_attack_flavour()
         if (coinflip())
             defender->weaken(attacker, 12);
         break;
-
+    
     case AF_WENDIGO:
         if (defender->is_player() && !you_foodless() && one_chance_in(3))
             you.inflict_wendigo_psychosis();

@@ -2335,7 +2335,7 @@ void get_feature_desc(const coord_def &pos, describe_info &inf, bool include_ext
     }
 
     // mention that permanent trees are usually flammable
-    // (expect for enchanted trees in the Forest and autumnal trees
+    // (expect for enchanted trees in the Forest and autumnal trees 
     // in Wucad Mu's Monastery)
     if (feat_is_mundane_tree(feat) && !is_temp_terrain(pos)
         && env.markers.property_at(pos, MAT_ANY, "veto_fire") != "veto")
@@ -3103,7 +3103,7 @@ static string _player_spell_desc(spell_type spell)
                     << " of the charms school) will also cause magic"
                     << " contamination.\n";
     }
-
+    
     if (spell == SPELL_SPELLFORGED_SERVITOR)
     {
         spell_type servitor_spell = player_servitor_spell();

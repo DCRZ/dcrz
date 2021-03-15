@@ -1922,7 +1922,7 @@ static bool _mons_can_bind_soul(monster* binder, monster* bound)
 }
 
 // Function should return false if friendlies shouldn't animate any dead.
-// Currently, if the player can eat corpses and are less than satiated.
+// Currently, if the player can eat corpses and are less than satiated. 
 // Only applies to friendly corpse animators. {due}
 static bool _animate_dead_okay(spell_type spell)
 {
@@ -6501,7 +6501,7 @@ void mons_cast(monster* mons, bolt pbolt, spell_type spell_cast,
     case SPELL_AWAKEN_VINES:
         _awaken_vines(mons);
         return;
-
+    
     case SPELL_AWAKEN_SLIME_MOULD:
         _awaken_slime_mould(mons);
         return;
@@ -7788,7 +7788,7 @@ static bool _ms_waste_of_time(monster* mon, mon_spell_slot slot)
                || mon->has_ench(ENCH_AWAKEN_VINES)
                    && mon->props["vines_awakened"].get_int() >= 3
                || !_awaken_vines(mon, true);
-
+        
     case SPELL_AWAKEN_SLIME_MOULD:
         return !foe
                || mon->has_ench(ENCH_AWAKEN_SLIME_MOULD)

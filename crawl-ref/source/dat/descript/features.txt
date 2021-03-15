@@ -917,7 +917,7 @@ A slime-free stone wall, carved all over with countless protective runes.
 %%%%
 A rune-carved clear stone wall
 
-A slime-free stone wall, with strange lights twinkling within its airy confines. Mystical
+A slime-free stone wall, with strange lights twinkling within its airy confines. Mystical 
 runes are scattered across its surface, seemingly referring to the king of this domain.
 %%%%
 # Tomb:1

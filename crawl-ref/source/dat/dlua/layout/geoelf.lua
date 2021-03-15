@@ -429,7 +429,7 @@ function geoelf.generate (e, room_data, corridor_data,
     if (not room_data[draw_order[i]].is_dummy) then
       geoelf.rooms.draw(e, room_data, corridor_data, draw_order[i],
                         (crawl.random_real() < fancy_room_fraction),
-                        force_open_room_edge, in_slime,
+                        force_open_room_edge, in_slime, 
                         (crawl.random_real() < stone_room_fraction))
     end
   end

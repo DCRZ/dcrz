@@ -1331,7 +1331,7 @@ void objstat_generate_stats()
             continue;
 
         const branch_type br = it->id;
-
+        
         vector<level_id> levels;
         for (int dep = 1; dep <= brdepth[br]; ++dep)
         {

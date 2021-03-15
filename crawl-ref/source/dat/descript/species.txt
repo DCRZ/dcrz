@@ -69,7 +69,7 @@ Humans advance quickly in levels and have equal abilities in most skills.
 %%%%
 Lava Orc
 
-Lava Orcs are masters of earth and fire magic who come from deep below
+Lava Orcs are masters of earth and fire magic who come from deep below 
 the Dungeon. Their abilities change with their temperature.
 %%%%
 Tengu
@@ -129,7 +129,7 @@ They regenerate health rapidly.
 %%%%
 Vampire
 
-Vampires are undead creatures that can only regenerate from the life force of the
+Vampires are undead creatures that can only regenerate from the life force of the 
 creatures they slay. They are frail, but are supernaturally stealthy even in armour.
 %%%%
 Vine Stalker

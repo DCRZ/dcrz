@@ -87,8 +87,8 @@ enemy.
 %%%%
 Awaken Slime Mould spell
 
-Causes a tentacle to surge from a slime mould in a slimy wall. The tentacle
-will reach out and grab interlopers, dragging them towards any nearby slimy
+Causes a tentacle to surge from a slime mould in a slimy wall. The tentacle 
+will reach out and grab interlopers, dragging them towards any nearby slimy 
 walls.
 %%%%
 Awaken Vines spell

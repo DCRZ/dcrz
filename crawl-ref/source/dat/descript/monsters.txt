@@ -92,11 +92,11 @@ mortal blood. They despise mortal vanities, the pursuit of ‘reason’ and
 %%%%
 Dissolution
 
-The Slime Mines used to be a thriving Dwarven civilization, and Dissolution was
+The Slime Mines used to be a thriving Dwarven civilization, and Dissolution was 
 the high priestess of their god. When the city was overtaken by its current
-residents, only Dissolution and her disciples survived, for they alone turned
-faithfully to the Slime God. Dissolution became a tremendous mass of acidic ooze,
-yet retained her intelligence. She is filled with hatred for anything that can
+residents, only Dissolution and her disciples survived, for they alone turned 
+faithfully to the Slime God. Dissolution became a tremendous mass of acidic ooze, 
+yet retained her intelligence. She is filled with hatred for anything that can 
 hold a form.
 %%%%
 Dissolution original form
@@ -170,7 +170,7 @@ faerie dragon
 
 A very small dragon, long thought to be extinct. It is covered with shimmering
 scales that repel attacks, and scintillating energies dance around its snout.
-Unlike their draconic cousins, faerie dragons have the intellect and magical
+Unlike their draconic cousins, faerie dragons have the intellect and magical 
 affinity required for spellcasting.
 %%%%
 Fannar
@@ -1035,13 +1035,13 @@ A member of a short, sturdy mountain-dwelling folk.
 %%%%
 sludge dwarf slime priest
 
-A dwarf who converted to the Slime God when its city was overtaken by its
+A dwarf who converted to the Slime God when its city was overtaken by its 
 current residents. Its form is strangely amorphous.
 %%%%
 dwarven automaton
 
 A towering steam-powered humanoid construct, patrolling its creators' forlorn
-homeland for intruders. When an intruder is found, it alerts monsters of the
+homeland for intruders. When an intruder is found, it alerts monsters of the 
 intruder's presence and displaces the intruder with unrelenting force.
 %%%%
 earth elemental
@@ -1254,14 +1254,14 @@ its vicious claws.
 %%%%
 gelatinous snatcher
 
-A corrosive strand of slime mould brought alive by a slime priest's magic. It
-can quickly bind and entangle the slime priest's foes, dragging them back to
+A corrosive strand of slime mould brought alive by a slime priest's magic. It 
+can quickly bind and entangle the slime priest's foes, dragging them back to 
 the walls from which it surges.
 %%%%
 gelatinous snatcher segment
 
-Part of a corrosive strand of slime mould brought alive by a slime priest's
-magic. It can quickly bind and entangle the slime priest's foes, dragging them
+Part of a corrosive strand of slime mould brought alive by a slime priest's 
+magic. It can quickly bind and entangle the slime priest's foes, dragging them 
 back to the walls from which it surges.
 %%%%
 gelid demonspawn
@@ -1940,7 +1940,7 @@ is different, with its own set of strengths and weaknesses.
 pixie
 
 A mischievous, insect-winged humanoid, tasked by Xom to spread chaos and
-confusion.
+confusion. 
 %%%%
 peacekeeper
 
@@ -2091,11 +2091,11 @@ tends to form great swarms with its kin.
 %%%%
 the Royal Jelly
 
-The Royal Jelly was once the king of a thriving Dwarven civilization. Possessed
+The Royal Jelly was once the king of a thriving Dwarven civilization. Possessed 
 by an insatiable greed, the dwarf king commanded his subjects to dig ever deeper.
 One day, the dwarves uncovered an enormous slime mould that consumed the king and
-his court, transforming them into slimes and jellies. These slimy lords and ladies
-swim and pulse just below the Royal Jelly's surface, ready to burst forth
+his court, transforming them into slimes and jellies. These slimy lords and ladies 
+swim and pulse just below the Royal Jelly's surface, ready to burst forth 
 at the slightest touch.
 %%%%
 rust devil
@@ -2178,7 +2178,7 @@ shambling mangrove
 
 A gnarled mangrove, possessed of sapience and a cantankerous disposition. Its
 roots run deep through the water and soil and can make footing very difficulty
-for those who provoke its ire. Fauna are often found nesting within its
+for those who provoke its ire. Fauna are often found nesting within its 
 branches, and may not take kindly to being disturbed.
 %%%%
 shapeshifter
@@ -2463,7 +2463,7 @@ powerful, even among giants.
 %%%%
 thorn hunter
 
-A predatory plant, possessed of motility and a rudimentary intelligence. It
+A predatory plant, possessed of motility and a rudimentary intelligence. It 
 ensnares its prey with protrusions of spiny brambles and then skewers the
 trapped creatures with its razor-sharp thorns.
 %%%%
@@ -2632,7 +2632,7 @@ whim.
 wendigo
 
 A towering but emaciated gray-skinned undead figure, a wendigo is created
-whenever a human resorts to cannibalism to survive. It desires nothing but to
+whenever a human resorts to cannibalism to survive. It desires nothing but to 
 feed on the flesh of the living, and may inflict this psychosis upon its prey.
 %%%%
 white draconian
@@ -2727,7 +2727,7 @@ yewborn
 
 A sapient tree, indistinguishable from its immobile peers save for two
 eye-shaped knots and a cantankerous disposition, yewborn are senescent spriggans
-reborn as trees via a magical ritual. While they are slow to move and
+reborn as trees via a magical ritual. While they are slow to move and 
 react, yewborn are quite capable of crushing adventurers who linger too long in
 their forest home.
 %%%%

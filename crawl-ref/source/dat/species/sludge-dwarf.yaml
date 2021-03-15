@@ -54,7 +54,7 @@ mutations:
     MUT_PASSIVE_MAPPING: 1
   7:
     MUT_STURDY_FRAME: 1
-  9:
+  9: 
     MUT_PASSIVE_MAPPING: 1
   14:
     MUT_STURDY_FRAME: 1
